@@ -1,4 +1,4 @@
-# Jupiter Lend CPI Documentation
+# Jupiter Lend Earn CPI Documentation
 
 ## Overview
 
@@ -6,10 +6,19 @@ This documentation covers Cross-Program Invocation (CPI) integration for the len
 
 ### Deployed address
 
+#### Devnet
+
 | Program           | Address                                        | link                                                                                                                |
 | ----------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | LENDING_PROGRAM   | `7tjE28izRUjzmxC1QNXnNwcc4N82CNYCexf3k8mw67s3` | [lending_devnet](https://explorer.solana.com/address/7tjE28izRUjzmxC1QNXnNwcc4N82CNYCexf3k8mw67s3?cluster=devnet)   |
 | LIQUIDITY_PROGRAM | `5uDkCoM96pwGYhAUucvCzLfm5UcjVRuxz6gH81RnRBmL` | [liquidity_devnet](https://explorer.solana.com/address/5uDkCoM96pwGYhAUucvCzLfm5UcjVRuxz6gH81RnRBmL?cluster=devnet) |
+
+#### Staging mainnet
+
+| Program           | Address                                       | link                                                                                                |
+| ----------------- | --------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| LENDING_PROGRAM   | `jup3YeL8QhtSx1e253b2FDvsMNC87fDrgQZivbrndc9` | [lending_devnet](https://explorer.solana.com/address/jup3YeL8QhtSx1e253b2FDvsMNC87fDrgQZivbrndc9)   |
+| LIQUIDITY_PROGRAM | `jupeiUmn818Jg1ekPURTpr4mFo29p46vygyykFJ3wZC` | [liquidity_devnet](https://explorer.solana.com/address/jupeiUmn818Jg1ekPURTpr4mFo29p46vygyykFJ3wZC) |
 
 ## Core CPI Functions
 
@@ -154,7 +163,7 @@ impl<'info> DepositParams<'info> {
 }
 ```
 
-> Full snippet available [here](../references/deposit.rs)
+> Full snippet available [here](../../references/earn/deposit.rs)
 
 ### Deposit Account Explanations
 
@@ -304,7 +313,7 @@ impl<'info> WithdrawParams<'info> {
 }
 ```
 
-> Full snippet available [here](../references/withdraw.rs)
+> Full snippet available [here](../../references/earn/withdraw.rs)
 
 ### Withdraw Account Explanations
 
