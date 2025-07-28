@@ -1,4 +1,4 @@
-# Jupiter Lend SDK Documentation
+# Jupiter Lend Earn SDK Documentation
 
 ## Overview
 
@@ -14,14 +14,19 @@ npm install @jup-ag/lend
 
 ```typescript
 import { Connection, PublicKey, Transaction } from "@solana/web3.js";
-import { getDepositIx, getDepositContext, getWithdrawIx, getWithdrawContext } from "@jup-ag/lend/earn";
+import {
+  getDepositIx,
+  getDepositContext,
+  getWithdrawIx,
+  getWithdrawContext,
+} from "@jup-ag/lend/earn";
 import { BN } from "bn.js";
 
-const connection = new Connection("https://api.devnet.solana.com");
+const connection = new Connection("https://api.mainnet-beta.solana.com");
 const signer = new PublicKey("YOUR_SIGNER_PUBLIC_KEY");
 
 // Example asset mints
-const usdc = new PublicKey("4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU"); // USDC devnet
+const usdc = new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"); // USDC mainnet
 ```
 
 ---
@@ -36,9 +41,10 @@ Use `getDepositIx()` to get a transaction instruction that can be included in yo
 // Get deposit instruction
 const depositIx = await getDepositIx({
   amount: new BN(1000000), // amount in token decimals (1 USDC)
-  asset: usdc,             // asset mint address
-  signer,                  // signer public key
-  connection,              // Solana connection
+  asset: usdc, // asset mint address
+  signer, // signer public key
+  connection, // Solana connection
+  cluster: "mainnet",
 });
 
 // Use the instruction in your transaction
@@ -48,7 +54,9 @@ transaction.recentBlockhash = latestBlockhash.blockhash;
 transaction.feePayer = signer;
 
 // Sign and send transaction
-const signature = await connection.sendTransaction(transaction, [signerKeypair]);
+const signature = await connection.sendTransaction(transaction, [
+  signerKeypair,
+]);
 console.log("Transaction ID:", signature);
 ```
 
@@ -59,8 +67,8 @@ Use `getDepositContext()` to get all the accounts needed for Cross-Program Invoc
 ```typescript
 // Get account context for CPI integration
 const depositContext = await getDepositContext({
-  asset: usdc,  // asset mint address
-  signer,       // signer public key
+  asset: usdc, // asset mint address
+  signer, // signer public key
 });
 
 console.log("Deposit context accounts:", depositContext);
@@ -102,9 +110,10 @@ Use `getWithdrawIx()` to get a transaction instruction:
 // Get withdraw instruction
 const withdrawIx = await getWithdrawIx({
   amount: new BN(500000), // amount in token decimals (0.5 USDC)
-  asset: usdc,            // asset mint address
-  signer,                 // signer public key
-  connection,             // Solana connection
+  asset: usdc, // asset mint address
+  signer, // signer public key
+  connection, // Solana connection
+  cluster: "mainnet", // cluster to connect to
 });
 
 // Use the instruction in your transaction
@@ -114,7 +123,9 @@ transaction.recentBlockhash = latestBlockhash.blockhash;
 transaction.feePayer = signer;
 
 // Sign and send transaction
-const signature = await connection.sendTransaction(transaction, [signerKeypair]);
+const signature = await connection.sendTransaction(transaction, [
+  signerKeypair,
+]);
 console.log("Transaction ID:", signature);
 ```
 
@@ -125,8 +136,8 @@ Use `getWithdrawContext()` to get all the accounts needed for CPI calls:
 ```typescript
 // Get account context for CPI integration
 const withdrawContext = await getWithdrawContext({
-  asset: usdc,  // asset mint address
-  signer,       // signer public key
+  asset: usdc, // asset mint address
+  signer, // signer public key
 });
 
 console.log("Withdraw context accounts:", withdrawContext);
@@ -156,25 +167,31 @@ Returns all account addresses needed for CPI:
 ```
 
 ---
+
 > withdraw script - https://play.instadapp.io/EWbjqXW7aMDB9BeWjTn71
 
 ## Complete Usage Example
 
 ```typescript
 import { Connection, PublicKey, Transaction, Keypair } from "@solana/web3.js";
-import { getDepositIx, getDepositContext, getWithdrawIx, getWithdrawContext } from "@jup-ag/lend/earn";
+import {
+  getDepositIx,
+  getDepositContext,
+  getWithdrawIx,
+  getWithdrawContext,
+} from "@jup-ag/lend/earn";
 import { BN } from "bn.js";
 
 async function main() {
   // Setup
-  const connection = new Connection("https://api.devnet.solana.com");
+  const connection = new Connection("https://api.mainnet-beta.solana.com");
   const signerKeypair = Keypair.generate(); // In practice, load your keypair
   const signer = signerKeypair.publicKey;
-  const usdc = new PublicKey("4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU");
+  const usdc = new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v");
 
   try {
     // === DEPOSIT EXAMPLE ===
-    
+
     // Option 1: Get account context for CPI integration
     console.log("Loading deposit accounts...");
     const depositContext = await getDepositContext({
@@ -182,7 +199,7 @@ async function main() {
       signer,
     });
     console.log("Deposit context:", depositContext);
-    
+
     // Option 2: Get instruction for transaction
     console.log("Creating deposit instruction...");
     const depositIx = await getDepositIx({
@@ -190,6 +207,7 @@ async function main() {
       asset: usdc,
       signer,
       connection,
+      cluster: "mainnet",
     });
 
     // Build and send deposit transaction
@@ -199,14 +217,16 @@ async function main() {
     depositTx.recentBlockhash = latestBlockhash.blockhash;
     depositTx.feePayer = signer;
 
-    const depositTxid = await connection.sendTransaction(depositTx, [signerKeypair]);
+    const depositTxid = await connection.sendTransaction(depositTx, [
+      signerKeypair,
+    ]);
     console.log("Deposit transaction ID:", depositTxid);
 
     // Wait for confirmation
     await connection.confirmTransaction(depositTxid);
 
     // === WITHDRAW EXAMPLE ===
-    
+
     // Option 1: Get account context for CPI integration
     console.log("Loading withdraw accounts...");
     const withdrawContext = await getWithdrawContext({
@@ -214,7 +234,7 @@ async function main() {
       signer,
     });
     console.log("Withdraw context:", withdrawContext);
-    
+
     // Option 2: Get instruction for transaction
     console.log("Creating withdraw instruction...");
     const withdrawIx = await getWithdrawIx({
@@ -231,9 +251,10 @@ async function main() {
     withdrawTx.recentBlockhash = latestBlockhash2.blockhash;
     withdrawTx.feePayer = signer;
 
-    const withdrawTxid = await connection.sendTransaction(withdrawTx, [signerKeypair]);
+    const withdrawTxid = await connection.sendTransaction(withdrawTx, [
+      signerKeypair,
+    ]);
     console.log("Withdraw transaction ID:", withdrawTxid);
-
   } catch (error) {
     console.error("Operation failed:", error);
   }
@@ -261,7 +282,7 @@ await program.methods
   .accounts({
     // Your program accounts
     userAccount: userAccount,
-    
+
     // Jupiter Lend accounts (from context)
     signer: depositContext.signer,
     depositorTokenAccount: depositContext.depositorTokenAccount,
@@ -270,8 +291,10 @@ await program.methods
     lending: depositContext.lending,
     fTokenMint: depositContext.fTokenMint,
     // ... all other accounts from context
-    
-    lendingProgram: new PublicKey("7tjE28izRUjzmxC1QNXnNwcc4N82CNYCexf3k8mw67s3"),
+
+    lendingProgram: new PublicKey(
+      "7tjE28izRUjzmxC1QNXnNwcc4N82CNYCexf3k8mw67s3"
+    ),
   })
   .rpc();
 ```
@@ -280,26 +303,27 @@ await program.methods
 
 ### Deposit Context Accounts
 
-| Account                            | Purpose                                    |
-| ---------------------------------- | ------------------------------------------ |
-| `signer`                           | User's wallet public key                   |
-| `depositorTokenAccount`            | User's underlying token account (source)   |
-| `recipientTokenAccount`            | User's fToken account (destination)        |
-| `mint`                             | Underlying token mint                      |
-| `lendingAdmin`                     | Protocol configuration PDA                 |
-| `lending`                          | Pool-specific configuration PDA            |
-| `fTokenMint`                       | fToken mint account                        |
-| `supplyTokenReservesLiquidity`     | Liquidity protocol token reserves          |
-| `lendingSupplyPositionOnLiquidity` | Protocol's position in liquidity pool      |
-| `rateModel`                        | Interest rate calculation model            |
-| `vault`                            | Protocol vault holding deposited tokens    |
-| `liquidity`                        | Main liquidity protocol PDA                |
-| `liquidityProgram`                 | Liquidity protocol program ID              |
-| `rewardsRateModel`                 | Rewards calculation model PDA              |
+| Account                            | Purpose                                  |
+| ---------------------------------- | ---------------------------------------- |
+| `signer`                           | User's wallet public key                 |
+| `depositorTokenAccount`            | User's underlying token account (source) |
+| `recipientTokenAccount`            | User's fToken account (destination)      |
+| `mint`                             | Underlying token mint                    |
+| `lendingAdmin`                     | Protocol configuration PDA               |
+| `lending`                          | Pool-specific configuration PDA          |
+| `fTokenMint`                       | fToken mint account                      |
+| `supplyTokenReservesLiquidity`     | Liquidity protocol token reserves        |
+| `lendingSupplyPositionOnLiquidity` | Protocol's position in liquidity pool    |
+| `rateModel`                        | Interest rate calculation model          |
+| `vault`                            | Protocol vault holding deposited tokens  |
+| `liquidity`                        | Main liquidity protocol PDA              |
+| `liquidityProgram`                 | Liquidity protocol program ID            |
+| `rewardsRateModel`                 | Rewards calculation model PDA            |
 
 ### Withdraw Context Accounts
 
 Similar to deposit context, but includes:
+
 - `ownerTokenAccount`: User's fToken account (source of fTokens to burn)
 - `claimAccount`: Additional account for withdrawal claim processing
 

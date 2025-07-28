@@ -1,0 +1,363 @@
+{
+  "address": "jupnw4B6Eqs7ft6rxpzYLJZYSnrpRgPcr589n5Kv4oc",
+  "metadata": {
+    "name": "oracle",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "get_exchange_rate",
+      "discriminator": [153, 76, 17, 194, 170, 215, 89, 142],
+      "accounts": [
+        {
+          "name": "oracle"
+        }
+      ],
+      "args": [
+        {
+          "name": "_nonce",
+          "type": "u16"
+        }
+      ],
+      "returns": "u128"
+    },
+    {
+      "name": "get_exchange_rate_liquidate",
+      "discriminator": [228, 169, 73, 39, 91, 82, 27, 5],
+      "accounts": [
+        {
+          "name": "oracle"
+        }
+      ],
+      "args": [
+        {
+          "name": "_nonce",
+          "type": "u16"
+        }
+      ],
+      "returns": "u128"
+    },
+    {
+      "name": "get_exchange_rate_operate",
+      "discriminator": [174, 166, 126, 10, 122, 153, 94, 203],
+      "accounts": [
+        {
+          "name": "oracle"
+        }
+      ],
+      "args": [
+        {
+          "name": "_nonce",
+          "type": "u16"
+        }
+      ],
+      "returns": "u128"
+    },
+    {
+      "name": "init",
+      "discriminator": [220, 59, 207, 236, 108, 250, 47, 100],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "oracle_admin",
+          "writable": true
+        },
+        {
+          "name": "oracle",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [111, 114, 97, 99, 108, 101]
+              },
+              {
+                "kind": "arg",
+                "path": "nonce"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "sources",
+          "type": {
+            "vec": {
+              "defined": {
+                "name": "Sources"
+              }
+            }
+          }
+        },
+        {
+          "name": "nonce",
+          "type": "u16"
+        }
+      ]
+    },
+    {
+      "name": "init_admin",
+      "discriminator": [97, 65, 97, 27, 200, 206, 72, 219],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "oracle_admin",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  111, 114, 97, 99, 108, 101, 95, 97, 100, 109, 105, 110
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "authority",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "update_auths",
+      "discriminator": [93, 96, 178, 156, 57, 117, 253, 209],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "oracle_admin",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "auth_status",
+          "type": {
+            "vec": {
+              "defined": {
+                "name": "AddressBool"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Oracle",
+      "discriminator": [139, 194, 131, 179, 140, 179, 229, 244]
+    },
+    {
+      "name": "OracleAdmin",
+      "discriminator": [239, 232, 8, 20, 254, 63, 25, 246]
+    }
+  ],
+  "events": [
+    {
+      "name": "LogUpdateAuths",
+      "discriminator": [88, 80, 109, 48, 111, 203, 76, 251]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "PriceNotValid",
+      "msg": "PRICE_NOT_VALID"
+    },
+    {
+      "code": 6001,
+      "name": "RateZero",
+      "msg": "RATE_ZERO"
+    },
+    {
+      "code": 6002,
+      "name": "InvalidParams",
+      "msg": "INVALID_PARAMS"
+    },
+    {
+      "code": 6003,
+      "name": "InvalidSource",
+      "msg": "INVALID_SOURCE"
+    },
+    {
+      "code": 6004,
+      "name": "InvalidSourcesLength",
+      "msg": "INVALID_SOURCES_LENGTH"
+    },
+    {
+      "code": 6005,
+      "name": "OracleAdminOnlyAuthority",
+      "msg": "ORACLE_ADMIN_ONLY_AUTHORITY"
+    },
+    {
+      "code": 6006,
+      "name": "OracleAdminOnlyAuth",
+      "msg": "ORACLE_ADMIN_ONLY_AUTH"
+    },
+    {
+      "code": 6007,
+      "name": "OracleAdminMaxAuthCountReached",
+      "msg": "ORACLE_ADMIN_MAX_AUTH_COUNT_REACHED"
+    },
+    {
+      "code": 6008,
+      "name": "OracleAdminInvalidParams",
+      "msg": "ORACLE_ADMIN_INVALID_PARAMS"
+    },
+    {
+      "code": 6009,
+      "name": "OracleNonceMismatch",
+      "msg": "ORACLE_NONCE_MISMATCH"
+    }
+  ],
+  "types": [
+    {
+      "name": "AddressBool",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "addr",
+            "type": "pubkey"
+          },
+          {
+            "name": "value",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LogUpdateAuths",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "auth_status",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "AddressBool"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Oracle",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "nonce",
+            "type": "u16"
+          },
+          {
+            "name": "sources",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "Sources"
+                }
+              }
+            }
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "OracleAdmin",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "auths",
+            "type": {
+              "vec": "pubkey"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "SourceType",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Pyth"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Sources",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "source",
+            "type": "pubkey"
+          },
+          {
+            "name": "invert",
+            "type": "bool"
+          },
+          {
+            "name": "multiplier",
+            "type": "u128"
+          },
+          {
+            "name": "divisor",
+            "type": "u128"
+          },
+          {
+            "name": "source_type",
+            "type": {
+              "defined": {
+                "name": "SourceType"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
