@@ -205,7 +205,7 @@ const { ixs } = await getOperateIx({
 ```typescript
 // Withdraw all available collateral
 const { ixs } = await getOperateIx({
-  colAmount: new BN("i128::MIN"), // i128::MIN for max withdraw
+  colAmount: new BN("-170141183460469231731687303715884105728"), // i128::MIN for max withdraw
   debtAmount: new BN(0),
   connection,
   positionId: nft.id,
@@ -221,7 +221,7 @@ const { ixs } = await getOperateIx({
 // Payback all debt
 const { ixs } = await getOperateIx({
   colAmount: new BN(0),
-  debtAmount: new BN("i128::MIN"), // i128::MIN for max payback
+  debtAmount: new BN("-170141183460469231731687303715884105728"), // i128::MIN for max payback
   connection,
   positionId: nft.id,
   signer: publicKey,
@@ -458,7 +458,7 @@ The `remainingAccounts` array is ordered as:
 - All amounts are scaled to 1e9 decimals internally by the vault
 - Use `new BN('number')` for amounts to handle large numbers
 - Positive values = deposit/borrow, Negative values = withdraw/payback
-- Use `new BN('i128::MIN')` for max withdraw/payback operations
+- Use `new BN('-170141183460469231731687303715884105728')` for max withdraw/payback operations
 
 ### Position Requirements
 
