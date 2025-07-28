@@ -383,68 +383,68 @@ The setup instructions handle:
 
 **Important**: These setup instructions must be executed before your CPI call, as they prepare the program state for the vault operation.
 
-````
-
 ---
 
 ## Account Explanations
 
 ### Core Vault Accounts
 
-| Account | Purpose |
-|---------|---------|
-| `signer` | User's wallet public key performing the operation |
-| `signerSupplyTokenAccount` | User's supply token account (source for deposits) |
-| `signerBorrowTokenAccount` | User's borrow token account (source for paybacks) |
-| `recipient` | Destination wallet for withdrawals/borrows |
-| `recipientSupplyTokenAccount` | Destination for withdrawn supply tokens |
-| `recipientBorrowTokenAccount` | Destination for borrowed tokens |
+| Account                       | Purpose                                           |
+| ----------------------------- | ------------------------------------------------- |
+| `signer`                      | User's wallet public key performing the operation |
+| `signerSupplyTokenAccount`    | User's supply token account (source for deposits) |
+| `signerBorrowTokenAccount`    | User's borrow token account (source for paybacks) |
+| `recipient`                   | Destination wallet for withdrawals/borrows        |
+| `recipientSupplyTokenAccount` | Destination for withdrawn supply tokens           |
+| `recipientBorrowTokenAccount` | Destination for borrowed tokens                   |
 
 ### Vault Configuration
 
-| Account | Purpose |
-|---------|---------|
+| Account       | Purpose                                       |
+| ------------- | --------------------------------------------- |
 | `vaultConfig` | Vault configuration PDA containing parameters |
-| `vaultState` | Vault state PDA with current liquidity data |
-| `supplyToken` | Supply token mint address |
-| `borrowToken` | Borrow token mint address |
-| `oracle` | Price oracle account for the vault |
+| `vaultState`  | Vault state PDA with current liquidity data   |
+| `supplyToken` | Supply token mint address                     |
+| `borrowToken` | Borrow token mint address                     |
+| `oracle`      | Price oracle account for the vault            |
 
 ### Position Management
 
-| Account | Purpose |
-|---------|---------|
-| `position` | User's position PDA containing debt/collateral data |
-| `positionTokenAccount` | User's position NFT token account |
-| `currentPositionTick` | Current tick where position is located |
-| `finalPositionTick` | Final tick after operation |
-| `currentPositionTickId` | Current position ID within tick |
-| `finalPositionTickId` | Final position ID within tick |
-| `newBranch` | Branch account for tick organization |
+| Account                 | Purpose                                             |
+| ----------------------- | --------------------------------------------------- |
+| `position`              | User's position PDA containing debt/collateral data |
+| `positionTokenAccount`  | User's position NFT token account                   |
+| `currentPositionTick`   | Current tick where position is located              |
+| `finalPositionTick`     | Final tick after operation                          |
+| `currentPositionTickId` | Current position ID within tick                     |
+| `finalPositionTickId`   | Final position ID within tick                       |
+| `newBranch`             | Branch account for tick organization                |
 
 ### Liquidity Integration
 
-| Account | Purpose |
-|---------|---------|
-| `supplyTokenReservesLiquidity` | Underlying liquidity protocol supply reserves |
-| `borrowTokenReservesLiquidity` | Underlying liquidity protocol borrow reserves |
+| Account                          | Purpose                                       |
+| -------------------------------- | --------------------------------------------- |
+| `supplyTokenReservesLiquidity`   | Underlying liquidity protocol supply reserves |
+| `borrowTokenReservesLiquidity`   | Underlying liquidity protocol borrow reserves |
 | `vaultSupplyPositionOnLiquidity` | Vault's supply position in liquidity protocol |
 | `vaultBorrowPositionOnLiquidity` | Vault's borrow position in liquidity protocol |
-| `supplyRateModel` | Supply interest rate model |
-| `borrowRateModel` | Borrow interest rate model |
-| `vaultSupplyTokenAccount` | Vault's supply token holding account |
-| `vaultBorrowTokenAccount` | Vault's borrow token holding account |
-| `liquidity` | Main liquidity protocol PDA |
-| `liquidityProgram` | Liquidity protocol program ID |
+| `supplyRateModel`                | Supply interest rate model                    |
+| `borrowRateModel`                | Borrow interest rate model                    |
+| `vaultSupplyTokenAccount`        | Vault's supply token holding account          |
+| `vaultBorrowTokenAccount`        | Vault's borrow token holding account          |
+| `liquidity`                      | Main liquidity protocol PDA                   |
+| `liquidityProgram`               | Liquidity protocol program ID                 |
 
 ### Remaining Accounts Structure
 
 The `remainingAccountsIndices` array contains three values:
+
 - `[0]` = Number of oracle source accounts
 - `[1]` = Number of branch accounts
 - `[2]` = Number of tick has debt array accounts
 
 The `remainingAccounts` array is ordered as:
+
 1. Oracle sources (0 to indices[0])
 2. Branch accounts (indices[0] to indices[0] + indices[1])
 3. Tick has debt arrays (indices[0] + indices[1] to indices[0] + indices[1] + indices[2])
@@ -454,31 +454,37 @@ The `remainingAccounts` array is ordered as:
 ## Important Notes
 
 ### Amount Scaling
+
 - All amounts are scaled to 1e9 decimals internally by the vault
 - Use `new BN('number')` for amounts to handle large numbers
 - Positive values = deposit/borrow, Negative values = withdraw/payback
 - Use `new BN('i128::MIN')` for max withdraw/payback operations
 
 ### Position Requirements
+
 - Position NFT can be created automatically by passing `positionId = 0` parameter
 - If `positionId` is provided, it will use the existing position
 - Position NFT ownership is required for withdraw/borrow operations
 - Anyone can deposit to any position or payback debt for any position
 
 ### Instructions Batching
+
 - The `ixs` array contains multiple instructions that must be executed in order
 - Instructions include: setup, account creation, environment preparation, and the final operate call
 - All instructions are required for proper vault operation
 - For CPI integration, execute setup instructions first, then make your CPI call with the operate instruction accounts
 
 ### Transaction Requirements
+
 - **Must use v0 (versioned) transactions** - Regular transactions are not supported
 - Address lookup tables are always provided and must be included in the transaction
 - Multiple instructions are returned and must be executed in order
 - For CPI integration, execute setup instructions first, then make your CPI call with the operate instruction accounts
 
 ### Error Handling
+
 Common errors to handle:
+
 - Invalid position ID or vault ID
 - Insufficient collateral for borrow operations
 - Position liquidation state conflicts
@@ -499,7 +505,7 @@ const { ixs, nftId, accounts } = await getOperateIx({
   positionId: 0,
   signer: publicKey,
   vaultId: 1,
-  cluster: 'mainnet',
+  cluster: "mainnet",
 });
 
 console.log("Created position NFT ID:", nftId);
@@ -512,6 +518,6 @@ const { ixs: subsequentIxs } = await getOperateIx({
   positionId: nftId, // Use the created position
   signer: publicKey,
   vaultId: 1,
-  cluster: 'mainnet',
+  cluster: "mainnet",
 });
-````
+```
