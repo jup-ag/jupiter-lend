@@ -1077,6 +1077,32 @@
       "args": []
     },
     {
+      "name": "update_auths",
+      "discriminator": [93, 96, 178, 156, 57, 117, 253, 209],
+      "accounts": [
+        {
+          "name": "signer",
+          "signer": true
+        },
+        {
+          "name": "vault_admin",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "auth_status",
+          "type": {
+            "vec": {
+              "defined": {
+                "name": "AddressBool"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
       "name": "update_borrow_fee",
       "discriminator": [251, 124, 35, 148, 202, 167, 157, 65],
       "accounts": [
@@ -1364,6 +1390,34 @@
         {
           "name": "liquidation_threshold",
           "type": "u16"
+        }
+      ]
+    },
+    {
+      "name": "update_lookup_table",
+      "discriminator": [221, 59, 30, 246, 106, 223, 137, 55],
+      "accounts": [
+        {
+          "name": "authority",
+          "signer": true
+        },
+        {
+          "name": "vault_admin"
+        },
+        {
+          "name": "vault_metadata",
+          "docs": ["@dev Verification inside instruction logic"],
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "vault_id",
+          "type": "u16"
+        },
+        {
+          "name": "lookup_table",
+          "type": "pubkey"
         }
       ]
     },
