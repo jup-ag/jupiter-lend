@@ -7,7 +7,7 @@
 
 - SDK [Guide](./docs/earn/sdk.md)
 - CPI [Guide](./docs/earn/cpi.md)
-- API [Guide](./docs/earn/api.md)
+- API [Guide](https://dev.jup.ag/docs/lend-api)
 
 ### Borrow
 
