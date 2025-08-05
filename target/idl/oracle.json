@@ -56,8 +56,8 @@
       "returns": "u128"
     },
     {
-      "name": "init",
-      "discriminator": [220, 59, 207, 236, 108, 250, 47, 100],
+      "name": "init_admin",
+      "discriminator": [97, 65, 97, 27, 200, 206, 72, 219],
       "accounts": [
         {
           "name": "signer",
@@ -66,7 +66,41 @@
         },
         {
           "name": "oracle_admin",
-          "writable": true
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  111, 114, 97, 99, 108, 101, 95, 97, 100, 109, 105, 110
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "authority",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "init_oracle_config",
+      "discriminator": [77, 144, 180, 246, 217, 15, 118, 92],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "oracle_admin"
         },
         {
           "name": "oracle",
@@ -107,47 +141,11 @@
       ]
     },
     {
-      "name": "init_admin",
-      "discriminator": [97, 65, 97, 27, 200, 206, 72, 219],
-      "accounts": [
-        {
-          "name": "signer",
-          "writable": true,
-          "signer": true
-        },
-        {
-          "name": "oracle_admin",
-          "writable": true,
-          "pda": {
-            "seeds": [
-              {
-                "kind": "const",
-                "value": [
-                  111, 114, 97, 99, 108, 101, 95, 97, 100, 109, 105, 110
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "name": "system_program",
-          "address": "11111111111111111111111111111111"
-        }
-      ],
-      "args": [
-        {
-          "name": "authority",
-          "type": "pubkey"
-        }
-      ]
-    },
-    {
       "name": "update_auths",
       "discriminator": [93, 96, 178, 156, 57, 117, 253, 209],
       "accounts": [
         {
           "name": "authority",
-          "writable": true,
           "signer": true
         },
         {
@@ -193,48 +191,58 @@
     },
     {
       "code": 6001,
+      "name": "PriceTooOld",
+      "msg": "PRICE_TOO_OLD"
+    },
+    {
+      "code": 6002,
       "name": "RateZero",
       "msg": "RATE_ZERO"
     },
     {
-      "code": 6002,
+      "code": 6003,
       "name": "InvalidParams",
       "msg": "INVALID_PARAMS"
     },
     {
-      "code": 6003,
+      "code": 6004,
       "name": "InvalidSource",
       "msg": "INVALID_SOURCE"
     },
     {
-      "code": 6004,
+      "code": 6005,
       "name": "InvalidSourcesLength",
       "msg": "INVALID_SOURCES_LENGTH"
     },
     {
-      "code": 6005,
+      "code": 6006,
       "name": "OracleAdminOnlyAuthority",
       "msg": "ORACLE_ADMIN_ONLY_AUTHORITY"
     },
     {
-      "code": 6006,
+      "code": 6007,
       "name": "OracleAdminOnlyAuth",
       "msg": "ORACLE_ADMIN_ONLY_AUTH"
     },
     {
-      "code": 6007,
+      "code": 6008,
       "name": "OracleAdminMaxAuthCountReached",
       "msg": "ORACLE_ADMIN_MAX_AUTH_COUNT_REACHED"
     },
     {
-      "code": 6008,
+      "code": 6009,
       "name": "OracleAdminInvalidParams",
       "msg": "ORACLE_ADMIN_INVALID_PARAMS"
     },
     {
-      "code": 6009,
+      "code": 6010,
       "name": "OracleNonceMismatch",
       "msg": "ORACLE_NONCE_MISMATCH"
+    },
+    {
+      "code": 6011,
+      "name": "PriceConfidenceNotSufficient",
+      "msg": "PRICE_CONFIDENCE_NOT_SUFFICIENT"
     }
   ],
   "types": [

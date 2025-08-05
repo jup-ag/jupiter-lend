@@ -13,56 +13,30 @@
       "accounts": [
         {
           "name": "authority",
-          "writable": true,
           "signer": true
         },
         {
           "name": "lending_rewards_admin"
         },
         {
-          "name": "lending_rewards_rate_model",
+          "name": "lending_account",
           "writable": true
-        }
-      ],
-      "args": []
-    },
-    {
-      "name": "init_lending_reward_rate_model",
-      "discriminator": [87, 172, 135, 237, 187, 144, 91, 233],
-      "accounts": [
-        {
-          "name": "authority",
-          "writable": true,
-          "signer": true
-        },
-        {
-          "name": "lending_rewards_admin"
         },
         {
           "name": "mint"
         },
         {
-          "name": "lending_rewards_rate_model",
-          "writable": true,
-          "pda": {
-            "seeds": [
-              {
-                "kind": "const",
-                "value": [
-                  108, 101, 110, 100, 105, 110, 103, 95, 114, 101, 119, 97, 114,
-                  100, 115, 95, 114, 97, 116, 101, 95, 109, 111, 100, 101, 108
-                ]
-              },
-              {
-                "kind": "account",
-                "path": "mint"
-              }
-            ]
-          }
+          "name": "f_token_mint"
         },
         {
-          "name": "system_program",
-          "address": "11111111111111111111111111111111"
+          "name": "supply_token_reserves_liquidity"
+        },
+        {
+          "name": "lending_rewards_rate_model",
+          "writable": true
+        },
+        {
+          "name": "lending_program"
         }
       ],
       "args": []
@@ -108,8 +82,8 @@
       ]
     },
     {
-      "name": "queue_next_rewards",
-      "discriminator": [12, 38, 248, 80, 128, 76, 155, 210],
+      "name": "init_lending_rewards_rate_model",
+      "discriminator": [117, 123, 196, 52, 246, 90, 168, 0],
       "accounts": [
         {
           "name": "authority",
@@ -120,8 +94,64 @@
           "name": "lending_rewards_admin"
         },
         {
+          "name": "mint"
+        },
+        {
+          "name": "lending_rewards_rate_model",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  108, 101, 110, 100, 105, 110, 103, 95, 114, 101, 119, 97, 114,
+                  100, 115, 95, 114, 97, 116, 101, 95, 109, 111, 100, 101, 108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "mint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "queue_next_rewards",
+      "discriminator": [12, 38, 248, 80, 128, 76, 155, 210],
+      "accounts": [
+        {
+          "name": "authority",
+          "signer": true
+        },
+        {
+          "name": "lending_rewards_admin"
+        },
+        {
+          "name": "lending_account",
+          "writable": true
+        },
+        {
+          "name": "mint"
+        },
+        {
+          "name": "f_token_mint"
+        },
+        {
+          "name": "supply_token_reserves_liquidity"
+        },
+        {
           "name": "lending_rewards_rate_model",
           "writable": true
+        },
+        {
+          "name": "lending_program"
         }
       ],
       "args": [
@@ -141,15 +171,30 @@
       "accounts": [
         {
           "name": "authority",
-          "writable": true,
           "signer": true
         },
         {
           "name": "lending_rewards_admin"
         },
         {
+          "name": "lending_account",
+          "writable": true
+        },
+        {
+          "name": "mint"
+        },
+        {
+          "name": "f_token_mint"
+        },
+        {
+          "name": "supply_token_reserves_liquidity"
+        },
+        {
           "name": "lending_rewards_rate_model",
           "writable": true
+        },
+        {
+          "name": "lending_program"
         }
       ],
       "args": [
@@ -177,23 +222,17 @@
       "accounts": [
         {
           "name": "authority",
-          "writable": true,
           "signer": true
         },
         {
           "name": "lending_rewards_admin"
         },
         {
-          "name": "lending_rewards_rate_model",
-          "writable": true
-        },
-        {
-          "name": "mint",
-          "relations": ["lending_rewards_rate_model"]
-        },
-        {
           "name": "lending_account",
           "writable": true
+        },
+        {
+          "name": "mint"
         },
         {
           "name": "f_token_mint"
@@ -202,7 +241,8 @@
           "name": "supply_token_reserves_liquidity"
         },
         {
-          "name": "rewards_rate_model"
+          "name": "lending_rewards_rate_model",
+          "writable": true
         },
         {
           "name": "lending_program"
@@ -215,15 +255,15 @@
       "discriminator": [167, 50, 233, 93, 0, 178, 154, 247],
       "accounts": [
         {
-          "name": "lending_rewards_rate_model",
-          "writable": true
-        },
-        {
-          "name": "mint"
+          "name": "lending_rewards_admin"
         },
         {
           "name": "lending_account",
           "writable": true
+        },
+        {
+          "name": "mint",
+          "relations": ["lending_rewards_rate_model"]
         },
         {
           "name": "f_token_mint"
@@ -232,7 +272,8 @@
           "name": "supply_token_reserves_liquidity"
         },
         {
-          "name": "rewards_rate_model"
+          "name": "lending_rewards_rate_model",
+          "writable": true
         },
         {
           "name": "lending_program"
@@ -246,7 +287,6 @@
       "accounts": [
         {
           "name": "authority",
-          "writable": true,
           "signer": true
         },
         {
@@ -353,12 +393,22 @@
     {
       "code": 6009,
       "name": "OnlyAuths",
-      "msg": "LENDING_REWARD_RATE_MODEL_ONLY_AUTH_CAN_INIT_RATE_MODEL"
+      "msg": "LENDING_REWARD_RATE_MODEL_ONLY_AUTH"
     },
     {
       "code": 6010,
       "name": "CpiToLendingProgramFailed",
       "msg": "LENDING_REWARD_RATE_MODEL_CPI_TO_LENDING_PROGRAM_FAILED"
+    },
+    {
+      "code": 6011,
+      "name": "InvalidLendingProgram",
+      "msg": "LENDING_REWARD_RATE_MODEL_INVALID_LENDING_PROGRAM"
+    },
+    {
+      "code": 6012,
+      "name": "InvalidMint",
+      "msg": "LENDING_REWARD_RATE_MODEL_INVALID_MINT"
     }
   ],
   "types": [
@@ -416,7 +466,10 @@
           },
           {
             "name": "start_tvl",
-            "docs": ["@dev tvl below which rewards rate is 0"],
+            "docs": [
+              "@dev tvl below which rewards rate is 0. If current TVL is below this value, triggering `update_rate()` on the fToken",
+              "might bring the total TVL above this cut-off."
+            ],
             "type": "u64"
           },
           {
@@ -491,10 +544,6 @@
         "kind": "struct",
         "fields": [
           {
-            "name": "mint",
-            "type": "pubkey"
-          },
-          {
             "name": "reward_amount",
             "type": "u64"
           },
@@ -505,6 +554,10 @@
           {
             "name": "start_time",
             "type": "u64"
+          },
+          {
+            "name": "mint",
+            "type": "pubkey"
           }
         ]
       }

@@ -93,7 +93,6 @@ export type Vaults = {
         {
           name: "vaultAdmin";
           docs: ["@dev mut as this is mint authority for NFT"];
-          writable: true;
         },
         {
           name: "vaultState";
@@ -245,6 +244,96 @@ export type Vaults = {
           };
         },
         {
+          name: "metadataAccount";
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: "const";
+                value: [109, 101, 116, 97, 100, 97, 116, 97];
+              },
+              {
+                kind: "const";
+                value: [
+                  11,
+                  112,
+                  101,
+                  177,
+                  227,
+                  209,
+                  124,
+                  69,
+                  56,
+                  157,
+                  82,
+                  127,
+                  107,
+                  4,
+                  195,
+                  205,
+                  88,
+                  184,
+                  108,
+                  115,
+                  26,
+                  160,
+                  253,
+                  181,
+                  73,
+                  182,
+                  209,
+                  188,
+                  3,
+                  248,
+                  41,
+                  70
+                ];
+              },
+              {
+                kind: "account";
+                path: "positionMint";
+              }
+            ];
+            program: {
+              kind: "const";
+              value: [
+                11,
+                112,
+                101,
+                177,
+                227,
+                209,
+                124,
+                69,
+                56,
+                157,
+                82,
+                127,
+                107,
+                4,
+                195,
+                205,
+                88,
+                184,
+                108,
+                115,
+                26,
+                160,
+                253,
+                181,
+                73,
+                182,
+                209,
+                188,
+                3,
+                248,
+                41,
+                70
+              ];
+            };
+          };
+        },
+        {
           name: "tokenProgram";
         },
         {
@@ -254,6 +343,18 @@ export type Vaults = {
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
+        },
+        {
+          name: "sysvarInstruction";
+          address: "Sysvar1nstructions1111111111111111111111111";
+        },
+        {
+          name: "metadataProgram";
+          address: "metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s";
+        },
+        {
+          name: "rent";
+          address: "SysvarRent111111111111111111111111111111111";
         }
       ];
       args: [
@@ -511,6 +612,9 @@ export type Vaults = {
           };
         },
         {
+          name: "oracle";
+        },
+        {
           name: "supplyToken";
         },
         {
@@ -721,7 +825,6 @@ export type Vaults = {
             "@dev mut because this PDA signs the CPI to liquidity program",
             "@dev verification inside instruction logic"
           ];
-          writable: true;
         },
         {
           name: "vaultState";
@@ -729,11 +832,9 @@ export type Vaults = {
         },
         {
           name: "supplyToken";
-          writable: true;
         },
         {
           name: "borrowToken";
-          writable: true;
         },
         {
           name: "oracle";
@@ -760,11 +861,9 @@ export type Vaults = {
         },
         {
           name: "supplyRateModel";
-          writable: true;
         },
         {
           name: "borrowRateModel";
-          writable: true;
         },
         {
           name: "supplyTokenClaimAccount";
@@ -773,11 +872,9 @@ export type Vaults = {
         },
         {
           name: "liquidity";
-          writable: true;
         },
         {
           name: "liquidityProgram";
-          writable: true;
         },
         {
           name: "vaultSupplyTokenAccount";
@@ -812,7 +909,7 @@ export type Vaults = {
         },
         {
           name: "colPerUnitDebt";
-          type: "u64";
+          type: "u128";
         },
         {
           name: "absorb";
@@ -1080,7 +1177,6 @@ export type Vaults = {
             "@dev mut because this PDA signs the CPI to liquidity program",
             "@dev verification inside instruction logic"
           ];
-          writable: true;
         },
         {
           name: "vaultState";
@@ -1142,11 +1238,9 @@ export type Vaults = {
         },
         {
           name: "supplyRateModel";
-          writable: true;
         },
         {
           name: "borrowRateModel";
-          writable: true;
         },
         {
           name: "vaultSupplyTokenAccount";
@@ -1168,11 +1262,9 @@ export type Vaults = {
         },
         {
           name: "liquidity";
-          writable: true;
         },
         {
           name: "liquidityProgram";
-          writable: true;
         },
         {
           name: "oracleProgram";
@@ -1380,19 +1472,15 @@ export type Vaults = {
         },
         {
           name: "supplyRateModel";
-          writable: true;
         },
         {
           name: "borrowRateModel";
-          writable: true;
         },
         {
           name: "liquidity";
-          writable: true;
         },
         {
           name: "liquidityProgram";
-          writable: true;
         },
         {
           name: "vaultSupplyTokenAccount";
@@ -1418,6 +1506,32 @@ export type Vaults = {
         }
       ];
       args: [];
+    },
+    {
+      name: "updateAuths";
+      discriminator: [93, 96, 178, 156, 57, 117, 253, 209];
+      accounts: [
+        {
+          name: "signer";
+          signer: true;
+        },
+        {
+          name: "vaultAdmin";
+          writable: true;
+        }
+      ];
+      args: [
+        {
+          name: "authStatus";
+          type: {
+            vec: {
+              defined: {
+                name: "addressBool";
+              };
+            };
+          };
+        }
+      ];
     },
     {
       name: "updateBorrowFee";
@@ -1707,6 +1821,34 @@ export type Vaults = {
         {
           name: "liquidationThreshold";
           type: "u16";
+        }
+      ];
+    },
+    {
+      name: "updateLookupTable";
+      discriminator: [221, 59, 30, 246, 106, 223, 137, 55];
+      accounts: [
+        {
+          name: "authority";
+          signer: true;
+        },
+        {
+          name: "vaultAdmin";
+        },
+        {
+          name: "vaultMetadata";
+          docs: ["@dev Verification inside instruction logic"];
+          writable: true;
+        }
+      ];
+      args: [
+        {
+          name: "vaultId";
+          type: "u16";
+        },
+        {
+          name: "lookupTable";
+          type: "pubkey";
         }
       ];
     },
@@ -2131,233 +2273,243 @@ export type Vaults = {
     },
     {
       code: 6021;
+      name: "vaultLiquidationResult";
+      msg: "vaultLiquidationResult";
+    },
+    {
+      code: 6022;
       name: "vaultBranchDebtTooLow";
       msg: "vaultBranchDebtTooLow";
     },
     {
-      code: 6022;
+      code: 6023;
       name: "vaultTickDebtTooLow";
       msg: "vaultTickDebtTooLow";
     },
     {
-      code: 6023;
+      code: 6024;
       name: "vaultLiquidityExchangePriceUnexpected";
       msg: "vaultLiquidityExchangePriceUnexpected";
     },
     {
-      code: 6024;
+      code: 6025;
       name: "vaultUserDebtTooLow";
       msg: "vaultUserDebtTooLow";
     },
     {
-      code: 6025;
+      code: 6026;
       name: "vaultInvalidPaybackOrDeposit";
       msg: "vaultInvalidPaybackOrDeposit";
     },
     {
-      code: 6026;
+      code: 6027;
       name: "vaultInvalidLiquidation";
       msg: "vaultInvalidLiquidation";
     },
     {
-      code: 6027;
+      code: 6028;
       name: "vaultNothingToRebalance";
       msg: "vaultNothingToRebalance";
     },
     {
-      code: 6028;
+      code: 6029;
       name: "vaultLiquidationReverts";
       msg: "vaultLiquidationReverts";
     },
     {
-      code: 6029;
+      code: 6030;
       name: "vaultInvalidOraclePrice";
       msg: "vaultInvalidOraclePrice";
     },
     {
-      code: 6030;
+      code: 6031;
       name: "vaultBranchNotFound";
       msg: "vaultBranchNotFound";
     },
     {
-      code: 6031;
+      code: 6032;
       name: "vaultTickNotFound";
       msg: "vaultTickNotFound";
     },
     {
-      code: 6032;
+      code: 6033;
       name: "vaultTickHasDebtNotFound";
       msg: "vaultTickHasDebtNotFound";
     },
     {
-      code: 6033;
+      code: 6034;
       name: "vaultTickMismatch";
       msg: "vaultTickMismatch";
     },
     {
-      code: 6034;
+      code: 6035;
       name: "vaultInvalidVaultId";
       msg: "vaultInvalidVaultId";
     },
     {
-      code: 6035;
+      code: 6036;
       name: "vaultInvalidNextPositionId";
       msg: "vaultInvalidNextPositionId";
     },
     {
-      code: 6036;
+      code: 6037;
       name: "vaultInvalidSupplyMint";
       msg: "vaultInvalidSupplyMint";
     },
     {
-      code: 6037;
+      code: 6038;
       name: "vaultInvalidBorrowMint";
       msg: "vaultInvalidBorrowMint";
     },
     {
-      code: 6038;
+      code: 6039;
       name: "vaultInvalidOracle";
       msg: "vaultInvalidOracle";
     },
     {
-      code: 6039;
+      code: 6040;
       name: "vaultInvalidTick";
       msg: "vaultInvalidTick";
     },
     {
-      code: 6040;
+      code: 6041;
       name: "vaultInvalidLiquidityProgram";
       msg: "vaultInvalidLiquidityProgram";
     },
     {
-      code: 6041;
+      code: 6042;
       name: "vaultInvalidPositionAuthority";
       msg: "vaultInvalidPositionAuthority";
     },
     {
-      code: 6042;
+      code: 6043;
       name: "vaultOracleNotValid";
       msg: "vaultOracleNotValid";
     },
     {
-      code: 6043;
+      code: 6044;
       name: "vaultBranchOwnerNotValid";
       msg: "vaultBranchOwnerNotValid";
     },
     {
-      code: 6044;
+      code: 6045;
       name: "vaultTickHasDebtOwnerNotValid";
       msg: "vaultTickHasDebtOwnerNotValid";
     },
     {
-      code: 6045;
+      code: 6046;
       name: "vaultTickOwnerNotValid";
       msg: "vaultTickDataOwnerNotValid";
     },
     {
-      code: 6046;
+      code: 6047;
       name: "vaultLiquidateRemainingAccountsTooShort";
       msg: "vaultLiquidateRemainingAccountsTooShort";
     },
     {
-      code: 6047;
+      code: 6048;
       name: "vaultOperateRemainingAccountsTooShort";
       msg: "vaultOperateRemainingAccountsTooShort";
     },
     {
-      code: 6048;
+      code: 6049;
       name: "vaultInvalidZerothBranch";
       msg: "vaultInvalidZerothBranch";
     },
     {
-      code: 6049;
+      code: 6050;
       name: "vaultCpiToLiquidityFailed";
       msg: "vaultCpyToLiquidityFailed";
     },
     {
-      code: 6050;
+      code: 6051;
       name: "vaultCpiToOracleFailed";
       msg: "vaultCpyToOracleFailed";
     },
     {
-      code: 6051;
+      code: 6052;
       name: "vaultOnlyAuthority";
       msg: "vaultOnlyAuthority";
     },
     {
-      code: 6052;
+      code: 6053;
       name: "vaultNewBranchInvalid";
       msg: "vaultNewBranchInvalid";
     },
     {
-      code: 6053;
+      code: 6054;
       name: "vaultTickHasDebtIndexMismatch";
       msg: "vaultTickHasDebtIndexMismatch";
     },
     {
-      code: 6054;
+      code: 6055;
       name: "vaultTickHasDebtOutOfRange";
       msg: "vaultTickHasDebtOutOfRange";
     },
     {
-      code: 6055;
+      code: 6056;
       name: "vaultUserSupplyPositionRequired";
       msg: "vaultUserSupplyPositionRequired";
     },
     {
-      code: 6056;
+      code: 6057;
       name: "vaultClaimAccountRequired";
       msg: "vaultClaimAccountRequired";
     },
     {
-      code: 6057;
+      code: 6058;
       name: "vaultAdminValueAboveLimit";
       msg: "vaultAdminValueAboveLimit";
     },
     {
-      code: 6058;
+      code: 6059;
       name: "vaultAdminOnlyAuths";
       msg: "vaultAdminOnlyAuthAccounts";
     },
     {
-      code: 6059;
+      code: 6060;
       name: "vaultAdminAddressZeroNotAllowed";
       msg: "vaultAdminAddressZeroNotAllowed";
     },
     {
-      code: 6060;
+      code: 6061;
       name: "vaultAdminVaultIdMismatch";
       msg: "vaultAdminVaultIdMismatch";
     },
     {
-      code: 6061;
+      code: 6062;
       name: "vaultAdminTotalIdsMismatch";
       msg: "vaultAdminTotalIdsMismatch";
     },
     {
-      code: 6062;
+      code: 6063;
       name: "vaultAdminTickMismatch";
       msg: "vaultAdminTickMismatch";
     },
     {
-      code: 6063;
+      code: 6064;
       name: "vaultAdminLiquidityProgramMismatch";
       msg: "vaultAdminLiquidityProgramMismatch";
     },
     {
-      code: 6064;
+      code: 6065;
       name: "vaultAdminMaxAuthCountReached";
       msg: "vaultAdminMaxAuthCountReached";
     },
     {
-      code: 6065;
+      code: 6066;
       name: "vaultAdminInvalidParams";
       msg: "vaultAdminInvalidParams";
     },
     {
-      code: 6066;
+      code: 6067;
       name: "vaultAdminOnlyAuthority";
       msg: "vaultAdminOnlyAuthority";
+    },
+    {
+      code: 6068;
+      name: "vaultAdminOracleProgramMismatch";
+      msg: "vaultAdminOracleProgramMismatch";
     }
   ];
   types: [
@@ -2465,15 +2617,11 @@ export type Vaults = {
             type: "u16";
           },
           {
-            name: "oracle";
-            type: "pubkey";
-          },
-          {
             name: "rebalancer";
             type: "pubkey";
           },
           {
-            name: "liquidity";
+            name: "liquidityProgram";
             type: "pubkey";
           },
           {

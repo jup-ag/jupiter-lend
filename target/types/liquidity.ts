@@ -1018,6 +1018,7 @@ export type Liquidity = {
         },
         {
           name: "userSupplyPosition";
+          optional: true;
         },
         {
           name: "userBorrowPosition";
@@ -1638,156 +1639,171 @@ export type Liquidity = {
     },
     {
       code: 6008;
+      name: "invalidConfigOrder";
+      msg: "adminModuleInvalidConfigOrder";
+    },
+    {
+      code: 6009;
       name: "statusAlreadySet";
       msg: "adminModuleStatusAlreadySet";
     },
     {
-      code: 6009;
+      code: 6010;
       name: "limitsCannotBeZero";
       msg: "adminModuleLimitsCanNotBeZero";
     },
     {
-      code: 6010;
+      code: 6011;
       name: "maxAuthCountReached";
       msg: "adminModuleMaxAuthCount";
     },
     {
-      code: 6011;
+      code: 6012;
       name: "maxUserClassesReached";
       msg: "adminModuleMaxUserClasses";
     },
     {
-      code: 6012;
+      code: 6013;
       name: "insufficientBalance";
       msg: "userModuleInsufficientBalance";
     },
     {
-      code: 6013;
+      code: 6014;
       name: "userSupplyPositionRequired";
       msg: "userModuleUserSupplyPositionRequired";
     },
     {
-      code: 6014;
+      code: 6015;
       name: "userBorrowPositionRequired";
       msg: "userModuleUserBorrowPositionRequired";
     },
     {
-      code: 6015;
+      code: 6016;
       name: "claimAccountRequired";
       msg: "userModuleClaimAccountRequired";
     },
     {
-      code: 6016;
+      code: 6017;
       name: "withdrawToAccountRequired";
       msg: "userModuleWithdrawToAccountRequired";
     },
     {
-      code: 6017;
+      code: 6018;
       name: "borrowToAccountRequired";
       msg: "userModuleBorrowToAccountRequired";
     },
     {
-      code: 6018;
+      code: 6019;
       name: "invalidClaimAmount";
       msg: "userModuleInvalidClaimAmount";
     },
     {
-      code: 6019;
+      code: 6020;
       name: "noAmountToClaim";
       msg: "userModuleNoAmountToClaim";
     },
     {
-      code: 6020;
+      code: 6021;
       name: "amountNotZero";
       msg: "userModuleAmountNotZero";
     },
     {
-      code: 6021;
+      code: 6022;
+      name: "valueOverflow";
+      msg: "userModuleValueOverflow";
+    },
+    {
+      code: 6023;
       name: "invalidTransferType";
       msg: "userModuleInvalidTransferType";
     },
     {
-      code: 6022;
+      code: 6024;
       name: "mintMismatch";
       msg: "userModuleMintMismatch";
     },
     {
-      code: 6023;
+      code: 6025;
       name: "userNotDefined";
       msg: "userModuleUserNotDefined";
     },
     {
-      code: 6024;
+      code: 6026;
       name: "invalidUserClaim";
       msg: "userModuleInvalidUserClaim";
     },
     {
-      code: 6025;
+      code: 6027;
       name: "userPaused";
       msg: "userModuleUserPaused";
     },
     {
-      code: 6026;
+      code: 6028;
       name: "withdrawalLimitReached";
       msg: "userModuleWithdrawalLimitReached";
     },
     {
-      code: 6027;
+      code: 6029;
       name: "borrowLimitReached";
       msg: "userModuleBorrowLimitReached";
     },
     {
-      code: 6028;
+      code: 6030;
       name: "operateAmountsNearlyZero";
       msg: "userModuleOperateAmountsZero";
     },
     {
-      code: 6029;
+      code: 6031;
+      name: "operateAmountsInsufficient";
+      msg: "userModuleOperateAmountsInsufficient";
+    },
+    {
+      code: 6032;
       name: "transferAmountOutOfBounds";
       msg: "userModuleTransferAmountOutOfBounds";
     },
     {
-      code: 6030;
+      code: 6033;
       name: "forbiddenOperateCall";
       msg: "forbiddenOperateCall";
     },
     {
-      code: 6031;
+      code: 6034;
       name: "maxUtilizationReached";
       msg: "userModuleMaxUtilizationReached";
     },
     {
-      code: 6032;
+      code: 6035;
       name: "valueOverflowTotalSupply";
       msg: "userModuleValueOverflowTotalSupply";
     },
     {
-      code: 6033;
+      code: 6036;
       name: "valueOverflowTotalBorrow";
       msg: "userModuleValueOverflowTotalBorrow";
     },
     {
-      code: 6034;
+      code: 6037;
       name: "depositExpected";
       msg: "userModuleDepositExpected";
     },
     {
-      code: 6035;
+      code: 6038;
       name: "exchangePriceZero";
       msg: "liquidityCalcsExchangePriceZero";
     },
     {
-      code: 6036;
+      code: 6039;
       name: "unsupportedRateVersion";
       msg: "liquidityCalcsUnsupportedRateVersion";
     },
     {
-      code: 6037;
+      code: 6040;
       name: "borrowRateNegative";
       msg: "liquidityCalcsBorrowRateNegative";
     },
     {
-      code: 6038;
+      code: 6041;
       name: "protocolLockdown";
       msg: "protocolLockdown";
     }

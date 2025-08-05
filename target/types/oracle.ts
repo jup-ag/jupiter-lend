@@ -62,8 +62,8 @@ export type Oracle = {
       returns: "u128";
     },
     {
-      name: "init";
-      discriminator: [220, 59, 207, 236, 108, 250, 47, 100];
+      name: "initAdmin";
+      discriminator: [97, 65, 97, 27, 200, 206, 72, 219];
       accounts: [
         {
           name: "signer";
@@ -73,6 +73,38 @@ export type Oracle = {
         {
           name: "oracleAdmin";
           writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: "const";
+                value: [111, 114, 97, 99, 108, 101, 95, 97, 100, 109, 105, 110];
+              }
+            ];
+          };
+        },
+        {
+          name: "systemProgram";
+          address: "11111111111111111111111111111111";
+        }
+      ];
+      args: [
+        {
+          name: "authority";
+          type: "pubkey";
+        }
+      ];
+    },
+    {
+      name: "initOracleConfig";
+      discriminator: [77, 144, 180, 246, 217, 15, 118, 92];
+      accounts: [
+        {
+          name: "signer";
+          writable: true;
+          signer: true;
+        },
+        {
+          name: "oracleAdmin";
         },
         {
           name: "oracle";
@@ -113,45 +145,11 @@ export type Oracle = {
       ];
     },
     {
-      name: "initAdmin";
-      discriminator: [97, 65, 97, 27, 200, 206, 72, 219];
-      accounts: [
-        {
-          name: "signer";
-          writable: true;
-          signer: true;
-        },
-        {
-          name: "oracleAdmin";
-          writable: true;
-          pda: {
-            seeds: [
-              {
-                kind: "const";
-                value: [111, 114, 97, 99, 108, 101, 95, 97, 100, 109, 105, 110];
-              }
-            ];
-          };
-        },
-        {
-          name: "systemProgram";
-          address: "11111111111111111111111111111111";
-        }
-      ];
-      args: [
-        {
-          name: "authority";
-          type: "pubkey";
-        }
-      ];
-    },
-    {
       name: "updateAuths";
       discriminator: [93, 96, 178, 156, 57, 117, 253, 209];
       accounts: [
         {
           name: "authority";
-          writable: true;
           signer: true;
         },
         {
@@ -197,48 +195,58 @@ export type Oracle = {
     },
     {
       code: 6001;
+      name: "priceTooOld";
+      msg: "priceTooOld";
+    },
+    {
+      code: 6002;
       name: "rateZero";
       msg: "rateZero";
     },
     {
-      code: 6002;
+      code: 6003;
       name: "invalidParams";
       msg: "invalidParams";
     },
     {
-      code: 6003;
+      code: 6004;
       name: "invalidSource";
       msg: "invalidSource";
     },
     {
-      code: 6004;
+      code: 6005;
       name: "invalidSourcesLength";
       msg: "invalidSourcesLength";
     },
     {
-      code: 6005;
+      code: 6006;
       name: "oracleAdminOnlyAuthority";
       msg: "oracleAdminOnlyAuthority";
     },
     {
-      code: 6006;
+      code: 6007;
       name: "oracleAdminOnlyAuth";
       msg: "oracleAdminOnlyAuth";
     },
     {
-      code: 6007;
+      code: 6008;
       name: "oracleAdminMaxAuthCountReached";
       msg: "oracleAdminMaxAuthCountReached";
     },
     {
-      code: 6008;
+      code: 6009;
       name: "oracleAdminInvalidParams";
       msg: "oracleAdminInvalidParams";
     },
     {
-      code: 6009;
+      code: 6010;
       name: "oracleNonceMismatch";
       msg: "oracleNonceMismatch";
+    },
+    {
+      code: 6011;
+      name: "priceConfidenceNotSufficient";
+      msg: "priceConfidenceNotSufficient";
     }
   ];
   types: [

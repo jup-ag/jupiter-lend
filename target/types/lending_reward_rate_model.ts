@@ -19,80 +19,30 @@ export type LendingRewardRateModel = {
       accounts: [
         {
           name: "authority";
-          writable: true;
           signer: true;
         },
         {
           name: "lendingRewardsAdmin";
         },
         {
-          name: "lendingRewardsRateModel";
+          name: "lendingAccount";
           writable: true;
-        }
-      ];
-      args: [];
-    },
-    {
-      name: "initLendingRewardRateModel";
-      discriminator: [87, 172, 135, 237, 187, 144, 91, 233];
-      accounts: [
-        {
-          name: "authority";
-          writable: true;
-          signer: true;
-        },
-        {
-          name: "lendingRewardsAdmin";
         },
         {
           name: "mint";
         },
         {
-          name: "lendingRewardsRateModel";
-          writable: true;
-          pda: {
-            seeds: [
-              {
-                kind: "const";
-                value: [
-                  108,
-                  101,
-                  110,
-                  100,
-                  105,
-                  110,
-                  103,
-                  95,
-                  114,
-                  101,
-                  119,
-                  97,
-                  114,
-                  100,
-                  115,
-                  95,
-                  114,
-                  97,
-                  116,
-                  101,
-                  95,
-                  109,
-                  111,
-                  100,
-                  101,
-                  108
-                ];
-              },
-              {
-                kind: "account";
-                path: "mint";
-              }
-            ];
-          };
+          name: "fTokenMint";
         },
         {
-          name: "systemProgram";
-          address: "11111111111111111111111111111111";
+          name: "supplyTokenReservesLiquidity";
+        },
+        {
+          name: "lendingRewardsRateModel";
+          writable: true;
+        },
+        {
+          name: "lendingProgram";
         }
       ];
       args: [];
@@ -157,8 +107,8 @@ export type LendingRewardRateModel = {
       ];
     },
     {
-      name: "queueNextRewards";
-      discriminator: [12, 38, 248, 80, 128, 76, 155, 210];
+      name: "initLendingRewardsRateModel";
+      discriminator: [117, 123, 196, 52, 246, 90, 168, 0];
       accounts: [
         {
           name: "authority";
@@ -169,8 +119,88 @@ export type LendingRewardRateModel = {
           name: "lendingRewardsAdmin";
         },
         {
+          name: "mint";
+        },
+        {
           name: "lendingRewardsRateModel";
           writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: "const";
+                value: [
+                  108,
+                  101,
+                  110,
+                  100,
+                  105,
+                  110,
+                  103,
+                  95,
+                  114,
+                  101,
+                  119,
+                  97,
+                  114,
+                  100,
+                  115,
+                  95,
+                  114,
+                  97,
+                  116,
+                  101,
+                  95,
+                  109,
+                  111,
+                  100,
+                  101,
+                  108
+                ];
+              },
+              {
+                kind: "account";
+                path: "mint";
+              }
+            ];
+          };
+        },
+        {
+          name: "systemProgram";
+          address: "11111111111111111111111111111111";
+        }
+      ];
+      args: [];
+    },
+    {
+      name: "queueNextRewards";
+      discriminator: [12, 38, 248, 80, 128, 76, 155, 210];
+      accounts: [
+        {
+          name: "authority";
+          signer: true;
+        },
+        {
+          name: "lendingRewardsAdmin";
+        },
+        {
+          name: "lendingAccount";
+          writable: true;
+        },
+        {
+          name: "mint";
+        },
+        {
+          name: "fTokenMint";
+        },
+        {
+          name: "supplyTokenReservesLiquidity";
+        },
+        {
+          name: "lendingRewardsRateModel";
+          writable: true;
+        },
+        {
+          name: "lendingProgram";
         }
       ];
       args: [
@@ -190,15 +220,30 @@ export type LendingRewardRateModel = {
       accounts: [
         {
           name: "authority";
-          writable: true;
           signer: true;
         },
         {
           name: "lendingRewardsAdmin";
         },
         {
+          name: "lendingAccount";
+          writable: true;
+        },
+        {
+          name: "mint";
+        },
+        {
+          name: "fTokenMint";
+        },
+        {
+          name: "supplyTokenReservesLiquidity";
+        },
+        {
           name: "lendingRewardsRateModel";
           writable: true;
+        },
+        {
+          name: "lendingProgram";
         }
       ];
       args: [
@@ -226,23 +271,17 @@ export type LendingRewardRateModel = {
       accounts: [
         {
           name: "authority";
-          writable: true;
           signer: true;
         },
         {
           name: "lendingRewardsAdmin";
         },
         {
-          name: "lendingRewardsRateModel";
+          name: "lendingAccount";
           writable: true;
         },
         {
           name: "mint";
-          relations: ["lendingRewardsRateModel"];
-        },
-        {
-          name: "lendingAccount";
-          writable: true;
         },
         {
           name: "fTokenMint";
@@ -251,7 +290,8 @@ export type LendingRewardRateModel = {
           name: "supplyTokenReservesLiquidity";
         },
         {
-          name: "rewardsRateModel";
+          name: "lendingRewardsRateModel";
+          writable: true;
         },
         {
           name: "lendingProgram";
@@ -264,15 +304,15 @@ export type LendingRewardRateModel = {
       discriminator: [167, 50, 233, 93, 0, 178, 154, 247];
       accounts: [
         {
-          name: "lendingRewardsRateModel";
-          writable: true;
-        },
-        {
-          name: "mint";
+          name: "lendingRewardsAdmin";
         },
         {
           name: "lendingAccount";
           writable: true;
+        },
+        {
+          name: "mint";
+          relations: ["lendingRewardsRateModel"];
         },
         {
           name: "fTokenMint";
@@ -281,7 +321,8 @@ export type LendingRewardRateModel = {
           name: "supplyTokenReservesLiquidity";
         },
         {
-          name: "rewardsRateModel";
+          name: "lendingRewardsRateModel";
+          writable: true;
         },
         {
           name: "lendingProgram";
@@ -295,7 +336,6 @@ export type LendingRewardRateModel = {
       accounts: [
         {
           name: "authority";
-          writable: true;
           signer: true;
         },
         {
@@ -402,12 +442,22 @@ export type LendingRewardRateModel = {
     {
       code: 6009;
       name: "onlyAuths";
-      msg: "lendingRewardRateModelOnlyAuthCanInitRateModel";
+      msg: "lendingRewardRateModelOnlyAuth";
     },
     {
       code: 6010;
       name: "cpiToLendingProgramFailed";
       msg: "lendingRewardRateModelCpiToLendingProgramFailed";
+    },
+    {
+      code: 6011;
+      name: "invalidLendingProgram";
+      msg: "lendingRewardRateModelInvalidLendingProgram";
+    },
+    {
+      code: 6012;
+      name: "invalidMint";
+      msg: "lendingRewardRateModelInvalidMint";
     }
   ];
   types: [
@@ -465,7 +515,10 @@ export type LendingRewardRateModel = {
           },
           {
             name: "startTvl";
-            docs: ["@dev tvl below which rewards rate is 0"];
+            docs: [
+              "@dev tvl below which rewards rate is 0. If current TVL is below this value, triggering `update_rate()` on the fToken",
+              "might bring the total TVL above this cut-off."
+            ];
             type: "u64";
           },
           {
@@ -540,10 +593,6 @@ export type LendingRewardRateModel = {
         kind: "struct";
         fields: [
           {
-            name: "mint";
-            type: "pubkey";
-          },
-          {
             name: "rewardAmount";
             type: "u64";
           },
@@ -554,6 +603,10 @@ export type LendingRewardRateModel = {
           {
             name: "startTime";
             type: "u64";
+          },
+          {
+            name: "mint";
+            type: "pubkey";
           }
         ];
       };

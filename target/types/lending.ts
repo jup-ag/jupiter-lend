@@ -1517,6 +1517,39 @@ export type Lending = {
       ];
     },
     {
+      name: "setRewardsRateModel";
+      discriminator: [174, 231, 116, 203, 8, 58, 143, 203];
+      accounts: [
+        {
+          name: "signer";
+          signer: true;
+        },
+        {
+          name: "lendingAdmin";
+        },
+        {
+          name: "lending";
+          writable: true;
+        },
+        {
+          name: "fTokenMint";
+          relations: ["lending"];
+        },
+        {
+          name: "newRewardsRateModel";
+        },
+        {
+          name: "supplyTokenReservesLiquidity";
+        }
+      ];
+      args: [
+        {
+          name: "mint";
+          type: "pubkey";
+        }
+      ];
+    },
+    {
       name: "updateAuths";
       discriminator: [93, 96, 178, 156, 57, 117, 253, 209];
       accounts: [
@@ -1583,39 +1616,6 @@ export type Lending = {
       args: [
         {
           name: "newRebalancer";
-          type: "pubkey";
-        }
-      ];
-    },
-    {
-      name: "updateRewardsRateModel";
-      discriminator: [251, 139, 58, 120, 38, 176, 105, 77];
-      accounts: [
-        {
-          name: "signer";
-          signer: true;
-        },
-        {
-          name: "lendingAdmin";
-        },
-        {
-          name: "lending";
-          writable: true;
-        },
-        {
-          name: "fTokenMint";
-          relations: ["lending"];
-        },
-        {
-          name: "newRewardsRateModel";
-        },
-        {
-          name: "supplyTokenReservesLiquidity";
-        }
-      ];
-      args: [
-        {
-          name: "mint";
           type: "pubkey";
         }
       ];
@@ -2080,41 +2080,46 @@ export type Lending = {
     },
     {
       code: 6004;
+      name: "fTokenRewardsRateModelAlreadySet";
+      msg: "fTokenRewardsRateModelAlreadySet";
+    },
+    {
+      code: 6005;
       name: "fTokenMaxAuthCountReached";
       msg: "fTokenMaxAuthCount";
     },
     {
-      code: 6005;
+      code: 6006;
       name: "fTokenLiquidityExchangePriceUnexpected";
       msg: "fTokenLiquidityExchangePriceUnexpected";
     },
     {
-      code: 6006;
+      code: 6007;
       name: "fTokenCpiToLiquidityFailed";
       msg: "fTokenCpiToLiquidityFailed";
     },
     {
-      code: 6007;
+      code: 6008;
       name: "fTokenOnlyAuth";
       msg: "fTokenOnlyAuth";
     },
     {
-      code: 6008;
+      code: 6009;
       name: "fTokenOnlyAuthority";
       msg: "fTokenOnlyAuthority";
     },
     {
-      code: 6009;
+      code: 6010;
       name: "fTokenOnlyRebalancer";
       msg: "fTokenOnlyRebalancer";
     },
     {
-      code: 6010;
+      code: 6011;
       name: "fTokenUserSupplyPositionRequired";
       msg: "fTokenUserSupplyPositionRequired";
     },
     {
-      code: 6011;
+      code: 6012;
       name: "fTokenLiquidityProgramMismatch";
       msg: "fTokenLiquidityProgramMismatch";
     }
@@ -2161,7 +2166,7 @@ export type Lending = {
           {
             name: "rewardsRateModel";
             docs: [
-              "@dev To read PDA of rewards ratemodel to get_rate instruction"
+              "@dev To read PDA of rewards rate model to get_rate instruction"
             ];
             type: "pubkey";
           },
@@ -2247,7 +2252,10 @@ export type Lending = {
           },
           {
             name: "startTvl";
-            docs: ["@dev tvl below which rewards rate is 0"];
+            docs: [
+              "@dev tvl below which rewards rate is 0. If current TVL is below this value, triggering `update_rate()` on the fToken",
+              "might bring the total TVL above this cut-off."
+            ];
             type: "u64";
           },
           {

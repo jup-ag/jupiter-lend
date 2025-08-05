@@ -743,7 +743,8 @@
           "name": "liquidity"
         },
         {
-          "name": "user_supply_position"
+          "name": "user_supply_position",
+          "optional": true
         },
         {
           "name": "user_borrow_position",
@@ -1335,156 +1336,171 @@
     },
     {
       "code": 6008,
+      "name": "InvalidConfigOrder",
+      "msg": "ADMIN_MODULE_INVALID_CONFIG_ORDER"
+    },
+    {
+      "code": 6009,
       "name": "StatusAlreadySet",
       "msg": "ADMIN_MODULE_STATUS_ALREADY_SET"
     },
     {
-      "code": 6009,
+      "code": 6010,
       "name": "LimitsCannotBeZero",
       "msg": "ADMIN_MODULE_LIMITS_CAN_NOT_BE_ZERO"
     },
     {
-      "code": 6010,
+      "code": 6011,
       "name": "MaxAuthCountReached",
       "msg": "ADMIN_MODULE_MAX_AUTH_COUNT"
     },
     {
-      "code": 6011,
+      "code": 6012,
       "name": "MaxUserClassesReached",
       "msg": "ADMIN_MODULE_MAX_USER_CLASSES"
     },
     {
-      "code": 6012,
+      "code": 6013,
       "name": "InsufficientBalance",
       "msg": "USER_MODULE_INSUFFICIENT_BALANCE"
     },
     {
-      "code": 6013,
+      "code": 6014,
       "name": "UserSupplyPositionRequired",
       "msg": "USER_MODULE_USER_SUPPLY_POSITION_REQUIRED"
     },
     {
-      "code": 6014,
+      "code": 6015,
       "name": "UserBorrowPositionRequired",
       "msg": "USER_MODULE_USER_BORROW_POSITION_REQUIRED"
     },
     {
-      "code": 6015,
+      "code": 6016,
       "name": "ClaimAccountRequired",
       "msg": "USER_MODULE_CLAIM_ACCOUNT_REQUIRED"
     },
     {
-      "code": 6016,
+      "code": 6017,
       "name": "WithdrawToAccountRequired",
       "msg": "USER_MODULE_WITHDRAW_TO_ACCOUNT_REQUIRED"
     },
     {
-      "code": 6017,
+      "code": 6018,
       "name": "BorrowToAccountRequired",
       "msg": "USER_MODULE_BORROW_TO_ACCOUNT_REQUIRED"
     },
     {
-      "code": 6018,
+      "code": 6019,
       "name": "InvalidClaimAmount",
       "msg": "USER_MODULE_INVALID_CLAIM_AMOUNT"
     },
     {
-      "code": 6019,
+      "code": 6020,
       "name": "NoAmountToClaim",
       "msg": "USER_MODULE_NO_AMOUNT_TO_CLAIM"
     },
     {
-      "code": 6020,
+      "code": 6021,
       "name": "AmountNotZero",
       "msg": "USER_MODULE_AMOUNT_NOT_ZERO"
     },
     {
-      "code": 6021,
+      "code": 6022,
+      "name": "ValueOverflow",
+      "msg": "USER_MODULE_VALUE_OVERFLOW"
+    },
+    {
+      "code": 6023,
       "name": "InvalidTransferType",
       "msg": "USER_MODULE_INVALID_TRANSFER_TYPE"
     },
     {
-      "code": 6022,
+      "code": 6024,
       "name": "MintMismatch",
       "msg": "USER_MODULE_MINT_MISMATCH"
     },
     {
-      "code": 6023,
+      "code": 6025,
       "name": "UserNotDefined",
       "msg": "USER_MODULE_USER_NOT_DEFINED"
     },
     {
-      "code": 6024,
+      "code": 6026,
       "name": "InvalidUserClaim",
       "msg": "USER_MODULE_INVALID_USER_CLAIM"
     },
     {
-      "code": 6025,
+      "code": 6027,
       "name": "UserPaused",
       "msg": "USER_MODULE_USER_PAUSED"
     },
     {
-      "code": 6026,
+      "code": 6028,
       "name": "WithdrawalLimitReached",
       "msg": "USER_MODULE_WITHDRAWAL_LIMIT_REACHED"
     },
     {
-      "code": 6027,
+      "code": 6029,
       "name": "BorrowLimitReached",
       "msg": "USER_MODULE_BORROW_LIMIT_REACHED"
     },
     {
-      "code": 6028,
+      "code": 6030,
       "name": "OperateAmountsNearlyZero",
       "msg": "USER_MODULE_OPERATE_AMOUNTS_ZERO"
     },
     {
-      "code": 6029,
+      "code": 6031,
+      "name": "OperateAmountsInsufficient",
+      "msg": "USER_MODULE_OPERATE_AMOUNTS_INSUFFICIENT"
+    },
+    {
+      "code": 6032,
       "name": "TransferAmountOutOfBounds",
       "msg": "USER_MODULE_TRANSFER_AMOUNT_OUT_OF_BOUNDS"
     },
     {
-      "code": 6030,
+      "code": 6033,
       "name": "ForbiddenOperateCall",
       "msg": "FORBIDDEN_OPERATE_CALL"
     },
     {
-      "code": 6031,
+      "code": 6034,
       "name": "MaxUtilizationReached",
       "msg": "USER_MODULE_MAX_UTILIZATION_REACHED"
     },
     {
-      "code": 6032,
+      "code": 6035,
       "name": "ValueOverflowTotalSupply",
       "msg": "USER_MODULE_VALUE_OVERFLOW_TOTAL_SUPPLY"
     },
     {
-      "code": 6033,
+      "code": 6036,
       "name": "ValueOverflowTotalBorrow",
       "msg": "USER_MODULE_VALUE_OVERFLOW_TOTAL_BORROW"
     },
     {
-      "code": 6034,
+      "code": 6037,
       "name": "DepositExpected",
       "msg": "USER_MODULE_DEPOSIT_EXPECTED"
     },
     {
-      "code": 6035,
+      "code": 6038,
       "name": "ExchangePriceZero",
       "msg": "LIQUIDITY_CALCS_EXCHANGE_PRICE_ZERO"
     },
     {
-      "code": 6036,
+      "code": 6039,
       "name": "UnsupportedRateVersion",
       "msg": "LIQUIDITY_CALCS_UNSUPPORTED_RATE_VERSION"
     },
     {
-      "code": 6037,
+      "code": 6040,
       "name": "BorrowRateNegative",
       "msg": "LIQUIDITY_CALCS_BORROW_RATE_NEGATIVE"
     },
     {
-      "code": 6038,
+      "code": 6041,
       "name": "ProtocolLockdown",
       "msg": "PROTOCOL_LOCKDOWN"
     }

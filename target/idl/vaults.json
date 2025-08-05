@@ -86,8 +86,7 @@
         },
         {
           "name": "vault_admin",
-          "docs": ["@dev mut as this is mint authority for NFT"],
-          "writable": true
+          "docs": ["@dev mut as this is mint authority for NFT"]
         },
         {
           "name": "vault_state",
@@ -169,6 +168,38 @@
           }
         },
         {
+          "name": "metadata_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [109, 101, 116, 97, 100, 97, 116, 97]
+              },
+              {
+                "kind": "const",
+                "value": [
+                  11, 112, 101, 177, 227, 209, 124, 69, 56, 157, 82, 127, 107,
+                  4, 195, 205, 88, 184, 108, 115, 26, 160, 253, 181, 73, 182,
+                  209, 188, 3, 248, 41, 70
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "position_mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                11, 112, 101, 177, 227, 209, 124, 69, 56, 157, 82, 127, 107, 4,
+                195, 205, 88, 184, 108, 115, 26, 160, 253, 181, 73, 182, 209,
+                188, 3, 248, 41, 70
+              ]
+            }
+          }
+        },
+        {
           "name": "token_program"
         },
         {
@@ -178,6 +209,18 @@
         {
           "name": "system_program",
           "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "sysvar_instruction",
+          "address": "Sysvar1nstructions1111111111111111111111111"
+        },
+        {
+          "name": "metadata_program",
+          "address": "metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s"
+        },
+        {
+          "name": "rent",
+          "address": "SysvarRent111111111111111111111111111111111"
         }
       ],
       "args": [
@@ -400,6 +443,9 @@
           }
         },
         {
+          "name": "oracle"
+        },
+        {
           "name": "supply_token"
         },
         {
@@ -551,20 +597,17 @@
           "docs": [
             "@dev mut because this PDA signs the CPI to liquidity program",
             "@dev verification inside instruction logic"
-          ],
-          "writable": true
+          ]
         },
         {
           "name": "vault_state",
           "writable": true
         },
         {
-          "name": "supply_token",
-          "writable": true
+          "name": "supply_token"
         },
         {
-          "name": "borrow_token",
-          "writable": true
+          "name": "borrow_token"
         },
         {
           "name": "oracle"
@@ -590,12 +633,10 @@
           "writable": true
         },
         {
-          "name": "supply_rate_model",
-          "writable": true
+          "name": "supply_rate_model"
         },
         {
-          "name": "borrow_rate_model",
-          "writable": true
+          "name": "borrow_rate_model"
         },
         {
           "name": "supply_token_claim_account",
@@ -603,12 +644,10 @@
           "optional": true
         },
         {
-          "name": "liquidity",
-          "writable": true
+          "name": "liquidity"
         },
         {
-          "name": "liquidity_program",
-          "writable": true
+          "name": "liquidity_program"
         },
         {
           "name": "vault_supply_token_account",
@@ -643,7 +682,7 @@
         },
         {
           "name": "col_per_unit_debt",
-          "type": "u64"
+          "type": "u128"
         },
         {
           "name": "absorb",
@@ -794,8 +833,7 @@
           "docs": [
             "@dev mut because this PDA signs the CPI to liquidity program",
             "@dev verification inside instruction logic"
-          ],
-          "writable": true
+          ]
         },
         {
           "name": "vault_state",
@@ -856,12 +894,10 @@
           "writable": true
         },
         {
-          "name": "supply_rate_model",
-          "writable": true
+          "name": "supply_rate_model"
         },
         {
-          "name": "borrow_rate_model",
-          "writable": true
+          "name": "borrow_rate_model"
         },
         {
           "name": "vault_supply_token_account",
@@ -882,12 +918,10 @@
           "optional": true
         },
         {
-          "name": "liquidity",
-          "writable": true
+          "name": "liquidity"
         },
         {
-          "name": "liquidity_program",
-          "writable": true
+          "name": "liquidity_program"
         },
         {
           "name": "oracle_program"
@@ -1036,20 +1070,16 @@
           "writable": true
         },
         {
-          "name": "supply_rate_model",
-          "writable": true
+          "name": "supply_rate_model"
         },
         {
-          "name": "borrow_rate_model",
-          "writable": true
+          "name": "borrow_rate_model"
         },
         {
-          "name": "liquidity",
-          "writable": true
+          "name": "liquidity"
         },
         {
-          "name": "liquidity_program",
-          "writable": true
+          "name": "liquidity_program"
         },
         {
           "name": "vault_supply_token_account",
@@ -1842,233 +1872,243 @@
     },
     {
       "code": 6021,
+      "name": "VaultLiquidationResult",
+      "msg": "VAULT_LIQUIDATION_RESULT"
+    },
+    {
+      "code": 6022,
       "name": "VaultBranchDebtTooLow",
       "msg": "VAULT_BRANCH_DEBT_TOO_LOW"
     },
     {
-      "code": 6022,
+      "code": 6023,
       "name": "VaultTickDebtTooLow",
       "msg": "VAULT_TICK_DEBT_TOO_LOW"
     },
     {
-      "code": 6023,
+      "code": 6024,
       "name": "VaultLiquidityExchangePriceUnexpected",
       "msg": "VAULT_LIQUIDITY_EXCHANGE_PRICE_UNEXPECTED"
     },
     {
-      "code": 6024,
+      "code": 6025,
       "name": "VaultUserDebtTooLow",
       "msg": "VAULT_USER_DEBT_TOO_LOW"
     },
     {
-      "code": 6025,
+      "code": 6026,
       "name": "VaultInvalidPaybackOrDeposit",
       "msg": "VAULT_INVALID_PAYBACK_OR_DEPOSIT"
     },
     {
-      "code": 6026,
+      "code": 6027,
       "name": "VaultInvalidLiquidation",
       "msg": "VAULT_INVALID_LIQUIDATION"
     },
     {
-      "code": 6027,
+      "code": 6028,
       "name": "VaultNothingToRebalance",
       "msg": "VAULT_NOTHING_TO_REBALANCE"
     },
     {
-      "code": 6028,
+      "code": 6029,
       "name": "VaultLiquidationReverts",
       "msg": "VAULT_LIQUIDATION_REVERTS"
     },
     {
-      "code": 6029,
+      "code": 6030,
       "name": "VaultInvalidOraclePrice",
       "msg": "VAULT_INVALID_ORACLE_PRICE"
     },
     {
-      "code": 6030,
+      "code": 6031,
       "name": "VaultBranchNotFound",
       "msg": "VAULT_BRANCH_NOT_FOUND"
     },
     {
-      "code": 6031,
+      "code": 6032,
       "name": "VaultTickNotFound",
       "msg": "VAULT_TICK_NOT_FOUND"
     },
     {
-      "code": 6032,
+      "code": 6033,
       "name": "VaultTickHasDebtNotFound",
       "msg": "VAULT_TICK_HAS_DEBT_NOT_FOUND"
     },
     {
-      "code": 6033,
+      "code": 6034,
       "name": "VaultTickMismatch",
       "msg": "VAULT_TICK_MISMATCH"
     },
     {
-      "code": 6034,
+      "code": 6035,
       "name": "VaultInvalidVaultId",
       "msg": "VAULT_INVALID_VAULT_ID"
     },
     {
-      "code": 6035,
+      "code": 6036,
       "name": "VaultInvalidNextPositionId",
       "msg": "VAULT_INVALID_NEXT_POSITION_ID"
     },
     {
-      "code": 6036,
+      "code": 6037,
       "name": "VaultInvalidSupplyMint",
       "msg": "VAULT_INVALID_SUPPLY_MINT"
     },
     {
-      "code": 6037,
+      "code": 6038,
       "name": "VaultInvalidBorrowMint",
       "msg": "VAULT_INVALID_BORROW_MINT"
     },
     {
-      "code": 6038,
+      "code": 6039,
       "name": "VaultInvalidOracle",
       "msg": "VAULT_INVALID_ORACLE"
     },
     {
-      "code": 6039,
+      "code": 6040,
       "name": "VaultInvalidTick",
       "msg": "VAULT_INVALID_TICK"
     },
     {
-      "code": 6040,
+      "code": 6041,
       "name": "VaultInvalidLiquidityProgram",
       "msg": "VAULT_INVALID_LIQUIDITY_PROGRAM"
     },
     {
-      "code": 6041,
+      "code": 6042,
       "name": "VaultInvalidPositionAuthority",
       "msg": "VAULT_INVALID_POSITION_AUTHORITY"
     },
     {
-      "code": 6042,
+      "code": 6043,
       "name": "VaultOracleNotValid",
       "msg": "VAULT_ORACLE_NOT_VALID"
     },
     {
-      "code": 6043,
+      "code": 6044,
       "name": "VaultBranchOwnerNotValid",
       "msg": "VAULT_BRANCH_OWNER_NOT_VALID"
     },
     {
-      "code": 6044,
+      "code": 6045,
       "name": "VaultTickHasDebtOwnerNotValid",
       "msg": "VAULT_TICK_HAS_DEBT_OWNER_NOT_VALID"
     },
     {
-      "code": 6045,
+      "code": 6046,
       "name": "VaultTickOwnerNotValid",
       "msg": "VAULT_TICK_DATA_OWNER_NOT_VALID"
     },
     {
-      "code": 6046,
+      "code": 6047,
       "name": "VaultLiquidateRemainingAccountsTooShort",
       "msg": "VAULT_LIQUIDATE_REMAINING_ACCOUNTS_TOO_SHORT"
     },
     {
-      "code": 6047,
+      "code": 6048,
       "name": "VaultOperateRemainingAccountsTooShort",
       "msg": "VAULT_OPERATE_REMAINING_ACCOUNTS_TOO_SHORT"
     },
     {
-      "code": 6048,
+      "code": 6049,
       "name": "VaultInvalidZerothBranch",
       "msg": "VAULT_INVALID_ZEROTH_BRANCH"
     },
     {
-      "code": 6049,
+      "code": 6050,
       "name": "VaultCpiToLiquidityFailed",
       "msg": "VAULT_CPY_TO_LIQUIDITY_FAILED"
     },
     {
-      "code": 6050,
+      "code": 6051,
       "name": "VaultCpiToOracleFailed",
       "msg": "VAULT_CPY_TO_ORACLE_FAILED"
     },
     {
-      "code": 6051,
+      "code": 6052,
       "name": "VaultOnlyAuthority",
       "msg": "VAULT_ONLY_AUTHORITY"
     },
     {
-      "code": 6052,
+      "code": 6053,
       "name": "VaultNewBranchInvalid",
       "msg": "VAULT_NEW_BRANCH_INVALID"
     },
     {
-      "code": 6053,
+      "code": 6054,
       "name": "VaultTickHasDebtIndexMismatch",
       "msg": "VAULT_TICK_HAS_DEBT_INDEX_MISMATCH"
     },
     {
-      "code": 6054,
+      "code": 6055,
       "name": "VaultTickHasDebtOutOfRange",
       "msg": "VAULT_TICK_HAS_DEBT_OUT_OF_RANGE"
     },
     {
-      "code": 6055,
+      "code": 6056,
       "name": "VaultUserSupplyPositionRequired",
       "msg": "VAULT_USER_SUPPLY_POSITION_REQUIRED"
     },
     {
-      "code": 6056,
+      "code": 6057,
       "name": "VaultClaimAccountRequired",
       "msg": "VAULT_CLAIM_ACCOUNT_REQUIRED"
     },
     {
-      "code": 6057,
+      "code": 6058,
       "name": "VaultAdminValueAboveLimit",
       "msg": "VAULT_ADMIN_VALUE_ABOVE_LIMIT"
     },
     {
-      "code": 6058,
+      "code": 6059,
       "name": "VaultAdminOnlyAuths",
       "msg": "VAULT_ADMIN_ONLY_AUTH_ACCOUNTS"
     },
     {
-      "code": 6059,
+      "code": 6060,
       "name": "VaultAdminAddressZeroNotAllowed",
       "msg": "VAULT_ADMIN_ADDRESS_ZERO_NOT_ALLOWED"
     },
     {
-      "code": 6060,
+      "code": 6061,
       "name": "VaultAdminVaultIdMismatch",
       "msg": "VAULT_ADMIN_VAULT_ID_MISMATCH"
     },
     {
-      "code": 6061,
+      "code": 6062,
       "name": "VaultAdminTotalIdsMismatch",
       "msg": "VAULT_ADMIN_TOTAL_IDS_MISMATCH"
     },
     {
-      "code": 6062,
+      "code": 6063,
       "name": "VaultAdminTickMismatch",
       "msg": "VAULT_ADMIN_TICK_MISMATCH"
     },
     {
-      "code": 6063,
+      "code": 6064,
       "name": "VaultAdminLiquidityProgramMismatch",
       "msg": "VAULT_ADMIN_LIQUIDITY_PROGRAM_MISMATCH"
     },
     {
-      "code": 6064,
+      "code": 6065,
       "name": "VaultAdminMaxAuthCountReached",
       "msg": "VAULT_ADMIN_MAX_AUTH_COUNT_REACHED"
     },
     {
-      "code": 6065,
+      "code": 6066,
       "name": "VaultAdminInvalidParams",
       "msg": "VAULT_ADMIN_INVALID_PARAMS"
     },
     {
-      "code": 6066,
+      "code": 6067,
       "name": "VaultAdminOnlyAuthority",
       "msg": "VAULT_ADMIN_ONLY_AUTHORITY"
+    },
+    {
+      "code": 6068,
+      "name": "VaultAdminOracleProgramMismatch",
+      "msg": "VAULT_ADMIN_ORACLE_PROGRAM_MISMATCH"
     }
   ],
   "types": [
@@ -2176,15 +2216,11 @@
             "type": "u16"
           },
           {
-            "name": "oracle",
-            "type": "pubkey"
-          },
-          {
             "name": "rebalancer",
             "type": "pubkey"
           },
           {
-            "name": "liquidity",
+            "name": "liquidity_program",
             "type": "pubkey"
           },
           {
