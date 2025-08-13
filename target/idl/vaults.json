@@ -85,8 +85,7 @@
           "signer": true
         },
         {
-          "name": "vault_admin",
-          "docs": ["@dev mut as this is mint authority for NFT"]
+          "name": "vault_admin"
         },
         {
           "name": "vault_state",
@@ -770,11 +769,13 @@
           }
         },
         {
-          "name": "recipient"
+          "name": "recipient",
+          "optional": true
         },
         {
           "name": "recipient_borrow_token_account",
           "writable": true,
+          "optional": true,
           "pda": {
             "seeds": [
               {
@@ -803,6 +804,7 @@
         {
           "name": "recipient_supply_token_account",
           "writable": true,
+          "optional": true,
           "pda": {
             "seeds": [
               {
@@ -866,8 +868,7 @@
           "writable": true
         },
         {
-          "name": "current_position_tick_id",
-          "writable": true
+          "name": "current_position_tick_id"
         },
         {
           "name": "final_position_tick_id",
@@ -2057,56 +2058,66 @@
     },
     {
       "code": 6058,
+      "name": "VaultRecipientWithdrawAccountRequired",
+      "msg": "VAULT_RECIPIENT_WITHDRAW_ACCOUNT_REQUIRED"
+    },
+    {
+      "code": 6059,
+      "name": "VaultRecipientBorrowAccountRequired",
+      "msg": "VAULT_RECIPIENT_BORROW_ACCOUNT_REQUIRED"
+    },
+    {
+      "code": 6060,
       "name": "VaultAdminValueAboveLimit",
       "msg": "VAULT_ADMIN_VALUE_ABOVE_LIMIT"
     },
     {
-      "code": 6059,
+      "code": 6061,
       "name": "VaultAdminOnlyAuths",
       "msg": "VAULT_ADMIN_ONLY_AUTH_ACCOUNTS"
     },
     {
-      "code": 6060,
+      "code": 6062,
       "name": "VaultAdminAddressZeroNotAllowed",
       "msg": "VAULT_ADMIN_ADDRESS_ZERO_NOT_ALLOWED"
     },
     {
-      "code": 6061,
+      "code": 6063,
       "name": "VaultAdminVaultIdMismatch",
       "msg": "VAULT_ADMIN_VAULT_ID_MISMATCH"
     },
     {
-      "code": 6062,
+      "code": 6064,
       "name": "VaultAdminTotalIdsMismatch",
       "msg": "VAULT_ADMIN_TOTAL_IDS_MISMATCH"
     },
     {
-      "code": 6063,
+      "code": 6065,
       "name": "VaultAdminTickMismatch",
       "msg": "VAULT_ADMIN_TICK_MISMATCH"
     },
     {
-      "code": 6064,
+      "code": 6066,
       "name": "VaultAdminLiquidityProgramMismatch",
       "msg": "VAULT_ADMIN_LIQUIDITY_PROGRAM_MISMATCH"
     },
     {
-      "code": 6065,
+      "code": 6067,
       "name": "VaultAdminMaxAuthCountReached",
       "msg": "VAULT_ADMIN_MAX_AUTH_COUNT_REACHED"
     },
     {
-      "code": 6066,
+      "code": 6068,
       "name": "VaultAdminInvalidParams",
       "msg": "VAULT_ADMIN_INVALID_PARAMS"
     },
     {
-      "code": 6067,
+      "code": 6069,
       "name": "VaultAdminOnlyAuthority",
       "msg": "VAULT_ADMIN_ONLY_AUTHORITY"
     },
     {
-      "code": 6068,
+      "code": 6070,
       "name": "VaultAdminOracleProgramMismatch",
       "msg": "VAULT_ADMIN_ORACLE_PROGRAM_MISMATCH"
     }

@@ -9,16 +9,7 @@
   "instructions": [
     {
       "name": "deposit",
-      "discriminator": [
-        242,
-        35,
-        198,
-        137,
-        82,
-        225,
-        242,
-        182
-      ],
+      "discriminator": [242, 35, 198, 137, 82, 225, 242, 182],
       "accounts": [
         {
           "name": "signer",
@@ -46,38 +37,9 @@
             "program": {
               "kind": "const",
               "value": [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89
+                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
+                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
+                219, 233, 248, 89
               ]
             }
           }
@@ -103,48 +65,16 @@
             "program": {
               "kind": "const",
               "value": [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89
+                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
+                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
+                219, 233, 248, 89
               ]
             }
           }
         },
         {
           "name": "mint",
-          "relations": [
-            "lending",
-            "rewards_rate_model"
-          ]
+          "relations": ["lending", "rewards_rate_model"]
         },
         {
           "name": "lending_admin"
@@ -156,9 +86,7 @@
         {
           "name": "f_token_mint",
           "writable": true,
-          "relations": [
-            "lending"
-          ]
+          "relations": ["lending"]
         },
         {
           "name": "supply_token_reserves_liquidity",
@@ -182,9 +110,7 @@
         {
           "name": "liquidity_program",
           "writable": true,
-          "relations": [
-            "lending_admin"
-          ]
+          "relations": ["lending_admin"]
         },
         {
           "name": "rewards_rate_model"
@@ -211,16 +137,7 @@
     },
     {
       "name": "deposit_with_min_amount_out",
-      "discriminator": [
-        116,
-        144,
-        16,
-        97,
-        118,
-        109,
-        40,
-        119
-      ],
+      "discriminator": [116, 144, 16, 97, 118, 109, 40, 119],
       "accounts": [
         {
           "name": "signer",
@@ -248,38 +165,9 @@
             "program": {
               "kind": "const",
               "value": [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89
+                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
+                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
+                219, 233, 248, 89
               ]
             }
           }
@@ -305,48 +193,16 @@
             "program": {
               "kind": "const",
               "value": [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89
+                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
+                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
+                219, 233, 248, 89
               ]
             }
           }
         },
         {
           "name": "mint",
-          "relations": [
-            "lending",
-            "rewards_rate_model"
-          ]
+          "relations": ["lending", "rewards_rate_model"]
         },
         {
           "name": "lending_admin"
@@ -358,9 +214,7 @@
         {
           "name": "f_token_mint",
           "writable": true,
-          "relations": [
-            "lending"
-          ]
+          "relations": ["lending"]
         },
         {
           "name": "supply_token_reserves_liquidity",
@@ -384,9 +238,7 @@
         {
           "name": "liquidity_program",
           "writable": true,
-          "relations": [
-            "lending_admin"
-          ]
+          "relations": ["lending_admin"]
         },
         {
           "name": "rewards_rate_model"
@@ -416,16 +268,7 @@
     },
     {
       "name": "init_lending",
-      "discriminator": [
-        156,
-        224,
-        67,
-        46,
-        89,
-        189,
-        157,
-        209
-      ],
+      "discriminator": [156, 224, 67, 46, 89, 189, 157, 209],
       "accounts": [
         {
           "name": "signer",
@@ -438,9 +281,7 @@
         },
         {
           "name": "mint",
-          "relations": [
-            "token_reserves_liquidity"
-          ]
+          "relations": ["token_reserves_liquidity"]
         },
         {
           "name": "f_token_mint",
@@ -450,18 +291,7 @@
               {
                 "kind": "const",
                 "value": [
-                  102,
-                  95,
-                  116,
-                  111,
-                  107,
-                  101,
-                  110,
-                  95,
-                  109,
-                  105,
-                  110,
-                  116
+                  102, 95, 116, 111, 107, 101, 110, 95, 109, 105, 110, 116
                 ]
               },
               {
@@ -478,52 +308,14 @@
             "seeds": [
               {
                 "kind": "const",
-                "value": [
-                  109,
-                  101,
-                  116,
-                  97,
-                  100,
-                  97,
-                  116,
-                  97
-                ]
+                "value": [109, 101, 116, 97, 100, 97, 116, 97]
               },
               {
                 "kind": "const",
                 "value": [
-                  11,
-                  112,
-                  101,
-                  177,
-                  227,
-                  209,
-                  124,
-                  69,
-                  56,
-                  157,
-                  82,
-                  127,
-                  107,
-                  4,
-                  195,
-                  205,
-                  88,
-                  184,
-                  108,
-                  115,
-                  26,
-                  160,
-                  253,
-                  181,
-                  73,
-                  182,
-                  209,
-                  188,
-                  3,
-                  248,
-                  41,
-                  70
+                  11, 112, 101, 177, 227, 209, 124, 69, 56, 157, 82, 127, 107,
+                  4, 195, 205, 88, 184, 108, 115, 26, 160, 253, 181, 73, 182,
+                  209, 188, 3, 248, 41, 70
                 ]
               },
               {
@@ -534,38 +326,9 @@
             "program": {
               "kind": "const",
               "value": [
-                11,
-                112,
-                101,
-                177,
-                227,
-                209,
-                124,
-                69,
-                56,
-                157,
-                82,
-                127,
-                107,
-                4,
-                195,
-                205,
-                88,
-                184,
-                108,
-                115,
-                26,
-                160,
-                253,
-                181,
-                73,
-                182,
-                209,
-                188,
-                3,
-                248,
-                41,
-                70
+                11, 112, 101, 177, 227, 209, 124, 69, 56, 157, 82, 127, 107, 4,
+                195, 205, 88, 184, 108, 115, 26, 160, 253, 181, 73, 182, 209,
+                188, 3, 248, 41, 70
               ]
             }
           }
@@ -577,15 +340,7 @@
             "seeds": [
               {
                 "kind": "const",
-                "value": [
-                  108,
-                  101,
-                  110,
-                  100,
-                  105,
-                  110,
-                  103
-                ]
+                "value": [108, 101, 110, 100, 105, 110, 103]
               },
               {
                 "kind": "account",
@@ -634,16 +389,7 @@
     },
     {
       "name": "init_lending_admin",
-      "discriminator": [
-        203,
-        185,
-        241,
-        165,
-        56,
-        254,
-        33,
-        9
-      ],
+      "discriminator": [203, 185, 241, 165, 56, 254, 33, 9],
       "accounts": [
         {
           "name": "authority",
@@ -658,19 +404,7 @@
               {
                 "kind": "const",
                 "value": [
-                  108,
-                  101,
-                  110,
-                  100,
-                  105,
-                  110,
-                  103,
-                  95,
-                  97,
-                  100,
-                  109,
-                  105,
-                  110
+                  108, 101, 110, 100, 105, 110, 103, 95, 97, 100, 109, 105, 110
                 ]
               }
             ]
@@ -698,16 +432,7 @@
     },
     {
       "name": "mint",
-      "discriminator": [
-        51,
-        57,
-        225,
-        47,
-        182,
-        146,
-        137,
-        166
-      ],
+      "discriminator": [51, 57, 225, 47, 182, 146, 137, 166],
       "accounts": [
         {
           "name": "signer",
@@ -735,38 +460,9 @@
             "program": {
               "kind": "const",
               "value": [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89
+                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
+                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
+                219, 233, 248, 89
               ]
             }
           }
@@ -792,48 +488,16 @@
             "program": {
               "kind": "const",
               "value": [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89
+                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
+                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
+                219, 233, 248, 89
               ]
             }
           }
         },
         {
           "name": "mint",
-          "relations": [
-            "lending",
-            "rewards_rate_model"
-          ]
+          "relations": ["lending", "rewards_rate_model"]
         },
         {
           "name": "lending_admin"
@@ -845,9 +509,7 @@
         {
           "name": "f_token_mint",
           "writable": true,
-          "relations": [
-            "lending"
-          ]
+          "relations": ["lending"]
         },
         {
           "name": "supply_token_reserves_liquidity",
@@ -871,9 +533,7 @@
         {
           "name": "liquidity_program",
           "writable": true,
-          "relations": [
-            "lending_admin"
-          ]
+          "relations": ["lending_admin"]
         },
         {
           "name": "rewards_rate_model"
@@ -900,16 +560,7 @@
     },
     {
       "name": "mint_with_max_assets",
-      "discriminator": [
-        6,
-        94,
-        69,
-        122,
-        30,
-        179,
-        146,
-        171
-      ],
+      "discriminator": [6, 94, 69, 122, 30, 179, 146, 171],
       "accounts": [
         {
           "name": "signer",
@@ -937,38 +588,9 @@
             "program": {
               "kind": "const",
               "value": [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89
+                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
+                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
+                219, 233, 248, 89
               ]
             }
           }
@@ -994,48 +616,16 @@
             "program": {
               "kind": "const",
               "value": [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89
+                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
+                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
+                219, 233, 248, 89
               ]
             }
           }
         },
         {
           "name": "mint",
-          "relations": [
-            "lending",
-            "rewards_rate_model"
-          ]
+          "relations": ["lending", "rewards_rate_model"]
         },
         {
           "name": "lending_admin"
@@ -1047,9 +637,7 @@
         {
           "name": "f_token_mint",
           "writable": true,
-          "relations": [
-            "lending"
-          ]
+          "relations": ["lending"]
         },
         {
           "name": "supply_token_reserves_liquidity",
@@ -1073,9 +661,7 @@
         {
           "name": "liquidity_program",
           "writable": true,
-          "relations": [
-            "lending_admin"
-          ]
+          "relations": ["lending_admin"]
         },
         {
           "name": "rewards_rate_model"
@@ -1106,16 +692,7 @@
     },
     {
       "name": "rebalance",
-      "discriminator": [
-        108,
-        158,
-        77,
-        9,
-        210,
-        52,
-        88,
-        62
-      ],
+      "discriminator": [108, 158, 77, 9, 210, 52, 88, 62],
       "accounts": [
         {
           "name": "signer",
@@ -1143,38 +720,9 @@
             "program": {
               "kind": "const",
               "value": [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89
+                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
+                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
+                219, 233, 248, 89
               ]
             }
           }
@@ -1188,17 +736,12 @@
         },
         {
           "name": "mint",
-          "relations": [
-            "lending",
-            "rewards_rate_model"
-          ]
+          "relations": ["lending", "rewards_rate_model"]
         },
         {
           "name": "f_token_mint",
           "writable": true,
-          "relations": [
-            "lending"
-          ]
+          "relations": ["lending"]
         },
         {
           "name": "supply_token_reserves_liquidity",
@@ -1223,9 +766,7 @@
         {
           "name": "liquidity_program",
           "writable": true,
-          "relations": [
-            "lending_admin"
-          ]
+          "relations": ["lending_admin"]
         },
         {
           "name": "rewards_rate_model"
@@ -1246,16 +787,7 @@
     },
     {
       "name": "redeem",
-      "discriminator": [
-        184,
-        12,
-        86,
-        149,
-        70,
-        196,
-        97,
-        225
-      ],
+      "discriminator": [184, 12, 86, 149, 70, 196, 97, 225],
       "accounts": [
         {
           "name": "signer",
@@ -1283,38 +815,9 @@
             "program": {
               "kind": "const",
               "value": [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89
+                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
+                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
+                219, 233, 248, 89
               ]
             }
           }
@@ -1340,38 +843,9 @@
             "program": {
               "kind": "const",
               "value": [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89
+                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
+                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
+                219, 233, 248, 89
               ]
             }
           }
@@ -1385,17 +859,12 @@
         },
         {
           "name": "mint",
-          "relations": [
-            "lending",
-            "rewards_rate_model"
-          ]
+          "relations": ["lending", "rewards_rate_model"]
         },
         {
           "name": "f_token_mint",
           "writable": true,
-          "relations": [
-            "lending"
-          ]
+          "relations": ["lending"]
         },
         {
           "name": "supply_token_reserves_liquidity",
@@ -1423,9 +892,7 @@
         {
           "name": "liquidity_program",
           "writable": true,
-          "relations": [
-            "lending_admin"
-          ]
+          "relations": ["lending_admin"]
         },
         {
           "name": "rewards_rate_model"
@@ -1452,16 +919,7 @@
     },
     {
       "name": "redeem_with_min_amount_out",
-      "discriminator": [
-        235,
-        189,
-        237,
-        56,
-        166,
-        180,
-        184,
-        149
-      ],
+      "discriminator": [235, 189, 237, 56, 166, 180, 184, 149],
       "accounts": [
         {
           "name": "signer",
@@ -1489,38 +947,9 @@
             "program": {
               "kind": "const",
               "value": [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89
+                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
+                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
+                219, 233, 248, 89
               ]
             }
           }
@@ -1546,38 +975,9 @@
             "program": {
               "kind": "const",
               "value": [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89
+                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
+                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
+                219, 233, 248, 89
               ]
             }
           }
@@ -1591,17 +991,12 @@
         },
         {
           "name": "mint",
-          "relations": [
-            "lending",
-            "rewards_rate_model"
-          ]
+          "relations": ["lending", "rewards_rate_model"]
         },
         {
           "name": "f_token_mint",
           "writable": true,
-          "relations": [
-            "lending"
-          ]
+          "relations": ["lending"]
         },
         {
           "name": "supply_token_reserves_liquidity",
@@ -1629,9 +1024,7 @@
         {
           "name": "liquidity_program",
           "writable": true,
-          "relations": [
-            "lending_admin"
-          ]
+          "relations": ["lending_admin"]
         },
         {
           "name": "rewards_rate_model"
@@ -1661,16 +1054,7 @@
     },
     {
       "name": "set_rewards_rate_model",
-      "discriminator": [
-        174,
-        231,
-        116,
-        203,
-        8,
-        58,
-        143,
-        203
-      ],
+      "discriminator": [174, 231, 116, 203, 8, 58, 143, 203],
       "accounts": [
         {
           "name": "signer",
@@ -1685,9 +1069,7 @@
         },
         {
           "name": "f_token_mint",
-          "relations": [
-            "lending"
-          ]
+          "relations": ["lending"]
         },
         {
           "name": "new_rewards_rate_model"
@@ -1705,16 +1087,7 @@
     },
     {
       "name": "update_auths",
-      "discriminator": [
-        93,
-        96,
-        178,
-        156,
-        57,
-        117,
-        253,
-        209
-      ],
+      "discriminator": [93, 96, 178, 156, 57, 117, 253, 209],
       "accounts": [
         {
           "name": "signer",
@@ -1740,16 +1113,7 @@
     },
     {
       "name": "update_rate",
-      "discriminator": [
-        24,
-        225,
-        53,
-        189,
-        72,
-        212,
-        225,
-        178
-      ],
+      "discriminator": [24, 225, 53, 189, 72, 212, 225, 178],
       "accounts": [
         {
           "name": "lending",
@@ -1757,16 +1121,11 @@
         },
         {
           "name": "mint",
-          "relations": [
-            "lending",
-            "supply_token_reserves_liquidity"
-          ]
+          "relations": ["lending", "supply_token_reserves_liquidity"]
         },
         {
           "name": "f_token_mint",
-          "relations": [
-            "lending"
-          ]
+          "relations": ["lending"]
         },
         {
           "name": "supply_token_reserves_liquidity"
@@ -1779,16 +1138,7 @@
     },
     {
       "name": "update_rebalancer",
-      "discriminator": [
-        206,
-        187,
-        54,
-        228,
-        145,
-        8,
-        203,
-        111
-      ],
+      "discriminator": [206, 187, 54, 228, 145, 8, 203, 111],
       "accounts": [
         {
           "name": "signer",
@@ -1808,16 +1158,7 @@
     },
     {
       "name": "withdraw",
-      "discriminator": [
-        183,
-        18,
-        70,
-        156,
-        148,
-        109,
-        161,
-        34
-      ],
+      "discriminator": [183, 18, 70, 156, 148, 109, 161, 34],
       "accounts": [
         {
           "name": "signer",
@@ -1845,38 +1186,9 @@
             "program": {
               "kind": "const",
               "value": [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89
+                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
+                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
+                219, 233, 248, 89
               ]
             }
           }
@@ -1902,38 +1214,9 @@
             "program": {
               "kind": "const",
               "value": [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89
+                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
+                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
+                219, 233, 248, 89
               ]
             }
           }
@@ -1947,17 +1230,12 @@
         },
         {
           "name": "mint",
-          "relations": [
-            "lending",
-            "rewards_rate_model"
-          ]
+          "relations": ["lending", "rewards_rate_model"]
         },
         {
           "name": "f_token_mint",
           "writable": true,
-          "relations": [
-            "lending"
-          ]
+          "relations": ["lending"]
         },
         {
           "name": "supply_token_reserves_liquidity",
@@ -1985,9 +1263,7 @@
         {
           "name": "liquidity_program",
           "writable": true,
-          "relations": [
-            "lending_admin"
-          ]
+          "relations": ["lending_admin"]
         },
         {
           "name": "rewards_rate_model"
@@ -2014,16 +1290,7 @@
     },
     {
       "name": "withdraw_with_max_shares_burn",
-      "discriminator": [
-        47,
-        197,
-        183,
-        171,
-        239,
-        18,
-        245,
-        171
-      ],
+      "discriminator": [47, 197, 183, 171, 239, 18, 245, 171],
       "accounts": [
         {
           "name": "signer",
@@ -2051,38 +1318,9 @@
             "program": {
               "kind": "const",
               "value": [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89
+                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
+                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
+                219, 233, 248, 89
               ]
             }
           }
@@ -2108,38 +1346,9 @@
             "program": {
               "kind": "const",
               "value": [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89
+                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
+                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
+                219, 233, 248, 89
               ]
             }
           }
@@ -2153,17 +1362,12 @@
         },
         {
           "name": "mint",
-          "relations": [
-            "lending",
-            "rewards_rate_model"
-          ]
+          "relations": ["lending", "rewards_rate_model"]
         },
         {
           "name": "f_token_mint",
           "writable": true,
-          "relations": [
-            "lending"
-          ]
+          "relations": ["lending"]
         },
         {
           "name": "supply_token_reserves_liquidity",
@@ -2191,9 +1395,7 @@
         {
           "name": "liquidity_program",
           "writable": true,
-          "relations": [
-            "lending_admin"
-          ]
+          "relations": ["lending_admin"]
         },
         {
           "name": "rewards_rate_model"
@@ -2226,161 +1428,53 @@
   "accounts": [
     {
       "name": "Lending",
-      "discriminator": [
-        135,
-        199,
-        82,
-        16,
-        249,
-        131,
-        182,
-        241
-      ]
+      "discriminator": [135, 199, 82, 16, 249, 131, 182, 241]
     },
     {
       "name": "LendingAdmin",
-      "discriminator": [
-        42,
-        8,
-        33,
-        220,
-        163,
-        40,
-        210,
-        5
-      ]
+      "discriminator": [42, 8, 33, 220, 163, 40, 210, 5]
     },
     {
       "name": "LendingRewardsRateModel",
-      "discriminator": [
-        166,
-        72,
-        71,
-        131,
-        172,
-        74,
-        166,
-        181
-      ]
+      "discriminator": [166, 72, 71, 131, 172, 74, 166, 181]
     },
     {
       "name": "TokenReserve",
-      "discriminator": [
-        21,
-        18,
-        59,
-        135,
-        120,
-        20,
-        31,
-        12
-      ]
+      "discriminator": [21, 18, 59, 135, 120, 20, 31, 12]
     },
     {
       "name": "UserSupplyPosition",
-      "discriminator": [
-        202,
-        219,
-        136,
-        118,
-        61,
-        177,
-        21,
-        146
-      ]
+      "discriminator": [202, 219, 136, 118, 61, 177, 21, 146]
     }
   ],
   "events": [
     {
       "name": "LogDeposit",
-      "discriminator": [
-        176,
-        243,
-        1,
-        56,
-        142,
-        206,
-        1,
-        106
-      ]
+      "discriminator": [176, 243, 1, 56, 142, 206, 1, 106]
     },
     {
       "name": "LogRebalance",
-      "discriminator": [
-        90,
-        67,
-        219,
-        41,
-        181,
-        118,
-        132,
-        9
-      ]
+      "discriminator": [90, 67, 219, 41, 181, 118, 132, 9]
     },
     {
       "name": "LogUpdateAuths",
-      "discriminator": [
-        88,
-        80,
-        109,
-        48,
-        111,
-        203,
-        76,
-        251
-      ]
+      "discriminator": [88, 80, 109, 48, 111, 203, 76, 251]
     },
     {
       "name": "LogUpdateRates",
-      "discriminator": [
-        222,
-        11,
-        113,
-        60,
-        147,
-        15,
-        68,
-        217
-      ]
+      "discriminator": [222, 11, 113, 60, 147, 15, 68, 217]
     },
     {
       "name": "LogUpdateRebalancer",
-      "discriminator": [
-        66,
-        79,
-        144,
-        204,
-        26,
-        217,
-        153,
-        225
-      ]
+      "discriminator": [66, 79, 144, 204, 26, 217, 153, 225]
     },
     {
       "name": "LogUpdateRewards",
-      "discriminator": [
-        37,
-        13,
-        111,
-        186,
-        47,
-        245,
-        162,
-        121
-      ]
+      "discriminator": [37, 13, 111, 186, 47, 245, 162, 121]
     },
     {
       "name": "LogWithdraw",
-      "discriminator": [
-        49,
-        9,
-        176,
-        179,
-        222,
-        190,
-        6,
-        117
-      ]
+      "discriminator": [49, 9, 176, 179, 222, 190, 6, 117]
     }
   ],
   "errors": [
@@ -2486,9 +1580,7 @@
           },
           {
             "name": "decimals",
-            "docs": [
-              "@dev number of decimals for the fToken, same as ASSET"
-            ],
+            "docs": ["@dev number of decimals for the fToken, same as ASSET"],
             "type": "u8"
           },
           {
@@ -2575,9 +1667,7 @@
         "fields": [
           {
             "name": "mint",
-            "docs": [
-              "@dev mint address"
-            ],
+            "docs": ["@dev mint address"],
             "type": "pubkey"
           },
           {
@@ -2590,16 +1680,12 @@
           },
           {
             "name": "duration",
-            "docs": [
-              "@dev for how long current rewards should run"
-            ],
+            "docs": ["@dev for how long current rewards should run"],
             "type": "u64"
           },
           {
             "name": "start_time",
-            "docs": [
-              "@dev when current rewards got started"
-            ],
+            "docs": ["@dev when current rewards got started"],
             "type": "u64"
           },
           {
@@ -2611,16 +1697,12 @@
           },
           {
             "name": "next_duration",
-            "docs": [
-              "@dev Duration for the next rewards phase"
-            ],
+            "docs": ["@dev Duration for the next rewards phase"],
             "type": "u64"
           },
           {
             "name": "next_reward_amount",
-            "docs": [
-              "@dev Amount of rewards for the next phase"
-            ],
+            "docs": ["@dev Amount of rewards for the next phase"],
             "type": "u64"
           },
           {
@@ -2754,9 +1836,7 @@
     },
     {
       "name": "TokenReserve",
-      "docs": [
-        "Token configuration and exchange prices"
-      ],
+      "docs": ["Token configuration and exchange prices"],
       "serialization": "bytemuck",
       "repr": {
         "kind": "c",
@@ -2838,9 +1918,7 @@
     },
     {
       "name": "UserSupplyPosition",
-      "docs": [
-        "User supply position"
-      ],
+      "docs": ["User supply position"],
       "serialization": "bytemuck",
       "repr": {
         "kind": "c",

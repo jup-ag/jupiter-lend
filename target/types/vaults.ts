@@ -92,7 +92,6 @@ export type Vaults = {
         },
         {
           name: "vaultAdmin";
-          docs: ["@dev mut as this is mint authority for NFT"];
         },
         {
           name: "vaultState";
@@ -1056,10 +1055,12 @@ export type Vaults = {
         },
         {
           name: "recipient";
+          optional: true;
         },
         {
           name: "recipientBorrowTokenAccount";
           writable: true;
+          optional: true;
           pda: {
             seeds: [
               {
@@ -1117,6 +1118,7 @@ export type Vaults = {
         {
           name: "recipientSupplyTokenAccount";
           writable: true;
+          optional: true;
           pda: {
             seeds: [
               {
@@ -1210,7 +1212,6 @@ export type Vaults = {
         },
         {
           name: "currentPositionTickId";
-          writable: true;
         },
         {
           name: "finalPositionTickId";
@@ -2458,56 +2459,66 @@ export type Vaults = {
     },
     {
       code: 6058;
+      name: "vaultRecipientWithdrawAccountRequired";
+      msg: "vaultRecipientWithdrawAccountRequired";
+    },
+    {
+      code: 6059;
+      name: "vaultRecipientBorrowAccountRequired";
+      msg: "vaultRecipientBorrowAccountRequired";
+    },
+    {
+      code: 6060;
       name: "vaultAdminValueAboveLimit";
       msg: "vaultAdminValueAboveLimit";
     },
     {
-      code: 6059;
+      code: 6061;
       name: "vaultAdminOnlyAuths";
       msg: "vaultAdminOnlyAuthAccounts";
     },
     {
-      code: 6060;
+      code: 6062;
       name: "vaultAdminAddressZeroNotAllowed";
       msg: "vaultAdminAddressZeroNotAllowed";
     },
     {
-      code: 6061;
+      code: 6063;
       name: "vaultAdminVaultIdMismatch";
       msg: "vaultAdminVaultIdMismatch";
     },
     {
-      code: 6062;
+      code: 6064;
       name: "vaultAdminTotalIdsMismatch";
       msg: "vaultAdminTotalIdsMismatch";
     },
     {
-      code: 6063;
+      code: 6065;
       name: "vaultAdminTickMismatch";
       msg: "vaultAdminTickMismatch";
     },
     {
-      code: 6064;
+      code: 6066;
       name: "vaultAdminLiquidityProgramMismatch";
       msg: "vaultAdminLiquidityProgramMismatch";
     },
     {
-      code: 6065;
+      code: 6067;
       name: "vaultAdminMaxAuthCountReached";
       msg: "vaultAdminMaxAuthCountReached";
     },
     {
-      code: 6066;
+      code: 6068;
       name: "vaultAdminInvalidParams";
       msg: "vaultAdminInvalidParams";
     },
     {
-      code: 6067;
+      code: 6069;
       name: "vaultAdminOnlyAuthority";
       msg: "vaultAdminOnlyAuthority";
     },
     {
-      code: 6068;
+      code: 6070;
       name: "vaultAdminOracleProgramMismatch";
       msg: "vaultAdminOracleProgramMismatch";
     }

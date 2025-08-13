@@ -15,10 +15,10 @@ This documentation covers Cross-Program Invocation (CPI) integration for the len
 
 #### Staging mainnet
 
-| Program           | Address                                       | link                                                                                                |
-| ----------------- | --------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| LENDING_PROGRAM   | `jup3YeL8QhtSx1e253b2FDvsMNC87fDrgQZivbrndc9` | [lending_devnet](https://explorer.solana.com/address/jup3YeL8QhtSx1e253b2FDvsMNC87fDrgQZivbrndc9)   |
-| LIQUIDITY_PROGRAM | `jupeiUmn818Jg1ekPURTpr4mFo29p46vygyykFJ3wZC` | [liquidity_devnet](https://explorer.solana.com/address/jupeiUmn818Jg1ekPURTpr4mFo29p46vygyykFJ3wZC) |
+| Program           | Address                                       | link                                                                                                 |
+| ----------------- | --------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| LENDING_PROGRAM   | `jup3YeL8QhtSx1e253b2FDvsMNC87fDrgQZivbrndc9` | [lending_mainnet](https://explorer.solana.com/address/jup3YeL8QhtSx1e253b2FDvsMNC87fDrgQZivbrndc9)   |
+| LIQUIDITY_PROGRAM | `jupeiUmn818Jg1ekPURTpr4mFo29p46vygyykFJ3wZC` | [liquidity_mainnet](https://explorer.solana.com/address/jupeiUmn818Jg1ekPURTpr4mFo29p46vygyykFJ3wZC) |
 
 ## Core CPI Functions
 
