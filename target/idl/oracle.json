@@ -8,6 +8,21 @@
   },
   "instructions": [
     {
+      "name": "get_both_exchange_rate",
+      "discriminator": [92, 88, 161, 46, 230, 193, 46, 237],
+      "accounts": [
+        {
+          "name": "oracle"
+        }
+      ],
+      "args": [
+        {
+          "name": "_nonce",
+          "type": "u16"
+        }
+      ]
+    },
+    {
       "name": "get_exchange_rate",
       "discriminator": [153, 76, 17, 194, 170, 215, 89, 142],
       "accounts": [
@@ -179,6 +194,10 @@
   ],
   "events": [
     {
+      "name": "LogUpdateAuthority",
+      "discriminator": [150, 152, 157, 143, 6, 135, 193, 101]
+    },
+    {
       "name": "LogUpdateAuths",
       "discriminator": [88, 80, 109, 48, 111, 203, 76, 251]
     }
@@ -206,43 +225,58 @@
     },
     {
       "code": 6004,
+      "name": "InvalidPythSourceMultiplierAndDivisor",
+      "msg": "INVALID_PYTH_SOURCE_MULTIPLIER_AND_DIVISOR"
+    },
+    {
+      "code": 6005,
       "name": "InvalidSource",
       "msg": "INVALID_SOURCE"
     },
     {
-      "code": 6005,
+      "code": 6006,
       "name": "InvalidSourcesLength",
       "msg": "INVALID_SOURCES_LENGTH"
     },
     {
-      "code": 6006,
+      "code": 6007,
       "name": "OracleAdminOnlyAuthority",
       "msg": "ORACLE_ADMIN_ONLY_AUTHORITY"
     },
     {
-      "code": 6007,
+      "code": 6008,
       "name": "OracleAdminOnlyAuth",
       "msg": "ORACLE_ADMIN_ONLY_AUTH"
     },
     {
-      "code": 6008,
+      "code": 6009,
       "name": "OracleAdminMaxAuthCountReached",
       "msg": "ORACLE_ADMIN_MAX_AUTH_COUNT_REACHED"
     },
     {
-      "code": 6009,
+      "code": 6010,
       "name": "OracleAdminInvalidParams",
       "msg": "ORACLE_ADMIN_INVALID_PARAMS"
     },
     {
-      "code": 6010,
+      "code": 6011,
       "name": "OracleNonceMismatch",
       "msg": "ORACLE_NONCE_MISMATCH"
     },
     {
-      "code": 6011,
+      "code": 6012,
       "name": "PriceConfidenceNotSufficient",
       "msg": "PRICE_CONFIDENCE_NOT_SUFFICIENT"
+    },
+    {
+      "code": 6013,
+      "name": "StakePoolNotRefreshed",
+      "msg": "STAKE_POOL_NOT_REFRESHED"
+    },
+    {
+      "code": 6014,
+      "name": "InvalidPrice",
+      "msg": "INVALID_PRICE"
     }
   ],
   "types": [
@@ -258,6 +292,18 @@
           {
             "name": "value",
             "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LogUpdateAuthority",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "new_authority",
+            "type": "pubkey"
           }
         ]
       }
@@ -331,6 +377,9 @@
         "variants": [
           {
             "name": "Pyth"
+          },
+          {
+            "name": "StakePool"
           }
         ]
       }
