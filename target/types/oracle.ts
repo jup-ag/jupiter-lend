@@ -14,6 +14,21 @@ export type Oracle = {
   };
   instructions: [
     {
+      name: "getBothExchangeRate";
+      discriminator: [92, 88, 161, 46, 230, 193, 46, 237];
+      accounts: [
+        {
+          name: "oracle";
+        }
+      ];
+      args: [
+        {
+          name: "nonce";
+          type: "u16";
+        }
+      ];
+    },
+    {
       name: "getExchangeRate";
       discriminator: [153, 76, 17, 194, 170, 215, 89, 142];
       accounts: [
@@ -183,6 +198,10 @@ export type Oracle = {
   ];
   events: [
     {
+      name: "logUpdateAuthority";
+      discriminator: [150, 152, 157, 143, 6, 135, 193, 101];
+    },
+    {
       name: "logUpdateAuths";
       discriminator: [88, 80, 109, 48, 111, 203, 76, 251];
     }
@@ -210,43 +229,58 @@ export type Oracle = {
     },
     {
       code: 6004;
+      name: "invalidPythSourceMultiplierAndDivisor";
+      msg: "invalidPythSourceMultiplierAndDivisor";
+    },
+    {
+      code: 6005;
       name: "invalidSource";
       msg: "invalidSource";
     },
     {
-      code: 6005;
+      code: 6006;
       name: "invalidSourcesLength";
       msg: "invalidSourcesLength";
     },
     {
-      code: 6006;
+      code: 6007;
       name: "oracleAdminOnlyAuthority";
       msg: "oracleAdminOnlyAuthority";
     },
     {
-      code: 6007;
+      code: 6008;
       name: "oracleAdminOnlyAuth";
       msg: "oracleAdminOnlyAuth";
     },
     {
-      code: 6008;
+      code: 6009;
       name: "oracleAdminMaxAuthCountReached";
       msg: "oracleAdminMaxAuthCountReached";
     },
     {
-      code: 6009;
+      code: 6010;
       name: "oracleAdminInvalidParams";
       msg: "oracleAdminInvalidParams";
     },
     {
-      code: 6010;
+      code: 6011;
       name: "oracleNonceMismatch";
       msg: "oracleNonceMismatch";
     },
     {
-      code: 6011;
+      code: 6012;
       name: "priceConfidenceNotSufficient";
       msg: "priceConfidenceNotSufficient";
+    },
+    {
+      code: 6013;
+      name: "stakePoolNotRefreshed";
+      msg: "stakePoolNotRefreshed";
+    },
+    {
+      code: 6014;
+      name: "invalidPrice";
+      msg: "invalidPrice";
     }
   ];
   types: [
@@ -262,6 +296,18 @@ export type Oracle = {
           {
             name: "value";
             type: "bool";
+          }
+        ];
+      };
+    },
+    {
+      name: "logUpdateAuthority";
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "newAuthority";
+            type: "pubkey";
           }
         ];
       };
@@ -335,6 +381,9 @@ export type Oracle = {
         variants: [
           {
             name: "pyth";
+          },
+          {
+            name: "stakePool";
           }
         ];
       };
