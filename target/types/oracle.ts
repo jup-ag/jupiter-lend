@@ -160,6 +160,26 @@ export type Oracle = {
       ];
     },
     {
+      name: "updateAuthority";
+      discriminator: [32, 46, 64, 28, 149, 75, 243, 88];
+      accounts: [
+        {
+          name: "authority";
+          signer: true;
+        },
+        {
+          name: "oracleAdmin";
+          writable: true;
+        }
+      ];
+      args: [
+        {
+          name: "newAuthority";
+          type: "pubkey";
+        }
+      ];
+    },
+    {
       name: "updateAuths";
       discriminator: [93, 96, 178, 156, 57, 117, 253, 209];
       accounts: [

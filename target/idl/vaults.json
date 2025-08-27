@@ -1108,6 +1108,26 @@
       "args": []
     },
     {
+      "name": "update_authority",
+      "discriminator": [32, 46, 64, 28, 149, 75, 243, 88],
+      "accounts": [
+        {
+          "name": "signer",
+          "signer": true
+        },
+        {
+          "name": "vault_admin",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "new_authority",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
       "name": "update_auths",
       "discriminator": [93, 96, 178, 156, 57, 117, 253, 209],
       "accounts": [
@@ -1713,6 +1733,10 @@
       "discriminator": [90, 67, 219, 41, 181, 118, 132, 9]
     },
     {
+      "name": "LogUpdateAuthority",
+      "discriminator": [150, 152, 157, 143, 6, 135, 193, 101]
+    },
+    {
       "name": "LogUpdateAuths",
       "discriminator": [88, 80, 109, 48, 111, 203, 76, 251]
     },
@@ -2068,56 +2092,61 @@
     },
     {
       "code": 6060,
+      "name": "VaultPositionAboveLiquidationThreshold",
+      "msg": "VAULT_POSITION_ABOVE_LIQUIDATION_THRESHOLD"
+    },
+    {
+      "code": 6061,
       "name": "VaultAdminValueAboveLimit",
       "msg": "VAULT_ADMIN_VALUE_ABOVE_LIMIT"
     },
     {
-      "code": 6061,
+      "code": 6062,
       "name": "VaultAdminOnlyAuths",
       "msg": "VAULT_ADMIN_ONLY_AUTH_ACCOUNTS"
     },
     {
-      "code": 6062,
+      "code": 6063,
       "name": "VaultAdminAddressZeroNotAllowed",
       "msg": "VAULT_ADMIN_ADDRESS_ZERO_NOT_ALLOWED"
     },
     {
-      "code": 6063,
+      "code": 6064,
       "name": "VaultAdminVaultIdMismatch",
       "msg": "VAULT_ADMIN_VAULT_ID_MISMATCH"
     },
     {
-      "code": 6064,
+      "code": 6065,
       "name": "VaultAdminTotalIdsMismatch",
       "msg": "VAULT_ADMIN_TOTAL_IDS_MISMATCH"
     },
     {
-      "code": 6065,
+      "code": 6066,
       "name": "VaultAdminTickMismatch",
       "msg": "VAULT_ADMIN_TICK_MISMATCH"
     },
     {
-      "code": 6066,
+      "code": 6067,
       "name": "VaultAdminLiquidityProgramMismatch",
       "msg": "VAULT_ADMIN_LIQUIDITY_PROGRAM_MISMATCH"
     },
     {
-      "code": 6067,
+      "code": 6068,
       "name": "VaultAdminMaxAuthCountReached",
       "msg": "VAULT_ADMIN_MAX_AUTH_COUNT_REACHED"
     },
     {
-      "code": 6068,
+      "code": 6069,
       "name": "VaultAdminInvalidParams",
       "msg": "VAULT_ADMIN_INVALID_PARAMS"
     },
     {
-      "code": 6069,
+      "code": 6070,
       "name": "VaultAdminOnlyAuthority",
       "msg": "VAULT_ADMIN_ONLY_AUTHORITY"
     },
     {
-      "code": 6070,
+      "code": 6071,
       "name": "VaultAdminOracleProgramMismatch",
       "msg": "VAULT_ADMIN_ORACLE_PROGRAM_MISMATCH"
     }
@@ -2406,6 +2435,18 @@
       }
     },
     {
+      "name": "LogUpdateAuthority",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "new_authority",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
       "name": "LogUpdateAuths",
       "type": {
         "kind": "struct",
@@ -2686,6 +2727,9 @@
         "variants": [
           {
             "name": "Pyth"
+          },
+          {
+            "name": "StakePool"
           }
         ]
       }

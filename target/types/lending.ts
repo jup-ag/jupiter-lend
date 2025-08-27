@@ -1550,6 +1550,26 @@ export type Lending = {
       ];
     },
     {
+      name: "updateAuthority";
+      discriminator: [32, 46, 64, 28, 149, 75, 243, 88];
+      accounts: [
+        {
+          name: "signer";
+          signer: true;
+        },
+        {
+          name: "lendingAdmin";
+          writable: true;
+        }
+      ];
+      args: [
+        {
+          name: "newAuthority";
+          type: "pubkey";
+        }
+      ];
+    },
+    {
       name: "updateAuths";
       discriminator: [93, 96, 178, 156, 57, 117, 253, 209];
       accounts: [
@@ -2037,6 +2057,10 @@ export type Lending = {
       discriminator: [90, 67, 219, 41, 181, 118, 132, 9];
     },
     {
+      name: "logUpdateAuthority";
+      discriminator: [150, 152, 157, 143, 6, 135, 193, 101];
+    },
+    {
       name: "logUpdateAuths";
       discriminator: [88, 80, 109, 48, 111, 203, 76, 251];
     },
@@ -2324,6 +2348,18 @@ export type Lending = {
           {
             name: "assets";
             type: "u64";
+          }
+        ];
+      };
+    },
+    {
+      name: "logUpdateAuthority";
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "newAuthority";
+            type: "pubkey";
           }
         ];
       };

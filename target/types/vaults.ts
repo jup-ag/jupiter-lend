@@ -1509,6 +1509,26 @@ export type Vaults = {
       args: [];
     },
     {
+      name: "updateAuthority";
+      discriminator: [32, 46, 64, 28, 149, 75, 243, 88];
+      accounts: [
+        {
+          name: "signer";
+          signer: true;
+        },
+        {
+          name: "vaultAdmin";
+          writable: true;
+        }
+      ];
+      args: [
+        {
+          name: "newAuthority";
+          type: "pubkey";
+        }
+      ];
+    },
+    {
       name: "updateAuths";
       discriminator: [93, 96, 178, 156, 57, 117, 253, 209];
       accounts: [
@@ -2114,6 +2134,10 @@ export type Vaults = {
       discriminator: [90, 67, 219, 41, 181, 118, 132, 9];
     },
     {
+      name: "logUpdateAuthority";
+      discriminator: [150, 152, 157, 143, 6, 135, 193, 101];
+    },
+    {
       name: "logUpdateAuths";
       discriminator: [88, 80, 109, 48, 111, 203, 76, 251];
     },
@@ -2469,56 +2493,61 @@ export type Vaults = {
     },
     {
       code: 6060;
+      name: "vaultPositionAboveLiquidationThreshold";
+      msg: "vaultPositionAboveLiquidationThreshold";
+    },
+    {
+      code: 6061;
       name: "vaultAdminValueAboveLimit";
       msg: "vaultAdminValueAboveLimit";
     },
     {
-      code: 6061;
+      code: 6062;
       name: "vaultAdminOnlyAuths";
       msg: "vaultAdminOnlyAuthAccounts";
     },
     {
-      code: 6062;
+      code: 6063;
       name: "vaultAdminAddressZeroNotAllowed";
       msg: "vaultAdminAddressZeroNotAllowed";
     },
     {
-      code: 6063;
+      code: 6064;
       name: "vaultAdminVaultIdMismatch";
       msg: "vaultAdminVaultIdMismatch";
     },
     {
-      code: 6064;
+      code: 6065;
       name: "vaultAdminTotalIdsMismatch";
       msg: "vaultAdminTotalIdsMismatch";
     },
     {
-      code: 6065;
+      code: 6066;
       name: "vaultAdminTickMismatch";
       msg: "vaultAdminTickMismatch";
     },
     {
-      code: 6066;
+      code: 6067;
       name: "vaultAdminLiquidityProgramMismatch";
       msg: "vaultAdminLiquidityProgramMismatch";
     },
     {
-      code: 6067;
+      code: 6068;
       name: "vaultAdminMaxAuthCountReached";
       msg: "vaultAdminMaxAuthCountReached";
     },
     {
-      code: 6068;
+      code: 6069;
       name: "vaultAdminInvalidParams";
       msg: "vaultAdminInvalidParams";
     },
     {
-      code: 6069;
+      code: 6070;
       name: "vaultAdminOnlyAuthority";
       msg: "vaultAdminOnlyAuthority";
     },
     {
-      code: 6070;
+      code: 6071;
       name: "vaultAdminOracleProgramMismatch";
       msg: "vaultAdminOracleProgramMismatch";
     }
@@ -2807,6 +2836,18 @@ export type Vaults = {
       };
     },
     {
+      name: "logUpdateAuthority";
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "newAuthority";
+            type: "pubkey";
+          }
+        ];
+      };
+    },
+    {
       name: "logUpdateAuths";
       type: {
         kind: "struct";
@@ -3087,6 +3128,9 @@ export type Vaults = {
         variants: [
           {
             name: "pyth";
+          },
+          {
+            name: "stakePool";
           }
         ];
       };

@@ -156,6 +156,26 @@
       ]
     },
     {
+      "name": "update_authority",
+      "discriminator": [32, 46, 64, 28, 149, 75, 243, 88],
+      "accounts": [
+        {
+          "name": "authority",
+          "signer": true
+        },
+        {
+          "name": "oracle_admin",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "new_authority",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
       "name": "update_auths",
       "discriminator": [93, 96, 178, 156, 57, 117, 253, 209],
       "accounts": [

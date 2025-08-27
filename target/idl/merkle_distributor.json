@@ -1,0 +1,1321 @@
+{
+  "address": "jup9FB8aPL62L8SHwhZJnxnV263qQvc9tseGT6AFLn6",
+  "metadata": {
+    "name": "merkle_distributor",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "approve_root",
+      "discriminator": [167, 152, 175, 193, 218, 188, 184, 23],
+      "accounts": [
+        {
+          "name": "approver",
+          "signer": true
+        },
+        {
+          "name": "merkle_admin"
+        },
+        {
+          "name": "merkle_distributor",
+          "writable": true
+        },
+        {
+          "name": "approver_role"
+        }
+      ],
+      "args": [
+        {
+          "name": "merkle_root",
+          "type": {
+            "array": ["u8", 32]
+          }
+        },
+        {
+          "name": "cycle",
+          "type": "u32"
+        },
+        {
+          "name": "start_slot",
+          "type": "u32"
+        },
+        {
+          "name": "end_slot",
+          "type": "u32"
+        }
+      ]
+    },
+    {
+      "name": "claim",
+      "discriminator": [62, 198, 214, 193, 213, 159, 108, 210],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "merkle_distributor",
+          "writable": true
+        },
+        {
+          "name": "merkle_admin"
+        },
+        {
+          "name": "mint",
+          "relations": ["merkle_distributor"]
+        },
+        {
+          "name": "claim_status",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [99, 108, 97, 105, 109]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              },
+              {
+                "kind": "arg",
+                "path": "position_id"
+              },
+              {
+                "kind": "arg",
+                "path": "distributor_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault_token_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "merkle_admin"
+              },
+              {
+                "kind": "account",
+                "path": "token_program"
+              },
+              {
+                "kind": "account",
+                "path": "mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
+                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
+                219, 233, 248, 89
+              ]
+            }
+          }
+        },
+        {
+          "name": "recipient_token_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "signer"
+              },
+              {
+                "kind": "account",
+                "path": "token_program"
+              },
+              {
+                "kind": "account",
+                "path": "mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
+                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
+                219, 233, 248, 89
+              ]
+            }
+          }
+        },
+        {
+          "name": "token_program"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "cumulative_amount",
+          "type": "u64"
+        },
+        {
+          "name": "position_type",
+          "type": "u8"
+        },
+        {
+          "name": "position_id",
+          "type": "pubkey"
+        },
+        {
+          "name": "distributor_id",
+          "type": "u32"
+        },
+        {
+          "name": "cycle",
+          "type": "u32"
+        },
+        {
+          "name": "merkle_proof",
+          "type": {
+            "vec": {
+              "array": ["u8", 32]
+            }
+          }
+        },
+        {
+          "name": "metadata",
+          "type": "bytes"
+        }
+      ]
+    },
+    {
+      "name": "distribute_rewards",
+      "discriminator": [97, 6, 227, 255, 124, 165, 3, 148],
+      "accounts": [
+        {
+          "name": "distributor",
+          "writable": true,
+          "signer": true,
+          "relations": ["merkle_distributor"]
+        },
+        {
+          "name": "merkle_admin"
+        },
+        {
+          "name": "merkle_distributor",
+          "writable": true
+        },
+        {
+          "name": "mint",
+          "relations": ["merkle_distributor"]
+        },
+        {
+          "name": "distributor_token_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "distributor"
+              },
+              {
+                "kind": "account",
+                "path": "token_program"
+              },
+              {
+                "kind": "account",
+                "path": "mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
+                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
+                219, 233, 248, 89
+              ]
+            }
+          }
+        },
+        {
+          "name": "vault_token_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "merkle_admin"
+              },
+              {
+                "kind": "account",
+                "path": "token_program"
+              },
+              {
+                "kind": "account",
+                "path": "mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
+                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
+                219, 233, 248, 89
+              ]
+            }
+          }
+        },
+        {
+          "name": "token_program"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "init_distributor",
+      "discriminator": [4, 170, 72, 1, 58, 177, 150, 43],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "merkle_admin",
+          "writable": true
+        },
+        {
+          "name": "merkle_distributor",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [100, 105, 115, 116, 114, 105, 98, 117, 116, 111, 114]
+              },
+              {
+                "kind": "account",
+                "path": "mint"
+              },
+              {
+                "kind": "account",
+                "path": "merkle_admin.next_distributor_id",
+                "account": "MerkleAdmin"
+              }
+            ]
+          }
+        },
+        {
+          "name": "mint"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "params",
+          "type": {
+            "defined": {
+              "name": "InitializeParams"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "init_merkle_admin",
+      "discriminator": [130, 19, 59, 140, 26, 4, 117, 19],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "merkle_admin",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  109, 101, 114, 107, 108, 101, 95, 97, 100, 109, 105, 110
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "authority",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "init_role",
+      "discriminator": [24, 82, 229, 76, 200, 87, 242, 26],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "merkle_admin"
+        },
+        {
+          "name": "role_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [114, 111, 108, 101]
+              },
+              {
+                "kind": "arg",
+                "path": "address"
+              },
+              {
+                "kind": "arg",
+                "path": "role"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "address",
+          "type": "pubkey"
+        },
+        {
+          "name": "role",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "pause",
+      "discriminator": [211, 22, 221, 251, 74, 121, 193, 47],
+      "accounts": [
+        {
+          "name": "authority",
+          "signer": true
+        },
+        {
+          "name": "merkle_admin"
+        },
+        {
+          "name": "merkle_distributor",
+          "writable": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "propose_root",
+      "discriminator": [132, 0, 76, 107, 236, 86, 118, 165],
+      "accounts": [
+        {
+          "name": "proposer",
+          "signer": true
+        },
+        {
+          "name": "merkle_admin"
+        },
+        {
+          "name": "merkle_distributor",
+          "writable": true
+        },
+        {
+          "name": "proposer_role"
+        }
+      ],
+      "args": [
+        {
+          "name": "merkle_root",
+          "type": {
+            "array": ["u8", 32]
+          }
+        },
+        {
+          "name": "cycle",
+          "type": "u32"
+        },
+        {
+          "name": "start_slot",
+          "type": "u32"
+        },
+        {
+          "name": "end_slot",
+          "type": "u32"
+        }
+      ]
+    },
+    {
+      "name": "set_start_block_of_next_cycle",
+      "discriminator": [168, 83, 36, 171, 34, 95, 238, 81],
+      "accounts": [
+        {
+          "name": "authority",
+          "signer": true
+        },
+        {
+          "name": "merkle_admin"
+        },
+        {
+          "name": "merkle_distributor",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "start_block_of_next_cycle",
+          "type": "u32"
+        }
+      ]
+    },
+    {
+      "name": "unpause",
+      "discriminator": [169, 144, 4, 38, 10, 141, 188, 255],
+      "accounts": [
+        {
+          "name": "authority",
+          "signer": true
+        },
+        {
+          "name": "merkle_admin"
+        },
+        {
+          "name": "merkle_distributor",
+          "writable": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "update_authority",
+      "discriminator": [32, 46, 64, 28, 149, 75, 243, 88],
+      "accounts": [
+        {
+          "name": "authority",
+          "signer": true
+        },
+        {
+          "name": "merkle_admin",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "new_authority",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "update_auths",
+      "discriminator": [93, 96, 178, 156, 57, 117, 253, 209],
+      "accounts": [
+        {
+          "name": "authority",
+          "signer": true
+        },
+        {
+          "name": "merkle_admin",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "auth_status",
+          "type": {
+            "vec": {
+              "defined": {
+                "name": "AddressBool"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "update_distribution_config",
+      "discriminator": [162, 95, 24, 240, 144, 247, 117, 22],
+      "accounts": [
+        {
+          "name": "authority",
+          "signer": true
+        },
+        {
+          "name": "merkle_admin"
+        },
+        {
+          "name": "merkle_distributor",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "pull_from_distributor",
+          "type": "bool"
+        },
+        {
+          "name": "blocks_per_distribution",
+          "type": "u32"
+        },
+        {
+          "name": "cycles_per_distribution",
+          "type": "u32"
+        }
+      ]
+    },
+    {
+      "name": "update_rewards_distributor",
+      "discriminator": [250, 201, 40, 213, 158, 61, 253, 147],
+      "accounts": [
+        {
+          "name": "authority",
+          "signer": true
+        },
+        {
+          "name": "merkle_admin"
+        },
+        {
+          "name": "merkle_distributor",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "distributor",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "update_role",
+      "discriminator": [36, 223, 162, 98, 168, 209, 75, 151],
+      "accounts": [
+        {
+          "name": "authority",
+          "signer": true
+        },
+        {
+          "name": "merkle_admin"
+        },
+        {
+          "name": "role_account",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "turn_off",
+          "type": "bool"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "ClaimStatus",
+      "discriminator": [22, 183, 249, 157, 247, 95, 150, 96]
+    },
+    {
+      "name": "MerkleAdmin",
+      "discriminator": [0, 192, 185, 207, 98, 65, 4, 187]
+    },
+    {
+      "name": "MerkleDistributor",
+      "discriminator": [77, 119, 139, 70, 84, 247, 12, 26]
+    },
+    {
+      "name": "RoleAccount",
+      "discriminator": [142, 236, 135, 197, 214, 3, 244, 226]
+    }
+  ],
+  "events": [
+    {
+      "name": "LogClaimed",
+      "discriminator": [215, 10, 98, 242, 67, 30, 230, 185]
+    },
+    {
+      "name": "LogDistribution",
+      "discriminator": [122, 162, 17, 219, 57, 67, 93, 50]
+    },
+    {
+      "name": "LogDistributionConfigUpdated",
+      "discriminator": [64, 108, 152, 215, 83, 217, 187, 190]
+    },
+    {
+      "name": "LogInitRole",
+      "discriminator": [14, 236, 197, 243, 241, 106, 70, 162]
+    },
+    {
+      "name": "LogRewardsDistributorUpdated",
+      "discriminator": [222, 161, 225, 24, 234, 122, 115, 38]
+    },
+    {
+      "name": "LogRootProposed",
+      "discriminator": [241, 45, 0, 250, 225, 243, 158, 34]
+    },
+    {
+      "name": "LogRootUpdated",
+      "discriminator": [79, 2, 209, 136, 63, 82, 145, 211]
+    },
+    {
+      "name": "LogStartBlockOfNextCycleUpdated",
+      "discriminator": [46, 130, 115, 115, 242, 191, 9, 226]
+    },
+    {
+      "name": "LogUpdateAuthority",
+      "discriminator": [150, 152, 157, 143, 6, 135, 193, 101]
+    },
+    {
+      "name": "LogUpdateAuths",
+      "discriminator": [88, 80, 109, 48, 111, 203, 76, 251]
+    },
+    {
+      "name": "LogUpdateRole",
+      "discriminator": [138, 23, 252, 139, 73, 226, 226, 166]
+    },
+    {
+      "name": "Paused",
+      "discriminator": [172, 248, 5, 253, 49, 255, 255, 232]
+    },
+    {
+      "name": "Unpaused",
+      "discriminator": [156, 150, 47, 174, 120, 216, 93, 117]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "InvalidParams",
+      "msg": "INVALID_PARAMS"
+    },
+    {
+      "code": 6001,
+      "name": "Unauthorized",
+      "msg": "UNAUTHORIZED"
+    },
+    {
+      "code": 6002,
+      "name": "RewardsPaused",
+      "msg": "REWARDS_PAUSED"
+    },
+    {
+      "code": 6003,
+      "name": "InvalidCycle",
+      "msg": "INVALID_CYCLE"
+    },
+    {
+      "code": 6004,
+      "name": "InvalidProof",
+      "msg": "INVALID_PROOF"
+    },
+    {
+      "code": 6005,
+      "name": "NothingToClaim",
+      "msg": "NOTHING_TO_CLAIM"
+    },
+    {
+      "code": 6006,
+      "name": "MaxAuthCountReached",
+      "msg": "MAX_AUTH_COUNT_REACHED"
+    },
+    {
+      "code": 6007,
+      "name": "InvalidDistributor",
+      "msg": "INVALID_DISTRIBUTOR"
+    }
+  ],
+  "types": [
+    {
+      "name": "AddressBool",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "addr",
+            "type": "pubkey"
+          },
+          {
+            "name": "value",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ClaimStatus",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "distributor_id",
+            "type": "u32"
+          },
+          {
+            "name": "recipient",
+            "type": "pubkey"
+          },
+          {
+            "name": "position_id",
+            "type": "pubkey"
+          },
+          {
+            "name": "position_type",
+            "type": "u8"
+          },
+          {
+            "name": "claimed_amount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "InitializeParams",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "distribution_in_hours",
+            "type": "u64"
+          },
+          {
+            "name": "cycle_in_hours",
+            "type": "u64"
+          },
+          {
+            "name": "start_block",
+            "type": "u32"
+          },
+          {
+            "name": "pull_from_distributor",
+            "type": "bool"
+          },
+          {
+            "name": "vesting_time",
+            "type": "u32"
+          },
+          {
+            "name": "vesting_start_time",
+            "type": "u32"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LogClaimed",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "distributor_id",
+            "type": "u32"
+          },
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "cycle",
+            "type": "u32"
+          },
+          {
+            "name": "position_type",
+            "type": "u8"
+          },
+          {
+            "name": "position_id",
+            "type": "pubkey"
+          },
+          {
+            "name": "timestamp",
+            "type": "u32"
+          },
+          {
+            "name": "block_number",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LogDistribution",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "distributor_id",
+            "type": "u32"
+          },
+          {
+            "name": "epoch",
+            "type": "u32"
+          },
+          {
+            "name": "distributor",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "start_cycle",
+            "type": "u32"
+          },
+          {
+            "name": "end_cycle",
+            "type": "u32"
+          },
+          {
+            "name": "registration_block",
+            "type": "u32"
+          },
+          {
+            "name": "registration_timestamp",
+            "type": "u32"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LogDistributionConfigUpdated",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "distributor_id",
+            "type": "u32"
+          },
+          {
+            "name": "pull_from_distributor",
+            "type": "bool"
+          },
+          {
+            "name": "blocks_per_distribution",
+            "type": "u32"
+          },
+          {
+            "name": "cycles_per_distribution",
+            "type": "u32"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LogInitRole",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "address",
+            "type": "pubkey"
+          },
+          {
+            "name": "role",
+            "type": {
+              "defined": {
+                "name": "RoleType"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "LogRewardsDistributorUpdated",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "distributor_id",
+            "type": "u32"
+          },
+          {
+            "name": "distributor",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LogRootProposed",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "distributor_id",
+            "type": "u32"
+          },
+          {
+            "name": "cycle",
+            "type": "u32"
+          },
+          {
+            "name": "merkle_root",
+            "type": {
+              "array": ["u8", 32]
+            }
+          },
+          {
+            "name": "timestamp",
+            "type": "u32"
+          },
+          {
+            "name": "publish_block",
+            "type": "u32"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LogRootUpdated",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "distributor_id",
+            "type": "u32"
+          },
+          {
+            "name": "cycle",
+            "type": "u32"
+          },
+          {
+            "name": "merkle_root",
+            "type": {
+              "array": ["u8", 32]
+            }
+          },
+          {
+            "name": "timestamp",
+            "type": "u32"
+          },
+          {
+            "name": "publish_block",
+            "type": "u32"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LogStartBlockOfNextCycleUpdated",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "distributor_id",
+            "type": "u32"
+          },
+          {
+            "name": "start_block_of_next_cycle",
+            "type": "u32"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LogUpdateAuthority",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "new_authority",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LogUpdateAuths",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "auth_status",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "AddressBool"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "LogUpdateRole",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "address",
+            "type": "pubkey"
+          },
+          {
+            "name": "role",
+            "type": {
+              "defined": {
+                "name": "RoleType"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "MerkleAdmin",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "auths",
+            "type": {
+              "vec": "pubkey"
+            }
+          },
+          {
+            "name": "next_distributor_id",
+            "type": "u32"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MerkleCycle",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "merkle_root",
+            "type": {
+              "array": ["u8", 32]
+            }
+          },
+          {
+            "name": "cycle",
+            "type": "u32"
+          },
+          {
+            "name": "timestamp",
+            "type": "u32"
+          },
+          {
+            "name": "publish_block",
+            "type": "u32"
+          },
+          {
+            "name": "start_slot",
+            "type": "u32"
+          },
+          {
+            "name": "end_slot",
+            "type": "u32"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MerkleDistributor",
+      "serialization": "bytemuck",
+      "repr": {
+        "kind": "c",
+        "packed": true
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "distributor_id",
+            "type": "u32"
+          },
+          {
+            "name": "paused",
+            "type": "u8"
+          },
+          {
+            "name": "distributor",
+            "type": "pubkey"
+          },
+          {
+            "name": "current_merkle_cycle",
+            "type": {
+              "defined": {
+                "name": "MerkleCycle"
+              }
+            }
+          },
+          {
+            "name": "pending_merkle_cycle",
+            "type": {
+              "defined": {
+                "name": "MerkleCycle"
+              }
+            }
+          },
+          {
+            "name": "previous_merkle_root",
+            "type": {
+              "array": ["u8", 32]
+            }
+          },
+          {
+            "name": "cycles_per_distribution",
+            "type": "u32"
+          },
+          {
+            "name": "blocks_per_distribution",
+            "type": "u32"
+          },
+          {
+            "name": "start_block_of_next_cycle",
+            "type": "u32"
+          },
+          {
+            "name": "end_block_of_last_cycle",
+            "type": "u32"
+          },
+          {
+            "name": "pull_from_distributor",
+            "type": "u8"
+          },
+          {
+            "name": "vesting_time",
+            "type": "u32"
+          },
+          {
+            "name": "vesting_start_time",
+            "type": "u32"
+          },
+          {
+            "name": "total_rewards_cycles",
+            "type": "u32"
+          },
+          {
+            "name": "total_distributions",
+            "type": "u32"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Paused",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "distributor_id",
+            "type": "u32"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RoleAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "address",
+            "type": "pubkey"
+          },
+          {
+            "name": "role",
+            "type": "u8"
+          },
+          {
+            "name": "active",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RoleType",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "None"
+          },
+          {
+            "name": "Proposer"
+          },
+          {
+            "name": "Approver"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Unpaused",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "distributor_id",
+            "type": "u32"
+          }
+        ]
+      }
+    }
+  ]
+}

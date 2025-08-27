@@ -331,6 +331,26 @@ export type LendingRewardRateModel = {
       args: [];
     },
     {
+      name: "updateAuthority";
+      discriminator: [32, 46, 64, 28, 149, 75, 243, 88];
+      accounts: [
+        {
+          name: "authority";
+          signer: true;
+        },
+        {
+          name: "lendingRewardsAdmin";
+          writable: true;
+        }
+      ];
+      args: [
+        {
+          name: "newAuthority";
+          type: "pubkey";
+        }
+      ];
+    },
+    {
       name: "updateAuths";
       discriminator: [93, 96, 178, 156, 57, 117, 253, 209];
       accounts: [
@@ -387,6 +407,10 @@ export type LendingRewardRateModel = {
     {
       name: "logTransitionedToNextRewards";
       discriminator: [177, 232, 239, 222, 224, 61, 9, 101];
+    },
+    {
+      name: "logUpdateAuthority";
+      discriminator: [150, 152, 157, 143, 6, 135, 193, 101];
     },
     {
       name: "logUpdateAuths";
@@ -638,6 +662,18 @@ export type LendingRewardRateModel = {
           },
           {
             name: "mint";
+            type: "pubkey";
+          }
+        ];
+      };
+    },
+    {
+      name: "logUpdateAuthority";
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "newAuthority";
             type: "pubkey";
           }
         ];

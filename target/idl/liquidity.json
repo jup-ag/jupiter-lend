@@ -845,6 +845,30 @@
       ]
     },
     {
+      "name": "update_authority",
+      "discriminator": [32, 46, 64, 28, 149, 75, 243, 88],
+      "accounts": [
+        {
+          "name": "authority",
+          "signer": true
+        },
+        {
+          "name": "liquidity",
+          "writable": true
+        },
+        {
+          "name": "auth_list",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "new_authority",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
       "name": "update_auths",
       "discriminator": [93, 96, 178, 156, 57, 117, 253, 209],
       "accounts": [
@@ -1249,6 +1273,10 @@
       "discriminator": [170, 91, 132, 96, 179, 77, 168, 26]
     },
     {
+      "name": "LogUpdateAuthority",
+      "discriminator": [150, 152, 157, 143, 6, 135, 193, 101]
+    },
+    {
       "name": "LogUpdateAuths",
       "discriminator": [88, 80, 109, 48, 111, 203, 76, 251]
     },
@@ -1451,56 +1479,61 @@
     },
     {
       "code": 6031,
+      "name": "OperateAmountTooBig",
+      "msg": "USER_MODULE_OPERATE_AMOUNTS_TOO_BIG"
+    },
+    {
+      "code": 6032,
       "name": "OperateAmountsInsufficient",
       "msg": "USER_MODULE_OPERATE_AMOUNTS_INSUFFICIENT"
     },
     {
-      "code": 6032,
+      "code": 6033,
       "name": "TransferAmountOutOfBounds",
       "msg": "USER_MODULE_TRANSFER_AMOUNT_OUT_OF_BOUNDS"
     },
     {
-      "code": 6033,
+      "code": 6034,
       "name": "ForbiddenOperateCall",
       "msg": "FORBIDDEN_OPERATE_CALL"
     },
     {
-      "code": 6034,
+      "code": 6035,
       "name": "MaxUtilizationReached",
       "msg": "USER_MODULE_MAX_UTILIZATION_REACHED"
     },
     {
-      "code": 6035,
+      "code": 6036,
       "name": "ValueOverflowTotalSupply",
       "msg": "USER_MODULE_VALUE_OVERFLOW_TOTAL_SUPPLY"
     },
     {
-      "code": 6036,
+      "code": 6037,
       "name": "ValueOverflowTotalBorrow",
       "msg": "USER_MODULE_VALUE_OVERFLOW_TOTAL_BORROW"
     },
     {
-      "code": 6037,
+      "code": 6038,
       "name": "DepositExpected",
       "msg": "USER_MODULE_DEPOSIT_EXPECTED"
     },
     {
-      "code": 6038,
+      "code": 6039,
       "name": "ExchangePriceZero",
       "msg": "LIQUIDITY_CALCS_EXCHANGE_PRICE_ZERO"
     },
     {
-      "code": 6039,
+      "code": 6040,
       "name": "UnsupportedRateVersion",
       "msg": "LIQUIDITY_CALCS_UNSUPPORTED_RATE_VERSION"
     },
     {
-      "code": 6040,
+      "code": 6041,
       "name": "BorrowRateNegative",
       "msg": "LIQUIDITY_CALCS_BORROW_RATE_NEGATIVE"
     },
     {
-      "code": 6041,
+      "code": 6042,
       "name": "ProtocolLockdown",
       "msg": "PROTOCOL_LOCKDOWN"
     }
@@ -1732,6 +1765,18 @@
           {
             "name": "status",
             "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LogUpdateAuthority",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "new_authority",
+            "type": "pubkey"
           }
         ]
       }

@@ -282,6 +282,26 @@
       "args": []
     },
     {
+      "name": "update_authority",
+      "discriminator": [32, 46, 64, 28, 149, 75, 243, 88],
+      "accounts": [
+        {
+          "name": "authority",
+          "signer": true
+        },
+        {
+          "name": "lending_rewards_admin",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "new_authority",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
       "name": "update_auths",
       "discriminator": [93, 96, 178, 156, 57, 117, 253, 209],
       "accounts": [
@@ -338,6 +358,10 @@
     {
       "name": "LogTransitionedToNextRewards",
       "discriminator": [177, 232, 239, 222, 224, 61, 9, 101]
+    },
+    {
+      "name": "LogUpdateAuthority",
+      "discriminator": [150, 152, 157, 143, 6, 135, 193, 101]
     },
     {
       "name": "LogUpdateAuths",
@@ -589,6 +613,18 @@
           },
           {
             "name": "mint",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LogUpdateAuthority",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "new_authority",
             "type": "pubkey"
           }
         ]

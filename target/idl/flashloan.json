@@ -276,6 +276,26 @@
           "type": "u16"
         }
       ]
+    },
+    {
+      "name": "update_authority",
+      "discriminator": [32, 46, 64, 28, 149, 75, 243, 88],
+      "accounts": [
+        {
+          "name": "authority",
+          "signer": true
+        },
+        {
+          "name": "flashloan_admin",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "new_authority",
+          "type": "pubkey"
+        }
+      ]
     }
   ],
   "accounts": [
@@ -288,6 +308,10 @@
     {
       "name": "ActivateProtocol",
       "discriminator": [70, 178, 173, 151, 180, 166, 68, 102]
+    },
+    {
+      "name": "LogUpdateAuthority",
+      "discriminator": [150, 152, 157, 143, 6, 135, 193, 101]
     },
     {
       "name": "PauseProtocol",
@@ -394,6 +418,18 @@
           {
             "name": "bump",
             "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LogUpdateAuthority",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "new_authority",
+            "type": "pubkey"
           }
         ]
       }

@@ -353,6 +353,26 @@ export type Flashloan = {
           type: "u16";
         }
       ];
+    },
+    {
+      name: "updateAuthority";
+      discriminator: [32, 46, 64, 28, 149, 75, 243, 88];
+      accounts: [
+        {
+          name: "authority";
+          signer: true;
+        },
+        {
+          name: "flashloanAdmin";
+          writable: true;
+        }
+      ];
+      args: [
+        {
+          name: "newAuthority";
+          type: "pubkey";
+        }
+      ];
     }
   ];
   accounts: [
@@ -365,6 +385,10 @@ export type Flashloan = {
     {
       name: "activateProtocol";
       discriminator: [70, 178, 173, 151, 180, 166, 68, 102];
+    },
+    {
+      name: "logUpdateAuthority";
+      discriminator: [150, 152, 157, 143, 6, 135, 193, 101];
     },
     {
       name: "pauseProtocol";
@@ -471,6 +495,18 @@ export type Flashloan = {
           {
             name: "bump";
             type: "u8";
+          }
+        ];
+      };
+    },
+    {
+      name: "logUpdateAuthority";
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "newAuthority";
+            type: "pubkey";
           }
         ];
       };

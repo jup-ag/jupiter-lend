@@ -1148,6 +1148,30 @@ export type Liquidity = {
       ];
     },
     {
+      name: "updateAuthority";
+      discriminator: [32, 46, 64, 28, 149, 75, 243, 88];
+      accounts: [
+        {
+          name: "authority";
+          signer: true;
+        },
+        {
+          name: "liquidity";
+          writable: true;
+        },
+        {
+          name: "authList";
+          writable: true;
+        }
+      ];
+      args: [
+        {
+          name: "newAuthority";
+          type: "pubkey";
+        }
+      ];
+    },
+    {
       name: "updateAuths";
       discriminator: [93, 96, 178, 156, 57, 117, 253, 209];
       accounts: [
@@ -1552,6 +1576,10 @@ export type Liquidity = {
       discriminator: [170, 91, 132, 96, 179, 77, 168, 26];
     },
     {
+      name: "logUpdateAuthority";
+      discriminator: [150, 152, 157, 143, 6, 135, 193, 101];
+    },
+    {
       name: "logUpdateAuths";
       discriminator: [88, 80, 109, 48, 111, 203, 76, 251];
     },
@@ -1754,56 +1782,61 @@ export type Liquidity = {
     },
     {
       code: 6031;
+      name: "operateAmountTooBig";
+      msg: "userModuleOperateAmountsTooBig";
+    },
+    {
+      code: 6032;
       name: "operateAmountsInsufficient";
       msg: "userModuleOperateAmountsInsufficient";
     },
     {
-      code: 6032;
+      code: 6033;
       name: "transferAmountOutOfBounds";
       msg: "userModuleTransferAmountOutOfBounds";
     },
     {
-      code: 6033;
+      code: 6034;
       name: "forbiddenOperateCall";
       msg: "forbiddenOperateCall";
     },
     {
-      code: 6034;
+      code: 6035;
       name: "maxUtilizationReached";
       msg: "userModuleMaxUtilizationReached";
     },
     {
-      code: 6035;
+      code: 6036;
       name: "valueOverflowTotalSupply";
       msg: "userModuleValueOverflowTotalSupply";
     },
     {
-      code: 6036;
+      code: 6037;
       name: "valueOverflowTotalBorrow";
       msg: "userModuleValueOverflowTotalBorrow";
     },
     {
-      code: 6037;
+      code: 6038;
       name: "depositExpected";
       msg: "userModuleDepositExpected";
     },
     {
-      code: 6038;
+      code: 6039;
       name: "exchangePriceZero";
       msg: "liquidityCalcsExchangePriceZero";
     },
     {
-      code: 6039;
+      code: 6040;
       name: "unsupportedRateVersion";
       msg: "liquidityCalcsUnsupportedRateVersion";
     },
     {
-      code: 6040;
+      code: 6041;
       name: "borrowRateNegative";
       msg: "liquidityCalcsBorrowRateNegative";
     },
     {
-      code: 6041;
+      code: 6042;
       name: "protocolLockdown";
       msg: "protocolLockdown";
     }
@@ -2035,6 +2068,18 @@ export type Liquidity = {
           {
             name: "status";
             type: "u8";
+          }
+        ];
+      };
+    },
+    {
+      name: "logUpdateAuthority";
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "newAuthority";
+            type: "pubkey";
           }
         ];
       };
