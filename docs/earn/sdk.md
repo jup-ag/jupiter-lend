@@ -328,3 +328,145 @@ Similar to deposit context, but includes:
 - `claimAccount`: Additional account for withdrawal claim processing
 
 ---
+
+## Read functions
+
+### 1. Get All Lending Tokens
+
+Retrieves all available lending tokens in the Jupiter Lend Earn protocol.
+
+```ts
+// Get all lending token addresses (jlToken addresses)
+const allTokens = await getLendingTokens({ connection });
+
+console.log("Available lending tokens:", allTokens);
+console.log("Number of tokens:", allTokens.length);
+
+// allTokens is an array of PublicKey objects
+// Example: [PublicKey, PublicKey, PublicKey, ...]
+```
+
+### 2. Get Token Details
+
+Fetches detailed information about a specific lending token:
+
+```ts
+// Get details for the first token
+const tokenDetails = await getLendingTokenDetails({
+  lendingToken: allTokens[0],
+  connection,
+});
+
+console.log("Token details:", tokenDetails);
+```
+
+Returns:
+
+```ts
+{
+  id: number; // ID of jlToken, starts from 1
+  address: PublicKey; // Address of jlToken
+  asset: PublicKey; // Address of underlying asset
+  decimals: number; // Decimals of asset (same as jlToken decimals)
+  totalAssets: BN; // Total underlying assets in the pool
+  totalSupply: BN; // Total shares supply
+  convertToShares: BN; // Multiplier to convert assets to shares
+  convertToAssets: BN; // Multiplier to convert shares to assets
+  rewardsRate: BN; // Rewards rate (1e4 decimals, 1e4 = 100%)
+  supplyRate: BN; // Supply APY rate (1e4 decimals, 1e4 = 100%)
+}
+```
+
+### 3. Get User Position
+
+Retrieves a user's lending position for a specific asset:
+
+```ts
+// Get user position for a specific token
+const userPosition = await getUserLendingPositionByAsset({
+  asset: tokenDetails.asset, // The address of underlying asset
+  user: userWallet, // User's wallet address
+  connection,
+});
+
+console.log("User position:", userPosition);
+```
+
+Returns:
+
+```ts
+{
+  lendingTokenShares: BN; // User's shares in jlToken
+  underlyingAssets: BN; // User's underlying assets
+  underlyingBalance: BN; // User's underlying balance
+}
+```
+
+#### Complete Usage Example
+
+```ts
+import { Connection, PublicKey } from "@solana/web3.js";
+import {
+  getLendingTokens,
+  getLendingTokenDetails,
+  getUserLendingPositionByAsset,
+} from "@jup-ag/lend/earn";
+import { BN } from "bn.js";
+
+async function fetchLendingData() {
+  const connection = new Connection("RPC");
+  const userWallet = new PublicKey("USER_PUBKEY");
+
+  try {
+    console.log(" Fetching all lending tokens...");
+    const allTokens = await getLendingTokens({ connection });
+    console.log(`Found ${allTokens.length} lending tokens`);
+
+    console.log("\n Fetching token details...");
+    for (let i = 0; i < allTokens.length; i++) {
+      const token = allTokens[i];
+
+      try {
+        const details = await getLendingTokenDetails({
+          lendingToken: token,
+          connection,
+        });
+
+        console.log(`\nToken ${i + 1}:`);
+        console.log(`  Address: ${details.address.toString()}`);
+        console.log(`  Asset: ${details.asset.toString()}`);
+        console.log(`  Decimals: ${details.decimals}`);
+        console.log(`  Total Assets: ${details.totalAssets.toString()}`);
+        console.log(`  Total Supply: ${details.totalSupply.toString()}`);
+        console.log(`  Supply Rate: ${details.supplyRate.toNumber() / 100}%`);
+        console.log(`  Rewards Rate: ${details.rewardsRate.toNumber() / 100}%`);
+
+        const userPosition = await getUserLendingPositionByAsset({
+          asset: details.asset,
+          user: userWallet,
+          connection,
+        });
+
+        // prettier-ignore
+        if (userPosition.lendingTokenShares.gt(new BN(0))) {
+          console.log(`  User Position:`);
+          console.log(`    Shares: ${userPosition.lendingTokenShares.toString()}`);
+          console.log(`    Assets: ${userPosition.underlyingAssets.toString()}`);
+          console.log(`    Balance: ${userPosition.underlyingBalance.toString()}`);
+        } else {
+          console.log(` No position for this user`);
+        }
+      } catch (error) {
+        console.log(
+          ` Error fetching details for token ${i + 1}:`,
+          error.message
+        );
+      }
+    }
+  } catch (error) {
+    console.error("Error fetching lending data:", error);
+  }
+}
+
+fetchLendingData();
+```
