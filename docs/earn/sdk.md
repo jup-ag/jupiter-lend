@@ -242,9 +242,7 @@ The Jupiter Lend SDK provides several read functions to query protocol data and 
 
 Retrieves all available lending tokens in the Jupiter Lend Earn protocol.
 
-:::note
 The `getLendingTokens` function returns an array of `PublicKey` objects.
-:::
 
 ```typescript
 import { getLendingTokens } from "@jup-ag/lend/earn";
