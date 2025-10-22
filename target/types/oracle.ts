@@ -218,6 +218,10 @@ export type Oracle = {
   ];
   events: [
     {
+      name: "logStakePoolHighFeeDetected";
+      discriminator: [198, 106, 149, 7, 25, 83, 39, 155];
+    },
+    {
       name: "logUpdateAuthority";
       discriminator: [150, 152, 157, 143, 6, 135, 193, 101];
     },
@@ -301,6 +305,26 @@ export type Oracle = {
       code: 6014;
       name: "invalidPrice";
       msg: "invalidPrice";
+    },
+    {
+      code: 6015;
+      name: "feeTooHigh";
+      msg: "feeTooHigh";
+    },
+    {
+      code: 6016;
+      name: "redstonePriceOverflow";
+      msg: "redstonePriceOverflow";
+    },
+    {
+      code: 6017;
+      name: "timestampExpected";
+      msg: "timestampExpected";
+    },
+    {
+      code: 6018;
+      name: "chainlinkPriceReadError";
+      msg: "chainlinkPriceReadError";
     }
   ];
   types: [
@@ -316,6 +340,22 @@ export type Oracle = {
           {
             name: "value";
             type: "bool";
+          }
+        ];
+      };
+    },
+    {
+      name: "logStakePoolHighFeeDetected";
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "stakePool";
+            type: "pubkey";
+          },
+          {
+            name: "epoch";
+            type: "u64";
           }
         ];
       };
@@ -404,6 +444,15 @@ export type Oracle = {
           },
           {
             name: "stakePool";
+          },
+          {
+            name: "msolPool";
+          },
+          {
+            name: "redstone";
+          },
+          {
+            name: "chainlink";
           }
         ];
       };

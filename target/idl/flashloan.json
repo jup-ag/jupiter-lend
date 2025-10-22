@@ -85,7 +85,8 @@
           "name": "liquidity"
         },
         {
-          "name": "liquidity_program"
+          "name": "liquidity_program",
+          "relations": ["flashloan_admin"]
         },
         {
           "name": "token_program"
@@ -173,7 +174,8 @@
           "name": "liquidity"
         },
         {
-          "name": "liquidity_program"
+          "name": "liquidity_program",
+          "relations": ["flashloan_admin"]
         },
         {
           "name": "token_program"
@@ -372,6 +374,26 @@
       "code": 6009,
       "name": "FlashloanPaybackNotFound",
       "msg": "FLASHLOAN_PAYBACK_NOT_FOUND"
+    },
+    {
+      "code": 6010,
+      "name": "FlashloanInvalidInstruction",
+      "msg": "FLASHLOAN_INVALID_INSTRUCTION"
+    },
+    {
+      "code": 6011,
+      "name": "FlashloanPaused",
+      "msg": "FLASHLOAN_PAUSED"
+    },
+    {
+      "code": 6012,
+      "name": "FlashloanCPICallNotAllowed",
+      "msg": "FLASHLOAN_CPICALL_NOT_ALLOWED"
+    },
+    {
+      "code": 6013,
+      "name": "FlashloanMultiplePaybacksFound",
+      "msg": "FLASHLOAN_MULTIPLE_PAYBACKS_FOUND"
     }
   ],
   "types": [

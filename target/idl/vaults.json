@@ -8,6 +8,106 @@
   },
   "instructions": [
     {
+      "name": "close_position",
+      "discriminator": [123, 134, 81, 0, 49, 68, 98, 98],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "vault_admin"
+        },
+        {
+          "name": "vault_state",
+          "docs": ["@dev Verification inside instruction logic"],
+          "writable": true
+        },
+        {
+          "name": "vault_config",
+          "docs": ["@dev Verification inside instruction logic"],
+          "writable": true
+        },
+        {
+          "name": "position",
+          "docs": ["@dev Verification inside instruction logic"],
+          "writable": true
+        },
+        {
+          "name": "position_mint",
+          "docs": ["@dev Verification inside instruction logic"],
+          "writable": true
+        },
+        {
+          "name": "position_token_account",
+          "docs": ["@dev Verification inside instruction logic"],
+          "writable": true
+        },
+        {
+          "name": "metadata_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [109, 101, 116, 97, 100, 97, 116, 97]
+              },
+              {
+                "kind": "const",
+                "value": [
+                  11, 112, 101, 177, 227, 209, 124, 69, 56, 157, 82, 127, 107,
+                  4, 195, 205, 88, 184, 108, 115, 26, 160, 253, 181, 73, 182,
+                  209, 188, 3, 248, 41, 70
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "position_mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                11, 112, 101, 177, 227, 209, 124, 69, 56, 157, 82, 127, 107, 4,
+                195, 205, 88, 184, 108, 115, 26, 160, 253, 181, 73, 182, 209,
+                188, 3, 248, 41, 70
+              ]
+            }
+          }
+        },
+        {
+          "name": "token_program"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "sysvar_instruction",
+          "address": "Sysvar1nstructions1111111111111111111111111"
+        },
+        {
+          "name": "metadata_program",
+          "address": "metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s"
+        }
+      ],
+      "args": [
+        {
+          "name": "vault_id",
+          "type": "u16"
+        },
+        {
+          "name": "position_id",
+          "type": "u32"
+        }
+      ]
+    },
+    {
       "name": "get_exchange_prices",
       "discriminator": [237, 128, 83, 152, 52, 21, 231, 86],
       "accounts": [
@@ -1322,6 +1422,39 @@
       ]
     },
     {
+      "name": "update_exchange_prices",
+      "discriminator": [209, 14, 188, 95, 242, 20, 119, 196],
+      "accounts": [
+        {
+          "name": "signer",
+          "signer": true
+        },
+        {
+          "name": "vault_state",
+          "docs": ["@dev Verification inside instruction logic"],
+          "writable": true
+        },
+        {
+          "name": "vault_config",
+          "docs": ["@dev Verification inside instruction logic"]
+        },
+        {
+          "name": "supply_token_reserves_liquidity",
+          "docs": ["@dev Verification inside instruction logic"]
+        },
+        {
+          "name": "borrow_token_reserves_liquidity",
+          "docs": ["@dev Verification inside instruction logic"]
+        }
+      ],
+      "args": [
+        {
+          "name": "vault_id",
+          "type": "u16"
+        }
+      ]
+    },
+    {
       "name": "update_liquidation_max_limit",
       "discriminator": [183, 242, 152, 150, 176, 40, 65, 161],
       "accounts": [
@@ -1697,6 +1830,10 @@
       "discriminator": [177, 119, 143, 137, 184, 63, 197, 215]
     },
     {
+      "name": "LogClosePosition",
+      "discriminator": [225, 156, 13, 36, 189, 95, 170, 92]
+    },
+    {
       "name": "LogInitBranch",
       "discriminator": [127, 182, 211, 219, 140, 189, 193, 101]
     },
@@ -1723,6 +1860,10 @@
     {
       "name": "LogLiquidate",
       "discriminator": [154, 128, 202, 147, 65, 233, 195, 73]
+    },
+    {
+      "name": "LogLiquidateInfo",
+      "discriminator": [169, 150, 46, 42, 178, 89, 98, 83]
     },
     {
       "name": "LogOperate",
@@ -1773,6 +1914,10 @@
       "discriminator": [211, 71, 215, 239, 159, 238, 71, 219]
     },
     {
+      "name": "LogUpdateLookupTable",
+      "discriminator": [45, 248, 126, 111, 185, 41, 103, 5]
+    },
+    {
       "name": "LogUpdateOracle",
       "discriminator": [251, 163, 219, 57, 30, 152, 177, 10]
     },
@@ -1787,6 +1932,10 @@
     {
       "name": "LogUpdateWithdrawGap",
       "discriminator": [182, 248, 48, 47, 8, 159, 21, 35]
+    },
+    {
+      "name": "LogUserPosition",
+      "discriminator": [46, 44, 213, 42, 55, 59, 190, 133]
     }
   ],
   "errors": [
@@ -1977,176 +2126,186 @@
     },
     {
       "code": 6037,
+      "name": "VaultInvalidPositionId",
+      "msg": "VAULT_INVALID_POSITION_ID"
+    },
+    {
+      "code": 6038,
+      "name": "VaultPositionNotEmpty",
+      "msg": "VAULT_POSITION_NOT_EMPTY"
+    },
+    {
+      "code": 6039,
       "name": "VaultInvalidSupplyMint",
       "msg": "VAULT_INVALID_SUPPLY_MINT"
     },
     {
-      "code": 6038,
+      "code": 6040,
       "name": "VaultInvalidBorrowMint",
       "msg": "VAULT_INVALID_BORROW_MINT"
     },
     {
-      "code": 6039,
+      "code": 6041,
       "name": "VaultInvalidOracle",
       "msg": "VAULT_INVALID_ORACLE"
     },
     {
-      "code": 6040,
+      "code": 6042,
       "name": "VaultInvalidTick",
       "msg": "VAULT_INVALID_TICK"
     },
     {
-      "code": 6041,
+      "code": 6043,
       "name": "VaultInvalidLiquidityProgram",
       "msg": "VAULT_INVALID_LIQUIDITY_PROGRAM"
     },
     {
-      "code": 6042,
+      "code": 6044,
       "name": "VaultInvalidPositionAuthority",
       "msg": "VAULT_INVALID_POSITION_AUTHORITY"
     },
     {
-      "code": 6043,
+      "code": 6045,
       "name": "VaultOracleNotValid",
       "msg": "VAULT_ORACLE_NOT_VALID"
     },
     {
-      "code": 6044,
+      "code": 6046,
       "name": "VaultBranchOwnerNotValid",
       "msg": "VAULT_BRANCH_OWNER_NOT_VALID"
     },
     {
-      "code": 6045,
+      "code": 6047,
       "name": "VaultTickHasDebtOwnerNotValid",
       "msg": "VAULT_TICK_HAS_DEBT_OWNER_NOT_VALID"
     },
     {
-      "code": 6046,
+      "code": 6048,
       "name": "VaultTickOwnerNotValid",
       "msg": "VAULT_TICK_DATA_OWNER_NOT_VALID"
     },
     {
-      "code": 6047,
+      "code": 6049,
       "name": "VaultLiquidateRemainingAccountsTooShort",
       "msg": "VAULT_LIQUIDATE_REMAINING_ACCOUNTS_TOO_SHORT"
     },
     {
-      "code": 6048,
+      "code": 6050,
       "name": "VaultOperateRemainingAccountsTooShort",
       "msg": "VAULT_OPERATE_REMAINING_ACCOUNTS_TOO_SHORT"
     },
     {
-      "code": 6049,
+      "code": 6051,
       "name": "VaultInvalidZerothBranch",
       "msg": "VAULT_INVALID_ZEROTH_BRANCH"
     },
     {
-      "code": 6050,
-      "name": "VaultCpiToLiquidityFailed",
-      "msg": "VAULT_CPY_TO_LIQUIDITY_FAILED"
-    },
-    {
-      "code": 6051,
-      "name": "VaultCpiToOracleFailed",
-      "msg": "VAULT_CPY_TO_ORACLE_FAILED"
-    },
-    {
       "code": 6052,
+      "name": "VaultCpiToLiquidityFailed",
+      "msg": "VAULT_CPI_TO_LIQUIDITY_FAILED"
+    },
+    {
+      "code": 6053,
+      "name": "VaultCpiToOracleFailed",
+      "msg": "VAULT_CPI_TO_ORACLE_FAILED"
+    },
+    {
+      "code": 6054,
       "name": "VaultOnlyAuthority",
       "msg": "VAULT_ONLY_AUTHORITY"
     },
     {
-      "code": 6053,
+      "code": 6055,
       "name": "VaultNewBranchInvalid",
       "msg": "VAULT_NEW_BRANCH_INVALID"
     },
     {
-      "code": 6054,
+      "code": 6056,
       "name": "VaultTickHasDebtIndexMismatch",
       "msg": "VAULT_TICK_HAS_DEBT_INDEX_MISMATCH"
     },
     {
-      "code": 6055,
+      "code": 6057,
       "name": "VaultTickHasDebtOutOfRange",
       "msg": "VAULT_TICK_HAS_DEBT_OUT_OF_RANGE"
     },
     {
-      "code": 6056,
+      "code": 6058,
       "name": "VaultUserSupplyPositionRequired",
       "msg": "VAULT_USER_SUPPLY_POSITION_REQUIRED"
     },
     {
-      "code": 6057,
+      "code": 6059,
       "name": "VaultClaimAccountRequired",
       "msg": "VAULT_CLAIM_ACCOUNT_REQUIRED"
     },
     {
-      "code": 6058,
+      "code": 6060,
       "name": "VaultRecipientWithdrawAccountRequired",
       "msg": "VAULT_RECIPIENT_WITHDRAW_ACCOUNT_REQUIRED"
     },
     {
-      "code": 6059,
+      "code": 6061,
       "name": "VaultRecipientBorrowAccountRequired",
       "msg": "VAULT_RECIPIENT_BORROW_ACCOUNT_REQUIRED"
     },
     {
-      "code": 6060,
+      "code": 6062,
       "name": "VaultPositionAboveLiquidationThreshold",
       "msg": "VAULT_POSITION_ABOVE_LIQUIDATION_THRESHOLD"
     },
     {
-      "code": 6061,
+      "code": 6063,
       "name": "VaultAdminValueAboveLimit",
       "msg": "VAULT_ADMIN_VALUE_ABOVE_LIMIT"
     },
     {
-      "code": 6062,
+      "code": 6064,
       "name": "VaultAdminOnlyAuths",
       "msg": "VAULT_ADMIN_ONLY_AUTH_ACCOUNTS"
     },
     {
-      "code": 6063,
+      "code": 6065,
       "name": "VaultAdminAddressZeroNotAllowed",
       "msg": "VAULT_ADMIN_ADDRESS_ZERO_NOT_ALLOWED"
     },
     {
-      "code": 6064,
+      "code": 6066,
       "name": "VaultAdminVaultIdMismatch",
       "msg": "VAULT_ADMIN_VAULT_ID_MISMATCH"
     },
     {
-      "code": 6065,
+      "code": 6067,
       "name": "VaultAdminTotalIdsMismatch",
       "msg": "VAULT_ADMIN_TOTAL_IDS_MISMATCH"
     },
     {
-      "code": 6066,
+      "code": 6068,
       "name": "VaultAdminTickMismatch",
       "msg": "VAULT_ADMIN_TICK_MISMATCH"
     },
     {
-      "code": 6067,
+      "code": 6069,
       "name": "VaultAdminLiquidityProgramMismatch",
       "msg": "VAULT_ADMIN_LIQUIDITY_PROGRAM_MISMATCH"
     },
     {
-      "code": 6068,
+      "code": 6070,
       "name": "VaultAdminMaxAuthCountReached",
       "msg": "VAULT_ADMIN_MAX_AUTH_COUNT_REACHED"
     },
     {
-      "code": 6069,
+      "code": 6071,
       "name": "VaultAdminInvalidParams",
       "msg": "VAULT_ADMIN_INVALID_PARAMS"
     },
     {
-      "code": 6070,
+      "code": 6072,
       "name": "VaultAdminOnlyAuthority",
       "msg": "VAULT_ADMIN_ONLY_AUTHORITY"
     },
     {
-      "code": 6071,
+      "code": 6073,
       "name": "VaultAdminOracleProgramMismatch",
       "msg": "VAULT_ADMIN_ORACLE_PROGRAM_MISMATCH"
     }
@@ -2287,6 +2446,30 @@
       }
     },
     {
+      "name": "LogClosePosition",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "signer",
+            "type": "pubkey"
+          },
+          {
+            "name": "position_id",
+            "type": "u32"
+          },
+          {
+            "name": "vault_id",
+            "type": "u16"
+          },
+          {
+            "name": "position_mint",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
       "name": "LogInitBranch",
       "type": {
         "kind": "struct",
@@ -2386,6 +2569,26 @@
           {
             "name": "to",
             "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LogLiquidateInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "vault_id",
+            "type": "u16"
+          },
+          {
+            "name": "start_tick",
+            "type": "i32"
+          },
+          {
+            "name": "end_tick",
+            "type": "i32"
           }
         ]
       }
@@ -2601,6 +2804,18 @@
       }
     },
     {
+      "name": "LogUpdateLookupTable",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "lookup_table",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
       "name": "LogUpdateOracle",
       "type": {
         "kind": "struct",
@@ -2644,6 +2859,42 @@
           {
             "name": "withdraw_gap",
             "type": "u16"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LogUserPosition",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "nft_id",
+            "type": "u32"
+          },
+          {
+            "name": "vault_id",
+            "type": "u16"
+          },
+          {
+            "name": "position_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "tick",
+            "type": "i32"
+          },
+          {
+            "name": "col",
+            "type": "u64"
+          },
+          {
+            "name": "borrow",
+            "type": "u64"
           }
         ]
       }
@@ -2730,6 +2981,15 @@
           },
           {
             "name": "StakePool"
+          },
+          {
+            "name": "MsolPool"
+          },
+          {
+            "name": "Redstone"
+          },
+          {
+            "name": "Chainlink"
           }
         ]
       }

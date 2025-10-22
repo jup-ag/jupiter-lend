@@ -14,6 +14,164 @@ export type Vaults = {
   };
   instructions: [
     {
+      name: "closePosition";
+      discriminator: [123, 134, 81, 0, 49, 68, 98, 98];
+      accounts: [
+        {
+          name: "signer";
+          writable: true;
+          signer: true;
+        },
+        {
+          name: "vaultAdmin";
+        },
+        {
+          name: "vaultState";
+          docs: ["@dev Verification inside instruction logic"];
+          writable: true;
+        },
+        {
+          name: "vaultConfig";
+          docs: ["@dev Verification inside instruction logic"];
+          writable: true;
+        },
+        {
+          name: "position";
+          docs: ["@dev Verification inside instruction logic"];
+          writable: true;
+        },
+        {
+          name: "positionMint";
+          docs: ["@dev Verification inside instruction logic"];
+          writable: true;
+        },
+        {
+          name: "positionTokenAccount";
+          docs: ["@dev Verification inside instruction logic"];
+          writable: true;
+        },
+        {
+          name: "metadataAccount";
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: "const";
+                value: [109, 101, 116, 97, 100, 97, 116, 97];
+              },
+              {
+                kind: "const";
+                value: [
+                  11,
+                  112,
+                  101,
+                  177,
+                  227,
+                  209,
+                  124,
+                  69,
+                  56,
+                  157,
+                  82,
+                  127,
+                  107,
+                  4,
+                  195,
+                  205,
+                  88,
+                  184,
+                  108,
+                  115,
+                  26,
+                  160,
+                  253,
+                  181,
+                  73,
+                  182,
+                  209,
+                  188,
+                  3,
+                  248,
+                  41,
+                  70
+                ];
+              },
+              {
+                kind: "account";
+                path: "positionMint";
+              }
+            ];
+            program: {
+              kind: "const";
+              value: [
+                11,
+                112,
+                101,
+                177,
+                227,
+                209,
+                124,
+                69,
+                56,
+                157,
+                82,
+                127,
+                107,
+                4,
+                195,
+                205,
+                88,
+                184,
+                108,
+                115,
+                26,
+                160,
+                253,
+                181,
+                73,
+                182,
+                209,
+                188,
+                3,
+                248,
+                41,
+                70
+              ];
+            };
+          };
+        },
+        {
+          name: "tokenProgram";
+        },
+        {
+          name: "associatedTokenProgram";
+          address: "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL";
+        },
+        {
+          name: "systemProgram";
+          address: "11111111111111111111111111111111";
+        },
+        {
+          name: "sysvarInstruction";
+          address: "Sysvar1nstructions1111111111111111111111111";
+        },
+        {
+          name: "metadataProgram";
+          address: "metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s";
+        }
+      ];
+      args: [
+        {
+          name: "vaultId";
+          type: "u16";
+        },
+        {
+          name: "positionId";
+          type: "u32";
+        }
+      ];
+    },
+    {
       name: "getExchangePrices";
       discriminator: [237, 128, 83, 152, 52, 21, 231, 86];
       accounts: [
@@ -1723,6 +1881,39 @@ export type Vaults = {
       ];
     },
     {
+      name: "updateExchangePrices";
+      discriminator: [209, 14, 188, 95, 242, 20, 119, 196];
+      accounts: [
+        {
+          name: "signer";
+          signer: true;
+        },
+        {
+          name: "vaultState";
+          docs: ["@dev Verification inside instruction logic"];
+          writable: true;
+        },
+        {
+          name: "vaultConfig";
+          docs: ["@dev Verification inside instruction logic"];
+        },
+        {
+          name: "supplyTokenReservesLiquidity";
+          docs: ["@dev Verification inside instruction logic"];
+        },
+        {
+          name: "borrowTokenReservesLiquidity";
+          docs: ["@dev Verification inside instruction logic"];
+        }
+      ];
+      args: [
+        {
+          name: "vaultId";
+          type: "u16";
+        }
+      ];
+    },
+    {
       name: "updateLiquidationMaxLimit";
       discriminator: [183, 242, 152, 150, 176, 40, 65, 161];
       accounts: [
@@ -2098,6 +2289,10 @@ export type Vaults = {
       discriminator: [177, 119, 143, 137, 184, 63, 197, 215];
     },
     {
+      name: "logClosePosition";
+      discriminator: [225, 156, 13, 36, 189, 95, 170, 92];
+    },
+    {
       name: "logInitBranch";
       discriminator: [127, 182, 211, 219, 140, 189, 193, 101];
     },
@@ -2124,6 +2319,10 @@ export type Vaults = {
     {
       name: "logLiquidate";
       discriminator: [154, 128, 202, 147, 65, 233, 195, 73];
+    },
+    {
+      name: "logLiquidateInfo";
+      discriminator: [169, 150, 46, 42, 178, 89, 98, 83];
     },
     {
       name: "logOperate";
@@ -2174,6 +2373,10 @@ export type Vaults = {
       discriminator: [211, 71, 215, 239, 159, 238, 71, 219];
     },
     {
+      name: "logUpdateLookupTable";
+      discriminator: [45, 248, 126, 111, 185, 41, 103, 5];
+    },
+    {
       name: "logUpdateOracle";
       discriminator: [251, 163, 219, 57, 30, 152, 177, 10];
     },
@@ -2188,6 +2391,10 @@ export type Vaults = {
     {
       name: "logUpdateWithdrawGap";
       discriminator: [182, 248, 48, 47, 8, 159, 21, 35];
+    },
+    {
+      name: "logUserPosition";
+      discriminator: [46, 44, 213, 42, 55, 59, 190, 133];
     }
   ];
   errors: [
@@ -2378,176 +2585,186 @@ export type Vaults = {
     },
     {
       code: 6037;
+      name: "vaultInvalidPositionId";
+      msg: "vaultInvalidPositionId";
+    },
+    {
+      code: 6038;
+      name: "vaultPositionNotEmpty";
+      msg: "vaultPositionNotEmpty";
+    },
+    {
+      code: 6039;
       name: "vaultInvalidSupplyMint";
       msg: "vaultInvalidSupplyMint";
     },
     {
-      code: 6038;
+      code: 6040;
       name: "vaultInvalidBorrowMint";
       msg: "vaultInvalidBorrowMint";
     },
     {
-      code: 6039;
+      code: 6041;
       name: "vaultInvalidOracle";
       msg: "vaultInvalidOracle";
     },
     {
-      code: 6040;
+      code: 6042;
       name: "vaultInvalidTick";
       msg: "vaultInvalidTick";
     },
     {
-      code: 6041;
+      code: 6043;
       name: "vaultInvalidLiquidityProgram";
       msg: "vaultInvalidLiquidityProgram";
     },
     {
-      code: 6042;
+      code: 6044;
       name: "vaultInvalidPositionAuthority";
       msg: "vaultInvalidPositionAuthority";
     },
     {
-      code: 6043;
+      code: 6045;
       name: "vaultOracleNotValid";
       msg: "vaultOracleNotValid";
     },
     {
-      code: 6044;
+      code: 6046;
       name: "vaultBranchOwnerNotValid";
       msg: "vaultBranchOwnerNotValid";
     },
     {
-      code: 6045;
+      code: 6047;
       name: "vaultTickHasDebtOwnerNotValid";
       msg: "vaultTickHasDebtOwnerNotValid";
     },
     {
-      code: 6046;
+      code: 6048;
       name: "vaultTickOwnerNotValid";
       msg: "vaultTickDataOwnerNotValid";
     },
     {
-      code: 6047;
+      code: 6049;
       name: "vaultLiquidateRemainingAccountsTooShort";
       msg: "vaultLiquidateRemainingAccountsTooShort";
     },
     {
-      code: 6048;
+      code: 6050;
       name: "vaultOperateRemainingAccountsTooShort";
       msg: "vaultOperateRemainingAccountsTooShort";
     },
     {
-      code: 6049;
+      code: 6051;
       name: "vaultInvalidZerothBranch";
       msg: "vaultInvalidZerothBranch";
     },
     {
-      code: 6050;
-      name: "vaultCpiToLiquidityFailed";
-      msg: "vaultCpyToLiquidityFailed";
-    },
-    {
-      code: 6051;
-      name: "vaultCpiToOracleFailed";
-      msg: "vaultCpyToOracleFailed";
-    },
-    {
       code: 6052;
+      name: "vaultCpiToLiquidityFailed";
+      msg: "vaultCpiToLiquidityFailed";
+    },
+    {
+      code: 6053;
+      name: "vaultCpiToOracleFailed";
+      msg: "vaultCpiToOracleFailed";
+    },
+    {
+      code: 6054;
       name: "vaultOnlyAuthority";
       msg: "vaultOnlyAuthority";
     },
     {
-      code: 6053;
+      code: 6055;
       name: "vaultNewBranchInvalid";
       msg: "vaultNewBranchInvalid";
     },
     {
-      code: 6054;
+      code: 6056;
       name: "vaultTickHasDebtIndexMismatch";
       msg: "vaultTickHasDebtIndexMismatch";
     },
     {
-      code: 6055;
+      code: 6057;
       name: "vaultTickHasDebtOutOfRange";
       msg: "vaultTickHasDebtOutOfRange";
     },
     {
-      code: 6056;
+      code: 6058;
       name: "vaultUserSupplyPositionRequired";
       msg: "vaultUserSupplyPositionRequired";
     },
     {
-      code: 6057;
+      code: 6059;
       name: "vaultClaimAccountRequired";
       msg: "vaultClaimAccountRequired";
     },
     {
-      code: 6058;
+      code: 6060;
       name: "vaultRecipientWithdrawAccountRequired";
       msg: "vaultRecipientWithdrawAccountRequired";
     },
     {
-      code: 6059;
+      code: 6061;
       name: "vaultRecipientBorrowAccountRequired";
       msg: "vaultRecipientBorrowAccountRequired";
     },
     {
-      code: 6060;
+      code: 6062;
       name: "vaultPositionAboveLiquidationThreshold";
       msg: "vaultPositionAboveLiquidationThreshold";
     },
     {
-      code: 6061;
+      code: 6063;
       name: "vaultAdminValueAboveLimit";
       msg: "vaultAdminValueAboveLimit";
     },
     {
-      code: 6062;
+      code: 6064;
       name: "vaultAdminOnlyAuths";
       msg: "vaultAdminOnlyAuthAccounts";
     },
     {
-      code: 6063;
+      code: 6065;
       name: "vaultAdminAddressZeroNotAllowed";
       msg: "vaultAdminAddressZeroNotAllowed";
     },
     {
-      code: 6064;
+      code: 6066;
       name: "vaultAdminVaultIdMismatch";
       msg: "vaultAdminVaultIdMismatch";
     },
     {
-      code: 6065;
+      code: 6067;
       name: "vaultAdminTotalIdsMismatch";
       msg: "vaultAdminTotalIdsMismatch";
     },
     {
-      code: 6066;
+      code: 6068;
       name: "vaultAdminTickMismatch";
       msg: "vaultAdminTickMismatch";
     },
     {
-      code: 6067;
+      code: 6069;
       name: "vaultAdminLiquidityProgramMismatch";
       msg: "vaultAdminLiquidityProgramMismatch";
     },
     {
-      code: 6068;
+      code: 6070;
       name: "vaultAdminMaxAuthCountReached";
       msg: "vaultAdminMaxAuthCountReached";
     },
     {
-      code: 6069;
+      code: 6071;
       name: "vaultAdminInvalidParams";
       msg: "vaultAdminInvalidParams";
     },
     {
-      code: 6070;
+      code: 6072;
       name: "vaultAdminOnlyAuthority";
       msg: "vaultAdminOnlyAuthority";
     },
     {
-      code: 6071;
+      code: 6073;
       name: "vaultAdminOracleProgramMismatch";
       msg: "vaultAdminOracleProgramMismatch";
     }
@@ -2688,6 +2905,30 @@ export type Vaults = {
       };
     },
     {
+      name: "logClosePosition";
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "signer";
+            type: "pubkey";
+          },
+          {
+            name: "positionId";
+            type: "u32";
+          },
+          {
+            name: "vaultId";
+            type: "u16";
+          },
+          {
+            name: "positionMint";
+            type: "pubkey";
+          }
+        ];
+      };
+    },
+    {
       name: "logInitBranch";
       type: {
         kind: "struct";
@@ -2787,6 +3028,26 @@ export type Vaults = {
           {
             name: "to";
             type: "pubkey";
+          }
+        ];
+      };
+    },
+    {
+      name: "logLiquidateInfo";
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "vaultId";
+            type: "u16";
+          },
+          {
+            name: "startTick";
+            type: "i32";
+          },
+          {
+            name: "endTick";
+            type: "i32";
           }
         ];
       };
@@ -3002,6 +3263,18 @@ export type Vaults = {
       };
     },
     {
+      name: "logUpdateLookupTable";
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "lookupTable";
+            type: "pubkey";
+          }
+        ];
+      };
+    },
+    {
       name: "logUpdateOracle";
       type: {
         kind: "struct";
@@ -3045,6 +3318,42 @@ export type Vaults = {
           {
             name: "withdrawGap";
             type: "u16";
+          }
+        ];
+      };
+    },
+    {
+      name: "logUserPosition";
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "user";
+            type: "pubkey";
+          },
+          {
+            name: "nftId";
+            type: "u32";
+          },
+          {
+            name: "vaultId";
+            type: "u16";
+          },
+          {
+            name: "positionMint";
+            type: "pubkey";
+          },
+          {
+            name: "tick";
+            type: "i32";
+          },
+          {
+            name: "col";
+            type: "u64";
+          },
+          {
+            name: "borrow";
+            type: "u64";
           }
         ];
       };
@@ -3131,6 +3440,15 @@ export type Vaults = {
           },
           {
             name: "stakePool";
+          },
+          {
+            name: "msolPool";
+          },
+          {
+            name: "redstone";
+          },
+          {
+            name: "chainlink";
           }
         ];
       };

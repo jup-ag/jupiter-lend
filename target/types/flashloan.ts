@@ -121,6 +121,7 @@ export type Flashloan = {
         },
         {
           name: "liquidityProgram";
+          relations: ["flashloanAdmin"];
         },
         {
           name: "tokenProgram";
@@ -238,6 +239,7 @@ export type Flashloan = {
         },
         {
           name: "liquidityProgram";
+          relations: ["flashloanAdmin"];
         },
         {
           name: "tokenProgram";
@@ -449,6 +451,26 @@ export type Flashloan = {
       code: 6009;
       name: "flashloanPaybackNotFound";
       msg: "flashloanPaybackNotFound";
+    },
+    {
+      code: 6010;
+      name: "flashloanInvalidInstruction";
+      msg: "flashloanInvalidInstruction";
+    },
+    {
+      code: 6011;
+      name: "flashloanPaused";
+      msg: "flashloanPaused";
+    },
+    {
+      code: 6012;
+      name: "flashloanCpiCallNotAllowed";
+      msg: "flashloanCpicallNotAllowed";
+    },
+    {
+      code: 6013;
+      name: "flashloanMultiplePaybacksFound";
+      msg: "flashloanMultiplePaybacksFound";
     }
   ];
   types: [

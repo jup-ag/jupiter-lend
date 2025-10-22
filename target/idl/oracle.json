@@ -214,6 +214,10 @@
   ],
   "events": [
     {
+      "name": "LogStakePoolHighFeeDetected",
+      "discriminator": [198, 106, 149, 7, 25, 83, 39, 155]
+    },
+    {
       "name": "LogUpdateAuthority",
       "discriminator": [150, 152, 157, 143, 6, 135, 193, 101]
     },
@@ -297,6 +301,26 @@
       "code": 6014,
       "name": "InvalidPrice",
       "msg": "INVALID_PRICE"
+    },
+    {
+      "code": 6015,
+      "name": "FeeTooHigh",
+      "msg": "FEE_TOO_HIGH"
+    },
+    {
+      "code": 6016,
+      "name": "RedstonePriceOverflow",
+      "msg": "REDSTONE_PRICE_OVERFLOW"
+    },
+    {
+      "code": 6017,
+      "name": "TimestampExpected",
+      "msg": "TIMESTAMP_EXPECTED"
+    },
+    {
+      "code": 6018,
+      "name": "ChainlinkPriceReadError",
+      "msg": "CHAINLINK_PRICE_READ_ERROR"
     }
   ],
   "types": [
@@ -312,6 +336,22 @@
           {
             "name": "value",
             "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LogStakePoolHighFeeDetected",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "stake_pool",
+            "type": "pubkey"
+          },
+          {
+            "name": "epoch",
+            "type": "u64"
           }
         ]
       }
@@ -403,6 +443,12 @@
           },
           {
             "name": "MsolPool"
+          },
+          {
+            "name": "Redstone"
+          },
+          {
+            "name": "Chainlink"
           }
         ]
       }
