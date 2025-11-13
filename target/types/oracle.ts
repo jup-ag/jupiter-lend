@@ -323,8 +323,33 @@ export type Oracle = {
     },
     {
       code: 6018;
+      name: "cpiToStakeProgramFailed";
+      msg: "cpiToStakeProgramFailed";
+    },
+    {
+      code: 6019;
+      name: "invalidStakePoolReturnParams";
+      msg: "invalidStakePoolReturnParams";
+    },
+    {
+      code: 6020;
       name: "chainlinkPriceReadError";
       msg: "chainlinkPriceReadError";
+    },
+    {
+      code: 6021;
+      name: "singlePoolTokenSupplyZero";
+      msg: "singlePoolTokenSupplyZero";
+    },
+    {
+      code: 6022;
+      name: "singlePoolInvalidStakeAccount";
+      msg: "singlePoolInvalidStakeAccount";
+    },
+    {
+      code: 6023;
+      name: "singlePoolInvalidMint";
+      msg: "singlePoolInvalidMint";
     }
   ];
   types: [
@@ -453,6 +478,9 @@ export type Oracle = {
           },
           {
             name: "chainlink";
+          },
+          {
+            name: "singlePool";
           }
         ];
       };

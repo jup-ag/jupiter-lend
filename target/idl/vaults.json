@@ -8,106 +8,6 @@
   },
   "instructions": [
     {
-      "name": "close_position",
-      "discriminator": [123, 134, 81, 0, 49, 68, 98, 98],
-      "accounts": [
-        {
-          "name": "signer",
-          "writable": true,
-          "signer": true
-        },
-        {
-          "name": "vault_admin"
-        },
-        {
-          "name": "vault_state",
-          "docs": ["@dev Verification inside instruction logic"],
-          "writable": true
-        },
-        {
-          "name": "vault_config",
-          "docs": ["@dev Verification inside instruction logic"],
-          "writable": true
-        },
-        {
-          "name": "position",
-          "docs": ["@dev Verification inside instruction logic"],
-          "writable": true
-        },
-        {
-          "name": "position_mint",
-          "docs": ["@dev Verification inside instruction logic"],
-          "writable": true
-        },
-        {
-          "name": "position_token_account",
-          "docs": ["@dev Verification inside instruction logic"],
-          "writable": true
-        },
-        {
-          "name": "metadata_account",
-          "writable": true,
-          "pda": {
-            "seeds": [
-              {
-                "kind": "const",
-                "value": [109, 101, 116, 97, 100, 97, 116, 97]
-              },
-              {
-                "kind": "const",
-                "value": [
-                  11, 112, 101, 177, 227, 209, 124, 69, 56, 157, 82, 127, 107,
-                  4, 195, 205, 88, 184, 108, 115, 26, 160, 253, 181, 73, 182,
-                  209, 188, 3, 248, 41, 70
-                ]
-              },
-              {
-                "kind": "account",
-                "path": "position_mint"
-              }
-            ],
-            "program": {
-              "kind": "const",
-              "value": [
-                11, 112, 101, 177, 227, 209, 124, 69, 56, 157, 82, 127, 107, 4,
-                195, 205, 88, 184, 108, 115, 26, 160, 253, 181, 73, 182, 209,
-                188, 3, 248, 41, 70
-              ]
-            }
-          }
-        },
-        {
-          "name": "token_program"
-        },
-        {
-          "name": "associated_token_program",
-          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
-        },
-        {
-          "name": "system_program",
-          "address": "11111111111111111111111111111111"
-        },
-        {
-          "name": "sysvar_instruction",
-          "address": "Sysvar1nstructions1111111111111111111111111"
-        },
-        {
-          "name": "metadata_program",
-          "address": "metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s"
-        }
-      ],
-      "args": [
-        {
-          "name": "vault_id",
-          "type": "u16"
-        },
-        {
-          "name": "position_id",
-          "type": "u32"
-        }
-      ]
-    },
-    {
       "name": "get_exchange_prices",
       "discriminator": [237, 128, 83, 152, 52, 21, 231, 86],
       "accounts": [
@@ -1425,10 +1325,6 @@
       "name": "update_exchange_prices",
       "discriminator": [209, 14, 188, 95, 242, 20, 119, 196],
       "accounts": [
-        {
-          "name": "signer",
-          "signer": true
-        },
         {
           "name": "vault_state",
           "docs": ["@dev Verification inside instruction logic"],
@@ -2990,6 +2886,9 @@
           },
           {
             "name": "Chainlink"
+          },
+          {
+            "name": "SinglePool"
           }
         ]
       }

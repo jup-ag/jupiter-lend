@@ -14,164 +14,6 @@ export type Vaults = {
   };
   instructions: [
     {
-      name: "closePosition";
-      discriminator: [123, 134, 81, 0, 49, 68, 98, 98];
-      accounts: [
-        {
-          name: "signer";
-          writable: true;
-          signer: true;
-        },
-        {
-          name: "vaultAdmin";
-        },
-        {
-          name: "vaultState";
-          docs: ["@dev Verification inside instruction logic"];
-          writable: true;
-        },
-        {
-          name: "vaultConfig";
-          docs: ["@dev Verification inside instruction logic"];
-          writable: true;
-        },
-        {
-          name: "position";
-          docs: ["@dev Verification inside instruction logic"];
-          writable: true;
-        },
-        {
-          name: "positionMint";
-          docs: ["@dev Verification inside instruction logic"];
-          writable: true;
-        },
-        {
-          name: "positionTokenAccount";
-          docs: ["@dev Verification inside instruction logic"];
-          writable: true;
-        },
-        {
-          name: "metadataAccount";
-          writable: true;
-          pda: {
-            seeds: [
-              {
-                kind: "const";
-                value: [109, 101, 116, 97, 100, 97, 116, 97];
-              },
-              {
-                kind: "const";
-                value: [
-                  11,
-                  112,
-                  101,
-                  177,
-                  227,
-                  209,
-                  124,
-                  69,
-                  56,
-                  157,
-                  82,
-                  127,
-                  107,
-                  4,
-                  195,
-                  205,
-                  88,
-                  184,
-                  108,
-                  115,
-                  26,
-                  160,
-                  253,
-                  181,
-                  73,
-                  182,
-                  209,
-                  188,
-                  3,
-                  248,
-                  41,
-                  70
-                ];
-              },
-              {
-                kind: "account";
-                path: "positionMint";
-              }
-            ];
-            program: {
-              kind: "const";
-              value: [
-                11,
-                112,
-                101,
-                177,
-                227,
-                209,
-                124,
-                69,
-                56,
-                157,
-                82,
-                127,
-                107,
-                4,
-                195,
-                205,
-                88,
-                184,
-                108,
-                115,
-                26,
-                160,
-                253,
-                181,
-                73,
-                182,
-                209,
-                188,
-                3,
-                248,
-                41,
-                70
-              ];
-            };
-          };
-        },
-        {
-          name: "tokenProgram";
-        },
-        {
-          name: "associatedTokenProgram";
-          address: "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL";
-        },
-        {
-          name: "systemProgram";
-          address: "11111111111111111111111111111111";
-        },
-        {
-          name: "sysvarInstruction";
-          address: "Sysvar1nstructions1111111111111111111111111";
-        },
-        {
-          name: "metadataProgram";
-          address: "metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s";
-        }
-      ];
-      args: [
-        {
-          name: "vaultId";
-          type: "u16";
-        },
-        {
-          name: "positionId";
-          type: "u32";
-        }
-      ];
-    },
-    {
       name: "getExchangePrices";
       discriminator: [237, 128, 83, 152, 52, 21, 231, 86];
       accounts: [
@@ -1885,10 +1727,6 @@ export type Vaults = {
       discriminator: [209, 14, 188, 95, 242, 20, 119, 196];
       accounts: [
         {
-          name: "signer";
-          signer: true;
-        },
-        {
           name: "vaultState";
           docs: ["@dev Verification inside instruction logic"];
           writable: true;
@@ -3449,6 +3287,9 @@ export type Vaults = {
           },
           {
             name: "chainlink";
+          },
+          {
+            name: "singlePool";
           }
         ];
       };

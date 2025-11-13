@@ -319,8 +319,33 @@
     },
     {
       "code": 6018,
+      "name": "CpiToStakeProgramFailed",
+      "msg": "CPI_TO_STAKE_PROGRAM_FAILED"
+    },
+    {
+      "code": 6019,
+      "name": "InvalidStakePoolReturnParams",
+      "msg": "INVALID_STAKE_POOL_RETURN_PARAMS"
+    },
+    {
+      "code": 6020,
       "name": "ChainlinkPriceReadError",
       "msg": "CHAINLINK_PRICE_READ_ERROR"
+    },
+    {
+      "code": 6021,
+      "name": "SinglePoolTokenSupplyZero",
+      "msg": "SINGLE_POOL_TOKEN_SUPPLY_ZERO"
+    },
+    {
+      "code": 6022,
+      "name": "SinglePoolInvalidStakeAccount",
+      "msg": "SINGLE_POOL_INVALID_STAKE_ACCOUNT"
+    },
+    {
+      "code": 6023,
+      "name": "SinglePoolInvalidMint",
+      "msg": "SINGLE_POOL_INVALID_MINT"
     }
   ],
   "types": [
@@ -449,6 +474,9 @@
           },
           {
             "name": "Chainlink"
+          },
+          {
+            "name": "SinglePool"
           }
         ]
       }
