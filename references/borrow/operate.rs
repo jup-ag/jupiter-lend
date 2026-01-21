@@ -259,12 +259,10 @@ impl<'info> OperateParams<'info> {
         ]);
 
         // Add remaining accounts (oracle sources, branches, tick arrays)
-        for (i, account) in remaining_accounts.iter().enumerate() {
-            let writable = i >= remaining_accounts_indices[0] as usize;
-            if writable {
+        for account in remaining_accounts.iter() {
+            if account.is_writable {
                 account_metas.push(AccountMeta::new(*account.key, false));
             } else {
-                //Pass the Oracle account as readonly
                 account_metas.push(AccountMeta::new_readonly(*account.key, false));
             }
         }
