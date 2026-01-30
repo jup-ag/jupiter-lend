@@ -259,8 +259,12 @@ impl<'info> OperateParams<'info> {
         ]);
 
         // Add remaining accounts (oracle sources, branches, tick arrays)
-        for account in &remaining_accounts {
-            account_metas.push(AccountMeta::new(*account.key, false));
+        for account in remaining_accounts.iter() {
+            if account.is_writable {
+                account_metas.push(AccountMeta::new(*account.key, false));
+            } else {
+                account_metas.push(AccountMeta::new_readonly(*account.key, false));
+            }
         }
 
         let instruction = Instruction {
