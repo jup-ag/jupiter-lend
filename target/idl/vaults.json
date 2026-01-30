@@ -2,7 +2,7 @@
   "address": "jupr81YtYssSyPt8jbnGuiWon5f6x9TcDEFxYe3Bdzi",
   "metadata": {
     "name": "vaults",
-    "version": "0.1.0",
+    "version": "0.1.2",
     "spec": "0.1.0",
     "description": "Created with Anchor"
   },
@@ -480,8 +480,7 @@
           "signer": true
         },
         {
-          "name": "vault_admin",
-          "writable": true
+          "name": "vault_admin"
         },
         {
           "name": "vault_config",
@@ -1523,8 +1522,7 @@
           "writable": true
         },
         {
-          "name": "new_oracle",
-          "writable": true
+          "name": "new_oracle"
         },
         {
           "name": "supply_token_reserves_liquidity",
@@ -1760,6 +1758,10 @@
     {
       "name": "LogLiquidateInfo",
       "discriminator": [169, 150, 46, 42, 178, 89, 98, 83]
+    },
+    {
+      "name": "LogLiquidationRoundingDiff",
+      "discriminator": [35, 189, 179, 90, 218, 51, 104, 128]
     },
     {
       "name": "LogOperate",
@@ -2490,6 +2492,30 @@
       }
     },
     {
+      "name": "LogLiquidationRoundingDiff",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "vault_id",
+            "type": "u16"
+          },
+          {
+            "name": "actual_debt_amt",
+            "type": "u64"
+          },
+          {
+            "name": "debt_amount",
+            "type": "u64"
+          },
+          {
+            "name": "diff",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
       "name": "LogOperate",
       "type": {
         "kind": "struct",
@@ -2889,6 +2915,9 @@
           },
           {
             "name": "SinglePool"
+          },
+          {
+            "name": "JupLend"
           }
         ]
       }
