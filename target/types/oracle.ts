@@ -8,7 +8,7 @@ export type Oracle = {
   address: "jupnw4B6Eqs7ft6rxpzYLJZYSnrpRgPcr589n5Kv4oc";
   metadata: {
     name: "oracle";
-    version: "0.1.0";
+    version: "0.1.2";
     spec: "0.1.0";
     description: "Created with Anchor";
   };
@@ -19,13 +19,13 @@ export type Oracle = {
       accounts: [
         {
           name: "oracle";
-        }
+        },
       ];
       args: [
         {
           name: "nonce";
           type: "u16";
-        }
+        },
       ];
     },
     {
@@ -34,13 +34,13 @@ export type Oracle = {
       accounts: [
         {
           name: "oracle";
-        }
+        },
       ];
       args: [
         {
           name: "nonce";
           type: "u16";
-        }
+        },
       ];
       returns: "u128";
     },
@@ -50,13 +50,13 @@ export type Oracle = {
       accounts: [
         {
           name: "oracle";
-        }
+        },
       ];
       args: [
         {
           name: "nonce";
           type: "u16";
-        }
+        },
       ];
       returns: "u128";
     },
@@ -66,13 +66,13 @@ export type Oracle = {
       accounts: [
         {
           name: "oracle";
-        }
+        },
       ];
       args: [
         {
           name: "nonce";
           type: "u16";
-        }
+        },
       ];
       returns: "u128";
     },
@@ -93,20 +93,20 @@ export type Oracle = {
               {
                 kind: "const";
                 value: [111, 114, 97, 99, 108, 101, 95, 97, 100, 109, 105, 110];
-              }
+              },
             ];
           };
         },
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        }
+        },
       ];
       args: [
         {
           name: "authority";
           type: "pubkey";
-        }
+        },
       ];
     },
     {
@@ -133,14 +133,14 @@ export type Oracle = {
               {
                 kind: "arg";
                 path: "nonce";
-              }
+              },
             ];
           };
         },
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        }
+        },
       ];
       args: [
         {
@@ -156,7 +156,7 @@ export type Oracle = {
         {
           name: "nonce";
           type: "u16";
-        }
+        },
       ];
     },
     {
@@ -170,13 +170,13 @@ export type Oracle = {
         {
           name: "oracleAdmin";
           writable: true;
-        }
+        },
       ];
       args: [
         {
           name: "newAuthority";
           type: "pubkey";
-        }
+        },
       ];
     },
     {
@@ -190,7 +190,7 @@ export type Oracle = {
         {
           name: "oracleAdmin";
           writable: true;
-        }
+        },
       ];
       args: [
         {
@@ -202,9 +202,9 @@ export type Oracle = {
               };
             };
           };
-        }
+        },
       ];
-    }
+    },
   ];
   accounts: [
     {
@@ -214,7 +214,7 @@ export type Oracle = {
     {
       name: "oracleAdmin";
       discriminator: [239, 232, 8, 20, 254, 63, 25, 246];
-    }
+    },
   ];
   events: [
     {
@@ -228,7 +228,7 @@ export type Oracle = {
     {
       name: "logUpdateAuths";
       discriminator: [88, 80, 109, 48, 111, 203, 76, 251];
-    }
+    },
   ];
   errors: [
     {
@@ -350,7 +350,12 @@ export type Oracle = {
       code: 6023;
       name: "singlePoolInvalidMint";
       msg: "singlePoolInvalidMint";
-    }
+    },
+    {
+      code: 6024;
+      name: "jupLendAccountMismatch";
+      msg: "jupLendAccountMismatch";
+    },
   ];
   types: [
     {
@@ -365,7 +370,7 @@ export type Oracle = {
           {
             name: "value";
             type: "bool";
-          }
+          },
         ];
       };
     },
@@ -381,7 +386,7 @@ export type Oracle = {
           {
             name: "epoch";
             type: "u64";
-          }
+          },
         ];
       };
     },
@@ -393,7 +398,7 @@ export type Oracle = {
           {
             name: "newAuthority";
             type: "pubkey";
-          }
+          },
         ];
       };
     },
@@ -411,7 +416,7 @@ export type Oracle = {
                 };
               };
             };
-          }
+          },
         ];
       };
     },
@@ -437,7 +442,7 @@ export type Oracle = {
           {
             name: "bump";
             type: "u8";
-          }
+          },
         ];
       };
     },
@@ -455,7 +460,7 @@ export type Oracle = {
             type: {
               vec: "pubkey";
             };
-          }
+          },
         ];
       };
     },
@@ -481,7 +486,10 @@ export type Oracle = {
           },
           {
             name: "singlePool";
-          }
+          },
+          {
+            name: "jupLend";
+          },
         ];
       };
     },
@@ -513,9 +521,9 @@ export type Oracle = {
                 name: "sourceType";
               };
             };
-          }
+          },
         ];
       };
-    }
+    },
   ];
 };

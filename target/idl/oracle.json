@@ -2,7 +2,7 @@
   "address": "jupnw4B6Eqs7ft6rxpzYLJZYSnrpRgPcr589n5Kv4oc",
   "metadata": {
     "name": "oracle",
-    "version": "0.1.0",
+    "version": "0.1.2",
     "spec": "0.1.0",
     "description": "Created with Anchor"
   },
@@ -346,6 +346,11 @@
       "code": 6023,
       "name": "SinglePoolInvalidMint",
       "msg": "SINGLE_POOL_INVALID_MINT"
+    },
+    {
+      "code": 6024,
+      "name": "JupLendAccountMismatch",
+      "msg": "JUP_LEND_ACCOUNT_MISMATCH"
     }
   ],
   "types": [
@@ -477,6 +482,9 @@
           },
           {
             "name": "SinglePool"
+          },
+          {
+            "name": "JupLend"
           }
         ]
       }
