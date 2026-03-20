@@ -2,11 +2,31 @@
   "address": "jupnw4B6Eqs7ft6rxpzYLJZYSnrpRgPcr589n5Kv4oc",
   "metadata": {
     "name": "oracle",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "spec": "0.1.0",
     "description": "Created with Anchor"
   },
   "instructions": [
+    {
+      "name": "chainlink_data_streams_feed_access_controller",
+      "discriminator": [181, 88, 179, 151, 225, 38, 9, 6],
+      "accounts": [
+        {
+          "name": "authority",
+          "signer": true
+        },
+        {
+          "name": "chainlink_ds_cache",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "suspend",
+          "type": "bool"
+        }
+      ]
+    },
     {
       "name": "get_both_exchange_rate",
       "discriminator": [92, 88, 161, 46, 230, 193, 46, 237],
@@ -106,6 +126,64 @@
       ]
     },
     {
+      "name": "init_chainlink_data_streams_cache",
+      "discriminator": [47, 174, 206, 189, 94, 253, 25, 233],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "oracle_admin"
+        },
+        {
+          "name": "chainlink_ds_cache",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99, 104, 97, 105, 110, 108, 105, 110, 107, 95, 100, 115
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "nonce"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "nonce",
+          "type": "u16"
+        },
+        {
+          "name": "feeds",
+          "type": {
+            "vec": {
+              "defined": {
+                "name": "FeedEntry"
+              }
+            }
+          }
+        },
+        {
+          "name": "keepers",
+          "type": {
+            "vec": "pubkey"
+          }
+        }
+      ]
+    },
+    {
       "name": "init_oracle_config",
       "discriminator": [77, 144, 180, 246, 217, 15, 118, 92],
       "accounts": [
@@ -156,6 +234,47 @@
       ]
     },
     {
+      "name": "refresh_price_feed_with_chainlink",
+      "discriminator": [74, 3, 0, 183, 242, 117, 152, 203],
+      "accounts": [
+        {
+          "name": "signer",
+          "signer": true
+        },
+        {
+          "name": "chainlink_ds_cache",
+          "writable": true
+        },
+        {
+          "name": "verifier_account",
+          "address": "HJR45sRiFdGncL69HVzRK4HLS2SXcVW3KeTPkp2aFmWC"
+        },
+        {
+          "name": "access_controller",
+          "address": "7mSn5MoBjyRLKoJShgkep8J17ueGG8rYioVAiSg5YWMF"
+        },
+        {
+          "name": "config_account"
+        },
+        {
+          "name": "verifier_program_id",
+          "address": "Gt9S41PtjR58CbG9JhJ3J6vxesqrNAswbWYbLNTMZA3c"
+        }
+      ],
+      "args": [
+        {
+          "name": "feed_id",
+          "type": {
+            "array": ["u8", 32]
+          }
+        },
+        {
+          "name": "serialized_report",
+          "type": "bytes"
+        }
+      ]
+    },
+    {
       "name": "update_authority",
       "discriminator": [32, 46, 64, 28, 149, 75, 243, 88],
       "accounts": [
@@ -200,9 +319,73 @@
           }
         }
       ]
+    },
+    {
+      "name": "update_chainlink_data_streams_cache_feeds",
+      "discriminator": [55, 69, 93, 203, 144, 30, 248, 173],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "oracle_admin"
+        },
+        {
+          "name": "chainlink_ds_cache",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "feeds",
+          "type": {
+            "vec": {
+              "defined": {
+                "name": "FeedEntry"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "update_chainlink_data_streams_cache_keepers",
+      "discriminator": [125, 168, 188, 187, 148, 203, 102, 87],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "oracle_admin"
+        },
+        {
+          "name": "chainlink_ds_cache",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "keeper_status",
+          "type": {
+            "vec": {
+              "defined": {
+                "name": "AddressBool"
+              }
+            }
+          }
+        }
+      ]
     }
   ],
   "accounts": [
+    {
+      "name": "ChainlinkDataStreamsCache",
+      "discriminator": [65, 102, 75, 47, 79, 156, 109, 193]
+    },
     {
       "name": "Oracle",
       "discriminator": [139, 194, 131, 179, 140, 179, 229, 244]
@@ -214,6 +397,14 @@
   ],
   "events": [
     {
+      "name": "LogChainlinkDataStreamsFeedMarketIsInTransition",
+      "discriminator": [211, 67, 128, 58, 147, 192, 179, 111]
+    },
+    {
+      "name": "LogChainlinkDataStreamsFeedSuspended",
+      "discriminator": [63, 149, 247, 255, 189, 80, 154, 253]
+    },
+    {
       "name": "LogStakePoolHighFeeDetected",
       "discriminator": [198, 106, 149, 7, 25, 83, 39, 155]
     },
@@ -224,6 +415,14 @@
     {
       "name": "LogUpdateAuths",
       "discriminator": [88, 80, 109, 48, 111, 203, 76, 251]
+    },
+    {
+      "name": "LogUpdateCacheFeeds",
+      "discriminator": [75, 155, 134, 56, 17, 94, 235, 191]
+    },
+    {
+      "name": "LogUpdateCacheKeepers",
+      "discriminator": [33, 129, 191, 130, 117, 119, 198, 235]
     }
   ],
   "errors": [
@@ -351,6 +550,106 @@
       "code": 6024,
       "name": "JupLendAccountMismatch",
       "msg": "JUP_LEND_ACCOUNT_MISMATCH"
+    },
+    {
+      "code": 6025,
+      "name": "ChainlinkDataStreamsNoReportData",
+      "msg": "CHAINLINK_DATA_STREAMS_NO_REPORT_DATA"
+    },
+    {
+      "code": 6026,
+      "name": "ChainlinkDataStreamsInvalidReport",
+      "msg": "CHAINLINK_DATA_STREAMS_INVALID_REPORT"
+    },
+    {
+      "code": 6027,
+      "name": "ChainlinkDataStreamsFeedIdMismatch",
+      "msg": "CHAINLINK_DATA_STREAMS_FEED_ID_MISMATCH"
+    },
+    {
+      "code": 6028,
+      "name": "ChainlinkDataStreamsInvalidReportType",
+      "msg": "CHAINLINK_DATA_STREAMS_INVALID_REPORT_TYPE"
+    },
+    {
+      "code": 6029,
+      "name": "ChainlinkDataStreamsFeedSuspended",
+      "msg": "CHAINLINK_DATA_STREAMS_FEED_SUSPENDED"
+    },
+    {
+      "code": 6030,
+      "name": "ChainlinkDataStreamsFeedAlreadySuspendedOrResumed",
+      "msg": "CHAINLINK_DATA_STREAMS_FEED_ALREADY_SUSPENDED_OR_RESUMED"
+    },
+    {
+      "code": 6031,
+      "name": "ChainlinkDataStreamsNotAKeeper",
+      "msg": "CHAINLINK_DATA_STREAMS_NOT_A_KEEPER"
+    },
+    {
+      "code": 6032,
+      "name": "ChainlinkDataStreamsMaxFeedKeeperCountReached",
+      "msg": "CHAINLINK_DATA_STREAMS_MAX_FEED_KEEPER_COUNT_REACHED"
+    },
+    {
+      "code": 6033,
+      "name": "ChainlinkDataStreamsMarketStatusUnknown",
+      "msg": "CHAINLINK_DATA_STREAMS_MARKET_STATUS_UNKNOWN"
+    },
+    {
+      "code": 6034,
+      "name": "ChainlinkDataStreamsPriceTooOld",
+      "msg": "CHAINLINK_DATA_STREAMS_PRICE_TOO_OLD"
+    },
+    {
+      "code": 6035,
+      "name": "ChainlinkDataStreamsV10PriceNotAllowed",
+      "msg": "CHAINLINK_DATA_STREAMS_V10_PRICE_NOT_ALLOWED"
+    },
+    {
+      "code": 6036,
+      "name": "ChainlinkDataStreamsMultipleV10Feeds",
+      "msg": "CHAINLINK_DATA_STREAMS_MULTIPLE_V10_FEEDS"
+    },
+    {
+      "code": 6037,
+      "name": "ChainlinkDataStreamsV11FeedRequiresV10Feed",
+      "msg": "CHAINLINK_DATA_STREAMS_V11_FEED_REQUIRES_V10_FEED"
+    },
+    {
+      "code": 6038,
+      "name": "ChainlinkDataStreamsAllowedFeedNotFound",
+      "msg": "CHAINLINK_DATA_STREAMS_ALLOWED_FEED_NOT_FOUND"
+    },
+    {
+      "code": 6039,
+      "name": "ChainlinkDataStreamsMarketStatusNotSupportedByFeed",
+      "msg": "CHAINLINK_DATA_STREAMS_MARKET_STATUS_NOT_SUPPORTED_BY_FEED"
+    },
+    {
+      "code": 6040,
+      "name": "ChainlinkDataStreamsObservationTimestampTooOld",
+      "msg": "CHAINLINK_DATA_STREAMS_OBSERVATION_TIMESTAMP_TOO_OLD"
+    },
+    {
+      "code": 6041,
+      "name": "ChainlinkDataStreamsFeedIdZero",
+      "msg": "CHAINLINK_DATA_STREAMS_FEED_ID_ZERO"
+    },
+    {
+      "code": 6042,
+      "name": "ChainlinkDataStreamsDuplicateFeedIdReportType",
+      "msg": "CHAINLINK_DATA_STREAMS_DUPLICATE_FEED_ID_REPORT_TYPE"
+    },
+    {
+      "code": 6043,
+      "name": "ChainlinkDataStreamsDuplicateFeedId",
+      "msg": "CHAINLINK_DATA_STREAMS_DUPLICATE_FEED_ID"
+    },
+    {
+      "code": 6044,
+      "name": "ChainlinkDataStreamsNoFeedKeepers",
+      "msg": "CHAINLINK_DATA_STREAMS_NO_FEED_KEEPERS"
     }
   ],
   "types": [
@@ -365,6 +664,209 @@
           },
           {
             "name": "value",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ChainlinkDataStreamsCache",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "nonce",
+            "type": "u16"
+          },
+          {
+            "name": "feeds",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "FeedEntry"
+                }
+              }
+            }
+          },
+          {
+            "name": "price",
+            "type": "u128"
+          },
+          {
+            "name": "last_update_timestamp_price",
+            "type": "u64"
+          },
+          {
+            "name": "last_update_timestamp_multiplier",
+            "type": "u64"
+          },
+          {
+            "name": "last_observations_timestamp",
+            "type": "u64"
+          },
+          {
+            "name": "generic_data",
+            "type": {
+              "defined": {
+                "name": "ChainlinkDsCacheGenericData"
+              }
+            }
+          },
+          {
+            "name": "keepers",
+            "type": {
+              "vec": "pubkey"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "ChainlinkDsCacheGenericData",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "xstocks_activation_date_time",
+            "type": "u64"
+          },
+          {
+            "name": "xstocks_suspended",
+            "type": "bool"
+          },
+          {
+            "name": "market_status",
+            "docs": [
+              "Last market status observed from the most recent report (0 = not yet seen / Unknown).",
+              "Set directly from the report's market_status field on every cache refresh.",
+              "For V8/V10 feeds this maps to ReportDataMarketStatus; for V11 to ReportDataV11MarketStatus."
+            ],
+            "type": "u32"
+          },
+          {
+            "name": "v11_transition_timestamp_s",
+            "type": "u64"
+          },
+          {
+            "name": "xstocks_last_multiplier",
+            "docs": [
+              "Last current_multiplier seen for this feed via a v10 report."
+            ],
+            "type": "u128"
+          },
+          {
+            "name": "xstocks_last_observations_timestamp_multiplier_s",
+            "docs": [
+              "`observations_timestamp` (seconds) from the last accepted V10 report.",
+              "Enforces strictly-monotonic sequencing to prevent replay of old multiplier reports."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "_padding",
+            "type": {
+              "array": ["u8", 24]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "ChainlinkReportType",
+      "repr": {
+        "kind": "rust"
+      },
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "XStocks"
+          },
+          {
+            "name": "RWA"
+          },
+          {
+            "name": "NAV"
+          },
+          {
+            "name": "RWAAdvanced"
+          },
+          {
+            "name": "ExchangeRate"
+          },
+          {
+            "name": "CryptoPrice"
+          }
+        ]
+      }
+    },
+    {
+      "name": "FeedEntry",
+      "docs": [
+        "One entry in the feed map: a 32-byte Chainlink feed ID paired with its report schema",
+        "type and, for V11 feeds, the set of trading sessions the feed supports."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "feed_id",
+            "type": {
+              "array": ["u8", 32]
+            }
+          },
+          {
+            "name": "report_type",
+            "type": {
+              "defined": {
+                "name": "ChainlinkReportType"
+              }
+            }
+          },
+          {
+            "name": "v11_session_type",
+            "type": {
+              "defined": {
+                "name": "V11FeedSessionType"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "LogChainlinkDataStreamsFeedMarketIsInTransition",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "feed_id",
+            "type": {
+              "array": ["u8", 32]
+            }
+          },
+          {
+            "name": "v11_transition_timestamp_s",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LogChainlinkDataStreamsFeedSuspended",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "chainlink_data_streams_cache",
+            "type": "pubkey"
+          },
+          {
+            "name": "keeper",
+            "type": "pubkey"
+          },
+          {
+            "name": "xstocks_suspended",
             "type": "bool"
           }
         ]
@@ -405,6 +907,50 @@
         "fields": [
           {
             "name": "auth_status",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "AddressBool"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "LogUpdateCacheFeeds",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "chainlink_data_streams_cache",
+            "type": "pubkey"
+          },
+          {
+            "name": "feeds",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "FeedEntry"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "LogUpdateCacheKeepers",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "chainlink_data_streams_cache",
+            "type": "pubkey"
+          },
+          {
+            "name": "keeper_status",
             "type": {
               "vec": {
                 "defined": {
@@ -485,6 +1031,9 @@
           },
           {
             "name": "JupLend"
+          },
+          {
+            "name": "ChainlinkDataStreams"
           }
         ]
       }
@@ -517,6 +1066,37 @@
                 "name": "SourceType"
               }
             }
+          }
+        ]
+      }
+    },
+    {
+      "name": "V11FeedSessionType",
+      "docs": [
+        "Trading-session scope for a V11 (24/5 US Equities) feed.",
+        "",
+        "Chainlink publishes a `market_status` field in every v11 report that indicates which",
+        "trading phase is currently active. This is done here because even when market is not",
+        "in session chainlink feeds can public other sessions data.",
+        "This enum captures which phases are valid for a given feed so that reports arriving",
+        "with an unsupported status can be rejected early rather than silently accepted.",
+        "",
+        "For non-V11 feed entries (`report_type != RWAAdvanced`) this field is ignored."
+      ],
+      "repr": {
+        "kind": "rust"
+      },
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Regular"
+          },
+          {
+            "name": "Extended"
+          },
+          {
+            "name": "Overnight"
           }
         ]
       }

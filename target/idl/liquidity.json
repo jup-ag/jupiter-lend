@@ -2,7 +2,7 @@
   "address": "jupeiUmn818Jg1ekPURTpr4mFo29p46vygyykFJ3wZC",
   "metadata": {
     "name": "liquidity",
-    "version": "0.1.0",
+    "version": "0.1.2",
     "spec": "0.1.0",
     "description": "Created with Anchor"
   },
@@ -906,8 +906,7 @@
           "writable": true
         },
         {
-          "name": "rate_model",
-          "writable": true
+          "name": "rate_model"
         }
       ],
       "args": [

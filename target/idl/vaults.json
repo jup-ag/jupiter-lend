@@ -2918,6 +2918,9 @@
           },
           {
             "name": "JupLend"
+          },
+          {
+            "name": "ChainlinkDataStreams"
           }
         ]
       }

@@ -8,7 +8,7 @@ export type Vaults = {
   address: "jupr81YtYssSyPt8jbnGuiWon5f6x9TcDEFxYe3Bdzi";
   metadata: {
     name: "vaults";
-    version: "0.1.0";
+    version: "0.1.2";
     spec: "0.1.0";
     description: "Created with Anchor";
   };
@@ -28,7 +28,7 @@ export type Vaults = {
         },
         {
           name: "borrowTokenReserves";
-        }
+        },
       ];
       args: [];
     },
@@ -61,14 +61,14 @@ export type Vaults = {
               {
                 kind: "arg";
                 path: "branchId";
-              }
+              },
             ];
           };
         },
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        }
+        },
       ];
       args: [
         {
@@ -78,7 +78,7 @@ export type Vaults = {
         {
           name: "branchId";
           type: "u32";
-        }
+        },
       ];
     },
     {
@@ -114,7 +114,7 @@ export type Vaults = {
               {
                 kind: "arg";
                 path: "nextPositionId";
-              }
+              },
             ];
           };
         },
@@ -138,7 +138,7 @@ export type Vaults = {
                   109,
                   105,
                   110,
-                  116
+                  116,
                 ];
               },
               {
@@ -148,7 +148,7 @@ export type Vaults = {
               {
                 kind: "arg";
                 path: "nextPositionId";
-              }
+              },
             ];
           };
         },
@@ -195,13 +195,13 @@ export type Vaults = {
                   126,
                   255,
                   0,
-                  169
+                  169,
                 ];
               },
               {
                 kind: "account";
                 path: "positionMint";
-              }
+              },
             ];
             program: {
               kind: "const";
@@ -237,7 +237,7 @@ export type Vaults = {
                 219,
                 233,
                 248,
-                89
+                89,
               ];
             };
           };
@@ -285,13 +285,13 @@ export type Vaults = {
                   3,
                   248,
                   41,
-                  70
+                  70,
                 ];
               },
               {
                 kind: "account";
                 path: "positionMint";
-              }
+              },
             ];
             program: {
               kind: "const";
@@ -327,7 +327,7 @@ export type Vaults = {
                 3,
                 248,
                 41,
-                70
+                70,
               ];
             };
           };
@@ -354,7 +354,7 @@ export type Vaults = {
         {
           name: "rent";
           address: "SysvarRent111111111111111111111111111111111";
-        }
+        },
       ];
       args: [
         {
@@ -364,7 +364,7 @@ export type Vaults = {
         {
           name: "nextPositionId";
           type: "u32";
-        }
+        },
       ];
     },
     {
@@ -387,7 +387,7 @@ export type Vaults = {
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        }
+        },
       ];
       args: [
         {
@@ -397,7 +397,7 @@ export type Vaults = {
         {
           name: "tick";
           type: "i32";
-        }
+        },
       ];
     },
     {
@@ -433,7 +433,7 @@ export type Vaults = {
                   100,
                   101,
                   98,
-                  116
+                  116,
                 ];
               },
               {
@@ -443,14 +443,14 @@ export type Vaults = {
               {
                 kind: "arg";
                 path: "index";
-              }
+              },
             ];
           };
         },
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        }
+        },
       ];
       args: [
         {
@@ -460,7 +460,7 @@ export type Vaults = {
         {
           name: "index";
           type: "u8";
-        }
+        },
       ];
     },
     {
@@ -483,7 +483,7 @@ export type Vaults = {
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        }
+        },
       ];
       args: [
         {
@@ -497,7 +497,7 @@ export type Vaults = {
         {
           name: "totalIds";
           type: "u32";
-        }
+        },
       ];
     },
     {
@@ -517,14 +517,14 @@ export type Vaults = {
               {
                 kind: "const";
                 value: [118, 97, 117, 108, 116, 95, 97, 100, 109, 105, 110];
-              }
+              },
             ];
           };
         },
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        }
+        },
       ];
       args: [
         {
@@ -534,7 +534,7 @@ export type Vaults = {
         {
           name: "authority";
           type: "pubkey";
-        }
+        },
       ];
     },
     {
@@ -569,13 +569,13 @@ export type Vaults = {
                   110,
                   102,
                   105,
-                  103
+                  103,
                 ];
               },
               {
                 kind: "arg";
                 path: "vaultId";
-              }
+              },
             ];
           };
         },
@@ -600,13 +600,13 @@ export type Vaults = {
                   100,
                   97,
                   116,
-                  97
+                  97,
                 ];
               },
               {
                 kind: "arg";
                 path: "vaultId";
-              }
+              },
             ];
           };
         },
@@ -622,7 +622,7 @@ export type Vaults = {
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        }
+        },
       ];
       args: [
         {
@@ -636,7 +636,7 @@ export type Vaults = {
               name: "initVaultConfigParams";
             };
           };
-        }
+        },
       ];
     },
     {
@@ -650,7 +650,6 @@ export type Vaults = {
         },
         {
           name: "vaultAdmin";
-          writable: true;
         },
         {
           name: "vaultConfig";
@@ -668,7 +667,7 @@ export type Vaults = {
               {
                 kind: "arg";
                 path: "vaultId";
-              }
+              },
             ];
           };
         },
@@ -683,13 +682,13 @@ export type Vaults = {
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        }
+        },
       ];
       args: [
         {
           name: "vaultId";
           type: "u16";
-        }
+        },
       ];
     },
     {
@@ -717,7 +716,7 @@ export type Vaults = {
               {
                 kind: "account";
                 path: "borrowToken";
-              }
+              },
             ];
             program: {
               kind: "const";
@@ -753,7 +752,7 @@ export type Vaults = {
                 219,
                 233,
                 248,
-                89
+                89,
               ];
             };
           };
@@ -777,7 +776,7 @@ export type Vaults = {
               {
                 kind: "account";
                 path: "supplyToken";
-              }
+              },
             ];
             program: {
               kind: "const";
@@ -813,7 +812,7 @@ export type Vaults = {
                 219,
                 233,
                 248,
-                89
+                89,
               ];
             };
           };
@@ -822,7 +821,7 @@ export type Vaults = {
           name: "vaultConfig";
           docs: [
             "@dev mut because this PDA signs the CPI to liquidity program",
-            "@dev verification inside instruction logic"
+            "@dev verification inside instruction logic",
           ];
         },
         {
@@ -899,7 +898,7 @@ export type Vaults = {
         },
         {
           name: "oracleProgram";
-        }
+        },
       ];
       args: [
         {
@@ -927,7 +926,7 @@ export type Vaults = {
         {
           name: "remainingAccountsIndices";
           type: "bytes";
-        }
+        },
       ];
     },
     {
@@ -955,7 +954,7 @@ export type Vaults = {
               {
                 kind: "account";
                 path: "supplyToken";
-              }
+              },
             ];
             program: {
               kind: "const";
@@ -991,7 +990,7 @@ export type Vaults = {
                 219,
                 233,
                 248,
-                89
+                89,
               ];
             };
           };
@@ -1012,7 +1011,7 @@ export type Vaults = {
               {
                 kind: "account";
                 path: "borrowToken";
-              }
+              },
             ];
             program: {
               kind: "const";
@@ -1048,7 +1047,7 @@ export type Vaults = {
                 219,
                 233,
                 248,
-                89
+                89,
               ];
             };
           };
@@ -1074,7 +1073,7 @@ export type Vaults = {
               {
                 kind: "account";
                 path: "borrowToken";
-              }
+              },
             ];
             program: {
               kind: "const";
@@ -1110,7 +1109,7 @@ export type Vaults = {
                 219,
                 233,
                 248,
-                89
+                89,
               ];
             };
           };
@@ -1132,7 +1131,7 @@ export type Vaults = {
               {
                 kind: "account";
                 path: "supplyToken";
-              }
+              },
             ];
             program: {
               kind: "const";
@@ -1168,7 +1167,7 @@ export type Vaults = {
                 219,
                 233,
                 248,
-                89
+                89,
               ];
             };
           };
@@ -1177,7 +1176,7 @@ export type Vaults = {
           name: "vaultConfig";
           docs: [
             "@dev mut because this PDA signs the CPI to liquidity program",
-            "@dev verification inside instruction logic"
+            "@dev verification inside instruction logic",
           ];
         },
         {
@@ -1283,7 +1282,7 @@ export type Vaults = {
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        }
+        },
       ];
       args: [
         {
@@ -1307,7 +1306,7 @@ export type Vaults = {
         {
           name: "remainingAccountsIndices";
           type: "bytes";
-        }
+        },
       ];
     },
     {
@@ -1336,7 +1335,7 @@ export type Vaults = {
               {
                 kind: "account";
                 path: "supplyToken";
-              }
+              },
             ];
             program: {
               kind: "const";
@@ -1372,7 +1371,7 @@ export type Vaults = {
                 219,
                 233,
                 248,
-                89
+                89,
               ];
             };
           };
@@ -1393,7 +1392,7 @@ export type Vaults = {
               {
                 kind: "account";
                 path: "borrowToken";
-              }
+              },
             ];
             program: {
               kind: "const";
@@ -1429,7 +1428,7 @@ export type Vaults = {
                 219,
                 233,
                 248,
-                89
+                89,
               ];
             };
           };
@@ -1438,7 +1437,7 @@ export type Vaults = {
           name: "vaultConfig";
           docs: [
             "@dev mut because this PDA signs the CPI to liquidity program",
-            "@dev verification inside instruction logic"
+            "@dev verification inside instruction logic",
           ];
           writable: true;
         },
@@ -1504,7 +1503,7 @@ export type Vaults = {
         {
           name: "associatedTokenProgram";
           address: "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL";
-        }
+        },
       ];
       args: [];
     },
@@ -1519,13 +1518,13 @@ export type Vaults = {
         {
           name: "vaultAdmin";
           writable: true;
-        }
+        },
       ];
       args: [
         {
           name: "newAuthority";
           type: "pubkey";
-        }
+        },
       ];
     },
     {
@@ -1539,7 +1538,7 @@ export type Vaults = {
         {
           name: "vaultAdmin";
           writable: true;
-        }
+        },
       ];
       args: [
         {
@@ -1551,7 +1550,7 @@ export type Vaults = {
               };
             };
           };
-        }
+        },
       ];
     },
     {
@@ -1582,7 +1581,7 @@ export type Vaults = {
         {
           name: "borrowTokenReservesLiquidity";
           docs: ["@dev Verification inside instruction logic"];
-        }
+        },
       ];
       args: [
         {
@@ -1592,7 +1591,7 @@ export type Vaults = {
         {
           name: "borrowFee";
           type: "u16";
-        }
+        },
       ];
     },
     {
@@ -1623,7 +1622,7 @@ export type Vaults = {
         {
           name: "borrowTokenReservesLiquidity";
           docs: ["@dev Verification inside instruction logic"];
-        }
+        },
       ];
       args: [
         {
@@ -1633,7 +1632,7 @@ export type Vaults = {
         {
           name: "borrowRateMagnifier";
           type: "i16";
-        }
+        },
       ];
     },
     {
@@ -1664,7 +1663,7 @@ export type Vaults = {
         {
           name: "borrowTokenReservesLiquidity";
           docs: ["@dev Verification inside instruction logic"];
-        }
+        },
       ];
       args: [
         {
@@ -1674,7 +1673,7 @@ export type Vaults = {
         {
           name: "collateralFactor";
           type: "u16";
-        }
+        },
       ];
     },
     {
@@ -1705,7 +1704,7 @@ export type Vaults = {
         {
           name: "borrowTokenReservesLiquidity";
           docs: ["@dev Verification inside instruction logic"];
-        }
+        },
       ];
       args: [
         {
@@ -1719,7 +1718,7 @@ export type Vaults = {
               name: "updateCoreSettingsParams";
             };
           };
-        }
+        },
       ];
     },
     {
@@ -1742,13 +1741,13 @@ export type Vaults = {
         {
           name: "borrowTokenReservesLiquidity";
           docs: ["@dev Verification inside instruction logic"];
-        }
+        },
       ];
       args: [
         {
           name: "vaultId";
           type: "u16";
-        }
+        },
       ];
     },
     {
@@ -1779,7 +1778,7 @@ export type Vaults = {
         {
           name: "borrowTokenReservesLiquidity";
           docs: ["@dev Verification inside instruction logic"];
-        }
+        },
       ];
       args: [
         {
@@ -1789,7 +1788,7 @@ export type Vaults = {
         {
           name: "liquidationMaxLimit";
           type: "u16";
-        }
+        },
       ];
     },
     {
@@ -1820,7 +1819,7 @@ export type Vaults = {
         {
           name: "borrowTokenReservesLiquidity";
           docs: ["@dev Verification inside instruction logic"];
-        }
+        },
       ];
       args: [
         {
@@ -1830,7 +1829,7 @@ export type Vaults = {
         {
           name: "liquidationPenalty";
           type: "u16";
-        }
+        },
       ];
     },
     {
@@ -1861,7 +1860,7 @@ export type Vaults = {
         {
           name: "borrowTokenReservesLiquidity";
           docs: ["@dev Verification inside instruction logic"];
-        }
+        },
       ];
       args: [
         {
@@ -1871,7 +1870,7 @@ export type Vaults = {
         {
           name: "liquidationThreshold";
           type: "u16";
-        }
+        },
       ];
     },
     {
@@ -1889,7 +1888,7 @@ export type Vaults = {
           name: "vaultMetadata";
           docs: ["@dev Verification inside instruction logic"];
           writable: true;
-        }
+        },
       ];
       args: [
         {
@@ -1899,7 +1898,7 @@ export type Vaults = {
         {
           name: "lookupTable";
           type: "pubkey";
-        }
+        },
       ];
     },
     {
@@ -1925,7 +1924,6 @@ export type Vaults = {
         },
         {
           name: "newOracle";
-          writable: true;
         },
         {
           name: "supplyTokenReservesLiquidity";
@@ -1934,13 +1932,13 @@ export type Vaults = {
         {
           name: "borrowTokenReservesLiquidity";
           docs: ["@dev Verification inside instruction logic"];
-        }
+        },
       ];
       args: [
         {
           name: "vaultId";
           type: "u16";
-        }
+        },
       ];
     },
     {
@@ -1971,7 +1969,7 @@ export type Vaults = {
         {
           name: "borrowTokenReservesLiquidity";
           docs: ["@dev Verification inside instruction logic"];
-        }
+        },
       ];
       args: [
         {
@@ -1981,7 +1979,7 @@ export type Vaults = {
         {
           name: "newRebalancer";
           type: "pubkey";
-        }
+        },
       ];
     },
     {
@@ -2012,7 +2010,7 @@ export type Vaults = {
         {
           name: "borrowTokenReservesLiquidity";
           docs: ["@dev Verification inside instruction logic"];
-        }
+        },
       ];
       args: [
         {
@@ -2022,7 +2020,7 @@ export type Vaults = {
         {
           name: "supplyRateMagnifier";
           type: "i16";
-        }
+        },
       ];
     },
     {
@@ -2053,7 +2051,7 @@ export type Vaults = {
         {
           name: "borrowTokenReservesLiquidity";
           docs: ["@dev Verification inside instruction logic"];
-        }
+        },
       ];
       args: [
         {
@@ -2063,9 +2061,9 @@ export type Vaults = {
         {
           name: "withdrawGap";
           type: "u16";
-        }
+        },
       ];
-    }
+    },
   ];
   accounts: [
     {
@@ -2119,7 +2117,7 @@ export type Vaults = {
     {
       name: "vaultState";
       discriminator: [228, 196, 82, 165, 98, 210, 235, 152];
-    }
+    },
   ];
   events: [
     {
@@ -2161,6 +2159,10 @@ export type Vaults = {
     {
       name: "logLiquidateInfo";
       discriminator: [169, 150, 46, 42, 178, 89, 98, 83];
+    },
+    {
+      name: "logLiquidationRoundingDiff";
+      discriminator: [35, 189, 179, 90, 218, 51, 104, 128];
     },
     {
       name: "logOperate";
@@ -2233,7 +2235,7 @@ export type Vaults = {
     {
       name: "logUserPosition";
       discriminator: [46, 44, 213, 42, 55, 59, 190, 133];
-    }
+    },
   ];
   errors: [
     {
@@ -2605,7 +2607,7 @@ export type Vaults = {
       code: 6073;
       name: "vaultAdminOracleProgramMismatch";
       msg: "vaultAdminOracleProgramMismatch";
-    }
+    },
   ];
   types: [
     {
@@ -2620,7 +2622,7 @@ export type Vaults = {
           {
             name: "value";
             type: "bool";
-          }
+          },
         ];
       };
     },
@@ -2670,7 +2672,7 @@ export type Vaults = {
           {
             name: "connectedMinimaTick";
             type: "i32";
-          }
+          },
         ];
       };
     },
@@ -2722,7 +2724,7 @@ export type Vaults = {
           {
             name: "oracleProgram";
             type: "pubkey";
-          }
+          },
         ];
       };
     },
@@ -2738,7 +2740,7 @@ export type Vaults = {
           {
             name: "debtAmount";
             type: "u64";
-          }
+          },
         ];
       };
     },
@@ -2762,7 +2764,7 @@ export type Vaults = {
           {
             name: "positionMint";
             type: "pubkey";
-          }
+          },
         ];
       };
     },
@@ -2778,7 +2780,7 @@ export type Vaults = {
           {
             name: "branchId";
             type: "u32";
-          }
+          },
         ];
       };
     },
@@ -2790,7 +2792,7 @@ export type Vaults = {
           {
             name: "tick";
             type: "pubkey";
-          }
+          },
         ];
       };
     },
@@ -2802,7 +2804,7 @@ export type Vaults = {
           {
             name: "tickHasDebtArray";
             type: "pubkey";
-          }
+          },
         ];
       };
     },
@@ -2818,7 +2820,7 @@ export type Vaults = {
           {
             name: "tick";
             type: "i32";
-          }
+          },
         ];
       };
     },
@@ -2830,7 +2832,7 @@ export type Vaults = {
           {
             name: "vaultConfig";
             type: "pubkey";
-          }
+          },
         ];
       };
     },
@@ -2842,7 +2844,7 @@ export type Vaults = {
           {
             name: "vaultState";
             type: "pubkey";
-          }
+          },
         ];
       };
     },
@@ -2866,7 +2868,7 @@ export type Vaults = {
           {
             name: "to";
             type: "pubkey";
-          }
+          },
         ];
       };
     },
@@ -2886,7 +2888,31 @@ export type Vaults = {
           {
             name: "endTick";
             type: "i32";
-          }
+          },
+        ];
+      };
+    },
+    {
+      name: "logLiquidationRoundingDiff";
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "vaultId";
+            type: "u16";
+          },
+          {
+            name: "actualDebtAmt";
+            type: "u64";
+          },
+          {
+            name: "debtAmount";
+            type: "u64";
+          },
+          {
+            name: "diff";
+            type: "u64";
+          },
         ];
       };
     },
@@ -2914,7 +2940,7 @@ export type Vaults = {
           {
             name: "to";
             type: "pubkey";
-          }
+          },
         ];
       };
     },
@@ -2930,7 +2956,7 @@ export type Vaults = {
           {
             name: "borrowAmt";
             type: "i128";
-          }
+          },
         ];
       };
     },
@@ -2942,7 +2968,7 @@ export type Vaults = {
           {
             name: "newAuthority";
             type: "pubkey";
-          }
+          },
         ];
       };
     },
@@ -2960,7 +2986,7 @@ export type Vaults = {
                 };
               };
             };
-          }
+          },
         ];
       };
     },
@@ -2972,7 +2998,7 @@ export type Vaults = {
           {
             name: "borrowFee";
             type: "u16";
-          }
+          },
         ];
       };
     },
@@ -2984,7 +3010,7 @@ export type Vaults = {
           {
             name: "borrowRateMagnifier";
             type: "i16";
-          }
+          },
         ];
       };
     },
@@ -2996,7 +3022,7 @@ export type Vaults = {
           {
             name: "collateralFactor";
             type: "u16";
-          }
+          },
         ];
       };
     },
@@ -3036,7 +3062,7 @@ export type Vaults = {
           {
             name: "borrowFee";
             type: "u16";
-          }
+          },
         ];
       };
     },
@@ -3060,7 +3086,7 @@ export type Vaults = {
           {
             name: "liquidityBorrowExchangePrice";
             type: "u64";
-          }
+          },
         ];
       };
     },
@@ -3072,7 +3098,7 @@ export type Vaults = {
           {
             name: "liquidationMaxLimit";
             type: "u16";
-          }
+          },
         ];
       };
     },
@@ -3084,7 +3110,7 @@ export type Vaults = {
           {
             name: "liquidationPenalty";
             type: "u16";
-          }
+          },
         ];
       };
     },
@@ -3096,7 +3122,7 @@ export type Vaults = {
           {
             name: "liquidationThreshold";
             type: "u16";
-          }
+          },
         ];
       };
     },
@@ -3108,7 +3134,7 @@ export type Vaults = {
           {
             name: "lookupTable";
             type: "pubkey";
-          }
+          },
         ];
       };
     },
@@ -3120,7 +3146,7 @@ export type Vaults = {
           {
             name: "newOracle";
             type: "pubkey";
-          }
+          },
         ];
       };
     },
@@ -3132,7 +3158,7 @@ export type Vaults = {
           {
             name: "newRebalancer";
             type: "pubkey";
-          }
+          },
         ];
       };
     },
@@ -3144,7 +3170,7 @@ export type Vaults = {
           {
             name: "supplyRateMagnifier";
             type: "i16";
-          }
+          },
         ];
       };
     },
@@ -3156,7 +3182,7 @@ export type Vaults = {
           {
             name: "withdrawGap";
             type: "u16";
-          }
+          },
         ];
       };
     },
@@ -3192,7 +3218,7 @@ export type Vaults = {
           {
             name: "borrow";
             type: "u64";
-          }
+          },
         ];
       };
     },
@@ -3218,7 +3244,7 @@ export type Vaults = {
           {
             name: "bump";
             type: "u8";
-          }
+          },
         ];
       };
     },
@@ -3264,7 +3290,7 @@ export type Vaults = {
           {
             name: "dustDebtAmount";
             type: "u64";
-          }
+          },
         ];
       };
     },
@@ -3290,7 +3316,13 @@ export type Vaults = {
           },
           {
             name: "singlePool";
-          }
+          },
+          {
+            name: "jupLend";
+          },
+          {
+            name: "chainlinkDataStreams";
+          },
         ];
       };
     },
@@ -3322,7 +3354,7 @@ export type Vaults = {
                 name: "sourceType";
               };
             };
-          }
+          },
         ];
       };
     },
@@ -3368,7 +3400,7 @@ export type Vaults = {
           {
             name: "debtFactor";
             type: "u64";
-          }
+          },
         ];
       };
     },
@@ -3378,7 +3410,7 @@ export type Vaults = {
         "Tick has debt structure",
         "Each TickHasDebt can track 8 * 256 = 2048 ticks",
         "children_bits has 32 bytes = 256 bits total",
-        "Each map within the array covers 256 ticks"
+        "Each map within the array covers 256 ticks",
       ];
       repr: {
         kind: "c";
@@ -3392,7 +3424,7 @@ export type Vaults = {
             type: {
               array: ["u8", 32];
             };
-          }
+          },
         ];
       };
     },
@@ -3419,7 +3451,7 @@ export type Vaults = {
             docs: [
               "Each array contains 8 TickHasDebt structs",
               "Each TickHasDebt covers 256 ticks",
-              "Total: 8 * 256 = 2048 ticks per TickHasDebtArray"
+              "Total: 8 * 256 = 2048 ticks per TickHasDebtArray",
             ];
             type: {
               array: [
@@ -3428,10 +3460,10 @@ export type Vaults = {
                     name: "tickHasDebt";
                   };
                 },
-                8
+                8,
               ];
             };
-          }
+          },
         ];
       };
     },
@@ -3493,7 +3525,7 @@ export type Vaults = {
           {
             name: "debtFactor3";
             type: "u64";
-          }
+          },
         ];
       };
     },
@@ -3575,7 +3607,7 @@ export type Vaults = {
           {
             name: "interactingBalance";
             type: "u64";
-          }
+          },
         ];
       };
     },
@@ -3592,7 +3624,7 @@ export type Vaults = {
           },
           {
             name: "claim";
-          }
+          },
         ];
       };
     },
@@ -3632,7 +3664,7 @@ export type Vaults = {
           {
             name: "borrowFee";
             type: "u16";
-          }
+          },
         ];
       };
     },
@@ -3690,7 +3722,7 @@ export type Vaults = {
           {
             name: "status";
             type: "u8";
-          }
+          },
         ];
       };
     },
@@ -3744,7 +3776,7 @@ export type Vaults = {
           {
             name: "status";
             type: "u8";
-          }
+          },
         ];
       };
     },
@@ -3774,7 +3806,7 @@ export type Vaults = {
           {
             name: "bump";
             type: "u8";
-          }
+          },
         ];
       };
     },
@@ -3851,7 +3883,7 @@ export type Vaults = {
           {
             name: "bump";
             type: "u8";
-          }
+          },
         ];
       };
     },
@@ -3875,7 +3907,7 @@ export type Vaults = {
           {
             name: "borrowMintDecimals";
             type: "u8";
-          }
+          },
         ];
       };
     },
@@ -3956,9 +3988,9 @@ export type Vaults = {
           {
             name: "lastUpdateTimestamp";
             type: "u64";
-          }
+          },
         ];
       };
-    }
+    },
   ];
 };
