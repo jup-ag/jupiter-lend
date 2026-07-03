@@ -8,7 +8,7 @@ export type Vaults = {
   address: "jupr81YtYssSyPt8jbnGuiWon5f6x9TcDEFxYe3Bdzi";
   metadata: {
     name: "vaults";
-    version: "0.1.2";
+    version: "0.1.4";
     spec: "0.1.0";
     description: "Created with Anchor";
   };
@@ -615,9 +615,19 @@ export type Vaults = {
         },
         {
           name: "supplyToken";
+          optional: true;
         },
         {
           name: "borrowToken";
+          optional: true;
+        },
+        {
+          name: "supplyDex";
+          optional: true;
+        },
+        {
+          name: "borrowDex";
+          optional: true;
         },
         {
           name: "systemProgram";
@@ -703,59 +713,6 @@ export type Vaults = {
         {
           name: "signerTokenAccount";
           writable: true;
-          pda: {
-            seeds: [
-              {
-                kind: "account";
-                path: "signer";
-              },
-              {
-                kind: "account";
-                path: "borrowTokenProgram";
-              },
-              {
-                kind: "account";
-                path: "borrowToken";
-              },
-            ];
-            program: {
-              kind: "const";
-              value: [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89,
-              ];
-            };
-          };
         },
         {
           name: "to";
@@ -763,59 +720,6 @@ export type Vaults = {
         {
           name: "toTokenAccount";
           writable: true;
-          pda: {
-            seeds: [
-              {
-                kind: "account";
-                path: "to";
-              },
-              {
-                kind: "account";
-                path: "supplyTokenProgram";
-              },
-              {
-                kind: "account";
-                path: "supplyToken";
-              },
-            ];
-            program: {
-              kind: "const";
-              value: [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89,
-              ];
-            };
-          };
         },
         {
           name: "vaultConfig";
@@ -894,6 +798,7 @@ export type Vaults = {
         },
         {
           name: "associatedTokenProgram";
+          optional: true;
           address: "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL";
         },
         {
@@ -930,6 +835,817 @@ export type Vaults = {
       ];
     },
     {
+      name: "liquidateDex";
+      docs: [
+        "Typed vault imperfect liquidation (T2 / T3 / T4).",
+        "",
+        "- T2 (smart col, normal debt): supply `debt_amt` + `col_amounts`.",
+        "- T3 (normal col, smart debt): supply `debt_amounts` (pre-fund vault's borrow-DEX",
+        "user token accounts in the same tx).",
+        "- T4 (smart col + smart debt): supply both `debt_amounts` and `col_amounts`.",
+        "",
+        "Returns `(actual_debt, actual_col, token0_col, token1_col)`.",
+      ];
+      discriminator: [28, 129, 253, 125, 243, 52, 11, 162];
+      accounts: [
+        {
+          name: "signer";
+          writable: true;
+          signer: true;
+        },
+        {
+          name: "signerTokenAccount";
+          docs: ["@dev not required for T3/T4 (smart debt pays at DEX)"];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "to";
+        },
+        {
+          name: "toTokenAccount";
+          docs: ["@dev not required for T2/T4 (smart col withdraws at DEX)"];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "vaultConfig";
+          docs: [
+            "@dev mut because this PDA signs CPIs to the DEX and liquidity programs",
+          ];
+          writable: true;
+        },
+        {
+          name: "vaultState";
+          writable: true;
+        },
+        {
+          name: "supplyToken";
+          docs: ["@dev not required for T2/T4"];
+          optional: true;
+        },
+        {
+          name: "borrowToken";
+          docs: ["@dev not required for T3/T4"];
+          optional: true;
+        },
+        {
+          name: "oracle";
+        },
+        {
+          name: "newBranch";
+          writable: true;
+        },
+        {
+          name: "supplyTokenReservesLiquidity";
+          docs: ["@dev not required for T2/T4"];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "borrowTokenReservesLiquidity";
+          docs: ["@dev not required for T3/T4"];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "vaultSupplyPositionOnLiquidity";
+          docs: ["@dev not required for T2/T4"];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "vaultBorrowPositionOnLiquidity";
+          docs: ["@dev not required for T3/T4"];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "supplyRateModel";
+          optional: true;
+        },
+        {
+          name: "borrowRateModel";
+          optional: true;
+        },
+        {
+          name: "supplyTokenClaimAccount";
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "liquidity";
+        },
+        {
+          name: "liquidityProgram";
+        },
+        {
+          name: "vaultSupplyTokenAccount";
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "vaultBorrowTokenAccount";
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "supplyTokenProgram";
+          optional: true;
+        },
+        {
+          name: "borrowTokenProgram";
+          optional: true;
+        },
+        {
+          name: "systemProgram";
+          address: "11111111111111111111111111111111";
+        },
+        {
+          name: "oracleProgram";
+        },
+        {
+          name: "supplyDex";
+          accounts: [
+            {
+              name: "dex";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexPosition";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexUserToken0Account";
+              docs: ["Signer's token0 account"];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexUserToken1Account";
+              docs: ["Signer's token1 account"];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0";
+              optional: true;
+            },
+            {
+              name: "dexToken1";
+              optional: true;
+            },
+            {
+              name: "dexToken0Reserve";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken1Reserve";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0RateModel";
+              optional: true;
+            },
+            {
+              name: "dexToken1RateModel";
+              optional: true;
+            },
+            {
+              name: "dexToken0Vault";
+              docs: [
+                "@dev this is Liquidity layer vault token account for token0",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken1Vault";
+              docs: [
+                "@dev this is Liquidity layer vault token account for token1",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "supplyPosToken0";
+              docs: [
+                "This pool's own LL **supply** position for token0 (smart-col side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "supplyPosToken1";
+              docs: [
+                "This pool's own LL **supply** position for token1 (smart-col side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "borrowPosToken0";
+              docs: [
+                "This pool's own LL **borrow** position for token0 (smart-debt side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "borrowPosToken1";
+              docs: [
+                "This pool's own LL **borrow** position for token1 (smart-debt side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0Program";
+              optional: true;
+            },
+            {
+              name: "dexToken1Program";
+              optional: true;
+            },
+          ];
+        },
+        {
+          name: "borrowDex";
+          accounts: [
+            {
+              name: "dex";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexPosition";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexUserToken0Account";
+              docs: ["Signer's token0 account"];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexUserToken1Account";
+              docs: ["Signer's token1 account"];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0";
+              optional: true;
+            },
+            {
+              name: "dexToken1";
+              optional: true;
+            },
+            {
+              name: "dexToken0Reserve";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken1Reserve";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0RateModel";
+              optional: true;
+            },
+            {
+              name: "dexToken1RateModel";
+              optional: true;
+            },
+            {
+              name: "dexToken0Vault";
+              docs: [
+                "@dev this is Liquidity layer vault token account for token0",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken1Vault";
+              docs: [
+                "@dev this is Liquidity layer vault token account for token1",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "supplyPosToken0";
+              docs: [
+                "This pool's own LL **supply** position for token0 (smart-col side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "supplyPosToken1";
+              docs: [
+                "This pool's own LL **supply** position for token1 (smart-col side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "borrowPosToken0";
+              docs: [
+                "This pool's own LL **borrow** position for token0 (smart-debt side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "borrowPosToken1";
+              docs: [
+                "This pool's own LL **borrow** position for token1 (smart-debt side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0Program";
+              optional: true;
+            },
+            {
+              name: "dexToken1Program";
+              optional: true;
+            },
+          ];
+        },
+        {
+          name: "dexProgram";
+        },
+        {
+          name: "dexOracleProgram";
+          optional: true;
+        },
+      ];
+      args: [
+        {
+          name: "debtAmt";
+          type: "u64";
+        },
+        {
+          name: "debtAmounts";
+          type: {
+            option: {
+              defined: {
+                name: "liquidateDexDebtAmounts";
+              };
+            };
+          };
+        },
+        {
+          name: "colPerUnitDebt";
+          type: "u128";
+        },
+        {
+          name: "colAmounts";
+          type: {
+            option: {
+              defined: {
+                name: "liquidateDexColAmounts";
+              };
+            };
+          };
+        },
+        {
+          name: "absorb";
+          type: "bool";
+        },
+        {
+          name: "transferType";
+          type: {
+            option: {
+              defined: {
+                name: "transferType";
+              };
+            };
+          };
+        },
+        {
+          name: "remainingAccountsIndices";
+          type: "bytes";
+        },
+      ];
+    },
+    {
+      name: "liquidatePerfectDex";
+      docs: [
+        "Typed vault perfect liquidation (T2 / T3 / T4).",
+        "",
+        "- T2 (smart col, normal debt): supply `debt_amt` + `col_amounts`",
+        "(`debt_perfect_amounts` = `None`).",
+        "- T3 (normal col, smart debt): supply `debt_amt` = DEX debt shares +",
+        "`debt_perfect_amounts` (pre-fund vault's borrow-DEX user token accounts).",
+        "- T4 (smart col + smart debt): supply all three.",
+        "",
+        "Returns `(actual_debt, token0_debt, token1_debt, actual_col, token0_col, token1_col)`.",
+      ];
+      discriminator: [26, 113, 116, 50, 247, 131, 208, 5];
+      accounts: [
+        {
+          name: "signer";
+          writable: true;
+          signer: true;
+        },
+        {
+          name: "signerTokenAccount";
+          docs: ["@dev not required for T3/T4 (smart debt pays at DEX)"];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "to";
+        },
+        {
+          name: "toTokenAccount";
+          docs: ["@dev not required for T2/T4 (smart col withdraws at DEX)"];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "vaultConfig";
+          docs: [
+            "@dev mut because this PDA signs CPIs to the DEX and liquidity programs",
+          ];
+          writable: true;
+        },
+        {
+          name: "vaultState";
+          writable: true;
+        },
+        {
+          name: "supplyToken";
+          docs: ["@dev not required for T2/T4"];
+          optional: true;
+        },
+        {
+          name: "borrowToken";
+          docs: ["@dev not required for T3/T4"];
+          optional: true;
+        },
+        {
+          name: "oracle";
+        },
+        {
+          name: "newBranch";
+          writable: true;
+        },
+        {
+          name: "supplyTokenReservesLiquidity";
+          docs: ["@dev not required for T2/T4"];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "borrowTokenReservesLiquidity";
+          docs: ["@dev not required for T3/T4"];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "vaultSupplyPositionOnLiquidity";
+          docs: ["@dev not required for T2/T4"];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "vaultBorrowPositionOnLiquidity";
+          docs: ["@dev not required for T3/T4"];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "supplyRateModel";
+          optional: true;
+        },
+        {
+          name: "borrowRateModel";
+          optional: true;
+        },
+        {
+          name: "supplyTokenClaimAccount";
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "liquidity";
+        },
+        {
+          name: "liquidityProgram";
+        },
+        {
+          name: "vaultSupplyTokenAccount";
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "vaultBorrowTokenAccount";
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "supplyTokenProgram";
+          optional: true;
+        },
+        {
+          name: "borrowTokenProgram";
+          optional: true;
+        },
+        {
+          name: "systemProgram";
+          address: "11111111111111111111111111111111";
+        },
+        {
+          name: "oracleProgram";
+        },
+        {
+          name: "supplyDex";
+          accounts: [
+            {
+              name: "dex";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexPosition";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexUserToken0Account";
+              docs: ["Signer's token0 account"];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexUserToken1Account";
+              docs: ["Signer's token1 account"];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0";
+              optional: true;
+            },
+            {
+              name: "dexToken1";
+              optional: true;
+            },
+            {
+              name: "dexToken0Reserve";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken1Reserve";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0RateModel";
+              optional: true;
+            },
+            {
+              name: "dexToken1RateModel";
+              optional: true;
+            },
+            {
+              name: "dexToken0Vault";
+              docs: [
+                "@dev this is Liquidity layer vault token account for token0",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken1Vault";
+              docs: [
+                "@dev this is Liquidity layer vault token account for token1",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "supplyPosToken0";
+              docs: [
+                "This pool's own LL **supply** position for token0 (smart-col side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "supplyPosToken1";
+              docs: [
+                "This pool's own LL **supply** position for token1 (smart-col side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "borrowPosToken0";
+              docs: [
+                "This pool's own LL **borrow** position for token0 (smart-debt side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "borrowPosToken1";
+              docs: [
+                "This pool's own LL **borrow** position for token1 (smart-debt side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0Program";
+              optional: true;
+            },
+            {
+              name: "dexToken1Program";
+              optional: true;
+            },
+          ];
+        },
+        {
+          name: "borrowDex";
+          accounts: [
+            {
+              name: "dex";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexPosition";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexUserToken0Account";
+              docs: ["Signer's token0 account"];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexUserToken1Account";
+              docs: ["Signer's token1 account"];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0";
+              optional: true;
+            },
+            {
+              name: "dexToken1";
+              optional: true;
+            },
+            {
+              name: "dexToken0Reserve";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken1Reserve";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0RateModel";
+              optional: true;
+            },
+            {
+              name: "dexToken1RateModel";
+              optional: true;
+            },
+            {
+              name: "dexToken0Vault";
+              docs: [
+                "@dev this is Liquidity layer vault token account for token0",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken1Vault";
+              docs: [
+                "@dev this is Liquidity layer vault token account for token1",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "supplyPosToken0";
+              docs: [
+                "This pool's own LL **supply** position for token0 (smart-col side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "supplyPosToken1";
+              docs: [
+                "This pool's own LL **supply** position for token1 (smart-col side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "borrowPosToken0";
+              docs: [
+                "This pool's own LL **borrow** position for token0 (smart-debt side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "borrowPosToken1";
+              docs: [
+                "This pool's own LL **borrow** position for token1 (smart-debt side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0Program";
+              optional: true;
+            },
+            {
+              name: "dexToken1Program";
+              optional: true;
+            },
+          ];
+        },
+        {
+          name: "dexProgram";
+        },
+        {
+          name: "dexOracleProgram";
+          optional: true;
+        },
+      ];
+      args: [
+        {
+          name: "debtAmt";
+          type: "u64";
+        },
+        {
+          name: "debtPerfectAmounts";
+          type: {
+            option: {
+              defined: {
+                name: "liquidatePerfectDexDebtAmounts";
+              };
+            };
+          };
+        },
+        {
+          name: "colPerUnitDebt";
+          type: "u128";
+        },
+        {
+          name: "colAmounts";
+          type: {
+            option: {
+              defined: {
+                name: "liquidateDexColAmounts";
+              };
+            };
+          };
+        },
+        {
+          name: "absorb";
+          type: "bool";
+        },
+        {
+          name: "transferType";
+          type: {
+            option: {
+              defined: {
+                name: "transferType";
+              };
+            };
+          };
+        },
+        {
+          name: "remainingAccountsIndices";
+          type: "bytes";
+        },
+      ];
+    },
+    {
       name: "operate";
       discriminator: [217, 106, 208, 99, 116, 151, 42, 135];
       accounts: [
@@ -941,116 +1657,12 @@ export type Vaults = {
         {
           name: "signerSupplyTokenAccount";
           writable: true;
-          pda: {
-            seeds: [
-              {
-                kind: "account";
-                path: "signer";
-              },
-              {
-                kind: "account";
-                path: "supplyTokenProgram";
-              },
-              {
-                kind: "account";
-                path: "supplyToken";
-              },
-            ];
-            program: {
-              kind: "const";
-              value: [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89,
-              ];
-            };
-          };
+          optional: true;
         },
         {
           name: "signerBorrowTokenAccount";
           writable: true;
-          pda: {
-            seeds: [
-              {
-                kind: "account";
-                path: "signer";
-              },
-              {
-                kind: "account";
-                path: "borrowTokenProgram";
-              },
-              {
-                kind: "account";
-                path: "borrowToken";
-              },
-            ];
-            program: {
-              kind: "const";
-              value: [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89,
-              ];
-            };
-          };
+          optional: true;
         },
         {
           name: "recipient";
@@ -1060,117 +1672,11 @@ export type Vaults = {
           name: "recipientBorrowTokenAccount";
           writable: true;
           optional: true;
-          pda: {
-            seeds: [
-              {
-                kind: "account";
-                path: "recipient";
-              },
-              {
-                kind: "account";
-                path: "borrowTokenProgram";
-              },
-              {
-                kind: "account";
-                path: "borrowToken";
-              },
-            ];
-            program: {
-              kind: "const";
-              value: [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89,
-              ];
-            };
-          };
         },
         {
           name: "recipientSupplyTokenAccount";
           writable: true;
           optional: true;
-          pda: {
-            seeds: [
-              {
-                kind: "account";
-                path: "recipient";
-              },
-              {
-                kind: "account";
-                path: "supplyTokenProgram";
-              },
-              {
-                kind: "account";
-                path: "supplyToken";
-              },
-            ];
-            program: {
-              kind: "const";
-              value: [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89,
-              ];
-            };
-          };
         },
         {
           name: "vaultConfig";
@@ -1277,6 +1783,7 @@ export type Vaults = {
         },
         {
           name: "associatedTokenProgram";
+          optional: true;
           address: "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL";
         },
         {
@@ -1310,6 +1817,890 @@ export type Vaults = {
       ];
     },
     {
+      name: "operateDex";
+      discriminator: [223, 122, 223, 181, 133, 132, 116, 33];
+      accounts: [
+        {
+          name: "signer";
+          writable: true;
+          signer: true;
+        },
+        {
+          name: "signerSupplyTokenAccount";
+          docs: [
+            "@dev possible that this account is not required for vault like T2, T4",
+          ];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "signerBorrowTokenAccount";
+          docs: [
+            "@dev possible that this account is not required for vault like T2, T4",
+          ];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "recipient";
+          optional: true;
+        },
+        {
+          name: "recipientBorrowTokenAccount";
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "recipientSupplyTokenAccount";
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "vaultConfig";
+          docs: [
+            "@dev mut because this PDA signs CPIs to the DEX and liquidity programs",
+          ];
+          writable: true;
+        },
+        {
+          name: "vaultState";
+          writable: true;
+        },
+        {
+          name: "supplyToken";
+          docs: [
+            "@dev possible that this account is not required for vault like T2, T4",
+          ];
+          optional: true;
+        },
+        {
+          name: "borrowToken";
+          docs: [
+            "@dev possible that this account is not required for vault like T3, T4",
+          ];
+          optional: true;
+        },
+        {
+          name: "oracle";
+        },
+        {
+          name: "position";
+          writable: true;
+        },
+        {
+          name: "positionTokenAccount";
+        },
+        {
+          name: "currentPositionTick";
+          writable: true;
+        },
+        {
+          name: "finalPositionTick";
+          writable: true;
+        },
+        {
+          name: "currentPositionTickId";
+        },
+        {
+          name: "finalPositionTickId";
+          writable: true;
+        },
+        {
+          name: "newBranch";
+          writable: true;
+        },
+        {
+          name: "supplyTokenReservesLiquidity";
+          docs: [
+            "@dev possible that this account is not required for vault like T2, T4",
+          ];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "borrowTokenReservesLiquidity";
+          docs: [
+            "@dev possible that this account is not required for vault like T3, T4",
+          ];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "vaultSupplyPositionOnLiquidity";
+          docs: [
+            "@dev possible that this account is not required for vault like T2, T4",
+          ];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "vaultBorrowPositionOnLiquidity";
+          docs: [
+            "@dev possible that this account is not required for vault like T3, T4",
+          ];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "supplyRateModel";
+          docs: [
+            "@dev possible that this account is not required for vault like T2, T4",
+          ];
+          optional: true;
+        },
+        {
+          name: "borrowRateModel";
+          docs: [
+            "@dev possible that this account is not required for vault like T3, T4",
+          ];
+          optional: true;
+        },
+        {
+          name: "vaultSupplyTokenAccount";
+          docs: [
+            "@dev possible that this account is not required for vault like T2, T4",
+          ];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "vaultBorrowTokenAccount";
+          docs: [
+            "@dev possible that this account is not required for vault like T3, T4",
+          ];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "liquidity";
+        },
+        {
+          name: "liquidityProgram";
+        },
+        {
+          name: "oracleProgram";
+        },
+        {
+          name: "supplyTokenProgram";
+          docs: [
+            "@dev possible that this account is not required for vault like T2, T4",
+          ];
+          optional: true;
+        },
+        {
+          name: "borrowTokenProgram";
+          docs: [
+            "@dev possible that this account is not required for vault like T3, T4",
+          ];
+          optional: true;
+        },
+        {
+          name: "systemProgram";
+          address: "11111111111111111111111111111111";
+        },
+        {
+          name: "supplyDex";
+          accounts: [
+            {
+              name: "dex";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexPosition";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexUserToken0Account";
+              docs: ["Signer's token0 account"];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexUserToken1Account";
+              docs: ["Signer's token1 account"];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0";
+              optional: true;
+            },
+            {
+              name: "dexToken1";
+              optional: true;
+            },
+            {
+              name: "dexToken0Reserve";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken1Reserve";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0RateModel";
+              optional: true;
+            },
+            {
+              name: "dexToken1RateModel";
+              optional: true;
+            },
+            {
+              name: "dexToken0Vault";
+              docs: [
+                "@dev this is Liquidity layer vault token account for token0",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken1Vault";
+              docs: [
+                "@dev this is Liquidity layer vault token account for token1",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "supplyPosToken0";
+              docs: [
+                "This pool's own LL **supply** position for token0 (smart-col side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "supplyPosToken1";
+              docs: [
+                "This pool's own LL **supply** position for token1 (smart-col side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "borrowPosToken0";
+              docs: [
+                "This pool's own LL **borrow** position for token0 (smart-debt side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "borrowPosToken1";
+              docs: [
+                "This pool's own LL **borrow** position for token1 (smart-debt side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0Program";
+              optional: true;
+            },
+            {
+              name: "dexToken1Program";
+              optional: true;
+            },
+          ];
+        },
+        {
+          name: "borrowDex";
+          accounts: [
+            {
+              name: "dex";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexPosition";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexUserToken0Account";
+              docs: ["Signer's token0 account"];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexUserToken1Account";
+              docs: ["Signer's token1 account"];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0";
+              optional: true;
+            },
+            {
+              name: "dexToken1";
+              optional: true;
+            },
+            {
+              name: "dexToken0Reserve";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken1Reserve";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0RateModel";
+              optional: true;
+            },
+            {
+              name: "dexToken1RateModel";
+              optional: true;
+            },
+            {
+              name: "dexToken0Vault";
+              docs: [
+                "@dev this is Liquidity layer vault token account for token0",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken1Vault";
+              docs: [
+                "@dev this is Liquidity layer vault token account for token1",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "supplyPosToken0";
+              docs: [
+                "This pool's own LL **supply** position for token0 (smart-col side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "supplyPosToken1";
+              docs: [
+                "This pool's own LL **supply** position for token1 (smart-col side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "borrowPosToken0";
+              docs: [
+                "This pool's own LL **borrow** position for token0 (smart-debt side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "borrowPosToken1";
+              docs: [
+                "This pool's own LL **borrow** position for token1 (smart-debt side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0Program";
+              optional: true;
+            },
+            {
+              name: "dexToken1Program";
+              optional: true;
+            },
+          ];
+        },
+        {
+          name: "dexProgram";
+          docs: ["@audit verify dex program in instruction logic"];
+        },
+      ];
+      args: [
+        {
+          name: "colAmounts";
+          type: {
+            option: {
+              defined: {
+                name: "operateDexColAmounts";
+              };
+            };
+          };
+        },
+        {
+          name: "debtAmounts";
+          type: {
+            option: {
+              defined: {
+                name: "operateDexDebtAmounts";
+              };
+            };
+          };
+        },
+        {
+          name: "transferType";
+          type: {
+            option: {
+              defined: {
+                name: "transferType";
+              };
+            };
+          };
+        },
+        {
+          name: "remainingAccountsIndices";
+          type: "bytes";
+        },
+      ];
+    },
+    {
+      name: "operatePerfectDex";
+      discriminator: [88, 34, 180, 77, 152, 186, 166, 162];
+      accounts: [
+        {
+          name: "signer";
+          writable: true;
+          signer: true;
+        },
+        {
+          name: "signerSupplyTokenAccount";
+          docs: [
+            "@dev possible that this account is not required for vault like T2, T4",
+          ];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "signerBorrowTokenAccount";
+          docs: [
+            "@dev possible that this account is not required for vault like T2, T4",
+          ];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "recipient";
+          optional: true;
+        },
+        {
+          name: "recipientBorrowTokenAccount";
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "recipientSupplyTokenAccount";
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "vaultConfig";
+          docs: [
+            "@dev mut because this PDA signs CPIs to the DEX and liquidity programs",
+          ];
+          writable: true;
+        },
+        {
+          name: "vaultState";
+          writable: true;
+        },
+        {
+          name: "supplyToken";
+          docs: [
+            "@dev possible that this account is not required for vault like T2, T4",
+          ];
+          optional: true;
+        },
+        {
+          name: "borrowToken";
+          docs: [
+            "@dev possible that this account is not required for vault like T3, T4",
+          ];
+          optional: true;
+        },
+        {
+          name: "oracle";
+        },
+        {
+          name: "position";
+          writable: true;
+        },
+        {
+          name: "positionTokenAccount";
+        },
+        {
+          name: "currentPositionTick";
+          writable: true;
+        },
+        {
+          name: "finalPositionTick";
+          writable: true;
+        },
+        {
+          name: "currentPositionTickId";
+        },
+        {
+          name: "finalPositionTickId";
+          writable: true;
+        },
+        {
+          name: "newBranch";
+          writable: true;
+        },
+        {
+          name: "supplyTokenReservesLiquidity";
+          docs: [
+            "@dev possible that this account is not required for vault like T2, T4",
+          ];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "borrowTokenReservesLiquidity";
+          docs: [
+            "@dev possible that this account is not required for vault like T3, T4",
+          ];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "vaultSupplyPositionOnLiquidity";
+          docs: [
+            "@dev possible that this account is not required for vault like T2, T4",
+          ];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "vaultBorrowPositionOnLiquidity";
+          docs: [
+            "@dev possible that this account is not required for vault like T3, T4",
+          ];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "supplyRateModel";
+          docs: [
+            "@dev possible that this account is not required for vault like T2, T4",
+          ];
+          optional: true;
+        },
+        {
+          name: "borrowRateModel";
+          docs: [
+            "@dev possible that this account is not required for vault like T3, T4",
+          ];
+          optional: true;
+        },
+        {
+          name: "vaultSupplyTokenAccount";
+          docs: [
+            "@dev possible that this account is not required for vault like T2, T4",
+          ];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "vaultBorrowTokenAccount";
+          docs: [
+            "@dev possible that this account is not required for vault like T3, T4",
+          ];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "liquidity";
+        },
+        {
+          name: "liquidityProgram";
+        },
+        {
+          name: "oracleProgram";
+        },
+        {
+          name: "supplyTokenProgram";
+          docs: [
+            "@dev possible that this account is not required for vault like T2, T4",
+          ];
+          optional: true;
+        },
+        {
+          name: "borrowTokenProgram";
+          docs: [
+            "@dev possible that this account is not required for vault like T3, T4",
+          ];
+          optional: true;
+        },
+        {
+          name: "systemProgram";
+          address: "11111111111111111111111111111111";
+        },
+        {
+          name: "supplyDex";
+          accounts: [
+            {
+              name: "dex";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexPosition";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexUserToken0Account";
+              docs: ["Signer's token0 account"];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexUserToken1Account";
+              docs: ["Signer's token1 account"];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0";
+              optional: true;
+            },
+            {
+              name: "dexToken1";
+              optional: true;
+            },
+            {
+              name: "dexToken0Reserve";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken1Reserve";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0RateModel";
+              optional: true;
+            },
+            {
+              name: "dexToken1RateModel";
+              optional: true;
+            },
+            {
+              name: "dexToken0Vault";
+              docs: [
+                "@dev this is Liquidity layer vault token account for token0",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken1Vault";
+              docs: [
+                "@dev this is Liquidity layer vault token account for token1",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "supplyPosToken0";
+              docs: [
+                "This pool's own LL **supply** position for token0 (smart-col side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "supplyPosToken1";
+              docs: [
+                "This pool's own LL **supply** position for token1 (smart-col side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "borrowPosToken0";
+              docs: [
+                "This pool's own LL **borrow** position for token0 (smart-debt side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "borrowPosToken1";
+              docs: [
+                "This pool's own LL **borrow** position for token1 (smart-debt side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0Program";
+              optional: true;
+            },
+            {
+              name: "dexToken1Program";
+              optional: true;
+            },
+          ];
+        },
+        {
+          name: "borrowDex";
+          accounts: [
+            {
+              name: "dex";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexPosition";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexUserToken0Account";
+              docs: ["Signer's token0 account"];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexUserToken1Account";
+              docs: ["Signer's token1 account"];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0";
+              optional: true;
+            },
+            {
+              name: "dexToken1";
+              optional: true;
+            },
+            {
+              name: "dexToken0Reserve";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken1Reserve";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0RateModel";
+              optional: true;
+            },
+            {
+              name: "dexToken1RateModel";
+              optional: true;
+            },
+            {
+              name: "dexToken0Vault";
+              docs: [
+                "@dev this is Liquidity layer vault token account for token0",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken1Vault";
+              docs: [
+                "@dev this is Liquidity layer vault token account for token1",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "supplyPosToken0";
+              docs: [
+                "This pool's own LL **supply** position for token0 (smart-col side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "supplyPosToken1";
+              docs: [
+                "This pool's own LL **supply** position for token1 (smart-col side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "borrowPosToken0";
+              docs: [
+                "This pool's own LL **borrow** position for token0 (smart-debt side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "borrowPosToken1";
+              docs: [
+                "This pool's own LL **borrow** position for token1 (smart-debt side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0Program";
+              optional: true;
+            },
+            {
+              name: "dexToken1Program";
+              optional: true;
+            },
+          ];
+        },
+        {
+          name: "dexProgram";
+          docs: ["@audit verify dex program in instruction logic"];
+        },
+      ];
+      args: [
+        {
+          name: "colAmounts";
+          type: {
+            option: {
+              defined: {
+                name: "operatePerfectDexColAmounts";
+              };
+            };
+          };
+        },
+        {
+          name: "debtAmounts";
+          type: {
+            option: {
+              defined: {
+                name: "operatePerfectDexDebtAmounts";
+              };
+            };
+          };
+        },
+        {
+          name: "transferType";
+          type: {
+            option: {
+              defined: {
+                name: "transferType";
+              };
+            };
+          };
+        },
+        {
+          name: "remainingAccountsIndices";
+          type: "bytes";
+        },
+      ];
+    },
+    {
       name: "rebalance";
       discriminator: [108, 158, 77, 9, 210, 52, 88, 62];
       accounts: [
@@ -1322,116 +2713,10 @@ export type Vaults = {
         {
           name: "rebalancerSupplyTokenAccount";
           writable: true;
-          pda: {
-            seeds: [
-              {
-                kind: "account";
-                path: "rebalancer";
-              },
-              {
-                kind: "account";
-                path: "supplyTokenProgram";
-              },
-              {
-                kind: "account";
-                path: "supplyToken";
-              },
-            ];
-            program: {
-              kind: "const";
-              value: [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89,
-              ];
-            };
-          };
         },
         {
           name: "rebalancerBorrowTokenAccount";
           writable: true;
-          pda: {
-            seeds: [
-              {
-                kind: "account";
-                path: "rebalancer";
-              },
-              {
-                kind: "account";
-                path: "borrowTokenProgram";
-              },
-              {
-                kind: "account";
-                path: "borrowToken";
-              },
-            ];
-            program: {
-              kind: "const";
-              value: [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89,
-              ];
-            };
-          };
         },
         {
           name: "vaultConfig";
@@ -1502,10 +2787,1054 @@ export type Vaults = {
         },
         {
           name: "associatedTokenProgram";
+          optional: true;
           address: "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL";
         },
       ];
       args: [];
+    },
+    {
+      name: "rebalanceDex";
+      discriminator: [71, 178, 19, 146, 254, 47, 109, 126];
+      accounts: [
+        {
+          name: "rebalancer";
+          writable: true;
+          signer: true;
+          relations: ["vaultConfig"];
+        },
+        {
+          name: "rebalancerSupplyTokenAccount";
+          docs: ["@dev not required for T2/T4 (smart collateral)"];
+          writable: true;
+          optional: true;
+          pda: {
+            seeds: [
+              {
+                kind: "account";
+                path: "rebalancer";
+              },
+              {
+                kind: "account";
+                path: "supplyTokenProgram";
+              },
+              {
+                kind: "account";
+                path: "supplyToken";
+              },
+            ];
+            program: {
+              kind: "const";
+              value: [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89,
+              ];
+            };
+          };
+        },
+        {
+          name: "rebalancerBorrowTokenAccount";
+          docs: ["@dev not required for T3/T4 (smart debt)"];
+          writable: true;
+          optional: true;
+          pda: {
+            seeds: [
+              {
+                kind: "account";
+                path: "rebalancer";
+              },
+              {
+                kind: "account";
+                path: "borrowTokenProgram";
+              },
+              {
+                kind: "account";
+                path: "borrowToken";
+              },
+            ];
+            program: {
+              kind: "const";
+              value: [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89,
+              ];
+            };
+          };
+        },
+        {
+          name: "vaultConfig";
+          writable: true;
+        },
+        {
+          name: "vaultState";
+          writable: true;
+        },
+        {
+          name: "supplyToken";
+          docs: ["@dev not required for T2/T4 (smart collateral)"];
+          optional: true;
+        },
+        {
+          name: "borrowToken";
+          docs: ["@dev not required for T3/T4 (smart debt)"];
+          optional: true;
+        },
+        {
+          name: "supplyTokenReservesLiquidity";
+          docs: ["@dev not required for T2/T4 (smart collateral)"];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "borrowTokenReservesLiquidity";
+          docs: ["@dev not required for T3/T4 (smart debt)"];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "vaultSupplyPositionOnLiquidity";
+          docs: ["@dev not required for T2/T4 (smart collateral)"];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "vaultBorrowPositionOnLiquidity";
+          docs: ["@dev not required for T3/T4 (smart debt)"];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "supplyRateModel";
+          optional: true;
+        },
+        {
+          name: "borrowRateModel";
+          optional: true;
+        },
+        {
+          name: "liquidity";
+        },
+        {
+          name: "liquidityProgram";
+        },
+        {
+          name: "vaultSupplyTokenAccount";
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "vaultBorrowTokenAccount";
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "systemProgram";
+          address: "11111111111111111111111111111111";
+        },
+        {
+          name: "supplyTokenProgram";
+          optional: true;
+        },
+        {
+          name: "borrowTokenProgram";
+          optional: true;
+        },
+        {
+          name: "associatedTokenProgram";
+          optional: true;
+          address: "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL";
+        },
+        {
+          name: "dexProgram";
+        },
+        {
+          name: "dexOracleProgram";
+          optional: true;
+        },
+        {
+          name: "supplyDex";
+          accounts: [
+            {
+              name: "dex";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexPosition";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexUserToken0Account";
+              docs: ["Signer's token0 account"];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexUserToken1Account";
+              docs: ["Signer's token1 account"];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0";
+              optional: true;
+            },
+            {
+              name: "dexToken1";
+              optional: true;
+            },
+            {
+              name: "dexToken0Reserve";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken1Reserve";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0RateModel";
+              optional: true;
+            },
+            {
+              name: "dexToken1RateModel";
+              optional: true;
+            },
+            {
+              name: "dexToken0Vault";
+              docs: [
+                "@dev this is Liquidity layer vault token account for token0",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken1Vault";
+              docs: [
+                "@dev this is Liquidity layer vault token account for token1",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "supplyPosToken0";
+              docs: [
+                "This pool's own LL **supply** position for token0 (smart-col side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "supplyPosToken1";
+              docs: [
+                "This pool's own LL **supply** position for token1 (smart-col side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "borrowPosToken0";
+              docs: [
+                "This pool's own LL **borrow** position for token0 (smart-debt side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "borrowPosToken1";
+              docs: [
+                "This pool's own LL **borrow** position for token1 (smart-debt side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0Program";
+              optional: true;
+            },
+            {
+              name: "dexToken1Program";
+              optional: true;
+            },
+          ];
+        },
+        {
+          name: "borrowDex";
+          accounts: [
+            {
+              name: "dex";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexPosition";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexUserToken0Account";
+              docs: ["Signer's token0 account"];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexUserToken1Account";
+              docs: ["Signer's token1 account"];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0";
+              optional: true;
+            },
+            {
+              name: "dexToken1";
+              optional: true;
+            },
+            {
+              name: "dexToken0Reserve";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken1Reserve";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0RateModel";
+              optional: true;
+            },
+            {
+              name: "dexToken1RateModel";
+              optional: true;
+            },
+            {
+              name: "dexToken0Vault";
+              docs: [
+                "@dev this is Liquidity layer vault token account for token0",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken1Vault";
+              docs: [
+                "@dev this is Liquidity layer vault token account for token1",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "supplyPosToken0";
+              docs: [
+                "This pool's own LL **supply** position for token0 (smart-col side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "supplyPosToken1";
+              docs: [
+                "This pool's own LL **supply** position for token1 (smart-col side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "borrowPosToken0";
+              docs: [
+                "This pool's own LL **borrow** position for token0 (smart-debt side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "borrowPosToken1";
+              docs: [
+                "This pool's own LL **borrow** position for token1 (smart-debt side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0Program";
+              optional: true;
+            },
+            {
+              name: "dexToken1Program";
+              optional: true;
+            },
+          ];
+        },
+      ];
+      args: [
+        {
+          name: "colToken0MinMax";
+          type: "i128";
+        },
+        {
+          name: "colToken1MinMax";
+          type: "i128";
+        },
+        {
+          name: "debtToken0MinMax";
+          type: "i128";
+        },
+        {
+          name: "debtToken1MinMax";
+          type: "i128";
+        },
+      ];
+    },
+    {
+      name: "rebalanceDexWithAmounts";
+      docs: [
+        "Rebalance a typed (T2-T4 / DEX) vault by a custom (capped) amount per leg.",
+        "`supply_amount`/`borrow_amount` are unsigned magnitudes; `None` rebalances",
+        "the full imbalance for that leg, `Some(n)` clamps it to `n`. Direction is",
+        "driven by the imbalance sign; the `*_min_max` slippage bounds behave as in",
+        "[`Self::rebalance_dex`].",
+      ];
+      discriminator: [240, 127, 38, 166, 99, 125, 51, 124];
+      accounts: [
+        {
+          name: "rebalancer";
+          writable: true;
+          signer: true;
+          relations: ["vaultConfig"];
+        },
+        {
+          name: "rebalancerSupplyTokenAccount";
+          docs: ["@dev not required for T2/T4 (smart collateral)"];
+          writable: true;
+          optional: true;
+          pda: {
+            seeds: [
+              {
+                kind: "account";
+                path: "rebalancer";
+              },
+              {
+                kind: "account";
+                path: "supplyTokenProgram";
+              },
+              {
+                kind: "account";
+                path: "supplyToken";
+              },
+            ];
+            program: {
+              kind: "const";
+              value: [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89,
+              ];
+            };
+          };
+        },
+        {
+          name: "rebalancerBorrowTokenAccount";
+          docs: ["@dev not required for T3/T4 (smart debt)"];
+          writable: true;
+          optional: true;
+          pda: {
+            seeds: [
+              {
+                kind: "account";
+                path: "rebalancer";
+              },
+              {
+                kind: "account";
+                path: "borrowTokenProgram";
+              },
+              {
+                kind: "account";
+                path: "borrowToken";
+              },
+            ];
+            program: {
+              kind: "const";
+              value: [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89,
+              ];
+            };
+          };
+        },
+        {
+          name: "vaultConfig";
+          writable: true;
+        },
+        {
+          name: "vaultState";
+          writable: true;
+        },
+        {
+          name: "supplyToken";
+          docs: ["@dev not required for T2/T4 (smart collateral)"];
+          optional: true;
+        },
+        {
+          name: "borrowToken";
+          docs: ["@dev not required for T3/T4 (smart debt)"];
+          optional: true;
+        },
+        {
+          name: "supplyTokenReservesLiquidity";
+          docs: ["@dev not required for T2/T4 (smart collateral)"];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "borrowTokenReservesLiquidity";
+          docs: ["@dev not required for T3/T4 (smart debt)"];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "vaultSupplyPositionOnLiquidity";
+          docs: ["@dev not required for T2/T4 (smart collateral)"];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "vaultBorrowPositionOnLiquidity";
+          docs: ["@dev not required for T3/T4 (smart debt)"];
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "supplyRateModel";
+          optional: true;
+        },
+        {
+          name: "borrowRateModel";
+          optional: true;
+        },
+        {
+          name: "liquidity";
+        },
+        {
+          name: "liquidityProgram";
+        },
+        {
+          name: "vaultSupplyTokenAccount";
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "vaultBorrowTokenAccount";
+          writable: true;
+          optional: true;
+        },
+        {
+          name: "systemProgram";
+          address: "11111111111111111111111111111111";
+        },
+        {
+          name: "supplyTokenProgram";
+          optional: true;
+        },
+        {
+          name: "borrowTokenProgram";
+          optional: true;
+        },
+        {
+          name: "associatedTokenProgram";
+          optional: true;
+          address: "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL";
+        },
+        {
+          name: "dexProgram";
+        },
+        {
+          name: "dexOracleProgram";
+          optional: true;
+        },
+        {
+          name: "supplyDex";
+          accounts: [
+            {
+              name: "dex";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexPosition";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexUserToken0Account";
+              docs: ["Signer's token0 account"];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexUserToken1Account";
+              docs: ["Signer's token1 account"];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0";
+              optional: true;
+            },
+            {
+              name: "dexToken1";
+              optional: true;
+            },
+            {
+              name: "dexToken0Reserve";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken1Reserve";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0RateModel";
+              optional: true;
+            },
+            {
+              name: "dexToken1RateModel";
+              optional: true;
+            },
+            {
+              name: "dexToken0Vault";
+              docs: [
+                "@dev this is Liquidity layer vault token account for token0",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken1Vault";
+              docs: [
+                "@dev this is Liquidity layer vault token account for token1",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "supplyPosToken0";
+              docs: [
+                "This pool's own LL **supply** position for token0 (smart-col side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "supplyPosToken1";
+              docs: [
+                "This pool's own LL **supply** position for token1 (smart-col side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "borrowPosToken0";
+              docs: [
+                "This pool's own LL **borrow** position for token0 (smart-debt side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "borrowPosToken1";
+              docs: [
+                "This pool's own LL **borrow** position for token1 (smart-debt side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0Program";
+              optional: true;
+            },
+            {
+              name: "dexToken1Program";
+              optional: true;
+            },
+          ];
+        },
+        {
+          name: "borrowDex";
+          accounts: [
+            {
+              name: "dex";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexPosition";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexUserToken0Account";
+              docs: ["Signer's token0 account"];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexUserToken1Account";
+              docs: ["Signer's token1 account"];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0";
+              optional: true;
+            },
+            {
+              name: "dexToken1";
+              optional: true;
+            },
+            {
+              name: "dexToken0Reserve";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken1Reserve";
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0RateModel";
+              optional: true;
+            },
+            {
+              name: "dexToken1RateModel";
+              optional: true;
+            },
+            {
+              name: "dexToken0Vault";
+              docs: [
+                "@dev this is Liquidity layer vault token account for token0",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken1Vault";
+              docs: [
+                "@dev this is Liquidity layer vault token account for token1",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "supplyPosToken0";
+              docs: [
+                "This pool's own LL **supply** position for token0 (smart-col side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "supplyPosToken1";
+              docs: [
+                "This pool's own LL **supply** position for token1 (smart-col side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "borrowPosToken0";
+              docs: [
+                "This pool's own LL **borrow** position for token0 (smart-debt side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "borrowPosToken1";
+              docs: [
+                "This pool's own LL **borrow** position for token1 (smart-debt side).",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexToken0Program";
+              optional: true;
+            },
+            {
+              name: "dexToken1Program";
+              optional: true;
+            },
+          ];
+        },
+      ];
+      args: [
+        {
+          name: "supplyAmount";
+          type: {
+            option: "u128";
+          };
+        },
+        {
+          name: "borrowAmount";
+          type: {
+            option: "u128";
+          };
+        },
+        {
+          name: "colToken0MinMax";
+          type: "i128";
+        },
+        {
+          name: "colToken1MinMax";
+          type: "i128";
+        },
+        {
+          name: "debtToken0MinMax";
+          type: "i128";
+        },
+        {
+          name: "debtToken1MinMax";
+          type: "i128";
+        },
+      ];
+    },
+    {
+      name: "rebalanceWithAmounts";
+      docs: [
+        "Rebalance a T1 vault by a custom (capped) amount per leg.",
+        "`supply_amount`/`borrow_amount` are unsigned magnitudes; `None` rebalances",
+        "the full imbalance for that leg, `Some(n)` clamps it to `n`. Direction",
+        "(deposit vs withdraw / borrow vs payback) is driven by the imbalance sign.",
+      ];
+      discriminator: [190, 33, 144, 182, 86, 4, 141, 73];
+      accounts: [
+        {
+          name: "rebalancer";
+          writable: true;
+          signer: true;
+          relations: ["vaultConfig"];
+        },
+        {
+          name: "rebalancerSupplyTokenAccount";
+          writable: true;
+        },
+        {
+          name: "rebalancerBorrowTokenAccount";
+          writable: true;
+        },
+        {
+          name: "vaultConfig";
+          docs: [
+            "@dev mut because this PDA signs the CPI to liquidity program",
+            "@dev verification inside instruction logic",
+          ];
+          writable: true;
+        },
+        {
+          name: "vaultState";
+          docs: ["@dev verification inside instruction logic"];
+          writable: true;
+        },
+        {
+          name: "supplyToken";
+          relations: ["vaultConfig"];
+        },
+        {
+          name: "borrowToken";
+          relations: ["vaultConfig"];
+        },
+        {
+          name: "supplyTokenReservesLiquidity";
+          writable: true;
+        },
+        {
+          name: "borrowTokenReservesLiquidity";
+          writable: true;
+        },
+        {
+          name: "vaultSupplyPositionOnLiquidity";
+          writable: true;
+        },
+        {
+          name: "vaultBorrowPositionOnLiquidity";
+          writable: true;
+        },
+        {
+          name: "supplyRateModel";
+        },
+        {
+          name: "borrowRateModel";
+        },
+        {
+          name: "liquidity";
+        },
+        {
+          name: "liquidityProgram";
+        },
+        {
+          name: "vaultSupplyTokenAccount";
+          writable: true;
+        },
+        {
+          name: "vaultBorrowTokenAccount";
+          writable: true;
+        },
+        {
+          name: "systemProgram";
+          address: "11111111111111111111111111111111";
+        },
+        {
+          name: "supplyTokenProgram";
+        },
+        {
+          name: "borrowTokenProgram";
+        },
+        {
+          name: "associatedTokenProgram";
+          optional: true;
+          address: "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL";
+        },
+      ];
+      args: [
+        {
+          name: "supplyAmount";
+          type: {
+            option: "u128";
+          };
+        },
+        {
+          name: "borrowAmount";
+          type: {
+            option: "u128";
+          };
+        },
+      ];
     },
     {
       name: "updateAuthority";
@@ -1590,7 +3919,7 @@ export type Vaults = {
         },
         {
           name: "borrowFee";
-          type: "u16";
+          type: "u8";
         },
       ];
     },
@@ -2071,6 +4400,14 @@ export type Vaults = {
       discriminator: [14, 63, 100, 50, 25, 8, 29, 5];
     },
     {
+      name: "dex";
+      discriminator: [236, 30, 181, 80, 209, 217, 25, 163];
+    },
+    {
+      name: "dexPosition";
+      discriminator: [30, 36, 219, 78, 189, 173, 170, 47];
+    },
+    {
       name: "oracle";
       discriminator: [139, 194, 131, 179, 140, 179, 229, 244];
     },
@@ -2385,228 +4722,388 @@ export type Vaults = {
     },
     {
       code: 6029;
+      name: "vaultInvalidRebalanceMinMax";
+      msg: "vaultInvalidRebalanceMinMax";
+    },
+    {
+      code: 6030;
       name: "vaultLiquidationReverts";
       msg: "vaultLiquidationReverts";
     },
     {
-      code: 6030;
+      code: 6031;
       name: "vaultInvalidOraclePrice";
       msg: "vaultInvalidOraclePrice";
     },
     {
-      code: 6031;
+      code: 6032;
       name: "vaultBranchNotFound";
       msg: "vaultBranchNotFound";
     },
     {
-      code: 6032;
+      code: 6033;
       name: "vaultTickNotFound";
       msg: "vaultTickNotFound";
     },
     {
-      code: 6033;
+      code: 6034;
       name: "vaultTickHasDebtNotFound";
       msg: "vaultTickHasDebtNotFound";
     },
     {
-      code: 6034;
+      code: 6035;
       name: "vaultTickMismatch";
       msg: "vaultTickMismatch";
     },
     {
-      code: 6035;
+      code: 6036;
       name: "vaultInvalidVaultId";
       msg: "vaultInvalidVaultId";
     },
     {
-      code: 6036;
+      code: 6037;
       name: "vaultInvalidNextPositionId";
       msg: "vaultInvalidNextPositionId";
     },
     {
-      code: 6037;
+      code: 6038;
       name: "vaultInvalidPositionId";
       msg: "vaultInvalidPositionId";
     },
     {
-      code: 6038;
+      code: 6039;
       name: "vaultPositionNotEmpty";
       msg: "vaultPositionNotEmpty";
     },
     {
-      code: 6039;
+      code: 6040;
       name: "vaultInvalidSupplyMint";
       msg: "vaultInvalidSupplyMint";
     },
     {
-      code: 6040;
+      code: 6041;
       name: "vaultInvalidBorrowMint";
       msg: "vaultInvalidBorrowMint";
     },
     {
-      code: 6041;
+      code: 6042;
       name: "vaultInvalidOracle";
       msg: "vaultInvalidOracle";
     },
     {
-      code: 6042;
+      code: 6043;
       name: "vaultInvalidTick";
       msg: "vaultInvalidTick";
     },
     {
-      code: 6043;
+      code: 6044;
       name: "vaultInvalidLiquidityProgram";
       msg: "vaultInvalidLiquidityProgram";
     },
     {
-      code: 6044;
+      code: 6045;
       name: "vaultInvalidPositionAuthority";
       msg: "vaultInvalidPositionAuthority";
     },
     {
-      code: 6045;
+      code: 6046;
       name: "vaultOracleNotValid";
       msg: "vaultOracleNotValid";
     },
     {
-      code: 6046;
+      code: 6047;
       name: "vaultBranchOwnerNotValid";
       msg: "vaultBranchOwnerNotValid";
     },
     {
-      code: 6047;
+      code: 6048;
       name: "vaultTickHasDebtOwnerNotValid";
       msg: "vaultTickHasDebtOwnerNotValid";
     },
     {
-      code: 6048;
+      code: 6049;
       name: "vaultTickOwnerNotValid";
       msg: "vaultTickDataOwnerNotValid";
     },
     {
-      code: 6049;
+      code: 6050;
       name: "vaultLiquidateRemainingAccountsTooShort";
       msg: "vaultLiquidateRemainingAccountsTooShort";
     },
     {
-      code: 6050;
+      code: 6051;
       name: "vaultOperateRemainingAccountsTooShort";
       msg: "vaultOperateRemainingAccountsTooShort";
     },
     {
-      code: 6051;
+      code: 6052;
       name: "vaultInvalidZerothBranch";
       msg: "vaultInvalidZerothBranch";
     },
     {
-      code: 6052;
+      code: 6053;
       name: "vaultCpiToLiquidityFailed";
       msg: "vaultCpiToLiquidityFailed";
     },
     {
-      code: 6053;
+      code: 6054;
       name: "vaultCpiToOracleFailed";
       msg: "vaultCpiToOracleFailed";
     },
     {
-      code: 6054;
+      code: 6055;
       name: "vaultOnlyAuthority";
       msg: "vaultOnlyAuthority";
     },
     {
-      code: 6055;
+      code: 6056;
       name: "vaultNewBranchInvalid";
       msg: "vaultNewBranchInvalid";
     },
     {
-      code: 6056;
+      code: 6057;
       name: "vaultTickHasDebtIndexMismatch";
       msg: "vaultTickHasDebtIndexMismatch";
     },
     {
-      code: 6057;
+      code: 6058;
       name: "vaultTickHasDebtOutOfRange";
       msg: "vaultTickHasDebtOutOfRange";
     },
     {
-      code: 6058;
+      code: 6059;
       name: "vaultUserSupplyPositionRequired";
       msg: "vaultUserSupplyPositionRequired";
     },
     {
-      code: 6059;
+      code: 6060;
       name: "vaultClaimAccountRequired";
       msg: "vaultClaimAccountRequired";
     },
     {
-      code: 6060;
+      code: 6061;
       name: "vaultRecipientWithdrawAccountRequired";
       msg: "vaultRecipientWithdrawAccountRequired";
     },
     {
-      code: 6061;
+      code: 6062;
       name: "vaultRecipientBorrowAccountRequired";
       msg: "vaultRecipientBorrowAccountRequired";
     },
     {
-      code: 6062;
+      code: 6063;
       name: "vaultPositionAboveLiquidationThreshold";
       msg: "vaultPositionAboveLiquidationThreshold";
     },
     {
-      code: 6063;
+      code: 6064;
       name: "vaultAdminValueAboveLimit";
       msg: "vaultAdminValueAboveLimit";
     },
     {
-      code: 6064;
+      code: 6065;
       name: "vaultAdminOnlyAuths";
       msg: "vaultAdminOnlyAuthAccounts";
     },
     {
-      code: 6065;
+      code: 6066;
       name: "vaultAdminAddressZeroNotAllowed";
       msg: "vaultAdminAddressZeroNotAllowed";
     },
     {
-      code: 6066;
+      code: 6067;
       name: "vaultAdminVaultIdMismatch";
       msg: "vaultAdminVaultIdMismatch";
     },
     {
-      code: 6067;
+      code: 6068;
       name: "vaultAdminTotalIdsMismatch";
       msg: "vaultAdminTotalIdsMismatch";
     },
     {
-      code: 6068;
+      code: 6069;
       name: "vaultAdminTickMismatch";
       msg: "vaultAdminTickMismatch";
     },
     {
-      code: 6069;
+      code: 6070;
       name: "vaultAdminLiquidityProgramMismatch";
       msg: "vaultAdminLiquidityProgramMismatch";
     },
     {
-      code: 6070;
+      code: 6071;
       name: "vaultAdminMaxAuthCountReached";
       msg: "vaultAdminMaxAuthCountReached";
     },
     {
-      code: 6071;
+      code: 6072;
       name: "vaultAdminInvalidParams";
       msg: "vaultAdminInvalidParams";
     },
     {
-      code: 6072;
+      code: 6073;
       name: "vaultAdminOnlyAuthority";
       msg: "vaultAdminOnlyAuthority";
     },
     {
-      code: 6073;
+      code: 6074;
       name: "vaultAdminOracleProgramMismatch";
       msg: "vaultAdminOracleProgramMismatch";
+    },
+    {
+      code: 6075;
+      name: "vaultAdminInvalidVaultType";
+      msg: "vaultAdminInvalidVaultType";
+    },
+    {
+      code: 6076;
+      name: "vaultAdminInvalidDexProgram";
+      msg: "vaultAdminInvalidDexProgram";
+    },
+    {
+      code: 6077;
+      name: "vaultAdminInvalidDexPool";
+      msg: "vaultAdminInvalidDexPool";
+    },
+    {
+      code: 6078;
+      name: "vaultCpiToDexFailed";
+      msg: "vaultCpiToDexFailed";
+    },
+    {
+      code: 6079;
+      name: "vaultDexAccountsRequired";
+      msg: "vaultDexAccountsRequired";
+    },
+    {
+      code: 6080;
+      name: "vaultInvalidDexPool";
+      msg: "vaultInvalidDexPool";
+    },
+    {
+      code: 6081;
+      name: "vaultInvalidVaultTypeForDex";
+      msg: "vaultInvalidVaultTypeForDex";
+    },
+    {
+      code: 6082;
+      name: "vaultOperateDexImperfectMaxUsePerfect";
+      msg: "vaultOperateDexImperfectMaxUsePerfect";
+    },
+    {
+      code: 6083;
+      name: "vaultOperateDexNftIdMismatch";
+      msg: "vaultOperateDexNftIdMismatch";
+    },
+    {
+      code: 6084;
+      name: "vaultAdminSupplyTokenRequired";
+      msg: "vaultAdminSupplyTokenRequired";
+    },
+    {
+      code: 6085;
+      name: "vaultAdminBorrowTokenRequired";
+      msg: "vaultAdminBorrowTokenRequired";
+    },
+    {
+      code: 6086;
+      name: "vaultAdminRateMagnifierNotAllowedForSmartLeg";
+      msg: "vaultAdminRateMagnifierNotAllowedForSmartLeg";
+    },
+    {
+      code: 6087;
+      name: "vaultDexDebtSharesPaidMoreThanAvailableLiquidation";
+      msg: "vaultDexDebtSharesPaidMoreThanAvailableLiquidation";
+    },
+    {
+      code: 6088;
+      name: "vaultSignerSupplyTokenAccountRequired";
+      msg: "vaultSignerSupplyTokenAccountRequired";
+    },
+    {
+      code: 6089;
+      name: "vaultSignerBorrowTokenAccountRequired";
+      msg: "vaultSignerBorrowTokenAccountRequired";
+    },
+    {
+      code: 6090;
+      name: "vaultInvalidVaultTypeForOperate";
+      msg: "vaultInvalidVaultTypeForOperate";
+    },
+    {
+      code: 6091;
+      name: "vaultSupplyTokenRequired";
+      msg: "vaultSupplyTokenRequired";
+    },
+    {
+      code: 6092;
+      name: "vaultBorrowTokenRequired";
+      msg: "vaultBorrowTokenRequired";
+    },
+    {
+      code: 6093;
+      name: "vaultSupplyReservesRequired";
+      msg: "vaultSupplyReservesRequired";
+    },
+    {
+      code: 6094;
+      name: "vaultBorrowReservesRequired";
+      msg: "vaultBorrowReservesRequired";
+    },
+    {
+      code: 6095;
+      name: "vaultSupplyDexRequired";
+      msg: "vaultSupplyDexRequired";
+    },
+    {
+      code: 6096;
+      name: "vaultBorrowDexRequired";
+      msg: "vaultBorrowDexRequired";
+    },
+    {
+      code: 6097;
+      name: "vaultSupplyRateModelRequired";
+      msg: "vaultSupplyRateModelRequired";
+    },
+    {
+      code: 6098;
+      name: "vaultBorrowRateModelRequired";
+      msg: "vaultBorrowRateModelRequired";
+    },
+    {
+      code: 6099;
+      name: "vaultSupplyTokenProgramRequired";
+      msg: "vaultSupplyTokenProgramRequired";
+    },
+    {
+      code: 6100;
+      name: "vaultBorrowTokenProgramRequired";
+      msg: "vaultBorrowTokenProgramRequired";
+    },
+    {
+      code: 6101;
+      name: "vaultSupplyVaultAccountRequired";
+      msg: "vaultSupplyVaultAccountRequired";
+    },
+    {
+      code: 6102;
+      name: "vaultBorrowVaultAccountRequired";
+      msg: "vaultBorrowVaultAccountRequired";
+    },
+    {
+      code: 6103;
+      name: "vaultUserBorrowPositionRequired";
+      msg: "vaultUserBorrowPositionRequired";
+    },
+    {
+      code: 6104;
+      name: "vaultLiquidateColAmountsRequired";
+      msg: "vaultLiquidateColAmountsRequired";
+    },
+    {
+      code: 6105;
+      name: "vaultLiquidateDebtAmountsRequired";
+      msg: "vaultLiquidateDebtAmountsRequired";
     },
   ];
   types: [
@@ -2677,6 +5174,304 @@ export type Vaults = {
       };
     },
     {
+      name: "dex";
+      docs: [
+        "Core DEX pool state. One per trading pair.",
+        "Uses zero_copy for efficient access without deserialization overhead.",
+      ];
+      serialization: "bytemuck";
+      repr: {
+        kind: "c";
+        packed: true;
+      };
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "dexId";
+            type: "u16";
+          },
+          {
+            name: "reEntrancy";
+            type: "u8";
+          },
+          {
+            name: "token0";
+            type: "pubkey";
+          },
+          {
+            name: "token1";
+            type: "pubkey";
+          },
+          {
+            name: "token0Decimals";
+            type: "u8";
+          },
+          {
+            name: "token1Decimals";
+            type: "u8";
+          },
+          {
+            name: "lastToLastStoredPrice";
+            type: "u128";
+          },
+          {
+            name: "lastStoredPrice";
+            type: "u128";
+          },
+          {
+            name: "centerPrice";
+            type: "u128";
+          },
+          {
+            name: "lastUpdateTimestamp";
+            type: "u64";
+          },
+          {
+            name: "lastUpdateSlot";
+            type: "u64";
+          },
+          {
+            name: "isSmartCollateralEnabled";
+            type: "u8";
+          },
+          {
+            name: "isSmartDebtEnabled";
+            type: "u8";
+          },
+          {
+            name: "fee";
+            type: "u32";
+          },
+          {
+            name: "revenueCut";
+            type: "u8";
+          },
+          {
+            name: "percentChangeActive";
+            type: "u8";
+          },
+          {
+            name: "upperPercent";
+            type: "u32";
+          },
+          {
+            name: "lowerPercent";
+            type: "u32";
+          },
+          {
+            name: "thresholdChangeActive";
+            type: "u8";
+          },
+          {
+            name: "upperShiftThresholdPercent";
+            type: "u16";
+          },
+          {
+            name: "lowerShiftThresholdPercent";
+            type: "u16";
+          },
+          {
+            name: "shiftingTime";
+            type: "u32";
+          },
+          {
+            name: "centerPriceAddress";
+            type: "pubkey";
+          },
+          {
+            name: "maxCenterPrice";
+            type: "u64";
+          },
+          {
+            name: "minCenterPrice";
+            type: "u64";
+          },
+          {
+            name: "token0MaxUtilization";
+            type: "u16";
+          },
+          {
+            name: "token1MaxUtilization";
+            type: "u16";
+          },
+          {
+            name: "isCenterPriceShiftActive";
+            type: "u8";
+          },
+          {
+            name: "swapAndArbitragePaused";
+            type: "u8";
+          },
+          {
+            name: "totalSupplyShares";
+            type: "u64";
+          },
+          {
+            name: "maxSupplyShares";
+            type: "u64";
+          },
+          {
+            name: "totalBorrowShares";
+            type: "u64";
+          },
+          {
+            name: "maxBorrowShares";
+            type: "u64";
+          },
+          {
+            name: "rangeOldUpperShift";
+            type: "u32";
+          },
+          {
+            name: "rangeOldLowerShift";
+            type: "u32";
+          },
+          {
+            name: "rangeShiftDuration";
+            type: "u32";
+          },
+          {
+            name: "rangeShiftStartTimestamp";
+            type: "u32";
+          },
+          {
+            name: "thresholdOldUpperShift";
+            type: "u16";
+          },
+          {
+            name: "thresholdOldLowerShift";
+            type: "u16";
+          },
+          {
+            name: "thresholdShiftDuration";
+            type: "u32";
+          },
+          {
+            name: "thresholdShiftStartTimestamp";
+            type: "u32";
+          },
+          {
+            name: "thresholdShiftOldTimestamp";
+            type: "u32";
+          },
+          {
+            name: "centerPriceShiftStartTimestamp";
+            type: "u32";
+          },
+          {
+            name: "centerPriceShiftPercent";
+            type: "u32";
+          },
+          {
+            name: "centerPriceShiftTime";
+            type: "u32";
+          },
+          {
+            name: "reserved";
+            type: {
+              array: ["u8", 32];
+            };
+          },
+          {
+            name: "bump";
+            type: "u8";
+          },
+        ];
+      };
+    },
+    {
+      name: "dexPosition";
+      docs: [
+        "Per-protocol per-DEX position.",
+        "Seeds: [DEX_POSITION_SEED, dex.key(), protocol.key()]",
+      ];
+      serialization: "bytemuck";
+      repr: {
+        kind: "c";
+        packed: true;
+      };
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "dexId";
+            type: "u16";
+          },
+          {
+            name: "protocol";
+            type: "pubkey";
+          },
+          {
+            name: "supplyStatus";
+            type: "u8";
+          },
+          {
+            name: "supplyShares";
+            type: "u64";
+          },
+          {
+            name: "withdrawalLimit";
+            type: "u64";
+          },
+          {
+            name: "supplyLastUpdate";
+            type: "u64";
+          },
+          {
+            name: "supplyExpandPct";
+            type: "u16";
+          },
+          {
+            name: "supplyExpandDuration";
+            type: "u64";
+          },
+          {
+            name: "baseWithdrawalLimit";
+            type: "u64";
+          },
+          {
+            name: "borrowStatus";
+            type: "u8";
+          },
+          {
+            name: "borrowShares";
+            type: "u64";
+          },
+          {
+            name: "debtCeiling";
+            type: "u64";
+          },
+          {
+            name: "borrowLastUpdate";
+            type: "u64";
+          },
+          {
+            name: "borrowExpandPct";
+            type: "u16";
+          },
+          {
+            name: "borrowExpandDuration";
+            type: "u32";
+          },
+          {
+            name: "baseDebtCeiling";
+            type: "u64";
+          },
+          {
+            name: "maxDebtCeiling";
+            type: "u64";
+          },
+          {
+            name: "reserved";
+            type: {
+              array: ["u8", 32];
+            };
+          },
+        ];
+      };
+    },
+    {
       name: "initVaultConfigParams";
       type: {
         kind: "struct";
@@ -2711,7 +5506,11 @@ export type Vaults = {
           },
           {
             name: "borrowFee";
-            type: "u16";
+            type: "u8";
+          },
+          {
+            name: "vaultType";
+            type: "u8";
           },
           {
             name: "rebalancer";
@@ -2724,6 +5523,76 @@ export type Vaults = {
           {
             name: "oracleProgram";
             type: "pubkey";
+          },
+        ];
+      };
+    },
+    {
+      name: "liquidateDexColAmounts";
+      docs: [
+        "T2/T4 smart collateral: minimum token amounts per collateral share (1e18 precision).",
+        "After the core liquidation, the vault calls DEX `withdraw_perfect` (or",
+        "`withdraw_perfect_in_one_token`) with per-share slippage bounds computed as",
+        "`token_per_unit_shares * actual_col_shares / 1e18`.",
+        "Set a field to `0` to receive the full withdrawal in the *other* token only.",
+      ];
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "token0PerUnitShares";
+            type: "u64";
+          },
+          {
+            name: "token1PerUnitShares";
+            type: "u64";
+          },
+        ];
+      };
+    },
+    {
+      name: "liquidateDexDebtAmounts";
+      docs: [
+        "T3/T4 smart debt: liquidator-supplied token amounts + minimum shares to burn.",
+        "The vault calls DEX `payback(token0, token1, shares_min)`; tokens are debited from",
+        "the liquidator's DEX pool token accounts (signer-owned ATAs for token0/token1).",
+      ];
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "token0";
+            type: "u64";
+          },
+          {
+            name: "token1";
+            type: "u64";
+          },
+          {
+            name: "sharesMin";
+            type: "u64";
+          },
+        ];
+      };
+    },
+    {
+      name: "liquidatePerfectDexDebtAmounts";
+      docs: [
+        "T3/T4 smart debt: maximum token amounts per debt share for `payback_perfect` (1e18 precision).",
+        "After the core liquidation, the vault calls DEX `payback_perfect` with",
+        "`token_per_unit_shares * actual_debt_shares / 1e18` as the per-token max.",
+        "Set a field to `0` to pay back entirely in the *other* token only.",
+      ];
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "token0PerUnitShares";
+            type: "u64";
+          },
+          {
+            name: "token1PerUnitShares";
+            type: "u64";
           },
         ];
       };
@@ -2997,7 +5866,7 @@ export type Vaults = {
         fields: [
           {
             name: "borrowFee";
-            type: "u16";
+            type: "u8";
           },
         ];
       };
@@ -3061,7 +5930,7 @@ export type Vaults = {
           },
           {
             name: "borrowFee";
-            type: "u16";
+            type: "u8";
           },
         ];
       };
@@ -3223,6 +6092,177 @@ export type Vaults = {
       };
     },
     {
+      name: "operateDexAmounts";
+      docs: [
+        "Smart-side amounts for one imperfect DEX operate leg.",
+        "`token0` / `token1` — primary token amounts (positive = deposit/borrow, negative = withdraw/payback).",
+        "`shares_min_max`     — slippage: min shares to receive (deposit/borrow) or max shares to burn (withdraw/payback).",
+      ];
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "token0";
+            type: "i128";
+          },
+          {
+            name: "token1";
+            type: "i128";
+          },
+          {
+            name: "sharesMinMax";
+            type: "i128";
+          },
+        ];
+      };
+    },
+    {
+      name: "operateDexColAmounts";
+      docs: [
+        "Collateral leg for `operate_dex` (imperfect).",
+        "`amounts`  — DEX amounts for smart col (T2/T4).",
+        "`new_col`  — token delta for non-smart col (T1/T3).",
+      ];
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "amounts";
+            type: {
+              option: {
+                defined: {
+                  name: "operateDexAmounts";
+                };
+              };
+            };
+          },
+          {
+            name: "newCol";
+            type: {
+              option: "i128";
+            };
+          },
+        ];
+      };
+    },
+    {
+      name: "operateDexDebtAmounts";
+      docs: [
+        "Debt leg for `operate_dex` (imperfect).",
+        "`amounts`   — DEX amounts for smart debt (T3/T4).",
+        "`new_debt`  — token delta for non-smart debt (T1/T2).",
+      ];
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "amounts";
+            type: {
+              option: {
+                defined: {
+                  name: "operateDexAmounts";
+                };
+              };
+            };
+          },
+          {
+            name: "newDebt";
+            type: {
+              option: "i128";
+            };
+          },
+        ];
+      };
+    },
+    {
+      name: "operatePerfectDexAmounts";
+      docs: [
+        "Smart-side amounts for one perfect DEX operate leg.",
+        "`perfect_shares`  — primary: shares to operate (positive = deposit/borrow, negative = withdraw/payback).",
+        "Pass `i128::MIN` to request max-withdrawal / max-payback.",
+        "`token0_min_max`  — slippage bound for token0:",
+        "deposit/payback → max tokens to spend  (positive for deposit, negative for payback)",
+        "withdraw/borrow → min tokens to receive (negative for withdraw, positive for borrow)",
+        "Set to 0 to receive the full withdrawal / payback in the *other* token only.",
+        "`token1_min_max`  — same semantics as `token0_min_max` for token1.",
+      ];
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "perfectShares";
+            type: "i128";
+          },
+          {
+            name: "token0MinMax";
+            type: "i128";
+          },
+          {
+            name: "token1MinMax";
+            type: "i128";
+          },
+        ];
+      };
+    },
+    {
+      name: "operatePerfectDexColAmounts";
+      docs: [
+        "Collateral leg for `operate_perfect_dex`.",
+        "`amounts`  — perfect DEX amounts for smart col (T2/T4).",
+        "`new_col`  — token delta for non-smart col (T1/T3).",
+      ];
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "amounts";
+            type: {
+              option: {
+                defined: {
+                  name: "operatePerfectDexAmounts";
+                };
+              };
+            };
+          },
+          {
+            name: "newCol";
+            type: {
+              option: "i128";
+            };
+          },
+        ];
+      };
+    },
+    {
+      name: "operatePerfectDexDebtAmounts";
+      docs: [
+        "Debt leg for `operate_perfect_dex`.",
+        "`amounts`   — perfect DEX amounts for smart debt (T3/T4).",
+        "`new_debt`  — token delta for non-smart debt (T1/T2).",
+      ];
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "amounts";
+            type: {
+              option: {
+                defined: {
+                  name: "operatePerfectDexAmounts";
+                };
+              };
+            };
+          },
+          {
+            name: "newDebt";
+            type: {
+              option: "i128";
+            };
+          },
+        ];
+      };
+    },
+    {
       name: "oracle";
       type: {
         kind: "struct";
@@ -3322,6 +6362,15 @@ export type Vaults = {
           },
           {
             name: "chainlinkDataStreams";
+          },
+          {
+            name: "pstPool";
+          },
+          {
+            name: "dexSmartColPegOracle";
+          },
+          {
+            name: "dexSmartDebtPegOracle";
           },
         ];
       };
@@ -3663,7 +6712,7 @@ export type Vaults = {
           },
           {
             name: "borrowFee";
-            type: "u16";
+            type: "u8";
           },
         ];
       };
@@ -3755,7 +6804,11 @@ export type Vaults = {
           },
           {
             name: "withdrawalLimit";
-            type: "u128";
+            type: "u64";
+          },
+          {
+            name: "decayAmount";
+            type: "u64";
           },
           {
             name: "lastUpdate";
@@ -3767,7 +6820,11 @@ export type Vaults = {
           },
           {
             name: "expandDuration";
-            type: "u64";
+            type: "u32";
+          },
+          {
+            name: "decayDuration";
+            type: "u32";
           },
           {
             name: "baseWithdrawalLimit";
@@ -3854,7 +6911,11 @@ export type Vaults = {
           },
           {
             name: "borrowFee";
-            type: "u16";
+            type: "u8";
+          },
+          {
+            name: "vaultType";
+            type: "u8";
           },
           {
             name: "oracle";

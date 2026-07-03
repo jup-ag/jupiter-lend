@@ -2,7 +2,7 @@
   "address": "jupnw4B6Eqs7ft6rxpzYLJZYSnrpRgPcr589n5Kv4oc",
   "metadata": {
     "name": "oracle",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "spec": "0.1.0",
     "description": "Created with Anchor"
   },
@@ -41,6 +41,22 @@
           "type": "u16"
         }
       ]
+    },
+    {
+      "name": "get_center_price",
+      "discriminator": [60, 51, 11, 241, 151, 180, 192, 27],
+      "accounts": [
+        {
+          "name": "oracle"
+        }
+      ],
+      "args": [
+        {
+          "name": "_nonce",
+          "type": "u16"
+        }
+      ],
+      "returns": "u128"
     },
     {
       "name": "get_exchange_rate",
@@ -180,6 +196,77 @@
           "type": {
             "vec": "pubkey"
           }
+        }
+      ]
+    },
+    {
+      "name": "init_dex_peg_oracle_config",
+      "discriminator": [163, 158, 180, 74, 201, 54, 7, 48],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "oracle_admin"
+        },
+        {
+          "name": "dex_peg_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [100, 101, 120, 95, 112, 101, 103]
+              },
+              {
+                "kind": "arg",
+                "path": "nonce"
+              }
+            ]
+          }
+        },
+        {
+          "name": "dex"
+        },
+        {
+          "name": "position_token_0"
+        },
+        {
+          "name": "position_token_1"
+        },
+        {
+          "name": "token_reserve_0"
+        },
+        {
+          "name": "token_reserve_1"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "nonce",
+          "type": "u16"
+        },
+        {
+          "name": "kind",
+          "type": {
+            "defined": {
+              "name": "DexPegOracleKind"
+            }
+          }
+        },
+        {
+          "name": "peg_buffer_percent",
+          "type": "u128"
+        },
+        {
+          "name": "quote_in_token0",
+          "type": "bool"
         }
       ]
     },
@@ -385,6 +472,10 @@
     {
       "name": "ChainlinkDataStreamsCache",
       "discriminator": [65, 102, 75, 47, 79, 156, 109, 193]
+    },
+    {
+      "name": "DexPegOracleConfig",
+      "discriminator": [59, 189, 99, 149, 128, 5, 255, 72]
     },
     {
       "name": "Oracle",
@@ -650,6 +741,66 @@
       "code": 6044,
       "name": "ChainlinkDataStreamsNoFeedKeepers",
       "msg": "CHAINLINK_DATA_STREAMS_NO_FEED_KEEPERS"
+    },
+    {
+      "code": 6045,
+      "name": "PstPoolInvalidState",
+      "msg": "PST_POOL_INVALID_STATE"
+    },
+    {
+      "code": 6046,
+      "name": "PstPoolModeStatesEmpty",
+      "msg": "PST_POOL_MODE_STATES_EMPTY"
+    },
+    {
+      "code": 6047,
+      "name": "PstPoolMintMismatch",
+      "msg": "PST_POOL_MINT_MISMATCH"
+    },
+    {
+      "code": 6048,
+      "name": "PstPoolMintSupplyZero",
+      "msg": "PST_POOL_MINT_SUPPLY_ZERO"
+    },
+    {
+      "code": 6049,
+      "name": "DexSmartColNotEnabled",
+      "msg": "DEX_SMART_COL_NOT_ENABLED"
+    },
+    {
+      "code": 6050,
+      "name": "DexSmartDebtNotEnabled",
+      "msg": "DEX_SMART_DEBT_NOT_ENABLED"
+    },
+    {
+      "code": 6051,
+      "name": "DexPegInvalidQuoteMultiplier",
+      "msg": "DEX_PEG_INVALID_QUOTE_MULTIPLIER"
+    },
+    {
+      "code": 6052,
+      "name": "DexPegInvalidPegBuffer",
+      "msg": "DEX_PEG_INVALID_PEG_BUFFER"
+    },
+    {
+      "code": 6053,
+      "name": "DexPegAccountMismatch",
+      "msg": "DEX_PEG_ACCOUNT_MISMATCH"
+    },
+    {
+      "code": 6054,
+      "name": "DexPegZeroReserves",
+      "msg": "DEX_PEG_ZERO_RESERVES"
+    },
+    {
+      "code": 6055,
+      "name": "DexPegConfigMismatch",
+      "msg": "DEX_PEG_CONFIG_MISMATCH"
+    },
+    {
+      "code": 6056,
+      "name": "DexPegInvalidKind",
+      "msg": "DEX_PEG_INVALID_KIND"
     }
   ],
   "types": [
@@ -796,6 +947,80 @@
           },
           {
             "name": "CryptoPrice"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DexPegOracleConfig",
+      "docs": [
+        "Immutable dex peg oracle configuration (EVM constructor immutables).",
+        "Referenced by one hop in [`Oracle::sources`] via `Sources.source`."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "nonce",
+            "type": "u16"
+          },
+          {
+            "name": "dex",
+            "type": "pubkey"
+          },
+          {
+            "name": "position_token_0",
+            "type": "pubkey"
+          },
+          {
+            "name": "position_token_1",
+            "type": "pubkey"
+          },
+          {
+            "name": "token_reserve_0",
+            "type": "pubkey"
+          },
+          {
+            "name": "token_reserve_1",
+            "type": "pubkey"
+          },
+          {
+            "name": "quote_in_token0",
+            "type": "bool"
+          },
+          {
+            "name": "peg_buffer_percent",
+            "type": "u128"
+          },
+          {
+            "name": "kind",
+            "type": {
+              "defined": {
+                "name": "DexPegOracleKind"
+              }
+            }
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DexPegOracleKind",
+      "docs": ["Col vs debt side for a [`DexPegOracleConfig`] account."],
+      "repr": {
+        "kind": "rust"
+      },
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Col"
+          },
+          {
+            "name": "Debt"
           }
         ]
       }
@@ -1034,6 +1259,15 @@
           },
           {
             "name": "ChainlinkDataStreams"
+          },
+          {
+            "name": "PstPool"
+          },
+          {
+            "name": "DexSmartColPegOracle"
+          },
+          {
+            "name": "DexSmartDebtPegOracle"
           }
         ]
       }

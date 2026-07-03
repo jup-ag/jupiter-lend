@@ -8,7 +8,7 @@ export type Oracle = {
   address: "jupnw4B6Eqs7ft6rxpzYLJZYSnrpRgPcr589n5Kv4oc";
   metadata: {
     name: "oracle";
-    version: "0.1.3";
+    version: "0.1.4";
     spec: "0.1.0";
     description: "Created with Anchor";
   };
@@ -47,6 +47,22 @@ export type Oracle = {
           type: "u16";
         },
       ];
+    },
+    {
+      name: "getCenterPrice";
+      discriminator: [60, 51, 11, 241, 151, 180, 192, 27];
+      accounts: [
+        {
+          name: "oracle";
+        },
+      ];
+      args: [
+        {
+          name: "nonce";
+          type: "u16";
+        },
+      ];
+      returns: "u128";
     },
     {
       name: "getExchangeRate";
@@ -195,6 +211,77 @@ export type Oracle = {
           type: {
             vec: "pubkey";
           };
+        },
+      ];
+    },
+    {
+      name: "initDexPegOracleConfig";
+      discriminator: [163, 158, 180, 74, 201, 54, 7, 48];
+      accounts: [
+        {
+          name: "signer";
+          writable: true;
+          signer: true;
+        },
+        {
+          name: "oracleAdmin";
+        },
+        {
+          name: "dexPegConfig";
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: "const";
+                value: [100, 101, 120, 95, 112, 101, 103];
+              },
+              {
+                kind: "arg";
+                path: "nonce";
+              },
+            ];
+          };
+        },
+        {
+          name: "dex";
+        },
+        {
+          name: "positionToken0";
+        },
+        {
+          name: "positionToken1";
+        },
+        {
+          name: "tokenReserve0";
+        },
+        {
+          name: "tokenReserve1";
+        },
+        {
+          name: "systemProgram";
+          address: "11111111111111111111111111111111";
+        },
+      ];
+      args: [
+        {
+          name: "nonce";
+          type: "u16";
+        },
+        {
+          name: "kind";
+          type: {
+            defined: {
+              name: "dexPegOracleKind";
+            };
+          };
+        },
+        {
+          name: "pegBufferPercent";
+          type: "u128";
+        },
+        {
+          name: "quoteInToken0";
+          type: "bool";
         },
       ];
     },
@@ -400,6 +487,10 @@ export type Oracle = {
     {
       name: "chainlinkDataStreamsCache";
       discriminator: [65, 102, 75, 47, 79, 156, 109, 193];
+    },
+    {
+      name: "dexPegOracleConfig";
+      discriminator: [59, 189, 99, 149, 128, 5, 255, 72];
     },
     {
       name: "oracle";
@@ -666,6 +757,66 @@ export type Oracle = {
       name: "chainlinkDataStreamsNoFeedKeepers";
       msg: "chainlinkDataStreamsNoFeedKeepers";
     },
+    {
+      code: 6045;
+      name: "pstPoolInvalidState";
+      msg: "pstPoolInvalidState";
+    },
+    {
+      code: 6046;
+      name: "pstPoolModeStatesEmpty";
+      msg: "pstPoolModeStatesEmpty";
+    },
+    {
+      code: 6047;
+      name: "pstPoolMintMismatch";
+      msg: "pstPoolMintMismatch";
+    },
+    {
+      code: 6048;
+      name: "pstPoolMintSupplyZero";
+      msg: "pstPoolMintSupplyZero";
+    },
+    {
+      code: 6049;
+      name: "dexSmartColNotEnabled";
+      msg: "dexSmartColNotEnabled";
+    },
+    {
+      code: 6050;
+      name: "dexSmartDebtNotEnabled";
+      msg: "dexSmartDebtNotEnabled";
+    },
+    {
+      code: 6051;
+      name: "dexPegInvalidQuoteMultiplier";
+      msg: "dexPegInvalidQuoteMultiplier";
+    },
+    {
+      code: 6052;
+      name: "dexPegInvalidPegBuffer";
+      msg: "dexPegInvalidPegBuffer";
+    },
+    {
+      code: 6053;
+      name: "dexPegAccountMismatch";
+      msg: "dexPegAccountMismatch";
+    },
+    {
+      code: 6054;
+      name: "dexPegZeroReserves";
+      msg: "dexPegZeroReserves";
+    },
+    {
+      code: 6055;
+      name: "dexPegConfigMismatch";
+      msg: "dexPegConfigMismatch";
+    },
+    {
+      code: 6056;
+      name: "dexPegInvalidKind";
+      msg: "dexPegInvalidKind";
+    },
   ];
   types: [
     {
@@ -811,6 +962,80 @@ export type Oracle = {
           },
           {
             name: "cryptoPrice";
+          },
+        ];
+      };
+    },
+    {
+      name: "dexPegOracleConfig";
+      docs: [
+        "Immutable dex peg oracle configuration (EVM constructor immutables).",
+        "Referenced by one hop in [`Oracle::sources`] via `Sources.source`.",
+      ];
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "nonce";
+            type: "u16";
+          },
+          {
+            name: "dex";
+            type: "pubkey";
+          },
+          {
+            name: "positionToken0";
+            type: "pubkey";
+          },
+          {
+            name: "positionToken1";
+            type: "pubkey";
+          },
+          {
+            name: "tokenReserve0";
+            type: "pubkey";
+          },
+          {
+            name: "tokenReserve1";
+            type: "pubkey";
+          },
+          {
+            name: "quoteInToken0";
+            type: "bool";
+          },
+          {
+            name: "pegBufferPercent";
+            type: "u128";
+          },
+          {
+            name: "kind";
+            type: {
+              defined: {
+                name: "dexPegOracleKind";
+              };
+            };
+          },
+          {
+            name: "bump";
+            type: "u8";
+          },
+        ];
+      };
+    },
+    {
+      name: "dexPegOracleKind";
+      docs: ["Col vs debt side for a [`DexPegOracleConfig`] account."];
+      repr: {
+        kind: "rust";
+      };
+      type: {
+        kind: "enum";
+        variants: [
+          {
+            name: "col";
+          },
+          {
+            name: "debt";
           },
         ];
       };
@@ -1049,6 +1274,15 @@ export type Oracle = {
           },
           {
             name: "chainlinkDataStreams";
+          },
+          {
+            name: "pstPool";
+          },
+          {
+            name: "dexSmartColPegOracle";
+          },
+          {
+            name: "dexSmartDebtPegOracle";
           },
         ];
       };

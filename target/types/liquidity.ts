@@ -8,7 +8,7 @@ export type Liquidity = {
   address: "jupeiUmn818Jg1ekPURTpr4mFo29p46vygyykFJ3wZC";
   metadata: {
     name: "liquidity";
-    version: "0.1.2";
+    version: "0.1.4";
     spec: "0.1.0";
     description: "Created with Anchor";
   };
@@ -59,116 +59,10 @@ export type Liquidity = {
         {
           name: "recipientTokenAccount";
           writable: true;
-          pda: {
-            seeds: [
-              {
-                kind: "arg";
-                path: "recipient";
-              },
-              {
-                kind: "account";
-                path: "tokenProgram";
-              },
-              {
-                kind: "account";
-                path: "mint";
-              },
-            ];
-            program: {
-              kind: "const";
-              value: [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89,
-              ];
-            };
-          };
         },
         {
           name: "vault";
           writable: true;
-          pda: {
-            seeds: [
-              {
-                kind: "account";
-                path: "liquidity";
-              },
-              {
-                kind: "account";
-                path: "tokenProgram";
-              },
-              {
-                kind: "account";
-                path: "mint";
-              },
-            ];
-            program: {
-              kind: "const";
-              value: [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89,
-              ];
-            };
-          };
           relations: ["tokenReserve"];
         },
         {
@@ -177,10 +71,6 @@ export type Liquidity = {
         },
         {
           name: "tokenProgram";
-        },
-        {
-          name: "associatedTokenProgram";
-          address: "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL";
         },
       ];
       args: [
@@ -728,59 +618,6 @@ export type Liquidity = {
         {
           name: "vault";
           writable: true;
-          pda: {
-            seeds: [
-              {
-                kind: "account";
-                path: "liquidity";
-              },
-              {
-                kind: "account";
-                path: "tokenProgram";
-              },
-              {
-                kind: "account";
-                path: "mint";
-              },
-            ];
-            program: {
-              kind: "const";
-              value: [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89,
-              ];
-            };
-          };
           relations: ["tokenReserve"];
         },
         {
@@ -800,117 +637,11 @@ export type Liquidity = {
           name: "withdrawToAccount";
           writable: true;
           optional: true;
-          pda: {
-            seeds: [
-              {
-                kind: "arg";
-                path: "withdrawTo";
-              },
-              {
-                kind: "account";
-                path: "tokenProgram";
-              },
-              {
-                kind: "account";
-                path: "mint";
-              },
-            ];
-            program: {
-              kind: "const";
-              value: [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89,
-              ];
-            };
-          };
         },
         {
           name: "borrowToAccount";
           writable: true;
           optional: true;
-          pda: {
-            seeds: [
-              {
-                kind: "arg";
-                path: "borrowTo";
-              },
-              {
-                kind: "account";
-                path: "tokenProgram";
-              },
-              {
-                kind: "account";
-                path: "mint";
-              },
-            ];
-            program: {
-              kind: "const";
-              value: [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89,
-              ];
-            };
-          };
         },
         {
           name: "borrowClaimAccount";
@@ -924,10 +655,6 @@ export type Liquidity = {
         },
         {
           name: "tokenProgram";
-        },
-        {
-          name: "associatedTokenProgram";
-          address: "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL";
         },
       ];
       args: [
@@ -954,6 +681,29 @@ export type Liquidity = {
               name: "transferType";
             };
           };
+        },
+      ];
+    },
+    {
+      name: "pauseToken";
+      discriminator: [226, 150, 72, 211, 159, 51, 226, 39];
+      accounts: [
+        {
+          name: "authority";
+          signer: true;
+        },
+        {
+          name: "authList";
+        },
+        {
+          name: "tokenReserve";
+          writable: true;
+        },
+      ];
+      args: [
+        {
+          name: "mint";
+          type: "pubkey";
         },
       ];
     },
@@ -1026,59 +776,6 @@ export type Liquidity = {
         },
         {
           name: "vault";
-          pda: {
-            seeds: [
-              {
-                kind: "account";
-                path: "liquidity";
-              },
-              {
-                kind: "account";
-                path: "tokenProgram";
-              },
-              {
-                kind: "arg";
-                path: "mint";
-              },
-            ];
-            program: {
-              kind: "const";
-              value: [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89,
-              ];
-            };
-          };
           relations: ["tokenReserve"];
         },
         {
@@ -1086,11 +783,30 @@ export type Liquidity = {
           writable: true;
         },
         {
-          name: "associatedTokenProgram";
-          address: "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL";
+          name: "tokenProgram";
+        },
+      ];
+      args: [
+        {
+          name: "mint";
+          type: "pubkey";
+        },
+      ];
+    },
+    {
+      name: "unpauseToken";
+      discriminator: [108, 117, 62, 30, 200, 92, 255, 202];
+      accounts: [
+        {
+          name: "authority";
+          signer: true;
         },
         {
-          name: "tokenProgram";
+          name: "authList";
+        },
+        {
+          name: "tokenReserve";
+          writable: true;
         },
       ];
       args: [
@@ -1571,6 +1287,10 @@ export type Liquidity = {
       discriminator: [100, 17, 114, 224, 180, 30, 52, 170];
     },
     {
+      name: "logTokenLockdown";
+      discriminator: [2, 103, 171, 11, 0, 27, 20, 40];
+    },
+    {
       name: "logUnpauseUser";
       discriminator: [170, 91, 132, 96, 179, 77, 168, 26];
     },
@@ -1839,6 +1559,26 @@ export type Liquidity = {
       name: "protocolLockdown";
       msg: "protocolLockdown";
     },
+    {
+      code: 6043;
+      name: "tokenLockDown";
+      msg: "tokenLockedDown";
+    },
+    {
+      code: 6044;
+      name: "tokenAlreadyLocked";
+      msg: "tokenAlreadyLocked";
+    },
+    {
+      code: 6045;
+      name: "tokenAlreadyUnlocked";
+      msg: "tokenAlreadyUnlocked";
+    },
+    {
+      code: 6046;
+      name: "operateSkipTransferInvalid";
+      msg: "userModuleOperateSkipTransferInvalid";
+    },
   ];
   types: [
     {
@@ -2047,6 +1787,22 @@ export type Liquidity = {
           {
             name: "status";
             type: "u8";
+          },
+        ];
+      };
+    },
+    {
+      name: "logTokenLockdown";
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "mint";
+            type: "pubkey";
+          },
+          {
+            name: "suspend";
+            type: "bool";
           },
         ];
       };
@@ -2809,7 +2565,11 @@ export type Liquidity = {
           },
           {
             name: "withdrawalLimit";
-            type: "u128";
+            type: "u64";
+          },
+          {
+            name: "decayAmount";
+            type: "u64";
           },
           {
             name: "lastUpdate";
@@ -2821,7 +2581,11 @@ export type Liquidity = {
           },
           {
             name: "expandDuration";
-            type: "u64";
+            type: "u32";
+          },
+          {
+            name: "decayDuration";
+            type: "u32";
           },
           {
             name: "baseWithdrawalLimit";

@@ -8,7 +8,7 @@ export type Flashloan = {
   address: "jupgfSgfuAXv4B6R2Uxu85Z1qdzgju79s6MfZekN6XS";
   metadata: {
     name: "flashloan";
-    version: "0.1.0";
+    version: "0.1.4";
     spec: "0.1.0";
     description: "Created with Anchor";
   };
@@ -24,7 +24,7 @@ export type Flashloan = {
         {
           name: "flashloanAdmin";
           writable: true;
-        }
+        },
       ];
       args: [];
     },
@@ -44,59 +44,6 @@ export type Flashloan = {
         {
           name: "signerBorrowTokenAccount";
           writable: true;
-          pda: {
-            seeds: [
-              {
-                kind: "account";
-                path: "signer";
-              },
-              {
-                kind: "account";
-                path: "tokenProgram";
-              },
-              {
-                kind: "account";
-                path: "mint";
-              }
-            ];
-            program: {
-              kind: "const";
-              value: [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89
-              ];
-            };
-          };
         },
         {
           name: "mint";
@@ -128,6 +75,7 @@ export type Flashloan = {
         },
         {
           name: "associatedTokenProgram";
+          optional: true;
           address: "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL";
         },
         {
@@ -137,13 +85,13 @@ export type Flashloan = {
         {
           name: "instructionSysvar";
           address: "Sysvar1nstructions1111111111111111111111111";
-        }
+        },
       ];
       args: [
         {
           name: "amount";
           type: "u64";
-        }
+        },
       ];
     },
     {
@@ -162,59 +110,6 @@ export type Flashloan = {
         {
           name: "signerBorrowTokenAccount";
           writable: true;
-          pda: {
-            seeds: [
-              {
-                kind: "account";
-                path: "signer";
-              },
-              {
-                kind: "account";
-                path: "tokenProgram";
-              },
-              {
-                kind: "account";
-                path: "mint";
-              }
-            ];
-            program: {
-              kind: "const";
-              value: [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89
-              ];
-            };
-          };
         },
         {
           name: "mint";
@@ -246,6 +141,7 @@ export type Flashloan = {
         },
         {
           name: "associatedTokenProgram";
+          optional: true;
           address: "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL";
         },
         {
@@ -255,13 +151,13 @@ export type Flashloan = {
         {
           name: "instructionSysvar";
           address: "Sysvar1nstructions1111111111111111111111111";
-        }
+        },
       ];
       args: [
         {
           name: "amount";
           type: "u64";
-        }
+        },
       ];
     },
     {
@@ -295,16 +191,16 @@ export type Flashloan = {
                   100,
                   109,
                   105,
-                  110
+                  110,
                 ];
-              }
+              },
             ];
           };
         },
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        }
+        },
       ];
       args: [
         {
@@ -318,7 +214,7 @@ export type Flashloan = {
         {
           name: "liquidityProgram";
           type: "pubkey";
-        }
+        },
       ];
     },
     {
@@ -332,7 +228,7 @@ export type Flashloan = {
         {
           name: "flashloanAdmin";
           writable: true;
-        }
+        },
       ];
       args: [];
     },
@@ -347,13 +243,13 @@ export type Flashloan = {
         {
           name: "flashloanAdmin";
           writable: true;
-        }
+        },
       ];
       args: [
         {
           name: "flashloanFee";
           type: "u16";
-        }
+        },
       ];
     },
     {
@@ -367,21 +263,21 @@ export type Flashloan = {
         {
           name: "flashloanAdmin";
           writable: true;
-        }
+        },
       ];
       args: [
         {
           name: "newAuthority";
           type: "pubkey";
-        }
+        },
       ];
-    }
+    },
   ];
   accounts: [
     {
       name: "flashloanAdmin";
       discriminator: [162, 161, 45, 28, 131, 91, 202, 88];
-    }
+    },
   ];
   events: [
     {
@@ -399,7 +295,7 @@ export type Flashloan = {
     {
       name: "setFlashloanFee";
       discriminator: [112, 164, 66, 251, 191, 56, 0, 47];
-    }
+    },
   ];
   errors: [
     {
@@ -471,7 +367,7 @@ export type Flashloan = {
       code: 6013;
       name: "flashloanMultiplePaybacksFound";
       msg: "flashloanMultiplePaybacksFound";
-    }
+    },
   ];
   types: [
     {
@@ -517,7 +413,7 @@ export type Flashloan = {
           {
             name: "bump";
             type: "u8";
-          }
+          },
         ];
       };
     },
@@ -529,7 +425,7 @@ export type Flashloan = {
           {
             name: "newAuthority";
             type: "pubkey";
-          }
+          },
         ];
       };
     },
@@ -548,9 +444,9 @@ export type Flashloan = {
           {
             name: "flashloanFee";
             type: "u16";
-          }
+          },
         ];
       };
-    }
+    },
   ];
 };

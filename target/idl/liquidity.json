@@ -2,7 +2,7 @@
   "address": "jupeiUmn818Jg1ekPURTpr4mFo29p46vygyykFJ3wZC",
   "metadata": {
     "name": "liquidity",
-    "version": "0.1.2",
+    "version": "0.1.4",
     "spec": "0.1.0",
     "description": "Created with Anchor"
   },
@@ -52,59 +52,11 @@
         },
         {
           "name": "recipient_token_account",
-          "writable": true,
-          "pda": {
-            "seeds": [
-              {
-                "kind": "arg",
-                "path": "recipient"
-              },
-              {
-                "kind": "account",
-                "path": "token_program"
-              },
-              {
-                "kind": "account",
-                "path": "mint"
-              }
-            ],
-            "program": {
-              "kind": "const",
-              "value": [
-                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
-                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
-                219, 233, 248, 89
-              ]
-            }
-          }
+          "writable": true
         },
         {
           "name": "vault",
           "writable": true,
-          "pda": {
-            "seeds": [
-              {
-                "kind": "account",
-                "path": "liquidity"
-              },
-              {
-                "kind": "account",
-                "path": "token_program"
-              },
-              {
-                "kind": "account",
-                "path": "mint"
-              }
-            ],
-            "program": {
-              "kind": "const",
-              "value": [
-                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
-                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
-                219, 233, 248, 89
-              ]
-            }
-          },
           "relations": ["token_reserve"]
         },
         {
@@ -113,10 +65,6 @@
         },
         {
           "name": "token_program"
-        },
-        {
-          "name": "associated_token_program",
-          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
         }
       ],
       "args": [
@@ -541,30 +489,6 @@
         {
           "name": "vault",
           "writable": true,
-          "pda": {
-            "seeds": [
-              {
-                "kind": "account",
-                "path": "liquidity"
-              },
-              {
-                "kind": "account",
-                "path": "token_program"
-              },
-              {
-                "kind": "account",
-                "path": "mint"
-              }
-            ],
-            "program": {
-              "kind": "const",
-              "value": [
-                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
-                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
-                219, 233, 248, 89
-              ]
-            }
-          },
           "relations": ["token_reserve"]
         },
         {
@@ -583,60 +507,12 @@
         {
           "name": "withdraw_to_account",
           "writable": true,
-          "optional": true,
-          "pda": {
-            "seeds": [
-              {
-                "kind": "arg",
-                "path": "withdraw_to"
-              },
-              {
-                "kind": "account",
-                "path": "token_program"
-              },
-              {
-                "kind": "account",
-                "path": "mint"
-              }
-            ],
-            "program": {
-              "kind": "const",
-              "value": [
-                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
-                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
-                219, 233, 248, 89
-              ]
-            }
-          }
+          "optional": true
         },
         {
           "name": "borrow_to_account",
           "writable": true,
-          "optional": true,
-          "pda": {
-            "seeds": [
-              {
-                "kind": "arg",
-                "path": "borrow_to"
-              },
-              {
-                "kind": "account",
-                "path": "token_program"
-              },
-              {
-                "kind": "account",
-                "path": "mint"
-              }
-            ],
-            "program": {
-              "kind": "const",
-              "value": [
-                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
-                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
-                219, 233, 248, 89
-              ]
-            }
-          }
+          "optional": true
         },
         {
           "name": "borrow_claim_account",
@@ -650,10 +526,6 @@
         },
         {
           "name": "token_program"
-        },
-        {
-          "name": "associated_token_program",
-          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
         }
       ],
       "args": [
@@ -680,6 +552,29 @@
               "name": "TransferType"
             }
           }
+        }
+      ]
+    },
+    {
+      "name": "pause_token",
+      "discriminator": [226, 150, 72, 211, 159, 51, 226, 39],
+      "accounts": [
+        {
+          "name": "authority",
+          "signer": true
+        },
+        {
+          "name": "auth_list"
+        },
+        {
+          "name": "token_reserve",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "_mint",
+          "type": "pubkey"
         }
       ]
     },
@@ -752,39 +647,11 @@
         },
         {
           "name": "vault",
-          "pda": {
-            "seeds": [
-              {
-                "kind": "account",
-                "path": "liquidity"
-              },
-              {
-                "kind": "account",
-                "path": "token_program"
-              },
-              {
-                "kind": "arg",
-                "path": "mint"
-              }
-            ],
-            "program": {
-              "kind": "const",
-              "value": [
-                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
-                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
-                219, 233, 248, 89
-              ]
-            }
-          },
           "relations": ["token_reserve"]
         },
         {
           "name": "token_reserve",
           "writable": true
-        },
-        {
-          "name": "associated_token_program",
-          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
         },
         {
           "name": "token_program"
@@ -793,6 +660,29 @@
       "args": [
         {
           "name": "mint",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "unpause_token",
+      "discriminator": [108, 117, 62, 30, 200, 92, 255, 202],
+      "accounts": [
+        {
+          "name": "authority",
+          "signer": true
+        },
+        {
+          "name": "auth_list"
+        },
+        {
+          "name": "token_reserve",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "_mint",
           "type": "pubkey"
         }
       ]
@@ -1268,6 +1158,10 @@
       "discriminator": [100, 17, 114, 224, 180, 30, 52, 170]
     },
     {
+      "name": "LogTokenLockdown",
+      "discriminator": [2, 103, 171, 11, 0, 27, 20, 40]
+    },
+    {
       "name": "LogUnpauseUser",
       "discriminator": [170, 91, 132, 96, 179, 77, 168, 26]
     },
@@ -1535,6 +1429,26 @@
       "code": 6042,
       "name": "ProtocolLockdown",
       "msg": "PROTOCOL_LOCKDOWN"
+    },
+    {
+      "code": 6043,
+      "name": "TokenLockDown",
+      "msg": "TOKEN_LOCKED_DOWN"
+    },
+    {
+      "code": 6044,
+      "name": "TokenAlreadyLocked",
+      "msg": "TOKEN_ALREADY_LOCKED"
+    },
+    {
+      "code": 6045,
+      "name": "TokenAlreadyUnlocked",
+      "msg": "TOKEN_ALREADY_UNLOCKED"
+    },
+    {
+      "code": 6046,
+      "name": "OperateSkipTransferInvalid",
+      "msg": "USER_MODULE_OPERATE_SKIP_TRANSFER_INVALID"
     }
   ],
   "types": [
@@ -1744,6 +1658,22 @@
           {
             "name": "status",
             "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LogTokenLockdown",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "suspend",
+            "type": "bool"
           }
         ]
       }
@@ -2512,7 +2442,11 @@
           },
           {
             "name": "withdrawal_limit",
-            "type": "u128"
+            "type": "u64"
+          },
+          {
+            "name": "decay_amount",
+            "type": "u64"
           },
           {
             "name": "last_update",
@@ -2524,7 +2458,11 @@
           },
           {
             "name": "expand_duration",
-            "type": "u64"
+            "type": "u32"
+          },
+          {
+            "name": "decay_duration",
+            "type": "u32"
           },
           {
             "name": "base_withdrawal_limit",
