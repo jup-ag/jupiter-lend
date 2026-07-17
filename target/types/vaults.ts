@@ -8,7 +8,7 @@ export type Vaults = {
   address: "jupr81YtYssSyPt8jbnGuiWon5f6x9TcDEFxYe3Bdzi";
   metadata: {
     name: "vaults";
-    version: "0.1.4";
+    version: "0.1.5";
     spec: "0.1.0";
     description: "Created with Anchor";
   };
@@ -861,6 +861,14 @@ export type Vaults = {
         },
         {
           name: "to";
+          docs: [
+            "",
+            "NOTE (Solana vs EVM): non-smart-leg collateral goes to `to_token_account`.",
+            "Smart-col collateral seized via the DEX CPI also follows `to` (EVM `to_`",
+            "parity) — but only when the supply leg's `dex_recipient_token0/1_account`",
+            "are supplied; without them the DEX credits the liquidator *signer*'s",
+            "pool token accounts. Smart-debt paybacks always pull from the signer.",
+          ];
         },
         {
           name: "toTokenAccount";
@@ -1071,6 +1079,23 @@ export type Vaults = {
               name: "dexToken1Program";
               optional: true;
             },
+            {
+              name: "dexRecipientToken0Account";
+              docs: [
+                "Recipient's token0 account for this leg's withdraw/borrow OUTPUTS.",
+                "Optional: outputs default to the signer's `dex_user_token0_account`.",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexRecipientToken1Account";
+              docs: [
+                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS.",
+              ];
+              writable: true;
+              optional: true;
+            },
           ];
         },
         {
@@ -1178,6 +1203,23 @@ export type Vaults = {
             },
             {
               name: "dexToken1Program";
+              optional: true;
+            },
+            {
+              name: "dexRecipientToken0Account";
+              docs: [
+                "Recipient's token0 account for this leg's withdraw/borrow OUTPUTS.",
+                "Optional: outputs default to the signer's `dex_user_token0_account`.",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexRecipientToken1Account";
+              docs: [
+                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS.",
+              ];
+              writable: true;
               optional: true;
             },
           ];
@@ -1267,6 +1309,14 @@ export type Vaults = {
         },
         {
           name: "to";
+          docs: [
+            "",
+            "NOTE (Solana vs EVM): non-smart-leg collateral goes to `to_token_account`.",
+            "Smart-col collateral seized via the DEX CPI also follows `to` (EVM `to_`",
+            "parity) — but only when the supply leg's `dex_recipient_token0/1_account`",
+            "are supplied; without them the DEX credits the liquidator *signer*'s",
+            "pool token accounts. Smart-debt paybacks always pull from the signer.",
+          ];
         },
         {
           name: "toTokenAccount";
@@ -1477,6 +1527,23 @@ export type Vaults = {
               name: "dexToken1Program";
               optional: true;
             },
+            {
+              name: "dexRecipientToken0Account";
+              docs: [
+                "Recipient's token0 account for this leg's withdraw/borrow OUTPUTS.",
+                "Optional: outputs default to the signer's `dex_user_token0_account`.",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexRecipientToken1Account";
+              docs: [
+                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS.",
+              ];
+              writable: true;
+              optional: true;
+            },
           ];
         },
         {
@@ -1584,6 +1651,23 @@ export type Vaults = {
             },
             {
               name: "dexToken1Program";
+              optional: true;
+            },
+            {
+              name: "dexRecipientToken0Account";
+              docs: [
+                "Recipient's token0 account for this leg's withdraw/borrow OUTPUTS.",
+                "Optional: outputs default to the signer's `dex_user_token0_account`.",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexRecipientToken1Account";
+              docs: [
+                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS.",
+              ];
+              writable: true;
               optional: true;
             },
           ];
@@ -1843,6 +1927,15 @@ export type Vaults = {
         },
         {
           name: "recipient";
+          docs: [
+            "",
+            "NOTE (Solana vs EVM): normal (Liquidity-layer) leg outputs go to the",
+            "recipient's ATAs. Smart DEX leg OUTPUTS also follow `recipient` (EVM",
+            "`to_` parity) — but only when the leg's `dex_recipient_token0/1_account`",
+            "are supplied on the corresponding `DexAccount` group; without them the",
+            "DEX defaults smart-leg outputs to the *signer*'s pool token accounts.",
+            "Smart-leg INPUTS (deposit/payback pulls) always come from the signer.",
+          ];
           optional: true;
         },
         {
@@ -2105,6 +2198,23 @@ export type Vaults = {
               name: "dexToken1Program";
               optional: true;
             },
+            {
+              name: "dexRecipientToken0Account";
+              docs: [
+                "Recipient's token0 account for this leg's withdraw/borrow OUTPUTS.",
+                "Optional: outputs default to the signer's `dex_user_token0_account`.",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexRecipientToken1Account";
+              docs: [
+                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS.",
+              ];
+              writable: true;
+              optional: true;
+            },
           ];
         },
         {
@@ -2212,6 +2322,23 @@ export type Vaults = {
             },
             {
               name: "dexToken1Program";
+              optional: true;
+            },
+            {
+              name: "dexRecipientToken0Account";
+              docs: [
+                "Recipient's token0 account for this leg's withdraw/borrow OUTPUTS.",
+                "Optional: outputs default to the signer's `dex_user_token0_account`.",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexRecipientToken1Account";
+              docs: [
+                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS.",
+              ];
+              writable: true;
               optional: true;
             },
           ];
@@ -2285,6 +2412,15 @@ export type Vaults = {
         },
         {
           name: "recipient";
+          docs: [
+            "",
+            "NOTE (Solana vs EVM): normal (Liquidity-layer) leg outputs go to the",
+            "recipient's ATAs. Smart DEX leg OUTPUTS also follow `recipient` (EVM",
+            "`to_` parity) — but only when the leg's `dex_recipient_token0/1_account`",
+            "are supplied on the corresponding `DexAccount` group; without them the",
+            "DEX defaults smart-leg outputs to the *signer*'s pool token accounts.",
+            "Smart-leg INPUTS (deposit/payback pulls) always come from the signer.",
+          ];
           optional: true;
         },
         {
@@ -2547,6 +2683,23 @@ export type Vaults = {
               name: "dexToken1Program";
               optional: true;
             },
+            {
+              name: "dexRecipientToken0Account";
+              docs: [
+                "Recipient's token0 account for this leg's withdraw/borrow OUTPUTS.",
+                "Optional: outputs default to the signer's `dex_user_token0_account`.",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexRecipientToken1Account";
+              docs: [
+                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS.",
+              ];
+              writable: true;
+              optional: true;
+            },
           ];
         },
         {
@@ -2654,6 +2807,23 @@ export type Vaults = {
             },
             {
               name: "dexToken1Program";
+              optional: true;
+            },
+            {
+              name: "dexRecipientToken0Account";
+              docs: [
+                "Recipient's token0 account for this leg's withdraw/borrow OUTPUTS.",
+                "Optional: outputs default to the signer's `dex_user_token0_account`.",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexRecipientToken1Account";
+              docs: [
+                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS.",
+              ];
+              writable: true;
               optional: true;
             },
           ];
@@ -3118,6 +3288,23 @@ export type Vaults = {
               name: "dexToken1Program";
               optional: true;
             },
+            {
+              name: "dexRecipientToken0Account";
+              docs: [
+                "Recipient's token0 account for this leg's withdraw/borrow OUTPUTS.",
+                "Optional: outputs default to the signer's `dex_user_token0_account`.",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexRecipientToken1Account";
+              docs: [
+                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS.",
+              ];
+              writable: true;
+              optional: true;
+            },
           ];
         },
         {
@@ -3225,6 +3412,23 @@ export type Vaults = {
             },
             {
               name: "dexToken1Program";
+              optional: true;
+            },
+            {
+              name: "dexRecipientToken0Account";
+              docs: [
+                "Recipient's token0 account for this leg's withdraw/borrow OUTPUTS.",
+                "Optional: outputs default to the signer's `dex_user_token0_account`.",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexRecipientToken1Account";
+              docs: [
+                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS.",
+              ];
+              writable: true;
               optional: true;
             },
           ];
@@ -3581,6 +3785,23 @@ export type Vaults = {
               name: "dexToken1Program";
               optional: true;
             },
+            {
+              name: "dexRecipientToken0Account";
+              docs: [
+                "Recipient's token0 account for this leg's withdraw/borrow OUTPUTS.",
+                "Optional: outputs default to the signer's `dex_user_token0_account`.",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexRecipientToken1Account";
+              docs: [
+                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS.",
+              ];
+              writable: true;
+              optional: true;
+            },
           ];
         },
         {
@@ -3688,6 +3909,23 @@ export type Vaults = {
             },
             {
               name: "dexToken1Program";
+              optional: true;
+            },
+            {
+              name: "dexRecipientToken0Account";
+              docs: [
+                "Recipient's token0 account for this leg's withdraw/borrow OUTPUTS.",
+                "Optional: outputs default to the signer's `dex_user_token0_account`.",
+              ];
+              writable: true;
+              optional: true;
+            },
+            {
+              name: "dexRecipientToken1Account";
+              docs: [
+                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS.",
+              ];
+              writable: true;
               optional: true;
             },
           ];
@@ -5105,6 +5343,11 @@ export type Vaults = {
       name: "vaultLiquidateDebtAmountsRequired";
       msg: "vaultLiquidateDebtAmountsRequired";
     },
+    {
+      code: 6106;
+      name: "vaultInvalidDexOracleProgram";
+      msg: "vaultInvalidDexOracleProgram";
+    },
   ];
   types: [
     {
@@ -5530,10 +5773,11 @@ export type Vaults = {
     {
       name: "liquidateDexColAmounts";
       docs: [
-        "T2/T4 smart collateral: minimum token amounts per collateral share (1e18 precision).",
+        "T2/T4 smart collateral: minimum token amounts per WHOLE collateral share",
+        "(1e9 precision — Solana DEX shares are 9-decimal, unlike Solidity's 1e18).",
         "After the core liquidation, the vault calls DEX `withdraw_perfect` (or",
         "`withdraw_perfect_in_one_token`) with per-share slippage bounds computed as",
-        "`token_per_unit_shares * actual_col_shares / 1e18`.",
+        "`token_per_unit_shares * actual_col_shares / 1e9` (see `SHARES_PRECISION`).",
         "Set a field to `0` to receive the full withdrawal in the *other* token only.",
       ];
       type: {
@@ -5578,9 +5822,11 @@ export type Vaults = {
     {
       name: "liquidatePerfectDexDebtAmounts";
       docs: [
-        "T3/T4 smart debt: maximum token amounts per debt share for `payback_perfect` (1e18 precision).",
+        "T3/T4 smart debt: maximum token amounts per WHOLE debt share for `payback_perfect`",
+        "(1e9 precision — Solana DEX shares are 9-decimal, unlike Solidity's 1e18).",
         "After the core liquidation, the vault calls DEX `payback_perfect` with",
-        "`token_per_unit_shares * actual_debt_shares / 1e18` as the per-token max.",
+        "`token_per_unit_shares * actual_debt_shares / 1e9` as the per-token max",
+        "(see `SHARES_PRECISION`).",
         "Set a field to `0` to pay back entirely in the *other* token only.",
       ];
       type: {

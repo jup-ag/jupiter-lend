@@ -8,7 +8,7 @@ export type Oracle = {
   address: "jupnw4B6Eqs7ft6rxpzYLJZYSnrpRgPcr589n5Kv4oc";
   metadata: {
     name: "oracle";
-    version: "0.1.4";
+    version: "0.1.5";
     spec: "0.1.0";
     description: "Created with Anchor";
   };
@@ -283,6 +283,14 @@ export type Oracle = {
           name: "quoteInToken0";
           type: "bool";
         },
+        {
+          name: "conversionSource";
+          type: {
+            defined: {
+              name: "sources";
+            };
+          };
+        },
       ];
     },
     {
@@ -554,8 +562,8 @@ export type Oracle = {
     },
     {
       code: 6004;
-      name: "invalidPythSourceMultiplierAndDivisor";
-      msg: "invalidPythSourceMultiplierAndDivisor";
+      name: "invalidSourceMultiplierAndDivisor";
+      msg: "invalidSourceMultiplierAndDivisor";
     },
     {
       code: 6005;
@@ -1001,7 +1009,29 @@ export type Oracle = {
           },
           {
             name: "quoteInToken0";
+            docs: [
+              "Which token the combined reserves are denominated in (EVM",
+              "`QUOTE_IN_TOKEN0`). Irrelevant for pure 1:1 pegs (both orientations sum",
+              "identically); meaningful once a [`Self::conversion_source`] is set.",
+            ];
             type: "bool";
+          },
+          {
+            name: "conversionSource";
+            docs: [
+              "Optional reserves-conversion price source (EVM",
+              "`RESERVES_CONVERSION_ORACLE`), needed for non-1:1 pools like LST/SOL:",
+              "prices ONE unit of token0 in token1 units (1e15-scaled after the",
+              "entry's own `invert`). `source == Pubkey::default()` → hard 1:1 peg",
+              "(USDC/USDT style), no extra account.",
+              "Restricted to single-account source types (Pyth, StakePool, MsolPool,",
+              "Redstone, Chainlink, ChainlinkDataStreams).",
+            ];
+            type: {
+              defined: {
+                name: "sources";
+              };
+            };
           },
           {
             name: "pegBufferPercent";
@@ -1018,6 +1048,12 @@ export type Oracle = {
           {
             name: "bump";
             type: "u8";
+          },
+          {
+            name: "reserved";
+            type: {
+              array: ["u8", 32];
+            };
           },
         ];
       };

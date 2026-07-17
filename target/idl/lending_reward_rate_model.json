@@ -23,7 +23,8 @@
           "writable": true
         },
         {
-          "name": "mint"
+          "name": "mint",
+          "relations": ["lending_rewards_rate_model"]
         },
         {
           "name": "f_token_mint"
@@ -138,7 +139,8 @@
           "writable": true
         },
         {
-          "name": "mint"
+          "name": "mint",
+          "relations": ["lending_rewards_rate_model"]
         },
         {
           "name": "f_token_mint"
@@ -181,7 +183,8 @@
           "writable": true
         },
         {
-          "name": "mint"
+          "name": "mint",
+          "relations": ["lending_rewards_rate_model"]
         },
         {
           "name": "f_token_mint"
@@ -232,7 +235,8 @@
           "writable": true
         },
         {
-          "name": "mint"
+          "name": "mint",
+          "relations": ["lending_rewards_rate_model"]
         },
         {
           "name": "f_token_mint"

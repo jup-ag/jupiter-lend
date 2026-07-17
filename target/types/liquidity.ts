@@ -8,7 +8,7 @@ export type Liquidity = {
   address: "jupeiUmn818Jg1ekPURTpr4mFo29p46vygyykFJ3wZC";
   metadata: {
     name: "liquidity";
-    version: "0.1.4";
+    version: "0.1.5";
     spec: "0.1.0";
     description: "Created with Anchor";
   };

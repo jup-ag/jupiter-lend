@@ -2,7 +2,7 @@
   "address": "jupnw4B6Eqs7ft6rxpzYLJZYSnrpRgPcr589n5Kv4oc",
   "metadata": {
     "name": "oracle",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "spec": "0.1.0",
     "description": "Created with Anchor"
   },
@@ -267,6 +267,14 @@
         {
           "name": "quote_in_token0",
           "type": "bool"
+        },
+        {
+          "name": "conversion_source",
+          "type": {
+            "defined": {
+              "name": "Sources"
+            }
+          }
         }
       ]
     },
@@ -539,8 +547,8 @@
     },
     {
       "code": 6004,
-      "name": "InvalidPythSourceMultiplierAndDivisor",
-      "msg": "INVALID_PYTH_SOURCE_MULTIPLIER_AND_DIVISOR"
+      "name": "InvalidSourceMultiplierAndDivisor",
+      "msg": "INVALID_SOURCE_MULTIPLIER_AND_DIVISOR"
     },
     {
       "code": 6005,
@@ -986,7 +994,29 @@
           },
           {
             "name": "quote_in_token0",
+            "docs": [
+              "Which token the combined reserves are denominated in (EVM",
+              "`QUOTE_IN_TOKEN0`). Irrelevant for pure 1:1 pegs (both orientations sum",
+              "identically); meaningful once a [`Self::conversion_source`] is set."
+            ],
             "type": "bool"
+          },
+          {
+            "name": "conversion_source",
+            "docs": [
+              "Optional reserves-conversion price source (EVM",
+              "`RESERVES_CONVERSION_ORACLE`), needed for non-1:1 pools like LST/SOL:",
+              "prices ONE unit of token0 in token1 units (1e15-scaled after the",
+              "entry's own `invert`). `source == Pubkey::default()` → hard 1:1 peg",
+              "(USDC/USDT style), no extra account.",
+              "Restricted to single-account source types (Pyth, StakePool, MsolPool,",
+              "Redstone, Chainlink, ChainlinkDataStreams)."
+            ],
+            "type": {
+              "defined": {
+                "name": "Sources"
+              }
+            }
           },
           {
             "name": "peg_buffer_percent",
@@ -1003,6 +1033,12 @@
           {
             "name": "bump",
             "type": "u8"
+          },
+          {
+            "name": "__reserved",
+            "type": {
+              "array": ["u8", 32]
+            }
           }
         ]
       }
