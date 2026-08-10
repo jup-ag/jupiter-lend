@@ -8,7 +8,7 @@ export type Dex = {
   address: "jupZ4m2GqUCJ5iueMfzQf8khFfH31d4XAQt3RzCT9Vd";
   metadata: {
     name: "dex";
-    version: "0.1.5";
+    version: "0.1.6";
     spec: "0.1.0";
     description: "Created with Anchor";
   };
@@ -534,6 +534,31 @@ export type Dex = {
           type: "u64";
         },
       ];
+    },
+    {
+      name: "forceSetPrice";
+      discriminator: [146, 177, 235, 49, 193, 159, 187, 16];
+      accounts: [
+        {
+          name: "authority";
+          signer: true;
+        },
+        {
+          name: "dexAdmin";
+        },
+        {
+          name: "dex";
+          writable: true;
+        },
+        {
+          name: "oracleProgram";
+          docs: [
+            "verified against dex.center_price_address in the load helper",
+          ];
+          address: "jupnw4B6Eqs7ft6rxpzYLJZYSnrpRgPcr589n5Kv4oc";
+        },
+      ];
+      args: [];
     },
     {
       name: "initDex";
@@ -2672,6 +2697,10 @@ export type Dex = {
       discriminator: [202, 242, 228, 28, 37, 194, 52, 34];
     },
     {
+      name: "logSwapInfo";
+      discriminator: [147, 245, 134, 184, 71, 33, 116, 246];
+    },
+    {
       name: "logTurnOnSmartCol";
       discriminator: [108, 254, 255, 147, 80, 55, 98, 86];
     },
@@ -2698,6 +2727,10 @@ export type Dex = {
     {
       name: "logUpdateAuths";
       discriminator: [88, 80, 109, 48, 111, 203, 76, 251];
+    },
+    {
+      name: "logUpdateCenterPrice";
+      discriminator: [85, 235, 95, 215, 205, 203, 253, 120];
     },
     {
       name: "logUpdateCenterPriceAddress";
@@ -2738,6 +2771,10 @@ export type Dex = {
     {
       name: "logUpdateUserBorrowConfig";
       discriminator: [70, 142, 184, 48, 44, 158, 166, 3];
+    },
+    {
+      name: "logUpdateUserConfigOnPausedPosition";
+      discriminator: [116, 70, 45, 227, 16, 114, 90, 251];
     },
     {
       name: "logUpdateUserSupplyConfig";
@@ -3189,6 +3226,21 @@ export type Dex = {
       code: 6084;
       name: "dexAdminNotAnAuthOrGuardian";
       msg: "dexAdminNotAnAuthOrGuardian";
+    },
+    {
+      code: 6085;
+      name: "dexAdminSwapsNotPaused";
+      msg: "dexAdminSwapsNotPaused";
+    },
+    {
+      code: 6086;
+      name: "dexAdminCenterPriceAddressNotSet";
+      msg: "dexAdminCenterPriceAddressNotSet";
+    },
+    {
+      code: 6087;
+      name: "dexAdminFeeRevenueCutProductOverflow";
+      msg: "dexAdminFeeRevenueCutProductOverflow";
     },
   ];
   types: [
@@ -4055,6 +4107,77 @@ export type Dex = {
       };
     },
     {
+      name: "logSwapInfo";
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "dexId";
+            type: "u16";
+          },
+          {
+            name: "swap0To1";
+            docs: [
+              "`true` = token0 in / token1 out; `false` = token1 in / token0 out.",
+            ];
+            type: "bool";
+          },
+          {
+            name: "maker";
+            docs: [
+              "Signer that paid the input tokens — GeckoTerminal's `maker`.",
+            ];
+            type: "pubkey";
+          },
+          {
+            name: "to";
+            docs: ["Account that received the output tokens."];
+            type: "pubkey";
+          },
+          {
+            name: "amountIn";
+            docs: ["Total input transferred by `maker`, fee inclusive."];
+            type: "u64";
+          },
+          {
+            name: "amountOut";
+            docs: ["Total output sent to `to`."];
+            type: "u64";
+          },
+          {
+            name: "feeAmountIn";
+            docs: [
+              "Swap fee charged on the input token: a subset of `amount_in`, inclusive of",
+              "the protocol revenue cut. Rounded DOWN to native units.",
+            ];
+            type: "u64";
+          },
+          {
+            name: "reservesToken0";
+            docs: [
+              "Pooled token0 after this swap — smart-collateral real reserves plus",
+              "smart-debt real reserves. Rounded DOWN to native units.",
+            ];
+            type: "u128";
+          },
+          {
+            name: "reservesToken1";
+            docs: [
+              "Pooled token1 after this swap. Rounded DOWN to native units.",
+            ];
+            type: "u128";
+          },
+          {
+            name: "poolPrice";
+            docs: [
+              "Post-swap pool (marginal) price, token1 per token0, 1e15 scale. This is NOT",
+            ];
+            type: "u128";
+          },
+        ];
+      };
+    },
+    {
       name: "logTurnOnSmartCol";
       type: {
         kind: "struct";
@@ -4160,6 +4283,30 @@ export type Dex = {
                 };
               };
             };
+          },
+        ];
+      };
+    },
+    {
+      name: "logUpdateCenterPrice";
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "dexId";
+            type: "u16";
+          },
+          {
+            name: "centerPrice";
+            type: "u128";
+          },
+          {
+            name: "oldCenterPrice";
+            type: "u128";
+          },
+          {
+            name: "oldLastStoredPrice";
+            type: "u128";
           },
         ];
       };
@@ -4374,6 +4521,26 @@ export type Dex = {
           {
             name: "maxDebtCeiling";
             type: "u64";
+          },
+        ];
+      };
+    },
+    {
+      name: "logUpdateUserConfigOnPausedPosition";
+      type: {
+        kind: "struct";
+        fields: [
+          {
+            name: "dexId";
+            type: "u16";
+          },
+          {
+            name: "protocol";
+            type: "pubkey";
+          },
+          {
+            name: "isSupply";
+            type: "bool";
           },
         ];
       };
