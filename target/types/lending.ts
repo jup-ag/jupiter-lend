@@ -83,13 +83,13 @@ export type Lending = {
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
           name: "assets";
           type: "u64";
-        },
+        }
       ];
       returns: "u64";
     },
@@ -163,7 +163,7 @@ export type Lending = {
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
@@ -173,7 +173,7 @@ export type Lending = {
         {
           name: "minAmountOut";
           type: "u64";
-        },
+        }
       ];
     },
     {
@@ -212,13 +212,13 @@ export type Lending = {
                   109,
                   105,
                   110,
-                  116,
+                  116
                 ];
               },
               {
                 kind: "account";
                 path: "mint";
-              },
+              }
             ];
           };
         },
@@ -265,13 +265,13 @@ export type Lending = {
                   3,
                   248,
                   41,
-                  70,
+                  70
                 ];
               },
               {
                 kind: "account";
                 path: "fTokenMint";
-              },
+              }
             ];
             program: {
               kind: "const";
@@ -307,7 +307,7 @@ export type Lending = {
                 3,
                 248,
                 41,
-                70,
+                70
               ];
             };
           };
@@ -328,7 +328,7 @@ export type Lending = {
               {
                 kind: "account";
                 path: "fTokenMint";
-              },
+              }
             ];
           };
         },
@@ -353,7 +353,7 @@ export type Lending = {
         {
           name: "rent";
           address: "SysvarRent111111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
@@ -363,7 +363,7 @@ export type Lending = {
         {
           name: "liquidityProgram";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -395,16 +395,16 @@ export type Lending = {
                   100,
                   109,
                   105,
-                  110,
+                  110
                 ];
-              },
+              }
             ];
           };
         },
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
@@ -418,7 +418,7 @@ export type Lending = {
         {
           name: "authority";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -491,13 +491,13 @@ export type Lending = {
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
           name: "shares";
           type: "u64";
-        },
+        }
       ];
       returns: "u64";
     },
@@ -571,7 +571,7 @@ export type Lending = {
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
@@ -581,7 +581,7 @@ export type Lending = {
         {
           name: "maxAssets";
           type: "u64";
-        },
+        }
       ];
       returns: "u64";
     },
@@ -610,7 +610,7 @@ export type Lending = {
               {
                 kind: "account";
                 path: "mint";
-              },
+              }
             ];
             program: {
               kind: "const";
@@ -646,7 +646,7 @@ export type Lending = {
                 219,
                 233,
                 248,
-                89,
+                89
               ];
             };
           };
@@ -704,7 +704,7 @@ export type Lending = {
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [];
     },
@@ -733,7 +733,7 @@ export type Lending = {
               {
                 kind: "account";
                 path: "mint";
-              },
+              }
             ];
             program: {
               kind: "const";
@@ -769,7 +769,7 @@ export type Lending = {
                 219,
                 233,
                 248,
-                89,
+                89
               ];
             };
           };
@@ -827,7 +827,7 @@ export type Lending = {
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
@@ -835,7 +835,7 @@ export type Lending = {
           type: {
             option: "u64";
           };
-        },
+        }
       ];
     },
     {
@@ -913,13 +913,13 @@ export type Lending = {
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
           name: "shares";
           type: "u64";
-        },
+        }
       ];
       returns: "u64";
     },
@@ -998,7 +998,7 @@ export type Lending = {
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
@@ -1008,7 +1008,7 @@ export type Lending = {
         {
           name: "minAmountOut";
           type: "u64";
-        },
+        }
       ];
     },
     {
@@ -1035,13 +1035,13 @@ export type Lending = {
         },
         {
           name: "supplyTokenReservesLiquidity";
-        },
+        }
       ];
       args: [
         {
           name: "mint";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -1055,13 +1055,13 @@ export type Lending = {
         {
           name: "lendingAdmin";
           writable: true;
-        },
+        }
       ];
       args: [
         {
           name: "newAuthority";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -1075,7 +1075,7 @@ export type Lending = {
         {
           name: "lendingAdmin";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -1087,7 +1087,7 @@ export type Lending = {
               };
             };
           };
-        },
+        }
       ];
     },
     {
@@ -1111,7 +1111,7 @@ export type Lending = {
         },
         {
           name: "rewardsRateModel";
-        },
+        }
       ];
       args: [];
     },
@@ -1126,13 +1126,13 @@ export type Lending = {
         {
           name: "lendingAdmin";
           writable: true;
-        },
+        }
       ];
       args: [
         {
           name: "newRebalancer";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -1210,13 +1210,13 @@ export type Lending = {
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
           name: "amount";
           type: "u64";
-        },
+        }
       ];
       returns: "u64";
     },
@@ -1295,7 +1295,7 @@ export type Lending = {
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
@@ -1305,10 +1305,10 @@ export type Lending = {
         {
           name: "maxSharesBurn";
           type: "u64";
-        },
+        }
       ];
       returns: "u64";
-    },
+    }
   ];
   accounts: [
     {
@@ -1330,7 +1330,7 @@ export type Lending = {
     {
       name: "userSupplyPosition";
       discriminator: [202, 219, 136, 118, 61, 177, 21, 146];
-    },
+    }
   ];
   events: [
     {
@@ -1364,7 +1364,7 @@ export type Lending = {
     {
       name: "logWithdraw";
       discriminator: [49, 9, 176, 179, 222, 190, 6, 117];
-    },
+    }
   ];
   errors: [
     {
@@ -1431,7 +1431,7 @@ export type Lending = {
       code: 6012;
       name: "fTokenLiquidityProgramMismatch";
       msg: "fTokenLiquidityProgramMismatch";
-    },
+    }
   ];
   types: [
     {
@@ -1446,7 +1446,7 @@ export type Lending = {
           {
             name: "value";
             type: "bool";
-          },
+          }
         ];
       };
     },
@@ -1475,28 +1475,28 @@ export type Lending = {
           {
             name: "rewardsRateModel";
             docs: [
-              "@dev To read PDA of rewards rate model to get_rate instruction",
+              "@dev To read PDA of rewards rate model to get_rate instruction"
             ];
             type: "pubkey";
           },
           {
             name: "liquidityExchangePrice";
             docs: [
-              "@dev exchange price for the underlying asset in the liquidity protocol (without rewards)",
+              "@dev exchange price for the underlying asset in the liquidity protocol (without rewards)"
             ];
             type: "u64";
           },
           {
             name: "tokenExchangePrice";
             docs: [
-              "@dev exchange price between fToken and the underlying asset (with rewards)",
+              "@dev exchange price between fToken and the underlying asset (with rewards)"
             ];
             type: "u64";
           },
           {
             name: "lastUpdateTimestamp";
             docs: [
-              "@dev timestamp when exchange prices were updated the last time",
+              "@dev timestamp when exchange prices were updated the last time"
             ];
             type: "u64";
           },
@@ -1511,7 +1511,7 @@ export type Lending = {
           {
             name: "bump";
             type: "u8";
-          },
+          }
         ];
       };
     },
@@ -1545,7 +1545,7 @@ export type Lending = {
           {
             name: "bump";
             type: "u8";
-          },
+          }
         ];
       };
     },
@@ -1563,7 +1563,7 @@ export type Lending = {
             name: "startTvl";
             docs: [
               "@dev tvl below which rewards rate is 0. If current TVL is below this value, triggering `update_rate()` on the fToken",
-              "might bring the total TVL above this cut-off.",
+              "might bring the total TVL above this cut-off."
             ];
             type: "u64";
           },
@@ -1580,7 +1580,7 @@ export type Lending = {
           {
             name: "yearlyReward";
             docs: [
-              "@dev current annualized reward based on input params (duration, rewardAmount)",
+              "@dev current annualized reward based on input params (duration, rewardAmount)"
             ];
             type: "u64";
           },
@@ -1597,7 +1597,7 @@ export type Lending = {
           {
             name: "bump";
             type: "u8";
-          },
+          }
         ];
       };
     },
@@ -1621,7 +1621,7 @@ export type Lending = {
           {
             name: "sharesMinted";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -1633,7 +1633,7 @@ export type Lending = {
           {
             name: "assets";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -1645,7 +1645,7 @@ export type Lending = {
           {
             name: "newAuthority";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -1663,7 +1663,7 @@ export type Lending = {
                 };
               };
             };
-          },
+          }
         ];
       };
     },
@@ -1679,7 +1679,7 @@ export type Lending = {
           {
             name: "liquidityExchangePrice";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -1691,7 +1691,7 @@ export type Lending = {
           {
             name: "newRebalancer";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -1703,7 +1703,7 @@ export type Lending = {
           {
             name: "rewardsRateModel";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -1731,7 +1731,7 @@ export type Lending = {
           {
             name: "sharesBurned";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -1813,7 +1813,7 @@ export type Lending = {
           {
             name: "interactingBalance";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -1875,9 +1875,9 @@ export type Lending = {
           {
             name: "status";
             type: "u8";
-          },
+          }
         ];
       };
-    },
+    }
   ];
 };

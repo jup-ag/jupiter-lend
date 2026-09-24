@@ -2,7 +2,7 @@
   "address": "jupZ4m2GqUCJ5iueMfzQf8khFfH31d4XAQt3RzCT9Vd",
   "metadata": {
     "name": "dex",
-    "version": "0.1.6",
+    "version": "0.1.8",
     "spec": "0.1.0",
     "description": "Created with Anchor"
   },
@@ -16,7 +16,6 @@
           "docs": [
             "The protocol calling the operation (must match position.protocol)"
           ],
-          "writable": true,
           "signer": true
         },
         {
@@ -147,7 +146,6 @@
           "docs": [
             "The protocol calling the operation (must match position.protocol)"
           ],
-          "writable": true,
           "signer": true
         },
         {
@@ -277,7 +275,6 @@
           "docs": [
             "The protocol calling the operation (must match position.protocol)"
           ],
-          "writable": true,
           "signer": true
         },
         {
@@ -408,7 +405,6 @@
           "docs": [
             "The protocol calling the operation (must match position.protocol)"
           ],
-          "writable": true,
           "signer": true
         },
         {
@@ -847,7 +843,6 @@
           "docs": [
             "The protocol calling the operation (must match position.protocol)"
           ],
-          "writable": true,
           "signer": true
         },
         {
@@ -978,7 +973,6 @@
           "docs": [
             "The protocol calling the operation (must match position.protocol)"
           ],
-          "writable": true,
           "signer": true
         },
         {
@@ -1108,7 +1102,6 @@
           "docs": [
             "The protocol calling the operation (must match position.protocol)"
           ],
-          "writable": true,
           "signer": true
         },
         {
@@ -1302,10 +1295,8 @@
         {
           "name": "signer",
           "docs": [
-            "The caller initiating the operation",
-            "Funds will be transferred from signer to LL"
+            "The caller initiating the operation (transfer authority for inbound tokens)"
           ],
-          "writable": true,
           "signer": true
         },
         {
@@ -1424,10 +1415,8 @@
         {
           "name": "signer",
           "docs": [
-            "The caller initiating the operation",
-            "Funds will be transferred from signer to LL"
+            "The caller initiating the operation (transfer authority for inbound tokens)"
           ],
-          "writable": true,
           "signer": true
         },
         {
@@ -1545,7 +1534,6 @@
       "accounts": [
         {
           "name": "authority",
-          "writable": true,
           "signer": true
         },
         {
@@ -1637,7 +1625,6 @@
       "accounts": [
         {
           "name": "authority",
-          "writable": true,
           "signer": true
         },
         {
@@ -2208,7 +2195,6 @@
           "docs": [
             "The protocol calling the operation (must match position.protocol)"
           ],
-          "writable": true,
           "signer": true
         },
         {
@@ -2339,7 +2325,6 @@
           "docs": [
             "The protocol calling the operation (must match position.protocol)"
           ],
-          "writable": true,
           "signer": true
         },
         {
@@ -2469,7 +2454,6 @@
           "docs": [
             "The protocol calling the operation (must match position.protocol)"
           ],
-          "writable": true,
           "signer": true
         },
         {
@@ -4157,7 +4141,13 @@
           {
             "name": "pool_price",
             "docs": [
-              "Post-swap pool (marginal) price, token1 per token0, 1e15 scale. This is NOT"
+              "Post-swap pool (marginal) price, token1 per token0, 1e15 scale. This is NOT",
+              "the execution price of this swap (`amount_out / amount_in`): it is the ratio",
+              "of the post-swap imaginary reserves on whichever leg routed the larger",
+              "amount, so it excludes the swap fee and the slippage this swap paid.",
+              "Reserves are normalized to 9 decimals internally, so `pool_price / 1e15` is",
+              "already the whole-token price of token0 in token1 — no further decimal",
+              "adjustment is needed."
             ],
             "type": "u128"
           }

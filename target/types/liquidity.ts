@@ -8,7 +8,7 @@ export type Liquidity = {
   address: "jupeiUmn818Jg1ekPURTpr4mFo29p46vygyykFJ3wZC";
   metadata: {
     name: "liquidity";
-    version: "0.1.5";
+    version: "0.1.8";
     spec: "0.1.0";
     description: "Created with Anchor";
   };
@@ -27,13 +27,13 @@ export type Liquidity = {
         },
         {
           name: "authList";
-        },
+        }
       ];
       args: [
         {
           name: "status";
           type: "bool";
-        },
+        }
       ];
     },
     {
@@ -71,13 +71,13 @@ export type Liquidity = {
         },
         {
           name: "tokenProgram";
-        },
+        }
       ];
       args: [
         {
           name: "recipient";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -97,13 +97,13 @@ export type Liquidity = {
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
           name: "mint";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -141,7 +141,7 @@ export type Liquidity = {
               {
                 kind: "account";
                 path: "mint";
-              },
+              }
             ];
             program: {
               kind: "const";
@@ -177,7 +177,7 @@ export type Liquidity = {
                 219,
                 233,
                 248,
-                89,
+                89
               ];
             };
           };
@@ -205,7 +205,7 @@ export type Liquidity = {
               {
                 kind: "account";
                 path: "mint";
-              },
+              }
             ];
             program: {
               kind: "const";
@@ -241,7 +241,7 @@ export type Liquidity = {
                 219,
                 233,
                 248,
-                89,
+                89
               ];
             };
           };
@@ -257,7 +257,7 @@ export type Liquidity = {
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [];
     },
@@ -286,14 +286,14 @@ export type Liquidity = {
               {
                 kind: "arg";
                 path: "mint";
-              },
+              }
             ];
           };
         },
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
@@ -303,7 +303,7 @@ export type Liquidity = {
         {
           name: "user";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -323,7 +323,7 @@ export type Liquidity = {
               {
                 kind: "const";
                 value: [108, 105, 113, 117, 105, 100, 105, 116, 121];
-              },
+              }
             ];
           };
         },
@@ -335,14 +335,14 @@ export type Liquidity = {
               {
                 kind: "const";
                 value: [97, 117, 116, 104, 95, 108, 105, 115, 116];
-              },
+              }
             ];
           };
         },
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
@@ -352,7 +352,7 @@ export type Liquidity = {
         {
           name: "revenueCollector";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -394,7 +394,7 @@ export type Liquidity = {
                   116,
                   105,
                   111,
-                  110,
+                  110
                 ];
               },
               {
@@ -404,7 +404,7 @@ export type Liquidity = {
               {
                 kind: "arg";
                 path: "protocol";
-              },
+              }
             ];
           };
         },
@@ -435,7 +435,7 @@ export type Liquidity = {
                   116,
                   105,
                   111,
-                  110,
+                  110
                 ];
               },
               {
@@ -445,14 +445,14 @@ export type Liquidity = {
               {
                 kind: "arg";
                 path: "protocol";
-              },
+              }
             ];
           };
         },
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
@@ -466,7 +466,7 @@ export type Liquidity = {
         {
           name: "protocol";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -503,7 +503,7 @@ export type Liquidity = {
               {
                 kind: "account";
                 path: "mint";
-              },
+              }
             ];
             program: {
               kind: "const";
@@ -539,7 +539,7 @@ export type Liquidity = {
                 219,
                 233,
                 248,
-                89,
+                89
               ];
             };
           };
@@ -556,7 +556,7 @@ export type Liquidity = {
               {
                 kind: "account";
                 path: "mint";
-              },
+              }
             ];
           };
         },
@@ -572,7 +572,7 @@ export type Liquidity = {
               {
                 kind: "account";
                 path: "mint";
-              },
+              }
             ];
           };
         },
@@ -586,7 +586,7 @@ export type Liquidity = {
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [];
     },
@@ -612,7 +612,7 @@ export type Liquidity = {
             "tokenReserve",
             "rateModel",
             "borrowClaimAccount",
-            "withdrawClaimAccount",
+            "withdrawClaimAccount"
           ];
         },
         {
@@ -655,7 +655,7 @@ export type Liquidity = {
         },
         {
           name: "tokenProgram";
-        },
+        }
       ];
       args: [
         {
@@ -681,7 +681,7 @@ export type Liquidity = {
               name: "transferType";
             };
           };
-        },
+        }
       ];
     },
     {
@@ -698,13 +698,13 @@ export type Liquidity = {
         {
           name: "tokenReserve";
           writable: true;
-        },
+        }
       ];
       args: [
         {
           name: "mint";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -725,7 +725,7 @@ export type Liquidity = {
         {
           name: "userBorrowPosition";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -751,7 +751,7 @@ export type Liquidity = {
           type: {
             option: "u8";
           };
-        },
+        }
       ];
     },
     {
@@ -784,13 +784,13 @@ export type Liquidity = {
         },
         {
           name: "tokenProgram";
-        },
+        }
       ];
       args: [
         {
           name: "mint";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -807,13 +807,13 @@ export type Liquidity = {
         {
           name: "tokenReserve";
           writable: true;
-        },
+        }
       ];
       args: [
         {
           name: "mint";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -834,7 +834,7 @@ export type Liquidity = {
         {
           name: "userBorrowPosition";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -860,7 +860,7 @@ export type Liquidity = {
           type: {
             option: "u8";
           };
-        },
+        }
       ];
     },
     {
@@ -878,13 +878,13 @@ export type Liquidity = {
         {
           name: "authList";
           writable: true;
-        },
+        }
       ];
       args: [
         {
           name: "newAuthority";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -901,7 +901,7 @@ export type Liquidity = {
         {
           name: "authList";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -913,7 +913,7 @@ export type Liquidity = {
               };
             };
           };
-        },
+        }
       ];
     },
     {
@@ -926,13 +926,13 @@ export type Liquidity = {
         },
         {
           name: "rateModel";
-        },
+        }
       ];
       args: [
         {
           name: "mint";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -949,7 +949,7 @@ export type Liquidity = {
         {
           name: "authList";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -961,7 +961,7 @@ export type Liquidity = {
               };
             };
           };
-        },
+        }
       ];
     },
     {
@@ -986,7 +986,7 @@ export type Liquidity = {
         {
           name: "tokenReserve";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -996,7 +996,7 @@ export type Liquidity = {
               name: "rateDataV1Params";
             };
           };
-        },
+        }
       ];
     },
     {
@@ -1021,7 +1021,7 @@ export type Liquidity = {
         {
           name: "tokenReserve";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -1031,7 +1031,7 @@ export type Liquidity = {
               name: "rateDataV2Params";
             };
           };
-        },
+        }
       ];
     },
     {
@@ -1045,13 +1045,13 @@ export type Liquidity = {
         {
           name: "liquidity";
           writable: true;
-        },
+        }
       ];
       args: [
         {
           name: "revenueCollector";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -1076,7 +1076,7 @@ export type Liquidity = {
         {
           name: "tokenReserve";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -1086,7 +1086,7 @@ export type Liquidity = {
               name: "tokenConfig";
             };
           };
-        },
+        }
       ];
     },
     {
@@ -1118,7 +1118,7 @@ export type Liquidity = {
         {
           name: "userBorrowPosition";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -1128,7 +1128,7 @@ export type Liquidity = {
               name: "userBorrowConfig";
             };
           };
-        },
+        }
       ];
     },
     {
@@ -1142,7 +1142,7 @@ export type Liquidity = {
         {
           name: "authList";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -1154,7 +1154,7 @@ export type Liquidity = {
               };
             };
           };
-        },
+        }
       ];
     },
     {
@@ -1186,7 +1186,7 @@ export type Liquidity = {
         {
           name: "userSupplyPosition";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -1196,7 +1196,7 @@ export type Liquidity = {
               name: "userSupplyConfig";
             };
           };
-        },
+        }
       ];
     },
     {
@@ -1213,7 +1213,7 @@ export type Liquidity = {
         {
           name: "userSupplyPosition";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -1227,9 +1227,9 @@ export type Liquidity = {
         {
           name: "mint";
           type: "pubkey";
-        },
+        }
       ];
-    },
+    }
   ];
   accounts: [
     {
@@ -1259,7 +1259,7 @@ export type Liquidity = {
     {
       name: "userSupplyPosition";
       discriminator: [202, 219, 136, 118, 61, 177, 21, 146];
-    },
+    }
   ];
   events: [
     {
@@ -1341,7 +1341,7 @@ export type Liquidity = {
     {
       name: "logUpdateUserWithdrawalLimit";
       discriminator: [114, 131, 152, 189, 120, 253, 88, 105];
-    },
+    }
   ];
   errors: [
     {
@@ -1578,7 +1578,7 @@ export type Liquidity = {
       code: 6046;
       name: "operateSkipTransferInvalid";
       msg: "userModuleOperateSkipTransferInvalid";
-    },
+    }
   ];
   types: [
     {
@@ -1593,7 +1593,7 @@ export type Liquidity = {
           {
             name: "value";
             type: "bool";
-          },
+          }
         ];
       };
     },
@@ -1609,7 +1609,7 @@ export type Liquidity = {
           {
             name: "value";
             type: "u8";
-          },
+          }
         ];
       };
     },
@@ -1639,7 +1639,7 @@ export type Liquidity = {
                 };
               };
             };
-          },
+          }
         ];
       };
     },
@@ -1663,7 +1663,7 @@ export type Liquidity = {
           {
             name: "bump";
             type: "u8";
-          },
+          }
         ];
       };
     },
@@ -1675,7 +1675,7 @@ export type Liquidity = {
           {
             name: "token";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -1687,7 +1687,7 @@ export type Liquidity = {
           {
             name: "newStatus";
             type: "bool";
-          },
+          }
         ];
       };
     },
@@ -1711,7 +1711,7 @@ export type Liquidity = {
           {
             name: "amount";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -1727,7 +1727,7 @@ export type Liquidity = {
           {
             name: "revenueAmount";
             type: "u128";
-          },
+          }
         ];
       };
     },
@@ -1767,7 +1767,7 @@ export type Liquidity = {
           {
             name: "borrowExchangePrice";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -1787,7 +1787,7 @@ export type Liquidity = {
           {
             name: "status";
             type: "u8";
-          },
+          }
         ];
       };
     },
@@ -1803,7 +1803,7 @@ export type Liquidity = {
           {
             name: "suspend";
             type: "bool";
-          },
+          }
         ];
       };
     },
@@ -1823,7 +1823,7 @@ export type Liquidity = {
           {
             name: "status";
             type: "u8";
-          },
+          }
         ];
       };
     },
@@ -1835,7 +1835,7 @@ export type Liquidity = {
           {
             name: "newAuthority";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -1853,7 +1853,7 @@ export type Liquidity = {
                 };
               };
             };
-          },
+          }
         ];
       };
     },
@@ -1881,7 +1881,7 @@ export type Liquidity = {
           {
             name: "utilization";
             type: "u16";
-          },
+          }
         ];
       };
     },
@@ -1899,7 +1899,7 @@ export type Liquidity = {
                 };
               };
             };
-          },
+          }
         ];
       };
     },
@@ -1919,7 +1919,7 @@ export type Liquidity = {
                 name: "rateDataV1Params";
               };
             };
-          },
+          }
         ];
       };
     },
@@ -1939,7 +1939,7 @@ export type Liquidity = {
                 name: "rateDataV2Params";
               };
             };
-          },
+          }
         ];
       };
     },
@@ -1951,7 +1951,7 @@ export type Liquidity = {
           {
             name: "revenueCollector";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -1967,7 +1967,7 @@ export type Liquidity = {
                 name: "tokenConfig";
               };
             };
-          },
+          }
         ];
       };
     },
@@ -1991,7 +1991,7 @@ export type Liquidity = {
                 name: "userBorrowConfig";
               };
             };
-          },
+          }
         ];
       };
     },
@@ -2009,7 +2009,7 @@ export type Liquidity = {
                 };
               };
             };
-          },
+          }
         ];
       };
     },
@@ -2033,7 +2033,7 @@ export type Liquidity = {
                 name: "userSupplyConfig";
               };
             };
-          },
+          }
         ];
       };
     },
@@ -2053,7 +2053,7 @@ export type Liquidity = {
           {
             name: "newLimit";
             type: "u128";
-          },
+          }
         ];
       };
     },
@@ -2067,7 +2067,7 @@ export type Liquidity = {
             name: "kink";
             docs: [
               "",
-              "@param kink in borrow rate. in 1e2: 100% = 10_000; 1% = 100",
+              "@param kink in borrow rate. in 1e2: 100% = 10_000; 1% = 100"
             ];
             type: "u128";
           },
@@ -2077,7 +2077,7 @@ export type Liquidity = {
               "",
               "@param rateAtUtilizationZero desired borrow rate when utilization is zero. in 1e2: 100% = 10_000; 1% = 100",
               "i.e. constant minimum borrow rate",
-              "e.g. at utilization = 0.01% rate could still be at least 4% (rateAtUtilizationZero would be 400 then)",
+              "e.g. at utilization = 0.01% rate could still be at least 4% (rateAtUtilizationZero would be 400 then)"
             ];
             type: "u128";
           },
@@ -2086,7 +2086,7 @@ export type Liquidity = {
             docs: [
               "",
               "@param rateAtUtilizationKink borrow rate when utilization is at kink. in 1e2: 100% = 10_000; 1% = 100",
-              "e.g. when rate should be 7% at kink then rateAtUtilizationKink would be 700",
+              "e.g. when rate should be 7% at kink then rateAtUtilizationKink would be 700"
             ];
             type: "u128";
           },
@@ -2095,10 +2095,10 @@ export type Liquidity = {
             docs: [
               "",
               "@param rateAtUtilizationMax borrow rate when utilization is maximum at 100%. in 1e2: 100% = 10_000; 1% = 100",
-              "e.g. when rate should be 125% at 100% then rateAtUtilizationMax would be 12_500",
+              "e.g. when rate should be 125% at 100% then rateAtUtilizationMax would be 12_500"
             ];
             type: "u128";
-          },
+          }
         ];
       };
     },
@@ -2113,7 +2113,7 @@ export type Liquidity = {
             docs: [
               "",
               "@param kink1 first kink in borrow rate. in 1e2: 100% = 10_000; 1% = 100",
-              "utilization below kink 1 usually means slow increase in rate, once utilization is above kink 1 borrow rate increases faster",
+              "utilization below kink 1 usually means slow increase in rate, once utilization is above kink 1 borrow rate increases faster"
             ];
             type: "u128";
           },
@@ -2122,7 +2122,7 @@ export type Liquidity = {
             docs: [
               "",
               "@param kink2 second kink in borrow rate. in 1e2: 100% = 10_000; 1% = 100",
-              "utilization below kink 2 usually means slow / medium increase in rate, once utilization is above kink 2 borrow rate increases fast",
+              "utilization below kink 2 usually means slow / medium increase in rate, once utilization is above kink 2 borrow rate increases fast"
             ];
             type: "u128";
           },
@@ -2132,7 +2132,7 @@ export type Liquidity = {
               "",
               "@param rateAtUtilizationZero desired borrow rate when utilization is zero. in 1e2: 100% = 10_000; 1% = 100",
               "i.e. constant minimum borrow rate",
-              "e.g. at utilization = 0.01% rate could still be at least 4% (rateAtUtilizationZero would be 400 then)",
+              "e.g. at utilization = 0.01% rate could still be at least 4% (rateAtUtilizationZero would be 400 then)"
             ];
             type: "u128";
           },
@@ -2141,7 +2141,7 @@ export type Liquidity = {
             docs: [
               "",
               "@param rateAtUtilizationKink1 desired borrow rate when utilization is at first kink. in 1e2: 100% = 10_000; 1% = 100",
-              "e.g. when rate should be 7% at first kink then rateAtUtilizationKink would be 700",
+              "e.g. when rate should be 7% at first kink then rateAtUtilizationKink would be 700"
             ];
             type: "u128";
           },
@@ -2150,7 +2150,7 @@ export type Liquidity = {
             docs: [
               "",
               "@param rateAtUtilizationKink2 desired borrow rate when utilization is at second kink. in 1e2: 100% = 10_000; 1% = 100",
-              "e.g. when rate should be 7% at second kink then rateAtUtilizationKink would be 1_200",
+              "e.g. when rate should be 7% at second kink then rateAtUtilizationKink would be 1_200"
             ];
             type: "u128";
           },
@@ -2159,10 +2159,10 @@ export type Liquidity = {
             docs: [
               "",
               "@param rateAtUtilizationMax desired borrow rate when utilization is maximum at 100%. in 1e2: 100% = 10_000; 1% = 100",
-              "e.g. when rate should be 125% at 100% then rateAtUtilizationMax would be 12_500",
+              "e.g. when rate should be 125% at 100% then rateAtUtilizationMax would be 12_500"
             ];
             type: "u128";
-          },
+          }
         ];
       };
     },
@@ -2208,7 +2208,7 @@ export type Liquidity = {
           {
             name: "rateAtKink2";
             type: "u16";
-          },
+          }
         ];
       };
     },
@@ -2227,7 +2227,7 @@ export type Liquidity = {
             name: "fee";
             docs: [
               "",
-              "@param fee charges on borrower's interest. in 1e2: 100% = 10_000; 1% = 100",
+              "@param fee charges on borrower's interest. in 1e2: 100% = 10_000; 1% = 100"
             ];
             type: "u128";
           },
@@ -2236,10 +2236,10 @@ export type Liquidity = {
             docs: [
               "",
               "@param maxUtilization maximum allowed utilization. in 1e2: 100% = 10_000; 1% = 100",
-              "set to 100% to disable and have default limit of 100% (avoiding SLOAD).",
+              "set to 100% to disable and have default limit of 100% (avoiding SLOAD)."
             ];
             type: "u128";
-          },
+          }
         ];
       };
     },
@@ -2321,7 +2321,7 @@ export type Liquidity = {
           {
             name: "interactingBalance";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -2338,7 +2338,7 @@ export type Liquidity = {
           },
           {
             name: "claim";
-          },
+          }
         ];
       };
     },
@@ -2358,7 +2358,7 @@ export type Liquidity = {
             docs: [
               "",
               "@param expandPercent debt limit expand percent. in 1e2: 100% = 10_000; 1% = 100",
-              "Also used to calculate rate at which debt limit should decrease (instant).",
+              "Also used to calculate rate at which debt limit should decrease (instant)."
             ];
             type: "u128";
           },
@@ -2367,7 +2367,7 @@ export type Liquidity = {
             docs: [
               "",
               "@param expandDuration debt limit expand duration in seconds.",
-              "used to calculate rate together with expandPercent",
+              "used to calculate rate together with expandPercent"
             ];
             type: "u128";
           },
@@ -2378,7 +2378,7 @@ export type Liquidity = {
               "@param baseDebtCeiling base borrow limit. until here, borrow limit remains as baseDebtCeiling",
               "(user can borrow until this point at once without stepped expansion). Above this, automated limit comes in place.",
               "amount in raw (to be multiplied with exchange price) or normal depends on configured mode in user config for the token:",
-              "with interest -> raw, without interest -> normal",
+              "with interest -> raw, without interest -> normal"
             ];
             type: "u128";
           },
@@ -2388,10 +2388,10 @@ export type Liquidity = {
               "",
               "@param maxDebtCeiling max borrow ceiling, maximum amount the user can borrow.",
               "amount in raw (to be multiplied with exchange price) or normal depends on configured mode in user config for the token:",
-              "with interest -> raw, without interest -> normal",
+              "with interest -> raw, without interest -> normal"
             ];
             type: "u128";
-          },
+          }
         ];
       };
     },
@@ -2449,7 +2449,7 @@ export type Liquidity = {
           {
             name: "status";
             type: "u8";
-          },
+          }
         ];
       };
     },
@@ -2474,7 +2474,7 @@ export type Liquidity = {
           {
             name: "mint";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -2490,7 +2490,7 @@ export type Liquidity = {
           {
             name: "class";
             type: "u8";
-          },
+          }
         ];
       };
     },
@@ -2510,7 +2510,7 @@ export type Liquidity = {
             docs: [
               "",
               "@param expandPercent withdrawal limit expand percent. in 1e2: 100% = 10_000; 1% = 100",
-              "Also used to calculate rate at which withdrawal limit should decrease (instant).",
+              "Also used to calculate rate at which withdrawal limit should decrease (instant)."
             ];
             type: "u128";
           },
@@ -2519,7 +2519,7 @@ export type Liquidity = {
             docs: [
               "",
               "@param expandDuration withdrawal limit expand duration in seconds.",
-              "used to calculate rate together with expandPercent",
+              "used to calculate rate together with expandPercent"
             ];
             type: "u128";
           },
@@ -2529,10 +2529,10 @@ export type Liquidity = {
               "",
               "@param baseWithdrawalLimit base limit, below this, user can withdraw the entire amount.",
               "amount in raw (to be multiplied with exchange price) or normal depends on configured mode in user config for the token:",
-              "with interest -> raw, without interest -> normal",
+              "with interest -> raw, without interest -> normal"
             ];
             type: "u128";
-          },
+          }
         ];
       };
     },
@@ -2594,9 +2594,9 @@ export type Liquidity = {
           {
             name: "status";
             type: "u8";
-          },
+          }
         ];
       };
-    },
+    }
   ];
 };

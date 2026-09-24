@@ -8,7 +8,7 @@ export type Vaults = {
   address: "jupr81YtYssSyPt8jbnGuiWon5f6x9TcDEFxYe3Bdzi";
   metadata: {
     name: "vaults";
-    version: "0.1.5";
+    version: "0.1.8";
     spec: "0.1.0";
     description: "Created with Anchor";
   };
@@ -28,7 +28,7 @@ export type Vaults = {
         },
         {
           name: "borrowTokenReserves";
-        },
+        }
       ];
       args: [];
     },
@@ -61,14 +61,14 @@ export type Vaults = {
               {
                 kind: "arg";
                 path: "branchId";
-              },
+              }
             ];
           };
         },
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
@@ -78,7 +78,7 @@ export type Vaults = {
         {
           name: "branchId";
           type: "u32";
-        },
+        }
       ];
     },
     {
@@ -114,7 +114,7 @@ export type Vaults = {
               {
                 kind: "arg";
                 path: "nextPositionId";
-              },
+              }
             ];
           };
         },
@@ -138,7 +138,7 @@ export type Vaults = {
                   109,
                   105,
                   110,
-                  116,
+                  116
                 ];
               },
               {
@@ -148,7 +148,7 @@ export type Vaults = {
               {
                 kind: "arg";
                 path: "nextPositionId";
-              },
+              }
             ];
           };
         },
@@ -195,13 +195,13 @@ export type Vaults = {
                   126,
                   255,
                   0,
-                  169,
+                  169
                 ];
               },
               {
                 kind: "account";
                 path: "positionMint";
-              },
+              }
             ];
             program: {
               kind: "const";
@@ -237,7 +237,7 @@ export type Vaults = {
                 219,
                 233,
                 248,
-                89,
+                89
               ];
             };
           };
@@ -285,13 +285,13 @@ export type Vaults = {
                   3,
                   248,
                   41,
-                  70,
+                  70
                 ];
               },
               {
                 kind: "account";
                 path: "positionMint";
-              },
+              }
             ];
             program: {
               kind: "const";
@@ -327,7 +327,7 @@ export type Vaults = {
                 3,
                 248,
                 41,
-                70,
+                70
               ];
             };
           };
@@ -354,7 +354,7 @@ export type Vaults = {
         {
           name: "rent";
           address: "SysvarRent111111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
@@ -364,7 +364,7 @@ export type Vaults = {
         {
           name: "nextPositionId";
           type: "u32";
-        },
+        }
       ];
     },
     {
@@ -387,7 +387,7 @@ export type Vaults = {
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
@@ -397,7 +397,7 @@ export type Vaults = {
         {
           name: "tick";
           type: "i32";
-        },
+        }
       ];
     },
     {
@@ -433,7 +433,7 @@ export type Vaults = {
                   100,
                   101,
                   98,
-                  116,
+                  116
                 ];
               },
               {
@@ -443,14 +443,14 @@ export type Vaults = {
               {
                 kind: "arg";
                 path: "index";
-              },
+              }
             ];
           };
         },
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
@@ -460,7 +460,7 @@ export type Vaults = {
         {
           name: "index";
           type: "u8";
-        },
+        }
       ];
     },
     {
@@ -483,7 +483,7 @@ export type Vaults = {
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
@@ -497,7 +497,7 @@ export type Vaults = {
         {
           name: "totalIds";
           type: "u32";
-        },
+        }
       ];
     },
     {
@@ -517,14 +517,14 @@ export type Vaults = {
               {
                 kind: "const";
                 value: [118, 97, 117, 108, 116, 95, 97, 100, 109, 105, 110];
-              },
+              }
             ];
           };
         },
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
@@ -534,7 +534,7 @@ export type Vaults = {
         {
           name: "authority";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -569,13 +569,13 @@ export type Vaults = {
                   110,
                   102,
                   105,
-                  103,
+                  103
                 ];
               },
               {
                 kind: "arg";
                 path: "vaultId";
-              },
+              }
             ];
           };
         },
@@ -600,13 +600,13 @@ export type Vaults = {
                   100,
                   97,
                   116,
-                  97,
+                  97
                 ];
               },
               {
                 kind: "arg";
                 path: "vaultId";
-              },
+              }
             ];
           };
         },
@@ -632,7 +632,7 @@ export type Vaults = {
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
@@ -646,7 +646,7 @@ export type Vaults = {
               name: "initVaultConfigParams";
             };
           };
-        },
+        }
       ];
     },
     {
@@ -677,7 +677,7 @@ export type Vaults = {
               {
                 kind: "arg";
                 path: "vaultId";
-              },
+              }
             ];
           };
         },
@@ -692,13 +692,13 @@ export type Vaults = {
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
           name: "vaultId";
           type: "u16";
-        },
+        }
       ];
     },
     {
@@ -725,7 +725,7 @@ export type Vaults = {
           name: "vaultConfig";
           docs: [
             "@dev mut because this PDA signs the CPI to liquidity program",
-            "@dev verification inside instruction logic",
+            "@dev verification inside instruction logic"
           ];
         },
         {
@@ -803,7 +803,7 @@ export type Vaults = {
         },
         {
           name: "oracleProgram";
-        },
+        }
       ];
       args: [
         {
@@ -831,7 +831,7 @@ export type Vaults = {
         {
           name: "remainingAccountsIndices";
           type: "bytes";
-        },
+        }
       ];
     },
     {
@@ -844,7 +844,7 @@ export type Vaults = {
         "user token accounts in the same tx).",
         "- T4 (smart col + smart debt): supply both `debt_amounts` and `col_amounts`.",
         "",
-        "Returns `(actual_debt, actual_col, token0_col, token1_col)`.",
+        "Returns `(actual_debt, actual_col, token0_col, token1_col)`."
       ];
       discriminator: [28, 129, 253, 125, 243, 52, 11, 162];
       accounts: [
@@ -867,7 +867,7 @@ export type Vaults = {
             "Smart-col collateral seized via the DEX CPI also follows `to` (EVM `to_`",
             "parity) — but only when the supply leg's `dex_recipient_token0/1_account`",
             "are supplied; without them the DEX credits the liquidator *signer*'s",
-            "pool token accounts. Smart-debt paybacks always pull from the signer.",
+            "pool token accounts. Smart-debt paybacks always pull from the signer."
           ];
         },
         {
@@ -879,7 +879,7 @@ export type Vaults = {
         {
           name: "vaultConfig";
           docs: [
-            "@dev mut because this PDA signs CPIs to the DEX and liquidity programs",
+            "@dev mut because this PDA signs CPIs to the DEX and liquidity programs"
           ];
           writable: true;
         },
@@ -1026,7 +1026,7 @@ export type Vaults = {
             {
               name: "dexToken0Vault";
               docs: [
-                "@dev this is Liquidity layer vault token account for token0",
+                "@dev this is Liquidity layer vault token account for token0"
               ];
               writable: true;
               optional: true;
@@ -1034,7 +1034,7 @@ export type Vaults = {
             {
               name: "dexToken1Vault";
               docs: [
-                "@dev this is Liquidity layer vault token account for token1",
+                "@dev this is Liquidity layer vault token account for token1"
               ];
               writable: true;
               optional: true;
@@ -1042,7 +1042,7 @@ export type Vaults = {
             {
               name: "supplyPosToken0";
               docs: [
-                "This pool's own LL **supply** position for token0 (smart-col side).",
+                "This pool's own LL **supply** position for token0 (smart-col side)."
               ];
               writable: true;
               optional: true;
@@ -1050,7 +1050,7 @@ export type Vaults = {
             {
               name: "supplyPosToken1";
               docs: [
-                "This pool's own LL **supply** position for token1 (smart-col side).",
+                "This pool's own LL **supply** position for token1 (smart-col side)."
               ];
               writable: true;
               optional: true;
@@ -1058,7 +1058,7 @@ export type Vaults = {
             {
               name: "borrowPosToken0";
               docs: [
-                "This pool's own LL **borrow** position for token0 (smart-debt side).",
+                "This pool's own LL **borrow** position for token0 (smart-debt side)."
               ];
               writable: true;
               optional: true;
@@ -1066,7 +1066,7 @@ export type Vaults = {
             {
               name: "borrowPosToken1";
               docs: [
-                "This pool's own LL **borrow** position for token1 (smart-debt side).",
+                "This pool's own LL **borrow** position for token1 (smart-debt side)."
               ];
               writable: true;
               optional: true;
@@ -1083,7 +1083,7 @@ export type Vaults = {
               name: "dexRecipientToken0Account";
               docs: [
                 "Recipient's token0 account for this leg's withdraw/borrow OUTPUTS.",
-                "Optional: outputs default to the signer's `dex_user_token0_account`.",
+                "Optional: outputs default to the signer's `dex_user_token0_account`."
               ];
               writable: true;
               optional: true;
@@ -1091,11 +1091,11 @@ export type Vaults = {
             {
               name: "dexRecipientToken1Account";
               docs: [
-                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS.",
+                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS."
               ];
               writable: true;
               optional: true;
-            },
+            }
           ];
         },
         {
@@ -1152,7 +1152,7 @@ export type Vaults = {
             {
               name: "dexToken0Vault";
               docs: [
-                "@dev this is Liquidity layer vault token account for token0",
+                "@dev this is Liquidity layer vault token account for token0"
               ];
               writable: true;
               optional: true;
@@ -1160,7 +1160,7 @@ export type Vaults = {
             {
               name: "dexToken1Vault";
               docs: [
-                "@dev this is Liquidity layer vault token account for token1",
+                "@dev this is Liquidity layer vault token account for token1"
               ];
               writable: true;
               optional: true;
@@ -1168,7 +1168,7 @@ export type Vaults = {
             {
               name: "supplyPosToken0";
               docs: [
-                "This pool's own LL **supply** position for token0 (smart-col side).",
+                "This pool's own LL **supply** position for token0 (smart-col side)."
               ];
               writable: true;
               optional: true;
@@ -1176,7 +1176,7 @@ export type Vaults = {
             {
               name: "supplyPosToken1";
               docs: [
-                "This pool's own LL **supply** position for token1 (smart-col side).",
+                "This pool's own LL **supply** position for token1 (smart-col side)."
               ];
               writable: true;
               optional: true;
@@ -1184,7 +1184,7 @@ export type Vaults = {
             {
               name: "borrowPosToken0";
               docs: [
-                "This pool's own LL **borrow** position for token0 (smart-debt side).",
+                "This pool's own LL **borrow** position for token0 (smart-debt side)."
               ];
               writable: true;
               optional: true;
@@ -1192,7 +1192,7 @@ export type Vaults = {
             {
               name: "borrowPosToken1";
               docs: [
-                "This pool's own LL **borrow** position for token1 (smart-debt side).",
+                "This pool's own LL **borrow** position for token1 (smart-debt side)."
               ];
               writable: true;
               optional: true;
@@ -1209,7 +1209,7 @@ export type Vaults = {
               name: "dexRecipientToken0Account";
               docs: [
                 "Recipient's token0 account for this leg's withdraw/borrow OUTPUTS.",
-                "Optional: outputs default to the signer's `dex_user_token0_account`.",
+                "Optional: outputs default to the signer's `dex_user_token0_account`."
               ];
               writable: true;
               optional: true;
@@ -1217,11 +1217,11 @@ export type Vaults = {
             {
               name: "dexRecipientToken1Account";
               docs: [
-                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS.",
+                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS."
               ];
               writable: true;
               optional: true;
-            },
+            }
           ];
         },
         {
@@ -1230,7 +1230,7 @@ export type Vaults = {
         {
           name: "dexOracleProgram";
           optional: true;
-        },
+        }
       ];
       args: [
         {
@@ -1278,7 +1278,7 @@ export type Vaults = {
         {
           name: "remainingAccountsIndices";
           type: "bytes";
-        },
+        }
       ];
     },
     {
@@ -1292,7 +1292,7 @@ export type Vaults = {
         "`debt_perfect_amounts` (pre-fund vault's borrow-DEX user token accounts).",
         "- T4 (smart col + smart debt): supply all three.",
         "",
-        "Returns `(actual_debt, token0_debt, token1_debt, actual_col, token0_col, token1_col)`.",
+        "Returns `(actual_debt, token0_debt, token1_debt, actual_col, token0_col, token1_col)`."
       ];
       discriminator: [26, 113, 116, 50, 247, 131, 208, 5];
       accounts: [
@@ -1315,7 +1315,7 @@ export type Vaults = {
             "Smart-col collateral seized via the DEX CPI also follows `to` (EVM `to_`",
             "parity) — but only when the supply leg's `dex_recipient_token0/1_account`",
             "are supplied; without them the DEX credits the liquidator *signer*'s",
-            "pool token accounts. Smart-debt paybacks always pull from the signer.",
+            "pool token accounts. Smart-debt paybacks always pull from the signer."
           ];
         },
         {
@@ -1327,7 +1327,7 @@ export type Vaults = {
         {
           name: "vaultConfig";
           docs: [
-            "@dev mut because this PDA signs CPIs to the DEX and liquidity programs",
+            "@dev mut because this PDA signs CPIs to the DEX and liquidity programs"
           ];
           writable: true;
         },
@@ -1474,7 +1474,7 @@ export type Vaults = {
             {
               name: "dexToken0Vault";
               docs: [
-                "@dev this is Liquidity layer vault token account for token0",
+                "@dev this is Liquidity layer vault token account for token0"
               ];
               writable: true;
               optional: true;
@@ -1482,7 +1482,7 @@ export type Vaults = {
             {
               name: "dexToken1Vault";
               docs: [
-                "@dev this is Liquidity layer vault token account for token1",
+                "@dev this is Liquidity layer vault token account for token1"
               ];
               writable: true;
               optional: true;
@@ -1490,7 +1490,7 @@ export type Vaults = {
             {
               name: "supplyPosToken0";
               docs: [
-                "This pool's own LL **supply** position for token0 (smart-col side).",
+                "This pool's own LL **supply** position for token0 (smart-col side)."
               ];
               writable: true;
               optional: true;
@@ -1498,7 +1498,7 @@ export type Vaults = {
             {
               name: "supplyPosToken1";
               docs: [
-                "This pool's own LL **supply** position for token1 (smart-col side).",
+                "This pool's own LL **supply** position for token1 (smart-col side)."
               ];
               writable: true;
               optional: true;
@@ -1506,7 +1506,7 @@ export type Vaults = {
             {
               name: "borrowPosToken0";
               docs: [
-                "This pool's own LL **borrow** position for token0 (smart-debt side).",
+                "This pool's own LL **borrow** position for token0 (smart-debt side)."
               ];
               writable: true;
               optional: true;
@@ -1514,7 +1514,7 @@ export type Vaults = {
             {
               name: "borrowPosToken1";
               docs: [
-                "This pool's own LL **borrow** position for token1 (smart-debt side).",
+                "This pool's own LL **borrow** position for token1 (smart-debt side)."
               ];
               writable: true;
               optional: true;
@@ -1531,7 +1531,7 @@ export type Vaults = {
               name: "dexRecipientToken0Account";
               docs: [
                 "Recipient's token0 account for this leg's withdraw/borrow OUTPUTS.",
-                "Optional: outputs default to the signer's `dex_user_token0_account`.",
+                "Optional: outputs default to the signer's `dex_user_token0_account`."
               ];
               writable: true;
               optional: true;
@@ -1539,11 +1539,11 @@ export type Vaults = {
             {
               name: "dexRecipientToken1Account";
               docs: [
-                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS.",
+                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS."
               ];
               writable: true;
               optional: true;
-            },
+            }
           ];
         },
         {
@@ -1600,7 +1600,7 @@ export type Vaults = {
             {
               name: "dexToken0Vault";
               docs: [
-                "@dev this is Liquidity layer vault token account for token0",
+                "@dev this is Liquidity layer vault token account for token0"
               ];
               writable: true;
               optional: true;
@@ -1608,7 +1608,7 @@ export type Vaults = {
             {
               name: "dexToken1Vault";
               docs: [
-                "@dev this is Liquidity layer vault token account for token1",
+                "@dev this is Liquidity layer vault token account for token1"
               ];
               writable: true;
               optional: true;
@@ -1616,7 +1616,7 @@ export type Vaults = {
             {
               name: "supplyPosToken0";
               docs: [
-                "This pool's own LL **supply** position for token0 (smart-col side).",
+                "This pool's own LL **supply** position for token0 (smart-col side)."
               ];
               writable: true;
               optional: true;
@@ -1624,7 +1624,7 @@ export type Vaults = {
             {
               name: "supplyPosToken1";
               docs: [
-                "This pool's own LL **supply** position for token1 (smart-col side).",
+                "This pool's own LL **supply** position for token1 (smart-col side)."
               ];
               writable: true;
               optional: true;
@@ -1632,7 +1632,7 @@ export type Vaults = {
             {
               name: "borrowPosToken0";
               docs: [
-                "This pool's own LL **borrow** position for token0 (smart-debt side).",
+                "This pool's own LL **borrow** position for token0 (smart-debt side)."
               ];
               writable: true;
               optional: true;
@@ -1640,7 +1640,7 @@ export type Vaults = {
             {
               name: "borrowPosToken1";
               docs: [
-                "This pool's own LL **borrow** position for token1 (smart-debt side).",
+                "This pool's own LL **borrow** position for token1 (smart-debt side)."
               ];
               writable: true;
               optional: true;
@@ -1657,7 +1657,7 @@ export type Vaults = {
               name: "dexRecipientToken0Account";
               docs: [
                 "Recipient's token0 account for this leg's withdraw/borrow OUTPUTS.",
-                "Optional: outputs default to the signer's `dex_user_token0_account`.",
+                "Optional: outputs default to the signer's `dex_user_token0_account`."
               ];
               writable: true;
               optional: true;
@@ -1665,11 +1665,11 @@ export type Vaults = {
             {
               name: "dexRecipientToken1Account";
               docs: [
-                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS.",
+                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS."
               ];
               writable: true;
               optional: true;
-            },
+            }
           ];
         },
         {
@@ -1678,7 +1678,7 @@ export type Vaults = {
         {
           name: "dexOracleProgram";
           optional: true;
-        },
+        }
       ];
       args: [
         {
@@ -1726,7 +1726,7 @@ export type Vaults = {
         {
           name: "remainingAccountsIndices";
           type: "bytes";
-        },
+        }
       ];
     },
     {
@@ -1766,7 +1766,7 @@ export type Vaults = {
           name: "vaultConfig";
           docs: [
             "@dev mut because this PDA signs the CPI to liquidity program",
-            "@dev verification inside instruction logic",
+            "@dev verification inside instruction logic"
           ];
         },
         {
@@ -1873,7 +1873,7 @@ export type Vaults = {
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
@@ -1897,7 +1897,7 @@ export type Vaults = {
         {
           name: "remainingAccountsIndices";
           type: "bytes";
-        },
+        }
       ];
     },
     {
@@ -1912,7 +1912,7 @@ export type Vaults = {
         {
           name: "signerSupplyTokenAccount";
           docs: [
-            "@dev possible that this account is not required for vault like T2, T4",
+            "@dev possible that this account is not required for vault like T2, T4"
           ];
           writable: true;
           optional: true;
@@ -1920,7 +1920,7 @@ export type Vaults = {
         {
           name: "signerBorrowTokenAccount";
           docs: [
-            "@dev possible that this account is not required for vault like T2, T4",
+            "@dev possible that this account is not required for vault like T2, T4"
           ];
           writable: true;
           optional: true;
@@ -1934,7 +1934,7 @@ export type Vaults = {
             "`to_` parity) — but only when the leg's `dex_recipient_token0/1_account`",
             "are supplied on the corresponding `DexAccount` group; without them the",
             "DEX defaults smart-leg outputs to the *signer*'s pool token accounts.",
-            "Smart-leg INPUTS (deposit/payback pulls) always come from the signer.",
+            "Smart-leg INPUTS (deposit/payback pulls) always come from the signer."
           ];
           optional: true;
         },
@@ -1951,7 +1951,7 @@ export type Vaults = {
         {
           name: "vaultConfig";
           docs: [
-            "@dev mut because this PDA signs CPIs to the DEX and liquidity programs",
+            "@dev mut because this PDA signs CPIs to the DEX and liquidity programs"
           ];
           writable: true;
         },
@@ -1962,14 +1962,14 @@ export type Vaults = {
         {
           name: "supplyToken";
           docs: [
-            "@dev possible that this account is not required for vault like T2, T4",
+            "@dev possible that this account is not required for vault like T2, T4"
           ];
           optional: true;
         },
         {
           name: "borrowToken";
           docs: [
-            "@dev possible that this account is not required for vault like T3, T4",
+            "@dev possible that this account is not required for vault like T3, T4"
           ];
           optional: true;
         },
@@ -2005,7 +2005,7 @@ export type Vaults = {
         {
           name: "supplyTokenReservesLiquidity";
           docs: [
-            "@dev possible that this account is not required for vault like T2, T4",
+            "@dev possible that this account is not required for vault like T2, T4"
           ];
           writable: true;
           optional: true;
@@ -2013,7 +2013,7 @@ export type Vaults = {
         {
           name: "borrowTokenReservesLiquidity";
           docs: [
-            "@dev possible that this account is not required for vault like T3, T4",
+            "@dev possible that this account is not required for vault like T3, T4"
           ];
           writable: true;
           optional: true;
@@ -2021,7 +2021,7 @@ export type Vaults = {
         {
           name: "vaultSupplyPositionOnLiquidity";
           docs: [
-            "@dev possible that this account is not required for vault like T2, T4",
+            "@dev possible that this account is not required for vault like T2, T4"
           ];
           writable: true;
           optional: true;
@@ -2029,7 +2029,7 @@ export type Vaults = {
         {
           name: "vaultBorrowPositionOnLiquidity";
           docs: [
-            "@dev possible that this account is not required for vault like T3, T4",
+            "@dev possible that this account is not required for vault like T3, T4"
           ];
           writable: true;
           optional: true;
@@ -2037,21 +2037,21 @@ export type Vaults = {
         {
           name: "supplyRateModel";
           docs: [
-            "@dev possible that this account is not required for vault like T2, T4",
+            "@dev possible that this account is not required for vault like T2, T4"
           ];
           optional: true;
         },
         {
           name: "borrowRateModel";
           docs: [
-            "@dev possible that this account is not required for vault like T3, T4",
+            "@dev possible that this account is not required for vault like T3, T4"
           ];
           optional: true;
         },
         {
           name: "vaultSupplyTokenAccount";
           docs: [
-            "@dev possible that this account is not required for vault like T2, T4",
+            "@dev possible that this account is not required for vault like T2, T4"
           ];
           writable: true;
           optional: true;
@@ -2059,7 +2059,7 @@ export type Vaults = {
         {
           name: "vaultBorrowTokenAccount";
           docs: [
-            "@dev possible that this account is not required for vault like T3, T4",
+            "@dev possible that this account is not required for vault like T3, T4"
           ];
           writable: true;
           optional: true;
@@ -2076,14 +2076,14 @@ export type Vaults = {
         {
           name: "supplyTokenProgram";
           docs: [
-            "@dev possible that this account is not required for vault like T2, T4",
+            "@dev possible that this account is not required for vault like T2, T4"
           ];
           optional: true;
         },
         {
           name: "borrowTokenProgram";
           docs: [
-            "@dev possible that this account is not required for vault like T3, T4",
+            "@dev possible that this account is not required for vault like T3, T4"
           ];
           optional: true;
         },
@@ -2145,7 +2145,7 @@ export type Vaults = {
             {
               name: "dexToken0Vault";
               docs: [
-                "@dev this is Liquidity layer vault token account for token0",
+                "@dev this is Liquidity layer vault token account for token0"
               ];
               writable: true;
               optional: true;
@@ -2153,7 +2153,7 @@ export type Vaults = {
             {
               name: "dexToken1Vault";
               docs: [
-                "@dev this is Liquidity layer vault token account for token1",
+                "@dev this is Liquidity layer vault token account for token1"
               ];
               writable: true;
               optional: true;
@@ -2161,7 +2161,7 @@ export type Vaults = {
             {
               name: "supplyPosToken0";
               docs: [
-                "This pool's own LL **supply** position for token0 (smart-col side).",
+                "This pool's own LL **supply** position for token0 (smart-col side)."
               ];
               writable: true;
               optional: true;
@@ -2169,7 +2169,7 @@ export type Vaults = {
             {
               name: "supplyPosToken1";
               docs: [
-                "This pool's own LL **supply** position for token1 (smart-col side).",
+                "This pool's own LL **supply** position for token1 (smart-col side)."
               ];
               writable: true;
               optional: true;
@@ -2177,7 +2177,7 @@ export type Vaults = {
             {
               name: "borrowPosToken0";
               docs: [
-                "This pool's own LL **borrow** position for token0 (smart-debt side).",
+                "This pool's own LL **borrow** position for token0 (smart-debt side)."
               ];
               writable: true;
               optional: true;
@@ -2185,7 +2185,7 @@ export type Vaults = {
             {
               name: "borrowPosToken1";
               docs: [
-                "This pool's own LL **borrow** position for token1 (smart-debt side).",
+                "This pool's own LL **borrow** position for token1 (smart-debt side)."
               ];
               writable: true;
               optional: true;
@@ -2202,7 +2202,7 @@ export type Vaults = {
               name: "dexRecipientToken0Account";
               docs: [
                 "Recipient's token0 account for this leg's withdraw/borrow OUTPUTS.",
-                "Optional: outputs default to the signer's `dex_user_token0_account`.",
+                "Optional: outputs default to the signer's `dex_user_token0_account`."
               ];
               writable: true;
               optional: true;
@@ -2210,11 +2210,11 @@ export type Vaults = {
             {
               name: "dexRecipientToken1Account";
               docs: [
-                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS.",
+                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS."
               ];
               writable: true;
               optional: true;
-            },
+            }
           ];
         },
         {
@@ -2271,7 +2271,7 @@ export type Vaults = {
             {
               name: "dexToken0Vault";
               docs: [
-                "@dev this is Liquidity layer vault token account for token0",
+                "@dev this is Liquidity layer vault token account for token0"
               ];
               writable: true;
               optional: true;
@@ -2279,7 +2279,7 @@ export type Vaults = {
             {
               name: "dexToken1Vault";
               docs: [
-                "@dev this is Liquidity layer vault token account for token1",
+                "@dev this is Liquidity layer vault token account for token1"
               ];
               writable: true;
               optional: true;
@@ -2287,7 +2287,7 @@ export type Vaults = {
             {
               name: "supplyPosToken0";
               docs: [
-                "This pool's own LL **supply** position for token0 (smart-col side).",
+                "This pool's own LL **supply** position for token0 (smart-col side)."
               ];
               writable: true;
               optional: true;
@@ -2295,7 +2295,7 @@ export type Vaults = {
             {
               name: "supplyPosToken1";
               docs: [
-                "This pool's own LL **supply** position for token1 (smart-col side).",
+                "This pool's own LL **supply** position for token1 (smart-col side)."
               ];
               writable: true;
               optional: true;
@@ -2303,7 +2303,7 @@ export type Vaults = {
             {
               name: "borrowPosToken0";
               docs: [
-                "This pool's own LL **borrow** position for token0 (smart-debt side).",
+                "This pool's own LL **borrow** position for token0 (smart-debt side)."
               ];
               writable: true;
               optional: true;
@@ -2311,7 +2311,7 @@ export type Vaults = {
             {
               name: "borrowPosToken1";
               docs: [
-                "This pool's own LL **borrow** position for token1 (smart-debt side).",
+                "This pool's own LL **borrow** position for token1 (smart-debt side)."
               ];
               writable: true;
               optional: true;
@@ -2328,7 +2328,7 @@ export type Vaults = {
               name: "dexRecipientToken0Account";
               docs: [
                 "Recipient's token0 account for this leg's withdraw/borrow OUTPUTS.",
-                "Optional: outputs default to the signer's `dex_user_token0_account`.",
+                "Optional: outputs default to the signer's `dex_user_token0_account`."
               ];
               writable: true;
               optional: true;
@@ -2336,17 +2336,17 @@ export type Vaults = {
             {
               name: "dexRecipientToken1Account";
               docs: [
-                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS.",
+                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS."
               ];
               writable: true;
               optional: true;
-            },
+            }
           ];
         },
         {
           name: "dexProgram";
           docs: ["@audit verify dex program in instruction logic"];
-        },
+        }
       ];
       args: [
         {
@@ -2382,7 +2382,7 @@ export type Vaults = {
         {
           name: "remainingAccountsIndices";
           type: "bytes";
-        },
+        }
       ];
     },
     {
@@ -2397,7 +2397,7 @@ export type Vaults = {
         {
           name: "signerSupplyTokenAccount";
           docs: [
-            "@dev possible that this account is not required for vault like T2, T4",
+            "@dev possible that this account is not required for vault like T2, T4"
           ];
           writable: true;
           optional: true;
@@ -2405,7 +2405,7 @@ export type Vaults = {
         {
           name: "signerBorrowTokenAccount";
           docs: [
-            "@dev possible that this account is not required for vault like T2, T4",
+            "@dev possible that this account is not required for vault like T2, T4"
           ];
           writable: true;
           optional: true;
@@ -2419,7 +2419,7 @@ export type Vaults = {
             "`to_` parity) — but only when the leg's `dex_recipient_token0/1_account`",
             "are supplied on the corresponding `DexAccount` group; without them the",
             "DEX defaults smart-leg outputs to the *signer*'s pool token accounts.",
-            "Smart-leg INPUTS (deposit/payback pulls) always come from the signer.",
+            "Smart-leg INPUTS (deposit/payback pulls) always come from the signer."
           ];
           optional: true;
         },
@@ -2436,7 +2436,7 @@ export type Vaults = {
         {
           name: "vaultConfig";
           docs: [
-            "@dev mut because this PDA signs CPIs to the DEX and liquidity programs",
+            "@dev mut because this PDA signs CPIs to the DEX and liquidity programs"
           ];
           writable: true;
         },
@@ -2447,14 +2447,14 @@ export type Vaults = {
         {
           name: "supplyToken";
           docs: [
-            "@dev possible that this account is not required for vault like T2, T4",
+            "@dev possible that this account is not required for vault like T2, T4"
           ];
           optional: true;
         },
         {
           name: "borrowToken";
           docs: [
-            "@dev possible that this account is not required for vault like T3, T4",
+            "@dev possible that this account is not required for vault like T3, T4"
           ];
           optional: true;
         },
@@ -2490,7 +2490,7 @@ export type Vaults = {
         {
           name: "supplyTokenReservesLiquidity";
           docs: [
-            "@dev possible that this account is not required for vault like T2, T4",
+            "@dev possible that this account is not required for vault like T2, T4"
           ];
           writable: true;
           optional: true;
@@ -2498,7 +2498,7 @@ export type Vaults = {
         {
           name: "borrowTokenReservesLiquidity";
           docs: [
-            "@dev possible that this account is not required for vault like T3, T4",
+            "@dev possible that this account is not required for vault like T3, T4"
           ];
           writable: true;
           optional: true;
@@ -2506,7 +2506,7 @@ export type Vaults = {
         {
           name: "vaultSupplyPositionOnLiquidity";
           docs: [
-            "@dev possible that this account is not required for vault like T2, T4",
+            "@dev possible that this account is not required for vault like T2, T4"
           ];
           writable: true;
           optional: true;
@@ -2514,7 +2514,7 @@ export type Vaults = {
         {
           name: "vaultBorrowPositionOnLiquidity";
           docs: [
-            "@dev possible that this account is not required for vault like T3, T4",
+            "@dev possible that this account is not required for vault like T3, T4"
           ];
           writable: true;
           optional: true;
@@ -2522,21 +2522,21 @@ export type Vaults = {
         {
           name: "supplyRateModel";
           docs: [
-            "@dev possible that this account is not required for vault like T2, T4",
+            "@dev possible that this account is not required for vault like T2, T4"
           ];
           optional: true;
         },
         {
           name: "borrowRateModel";
           docs: [
-            "@dev possible that this account is not required for vault like T3, T4",
+            "@dev possible that this account is not required for vault like T3, T4"
           ];
           optional: true;
         },
         {
           name: "vaultSupplyTokenAccount";
           docs: [
-            "@dev possible that this account is not required for vault like T2, T4",
+            "@dev possible that this account is not required for vault like T2, T4"
           ];
           writable: true;
           optional: true;
@@ -2544,7 +2544,7 @@ export type Vaults = {
         {
           name: "vaultBorrowTokenAccount";
           docs: [
-            "@dev possible that this account is not required for vault like T3, T4",
+            "@dev possible that this account is not required for vault like T3, T4"
           ];
           writable: true;
           optional: true;
@@ -2561,14 +2561,14 @@ export type Vaults = {
         {
           name: "supplyTokenProgram";
           docs: [
-            "@dev possible that this account is not required for vault like T2, T4",
+            "@dev possible that this account is not required for vault like T2, T4"
           ];
           optional: true;
         },
         {
           name: "borrowTokenProgram";
           docs: [
-            "@dev possible that this account is not required for vault like T3, T4",
+            "@dev possible that this account is not required for vault like T3, T4"
           ];
           optional: true;
         },
@@ -2630,7 +2630,7 @@ export type Vaults = {
             {
               name: "dexToken0Vault";
               docs: [
-                "@dev this is Liquidity layer vault token account for token0",
+                "@dev this is Liquidity layer vault token account for token0"
               ];
               writable: true;
               optional: true;
@@ -2638,7 +2638,7 @@ export type Vaults = {
             {
               name: "dexToken1Vault";
               docs: [
-                "@dev this is Liquidity layer vault token account for token1",
+                "@dev this is Liquidity layer vault token account for token1"
               ];
               writable: true;
               optional: true;
@@ -2646,7 +2646,7 @@ export type Vaults = {
             {
               name: "supplyPosToken0";
               docs: [
-                "This pool's own LL **supply** position for token0 (smart-col side).",
+                "This pool's own LL **supply** position for token0 (smart-col side)."
               ];
               writable: true;
               optional: true;
@@ -2654,7 +2654,7 @@ export type Vaults = {
             {
               name: "supplyPosToken1";
               docs: [
-                "This pool's own LL **supply** position for token1 (smart-col side).",
+                "This pool's own LL **supply** position for token1 (smart-col side)."
               ];
               writable: true;
               optional: true;
@@ -2662,7 +2662,7 @@ export type Vaults = {
             {
               name: "borrowPosToken0";
               docs: [
-                "This pool's own LL **borrow** position for token0 (smart-debt side).",
+                "This pool's own LL **borrow** position for token0 (smart-debt side)."
               ];
               writable: true;
               optional: true;
@@ -2670,7 +2670,7 @@ export type Vaults = {
             {
               name: "borrowPosToken1";
               docs: [
-                "This pool's own LL **borrow** position for token1 (smart-debt side).",
+                "This pool's own LL **borrow** position for token1 (smart-debt side)."
               ];
               writable: true;
               optional: true;
@@ -2687,7 +2687,7 @@ export type Vaults = {
               name: "dexRecipientToken0Account";
               docs: [
                 "Recipient's token0 account for this leg's withdraw/borrow OUTPUTS.",
-                "Optional: outputs default to the signer's `dex_user_token0_account`.",
+                "Optional: outputs default to the signer's `dex_user_token0_account`."
               ];
               writable: true;
               optional: true;
@@ -2695,11 +2695,11 @@ export type Vaults = {
             {
               name: "dexRecipientToken1Account";
               docs: [
-                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS.",
+                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS."
               ];
               writable: true;
               optional: true;
-            },
+            }
           ];
         },
         {
@@ -2756,7 +2756,7 @@ export type Vaults = {
             {
               name: "dexToken0Vault";
               docs: [
-                "@dev this is Liquidity layer vault token account for token0",
+                "@dev this is Liquidity layer vault token account for token0"
               ];
               writable: true;
               optional: true;
@@ -2764,7 +2764,7 @@ export type Vaults = {
             {
               name: "dexToken1Vault";
               docs: [
-                "@dev this is Liquidity layer vault token account for token1",
+                "@dev this is Liquidity layer vault token account for token1"
               ];
               writable: true;
               optional: true;
@@ -2772,7 +2772,7 @@ export type Vaults = {
             {
               name: "supplyPosToken0";
               docs: [
-                "This pool's own LL **supply** position for token0 (smart-col side).",
+                "This pool's own LL **supply** position for token0 (smart-col side)."
               ];
               writable: true;
               optional: true;
@@ -2780,7 +2780,7 @@ export type Vaults = {
             {
               name: "supplyPosToken1";
               docs: [
-                "This pool's own LL **supply** position for token1 (smart-col side).",
+                "This pool's own LL **supply** position for token1 (smart-col side)."
               ];
               writable: true;
               optional: true;
@@ -2788,7 +2788,7 @@ export type Vaults = {
             {
               name: "borrowPosToken0";
               docs: [
-                "This pool's own LL **borrow** position for token0 (smart-debt side).",
+                "This pool's own LL **borrow** position for token0 (smart-debt side)."
               ];
               writable: true;
               optional: true;
@@ -2796,7 +2796,7 @@ export type Vaults = {
             {
               name: "borrowPosToken1";
               docs: [
-                "This pool's own LL **borrow** position for token1 (smart-debt side).",
+                "This pool's own LL **borrow** position for token1 (smart-debt side)."
               ];
               writable: true;
               optional: true;
@@ -2813,7 +2813,7 @@ export type Vaults = {
               name: "dexRecipientToken0Account";
               docs: [
                 "Recipient's token0 account for this leg's withdraw/borrow OUTPUTS.",
-                "Optional: outputs default to the signer's `dex_user_token0_account`.",
+                "Optional: outputs default to the signer's `dex_user_token0_account`."
               ];
               writable: true;
               optional: true;
@@ -2821,17 +2821,17 @@ export type Vaults = {
             {
               name: "dexRecipientToken1Account";
               docs: [
-                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS.",
+                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS."
               ];
               writable: true;
               optional: true;
-            },
+            }
           ];
         },
         {
           name: "dexProgram";
           docs: ["@audit verify dex program in instruction logic"];
-        },
+        }
       ];
       args: [
         {
@@ -2867,7 +2867,7 @@ export type Vaults = {
         {
           name: "remainingAccountsIndices";
           type: "bytes";
-        },
+        }
       ];
     },
     {
@@ -2892,7 +2892,7 @@ export type Vaults = {
           name: "vaultConfig";
           docs: [
             "@dev mut because this PDA signs the CPI to liquidity program",
-            "@dev verification inside instruction logic",
+            "@dev verification inside instruction logic"
           ];
           writable: true;
         },
@@ -2959,7 +2959,7 @@ export type Vaults = {
           name: "associatedTokenProgram";
           optional: true;
           address: "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL";
-        },
+        }
       ];
       args: [];
     },
@@ -2991,7 +2991,7 @@ export type Vaults = {
               {
                 kind: "account";
                 path: "supplyToken";
-              },
+              }
             ];
             program: {
               kind: "const";
@@ -3027,7 +3027,7 @@ export type Vaults = {
                 219,
                 233,
                 248,
-                89,
+                89
               ];
             };
           };
@@ -3050,7 +3050,7 @@ export type Vaults = {
               {
                 kind: "account";
                 path: "borrowToken";
-              },
+              }
             ];
             program: {
               kind: "const";
@@ -3086,7 +3086,7 @@ export type Vaults = {
                 219,
                 233,
                 248,
-                89,
+                89
               ];
             };
           };
@@ -3235,7 +3235,7 @@ export type Vaults = {
             {
               name: "dexToken0Vault";
               docs: [
-                "@dev this is Liquidity layer vault token account for token0",
+                "@dev this is Liquidity layer vault token account for token0"
               ];
               writable: true;
               optional: true;
@@ -3243,7 +3243,7 @@ export type Vaults = {
             {
               name: "dexToken1Vault";
               docs: [
-                "@dev this is Liquidity layer vault token account for token1",
+                "@dev this is Liquidity layer vault token account for token1"
               ];
               writable: true;
               optional: true;
@@ -3251,7 +3251,7 @@ export type Vaults = {
             {
               name: "supplyPosToken0";
               docs: [
-                "This pool's own LL **supply** position for token0 (smart-col side).",
+                "This pool's own LL **supply** position for token0 (smart-col side)."
               ];
               writable: true;
               optional: true;
@@ -3259,7 +3259,7 @@ export type Vaults = {
             {
               name: "supplyPosToken1";
               docs: [
-                "This pool's own LL **supply** position for token1 (smart-col side).",
+                "This pool's own LL **supply** position for token1 (smart-col side)."
               ];
               writable: true;
               optional: true;
@@ -3267,7 +3267,7 @@ export type Vaults = {
             {
               name: "borrowPosToken0";
               docs: [
-                "This pool's own LL **borrow** position for token0 (smart-debt side).",
+                "This pool's own LL **borrow** position for token0 (smart-debt side)."
               ];
               writable: true;
               optional: true;
@@ -3275,7 +3275,7 @@ export type Vaults = {
             {
               name: "borrowPosToken1";
               docs: [
-                "This pool's own LL **borrow** position for token1 (smart-debt side).",
+                "This pool's own LL **borrow** position for token1 (smart-debt side)."
               ];
               writable: true;
               optional: true;
@@ -3292,7 +3292,7 @@ export type Vaults = {
               name: "dexRecipientToken0Account";
               docs: [
                 "Recipient's token0 account for this leg's withdraw/borrow OUTPUTS.",
-                "Optional: outputs default to the signer's `dex_user_token0_account`.",
+                "Optional: outputs default to the signer's `dex_user_token0_account`."
               ];
               writable: true;
               optional: true;
@@ -3300,11 +3300,11 @@ export type Vaults = {
             {
               name: "dexRecipientToken1Account";
               docs: [
-                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS.",
+                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS."
               ];
               writable: true;
               optional: true;
-            },
+            }
           ];
         },
         {
@@ -3361,7 +3361,7 @@ export type Vaults = {
             {
               name: "dexToken0Vault";
               docs: [
-                "@dev this is Liquidity layer vault token account for token0",
+                "@dev this is Liquidity layer vault token account for token0"
               ];
               writable: true;
               optional: true;
@@ -3369,7 +3369,7 @@ export type Vaults = {
             {
               name: "dexToken1Vault";
               docs: [
-                "@dev this is Liquidity layer vault token account for token1",
+                "@dev this is Liquidity layer vault token account for token1"
               ];
               writable: true;
               optional: true;
@@ -3377,7 +3377,7 @@ export type Vaults = {
             {
               name: "supplyPosToken0";
               docs: [
-                "This pool's own LL **supply** position for token0 (smart-col side).",
+                "This pool's own LL **supply** position for token0 (smart-col side)."
               ];
               writable: true;
               optional: true;
@@ -3385,7 +3385,7 @@ export type Vaults = {
             {
               name: "supplyPosToken1";
               docs: [
-                "This pool's own LL **supply** position for token1 (smart-col side).",
+                "This pool's own LL **supply** position for token1 (smart-col side)."
               ];
               writable: true;
               optional: true;
@@ -3393,7 +3393,7 @@ export type Vaults = {
             {
               name: "borrowPosToken0";
               docs: [
-                "This pool's own LL **borrow** position for token0 (smart-debt side).",
+                "This pool's own LL **borrow** position for token0 (smart-debt side)."
               ];
               writable: true;
               optional: true;
@@ -3401,7 +3401,7 @@ export type Vaults = {
             {
               name: "borrowPosToken1";
               docs: [
-                "This pool's own LL **borrow** position for token1 (smart-debt side).",
+                "This pool's own LL **borrow** position for token1 (smart-debt side)."
               ];
               writable: true;
               optional: true;
@@ -3418,7 +3418,7 @@ export type Vaults = {
               name: "dexRecipientToken0Account";
               docs: [
                 "Recipient's token0 account for this leg's withdraw/borrow OUTPUTS.",
-                "Optional: outputs default to the signer's `dex_user_token0_account`.",
+                "Optional: outputs default to the signer's `dex_user_token0_account`."
               ];
               writable: true;
               optional: true;
@@ -3426,13 +3426,13 @@ export type Vaults = {
             {
               name: "dexRecipientToken1Account";
               docs: [
-                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS.",
+                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS."
               ];
               writable: true;
               optional: true;
-            },
+            }
           ];
-        },
+        }
       ];
       args: [
         {
@@ -3450,7 +3450,7 @@ export type Vaults = {
         {
           name: "debtToken1MinMax";
           type: "i128";
-        },
+        }
       ];
     },
     {
@@ -3460,7 +3460,7 @@ export type Vaults = {
         "`supply_amount`/`borrow_amount` are unsigned magnitudes; `None` rebalances",
         "the full imbalance for that leg, `Some(n)` clamps it to `n`. Direction is",
         "driven by the imbalance sign; the `*_min_max` slippage bounds behave as in",
-        "[`Self::rebalance_dex`].",
+        "[`Self::rebalance_dex`]."
       ];
       discriminator: [240, 127, 38, 166, 99, 125, 51, 124];
       accounts: [
@@ -3488,7 +3488,7 @@ export type Vaults = {
               {
                 kind: "account";
                 path: "supplyToken";
-              },
+              }
             ];
             program: {
               kind: "const";
@@ -3524,7 +3524,7 @@ export type Vaults = {
                 219,
                 233,
                 248,
-                89,
+                89
               ];
             };
           };
@@ -3547,7 +3547,7 @@ export type Vaults = {
               {
                 kind: "account";
                 path: "borrowToken";
-              },
+              }
             ];
             program: {
               kind: "const";
@@ -3583,7 +3583,7 @@ export type Vaults = {
                 219,
                 233,
                 248,
-                89,
+                89
               ];
             };
           };
@@ -3732,7 +3732,7 @@ export type Vaults = {
             {
               name: "dexToken0Vault";
               docs: [
-                "@dev this is Liquidity layer vault token account for token0",
+                "@dev this is Liquidity layer vault token account for token0"
               ];
               writable: true;
               optional: true;
@@ -3740,7 +3740,7 @@ export type Vaults = {
             {
               name: "dexToken1Vault";
               docs: [
-                "@dev this is Liquidity layer vault token account for token1",
+                "@dev this is Liquidity layer vault token account for token1"
               ];
               writable: true;
               optional: true;
@@ -3748,7 +3748,7 @@ export type Vaults = {
             {
               name: "supplyPosToken0";
               docs: [
-                "This pool's own LL **supply** position for token0 (smart-col side).",
+                "This pool's own LL **supply** position for token0 (smart-col side)."
               ];
               writable: true;
               optional: true;
@@ -3756,7 +3756,7 @@ export type Vaults = {
             {
               name: "supplyPosToken1";
               docs: [
-                "This pool's own LL **supply** position for token1 (smart-col side).",
+                "This pool's own LL **supply** position for token1 (smart-col side)."
               ];
               writable: true;
               optional: true;
@@ -3764,7 +3764,7 @@ export type Vaults = {
             {
               name: "borrowPosToken0";
               docs: [
-                "This pool's own LL **borrow** position for token0 (smart-debt side).",
+                "This pool's own LL **borrow** position for token0 (smart-debt side)."
               ];
               writable: true;
               optional: true;
@@ -3772,7 +3772,7 @@ export type Vaults = {
             {
               name: "borrowPosToken1";
               docs: [
-                "This pool's own LL **borrow** position for token1 (smart-debt side).",
+                "This pool's own LL **borrow** position for token1 (smart-debt side)."
               ];
               writable: true;
               optional: true;
@@ -3789,7 +3789,7 @@ export type Vaults = {
               name: "dexRecipientToken0Account";
               docs: [
                 "Recipient's token0 account for this leg's withdraw/borrow OUTPUTS.",
-                "Optional: outputs default to the signer's `dex_user_token0_account`.",
+                "Optional: outputs default to the signer's `dex_user_token0_account`."
               ];
               writable: true;
               optional: true;
@@ -3797,11 +3797,11 @@ export type Vaults = {
             {
               name: "dexRecipientToken1Account";
               docs: [
-                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS.",
+                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS."
               ];
               writable: true;
               optional: true;
-            },
+            }
           ];
         },
         {
@@ -3858,7 +3858,7 @@ export type Vaults = {
             {
               name: "dexToken0Vault";
               docs: [
-                "@dev this is Liquidity layer vault token account for token0",
+                "@dev this is Liquidity layer vault token account for token0"
               ];
               writable: true;
               optional: true;
@@ -3866,7 +3866,7 @@ export type Vaults = {
             {
               name: "dexToken1Vault";
               docs: [
-                "@dev this is Liquidity layer vault token account for token1",
+                "@dev this is Liquidity layer vault token account for token1"
               ];
               writable: true;
               optional: true;
@@ -3874,7 +3874,7 @@ export type Vaults = {
             {
               name: "supplyPosToken0";
               docs: [
-                "This pool's own LL **supply** position for token0 (smart-col side).",
+                "This pool's own LL **supply** position for token0 (smart-col side)."
               ];
               writable: true;
               optional: true;
@@ -3882,7 +3882,7 @@ export type Vaults = {
             {
               name: "supplyPosToken1";
               docs: [
-                "This pool's own LL **supply** position for token1 (smart-col side).",
+                "This pool's own LL **supply** position for token1 (smart-col side)."
               ];
               writable: true;
               optional: true;
@@ -3890,7 +3890,7 @@ export type Vaults = {
             {
               name: "borrowPosToken0";
               docs: [
-                "This pool's own LL **borrow** position for token0 (smart-debt side).",
+                "This pool's own LL **borrow** position for token0 (smart-debt side)."
               ];
               writable: true;
               optional: true;
@@ -3898,7 +3898,7 @@ export type Vaults = {
             {
               name: "borrowPosToken1";
               docs: [
-                "This pool's own LL **borrow** position for token1 (smart-debt side).",
+                "This pool's own LL **borrow** position for token1 (smart-debt side)."
               ];
               writable: true;
               optional: true;
@@ -3915,7 +3915,7 @@ export type Vaults = {
               name: "dexRecipientToken0Account";
               docs: [
                 "Recipient's token0 account for this leg's withdraw/borrow OUTPUTS.",
-                "Optional: outputs default to the signer's `dex_user_token0_account`.",
+                "Optional: outputs default to the signer's `dex_user_token0_account`."
               ];
               writable: true;
               optional: true;
@@ -3923,13 +3923,13 @@ export type Vaults = {
             {
               name: "dexRecipientToken1Account";
               docs: [
-                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS.",
+                "Recipient's token1 account for this leg's withdraw/borrow OUTPUTS."
               ];
               writable: true;
               optional: true;
-            },
+            }
           ];
-        },
+        }
       ];
       args: [
         {
@@ -3959,7 +3959,7 @@ export type Vaults = {
         {
           name: "debtToken1MinMax";
           type: "i128";
-        },
+        }
       ];
     },
     {
@@ -3968,7 +3968,7 @@ export type Vaults = {
         "Rebalance a T1 vault by a custom (capped) amount per leg.",
         "`supply_amount`/`borrow_amount` are unsigned magnitudes; `None` rebalances",
         "the full imbalance for that leg, `Some(n)` clamps it to `n`. Direction",
-        "(deposit vs withdraw / borrow vs payback) is driven by the imbalance sign.",
+        "(deposit vs withdraw / borrow vs payback) is driven by the imbalance sign."
       ];
       discriminator: [190, 33, 144, 182, 86, 4, 141, 73];
       accounts: [
@@ -3990,7 +3990,7 @@ export type Vaults = {
           name: "vaultConfig";
           docs: [
             "@dev mut because this PDA signs the CPI to liquidity program",
-            "@dev verification inside instruction logic",
+            "@dev verification inside instruction logic"
           ];
           writable: true;
         },
@@ -4057,7 +4057,7 @@ export type Vaults = {
           name: "associatedTokenProgram";
           optional: true;
           address: "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL";
-        },
+        }
       ];
       args: [
         {
@@ -4071,7 +4071,7 @@ export type Vaults = {
           type: {
             option: "u128";
           };
-        },
+        }
       ];
     },
     {
@@ -4085,13 +4085,13 @@ export type Vaults = {
         {
           name: "vaultAdmin";
           writable: true;
-        },
+        }
       ];
       args: [
         {
           name: "newAuthority";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -4105,7 +4105,7 @@ export type Vaults = {
         {
           name: "vaultAdmin";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -4117,7 +4117,7 @@ export type Vaults = {
               };
             };
           };
-        },
+        }
       ];
     },
     {
@@ -4148,7 +4148,7 @@ export type Vaults = {
         {
           name: "borrowTokenReservesLiquidity";
           docs: ["@dev Verification inside instruction logic"];
-        },
+        }
       ];
       args: [
         {
@@ -4158,7 +4158,7 @@ export type Vaults = {
         {
           name: "borrowFee";
           type: "u8";
-        },
+        }
       ];
     },
     {
@@ -4189,7 +4189,7 @@ export type Vaults = {
         {
           name: "borrowTokenReservesLiquidity";
           docs: ["@dev Verification inside instruction logic"];
-        },
+        }
       ];
       args: [
         {
@@ -4199,7 +4199,7 @@ export type Vaults = {
         {
           name: "borrowRateMagnifier";
           type: "i16";
-        },
+        }
       ];
     },
     {
@@ -4230,7 +4230,7 @@ export type Vaults = {
         {
           name: "borrowTokenReservesLiquidity";
           docs: ["@dev Verification inside instruction logic"];
-        },
+        }
       ];
       args: [
         {
@@ -4240,7 +4240,7 @@ export type Vaults = {
         {
           name: "collateralFactor";
           type: "u16";
-        },
+        }
       ];
     },
     {
@@ -4271,7 +4271,7 @@ export type Vaults = {
         {
           name: "borrowTokenReservesLiquidity";
           docs: ["@dev Verification inside instruction logic"];
-        },
+        }
       ];
       args: [
         {
@@ -4285,7 +4285,7 @@ export type Vaults = {
               name: "updateCoreSettingsParams";
             };
           };
-        },
+        }
       ];
     },
     {
@@ -4308,13 +4308,13 @@ export type Vaults = {
         {
           name: "borrowTokenReservesLiquidity";
           docs: ["@dev Verification inside instruction logic"];
-        },
+        }
       ];
       args: [
         {
           name: "vaultId";
           type: "u16";
-        },
+        }
       ];
     },
     {
@@ -4345,7 +4345,7 @@ export type Vaults = {
         {
           name: "borrowTokenReservesLiquidity";
           docs: ["@dev Verification inside instruction logic"];
-        },
+        }
       ];
       args: [
         {
@@ -4355,7 +4355,7 @@ export type Vaults = {
         {
           name: "liquidationMaxLimit";
           type: "u16";
-        },
+        }
       ];
     },
     {
@@ -4386,7 +4386,7 @@ export type Vaults = {
         {
           name: "borrowTokenReservesLiquidity";
           docs: ["@dev Verification inside instruction logic"];
-        },
+        }
       ];
       args: [
         {
@@ -4396,7 +4396,7 @@ export type Vaults = {
         {
           name: "liquidationPenalty";
           type: "u16";
-        },
+        }
       ];
     },
     {
@@ -4427,7 +4427,7 @@ export type Vaults = {
         {
           name: "borrowTokenReservesLiquidity";
           docs: ["@dev Verification inside instruction logic"];
-        },
+        }
       ];
       args: [
         {
@@ -4437,7 +4437,7 @@ export type Vaults = {
         {
           name: "liquidationThreshold";
           type: "u16";
-        },
+        }
       ];
     },
     {
@@ -4455,7 +4455,7 @@ export type Vaults = {
           name: "vaultMetadata";
           docs: ["@dev Verification inside instruction logic"];
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -4465,7 +4465,7 @@ export type Vaults = {
         {
           name: "lookupTable";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -4499,13 +4499,13 @@ export type Vaults = {
         {
           name: "borrowTokenReservesLiquidity";
           docs: ["@dev Verification inside instruction logic"];
-        },
+        }
       ];
       args: [
         {
           name: "vaultId";
           type: "u16";
-        },
+        }
       ];
     },
     {
@@ -4536,7 +4536,7 @@ export type Vaults = {
         {
           name: "borrowTokenReservesLiquidity";
           docs: ["@dev Verification inside instruction logic"];
-        },
+        }
       ];
       args: [
         {
@@ -4546,7 +4546,7 @@ export type Vaults = {
         {
           name: "newRebalancer";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -4577,7 +4577,7 @@ export type Vaults = {
         {
           name: "borrowTokenReservesLiquidity";
           docs: ["@dev Verification inside instruction logic"];
-        },
+        }
       ];
       args: [
         {
@@ -4587,7 +4587,7 @@ export type Vaults = {
         {
           name: "supplyRateMagnifier";
           type: "i16";
-        },
+        }
       ];
     },
     {
@@ -4618,7 +4618,7 @@ export type Vaults = {
         {
           name: "borrowTokenReservesLiquidity";
           docs: ["@dev Verification inside instruction logic"];
-        },
+        }
       ];
       args: [
         {
@@ -4628,9 +4628,9 @@ export type Vaults = {
         {
           name: "withdrawGap";
           type: "u16";
-        },
+        }
       ];
-    },
+    }
   ];
   accounts: [
     {
@@ -4692,7 +4692,7 @@ export type Vaults = {
     {
       name: "vaultState";
       discriminator: [228, 196, 82, 165, 98, 210, 235, 152];
-    },
+    }
   ];
   events: [
     {
@@ -4810,7 +4810,7 @@ export type Vaults = {
     {
       name: "logUserPosition";
       discriminator: [46, 44, 213, 42, 55, 59, 190, 133];
-    },
+    }
   ];
   errors: [
     {
@@ -5347,7 +5347,7 @@ export type Vaults = {
       code: 6106;
       name: "vaultInvalidDexOracleProgram";
       msg: "vaultInvalidDexOracleProgram";
-    },
+    }
   ];
   types: [
     {
@@ -5362,7 +5362,7 @@ export type Vaults = {
           {
             name: "value";
             type: "bool";
-          },
+          }
         ];
       };
     },
@@ -5412,7 +5412,7 @@ export type Vaults = {
           {
             name: "connectedMinimaTick";
             type: "i32";
-          },
+          }
         ];
       };
     },
@@ -5420,7 +5420,7 @@ export type Vaults = {
       name: "dex";
       docs: [
         "Core DEX pool state. One per trading pair.",
-        "Uses zero_copy for efficient access without deserialization overhead.",
+        "Uses zero_copy for efficient access without deserialization overhead."
       ];
       serialization: "bytemuck";
       repr: {
@@ -5619,7 +5619,7 @@ export type Vaults = {
           {
             name: "bump";
             type: "u8";
-          },
+          }
         ];
       };
     },
@@ -5627,7 +5627,7 @@ export type Vaults = {
       name: "dexPosition";
       docs: [
         "Per-protocol per-DEX position.",
-        "Seeds: [DEX_POSITION_SEED, dex.key(), protocol.key()]",
+        "Seeds: [DEX_POSITION_SEED, dex.key(), protocol.key()]"
       ];
       serialization: "bytemuck";
       repr: {
@@ -5710,7 +5710,7 @@ export type Vaults = {
             type: {
               array: ["u8", 32];
             };
-          },
+          }
         ];
       };
     },
@@ -5766,7 +5766,7 @@ export type Vaults = {
           {
             name: "oracleProgram";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -5778,7 +5778,7 @@ export type Vaults = {
         "After the core liquidation, the vault calls DEX `withdraw_perfect` (or",
         "`withdraw_perfect_in_one_token`) with per-share slippage bounds computed as",
         "`token_per_unit_shares * actual_col_shares / 1e9` (see `SHARES_PRECISION`).",
-        "Set a field to `0` to receive the full withdrawal in the *other* token only.",
+        "Set a field to `0` to receive the full withdrawal in the *other* token only."
       ];
       type: {
         kind: "struct";
@@ -5790,7 +5790,7 @@ export type Vaults = {
           {
             name: "token1PerUnitShares";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -5799,7 +5799,7 @@ export type Vaults = {
       docs: [
         "T3/T4 smart debt: liquidator-supplied token amounts + minimum shares to burn.",
         "The vault calls DEX `payback(token0, token1, shares_min)`; tokens are debited from",
-        "the liquidator's DEX pool token accounts (signer-owned ATAs for token0/token1).",
+        "the liquidator's DEX pool token accounts (signer-owned ATAs for token0/token1)."
       ];
       type: {
         kind: "struct";
@@ -5815,7 +5815,7 @@ export type Vaults = {
           {
             name: "sharesMin";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -5827,7 +5827,7 @@ export type Vaults = {
         "After the core liquidation, the vault calls DEX `payback_perfect` with",
         "`token_per_unit_shares * actual_debt_shares / 1e9` as the per-token max",
         "(see `SHARES_PRECISION`).",
-        "Set a field to `0` to pay back entirely in the *other* token only.",
+        "Set a field to `0` to pay back entirely in the *other* token only."
       ];
       type: {
         kind: "struct";
@@ -5839,7 +5839,7 @@ export type Vaults = {
           {
             name: "token1PerUnitShares";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -5855,7 +5855,7 @@ export type Vaults = {
           {
             name: "debtAmount";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -5879,7 +5879,7 @@ export type Vaults = {
           {
             name: "positionMint";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -5895,7 +5895,7 @@ export type Vaults = {
           {
             name: "branchId";
             type: "u32";
-          },
+          }
         ];
       };
     },
@@ -5907,7 +5907,7 @@ export type Vaults = {
           {
             name: "tick";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -5919,7 +5919,7 @@ export type Vaults = {
           {
             name: "tickHasDebtArray";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -5935,7 +5935,7 @@ export type Vaults = {
           {
             name: "tick";
             type: "i32";
-          },
+          }
         ];
       };
     },
@@ -5947,7 +5947,7 @@ export type Vaults = {
           {
             name: "vaultConfig";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -5959,7 +5959,7 @@ export type Vaults = {
           {
             name: "vaultState";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -5983,7 +5983,7 @@ export type Vaults = {
           {
             name: "to";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -6003,7 +6003,7 @@ export type Vaults = {
           {
             name: "endTick";
             type: "i32";
-          },
+          }
         ];
       };
     },
@@ -6027,7 +6027,7 @@ export type Vaults = {
           {
             name: "diff";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -6055,7 +6055,7 @@ export type Vaults = {
           {
             name: "to";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -6071,7 +6071,7 @@ export type Vaults = {
           {
             name: "borrowAmt";
             type: "i128";
-          },
+          }
         ];
       };
     },
@@ -6083,7 +6083,7 @@ export type Vaults = {
           {
             name: "newAuthority";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -6101,7 +6101,7 @@ export type Vaults = {
                 };
               };
             };
-          },
+          }
         ];
       };
     },
@@ -6113,7 +6113,7 @@ export type Vaults = {
           {
             name: "borrowFee";
             type: "u8";
-          },
+          }
         ];
       };
     },
@@ -6125,7 +6125,7 @@ export type Vaults = {
           {
             name: "borrowRateMagnifier";
             type: "i16";
-          },
+          }
         ];
       };
     },
@@ -6137,7 +6137,7 @@ export type Vaults = {
           {
             name: "collateralFactor";
             type: "u16";
-          },
+          }
         ];
       };
     },
@@ -6177,7 +6177,7 @@ export type Vaults = {
           {
             name: "borrowFee";
             type: "u8";
-          },
+          }
         ];
       };
     },
@@ -6201,7 +6201,7 @@ export type Vaults = {
           {
             name: "liquidityBorrowExchangePrice";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -6213,7 +6213,7 @@ export type Vaults = {
           {
             name: "liquidationMaxLimit";
             type: "u16";
-          },
+          }
         ];
       };
     },
@@ -6225,7 +6225,7 @@ export type Vaults = {
           {
             name: "liquidationPenalty";
             type: "u16";
-          },
+          }
         ];
       };
     },
@@ -6237,7 +6237,7 @@ export type Vaults = {
           {
             name: "liquidationThreshold";
             type: "u16";
-          },
+          }
         ];
       };
     },
@@ -6249,7 +6249,7 @@ export type Vaults = {
           {
             name: "lookupTable";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -6261,7 +6261,7 @@ export type Vaults = {
           {
             name: "newOracle";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -6273,7 +6273,7 @@ export type Vaults = {
           {
             name: "newRebalancer";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -6285,7 +6285,7 @@ export type Vaults = {
           {
             name: "supplyRateMagnifier";
             type: "i16";
-          },
+          }
         ];
       };
     },
@@ -6297,7 +6297,7 @@ export type Vaults = {
           {
             name: "withdrawGap";
             type: "u16";
-          },
+          }
         ];
       };
     },
@@ -6333,7 +6333,7 @@ export type Vaults = {
           {
             name: "borrow";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -6342,7 +6342,7 @@ export type Vaults = {
       docs: [
         "Smart-side amounts for one imperfect DEX operate leg.",
         "`token0` / `token1` — primary token amounts (positive = deposit/borrow, negative = withdraw/payback).",
-        "`shares_min_max`     — slippage: min shares to receive (deposit/borrow) or max shares to burn (withdraw/payback).",
+        "`shares_min_max`     — slippage: min shares to receive (deposit/borrow) or max shares to burn (withdraw/payback)."
       ];
       type: {
         kind: "struct";
@@ -6358,7 +6358,7 @@ export type Vaults = {
           {
             name: "sharesMinMax";
             type: "i128";
-          },
+          }
         ];
       };
     },
@@ -6367,7 +6367,7 @@ export type Vaults = {
       docs: [
         "Collateral leg for `operate_dex` (imperfect).",
         "`amounts`  — DEX amounts for smart col (T2/T4).",
-        "`new_col`  — token delta for non-smart col (T1/T3).",
+        "`new_col`  — token delta for non-smart col (T1/T3)."
       ];
       type: {
         kind: "struct";
@@ -6387,7 +6387,7 @@ export type Vaults = {
             type: {
               option: "i128";
             };
-          },
+          }
         ];
       };
     },
@@ -6396,7 +6396,7 @@ export type Vaults = {
       docs: [
         "Debt leg for `operate_dex` (imperfect).",
         "`amounts`   — DEX amounts for smart debt (T3/T4).",
-        "`new_debt`  — token delta for non-smart debt (T1/T2).",
+        "`new_debt`  — token delta for non-smart debt (T1/T2)."
       ];
       type: {
         kind: "struct";
@@ -6416,7 +6416,7 @@ export type Vaults = {
             type: {
               option: "i128";
             };
-          },
+          }
         ];
       };
     },
@@ -6430,7 +6430,7 @@ export type Vaults = {
         "deposit/payback → max tokens to spend  (positive for deposit, negative for payback)",
         "withdraw/borrow → min tokens to receive (negative for withdraw, positive for borrow)",
         "Set to 0 to receive the full withdrawal / payback in the *other* token only.",
-        "`token1_min_max`  — same semantics as `token0_min_max` for token1.",
+        "`token1_min_max`  — same semantics as `token0_min_max` for token1."
       ];
       type: {
         kind: "struct";
@@ -6446,7 +6446,7 @@ export type Vaults = {
           {
             name: "token1MinMax";
             type: "i128";
-          },
+          }
         ];
       };
     },
@@ -6455,7 +6455,7 @@ export type Vaults = {
       docs: [
         "Collateral leg for `operate_perfect_dex`.",
         "`amounts`  — perfect DEX amounts for smart col (T2/T4).",
-        "`new_col`  — token delta for non-smart col (T1/T3).",
+        "`new_col`  — token delta for non-smart col (T1/T3)."
       ];
       type: {
         kind: "struct";
@@ -6475,7 +6475,7 @@ export type Vaults = {
             type: {
               option: "i128";
             };
-          },
+          }
         ];
       };
     },
@@ -6484,7 +6484,7 @@ export type Vaults = {
       docs: [
         "Debt leg for `operate_perfect_dex`.",
         "`amounts`   — perfect DEX amounts for smart debt (T3/T4).",
-        "`new_debt`  — token delta for non-smart debt (T1/T2).",
+        "`new_debt`  — token delta for non-smart debt (T1/T2)."
       ];
       type: {
         kind: "struct";
@@ -6504,7 +6504,7 @@ export type Vaults = {
             type: {
               option: "i128";
             };
-          },
+          }
         ];
       };
     },
@@ -6530,7 +6530,7 @@ export type Vaults = {
           {
             name: "bump";
             type: "u8";
-          },
+          }
         ];
       };
     },
@@ -6576,7 +6576,7 @@ export type Vaults = {
           {
             name: "dustDebtAmount";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -6618,6 +6618,9 @@ export type Vaults = {
           {
             name: "dexSmartDebtPegOracle";
           },
+          {
+            name: "infPool";
+          }
         ];
       };
     },
@@ -6649,7 +6652,7 @@ export type Vaults = {
                 name: "sourceType";
               };
             };
-          },
+          }
         ];
       };
     },
@@ -6695,7 +6698,7 @@ export type Vaults = {
           {
             name: "debtFactor";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -6705,7 +6708,7 @@ export type Vaults = {
         "Tick has debt structure",
         "Each TickHasDebt can track 8 * 256 = 2048 ticks",
         "children_bits has 32 bytes = 256 bits total",
-        "Each map within the array covers 256 ticks",
+        "Each map within the array covers 256 ticks"
       ];
       repr: {
         kind: "c";
@@ -6719,7 +6722,7 @@ export type Vaults = {
             type: {
               array: ["u8", 32];
             };
-          },
+          }
         ];
       };
     },
@@ -6746,7 +6749,7 @@ export type Vaults = {
             docs: [
               "Each array contains 8 TickHasDebt structs",
               "Each TickHasDebt covers 256 ticks",
-              "Total: 8 * 256 = 2048 ticks per TickHasDebtArray",
+              "Total: 8 * 256 = 2048 ticks per TickHasDebtArray"
             ];
             type: {
               array: [
@@ -6755,10 +6758,10 @@ export type Vaults = {
                     name: "tickHasDebt";
                   };
                 },
-                8,
+                8
               ];
             };
-          },
+          }
         ];
       };
     },
@@ -6820,7 +6823,7 @@ export type Vaults = {
           {
             name: "debtFactor3";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -6902,7 +6905,7 @@ export type Vaults = {
           {
             name: "interactingBalance";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -6919,7 +6922,7 @@ export type Vaults = {
           },
           {
             name: "claim";
-          },
+          }
         ];
       };
     },
@@ -6959,7 +6962,7 @@ export type Vaults = {
           {
             name: "borrowFee";
             type: "u8";
-          },
+          }
         ];
       };
     },
@@ -7017,7 +7020,7 @@ export type Vaults = {
           {
             name: "status";
             type: "u8";
-          },
+          }
         ];
       };
     },
@@ -7079,7 +7082,7 @@ export type Vaults = {
           {
             name: "status";
             type: "u8";
-          },
+          }
         ];
       };
     },
@@ -7109,7 +7112,7 @@ export type Vaults = {
           {
             name: "bump";
             type: "u8";
-          },
+          }
         ];
       };
     },
@@ -7190,7 +7193,7 @@ export type Vaults = {
           {
             name: "bump";
             type: "u8";
-          },
+          }
         ];
       };
     },
@@ -7214,7 +7217,7 @@ export type Vaults = {
           {
             name: "borrowMintDecimals";
             type: "u8";
-          },
+          }
         ];
       };
     },
@@ -7295,9 +7298,9 @@ export type Vaults = {
           {
             name: "lastUpdateTimestamp";
             type: "u64";
-          },
+          }
         ];
       };
-    },
+    }
   ];
 };

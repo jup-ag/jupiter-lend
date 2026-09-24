@@ -2,7 +2,7 @@
   "address": "jupnw4B6Eqs7ft6rxpzYLJZYSnrpRgPcr589n5Kv4oc",
   "metadata": {
     "name": "oracle",
-    "version": "0.1.5",
+    "version": "0.1.8",
     "spec": "0.1.0",
     "description": "Created with Anchor"
   },
@@ -809,6 +809,36 @@
       "code": 6056,
       "name": "DexPegInvalidKind",
       "msg": "DEX_PEG_INVALID_KIND"
+    },
+    {
+      "code": 6057,
+      "name": "InfPoolInvalidState",
+      "msg": "INF_POOL_INVALID_STATE"
+    },
+    {
+      "code": 6058,
+      "name": "InfPoolWrongVersion",
+      "msg": "INF_POOL_WRONG_VERSION"
+    },
+    {
+      "code": 6059,
+      "name": "InfPoolDisabled",
+      "msg": "INF_POOL_DISABLED"
+    },
+    {
+      "code": 6060,
+      "name": "InfPoolRebalancing",
+      "msg": "INF_POOL_REBALANCING"
+    },
+    {
+      "code": 6061,
+      "name": "InfPoolMintMismatch",
+      "msg": "INF_POOL_MINT_MISMATCH"
+    },
+    {
+      "code": 6062,
+      "name": "InfPoolMintSupplyZero",
+      "msg": "INF_POOL_MINT_SUPPLY_ZERO"
     }
   ],
   "types": [
@@ -1010,7 +1040,9 @@
               "entry's own `invert`). `source == Pubkey::default()` → hard 1:1 peg",
               "(USDC/USDT style), no extra account.",
               "Restricted to single-account source types (Pyth, StakePool, MsolPool,",
-              "Redstone, Chainlink, ChainlinkDataStreams)."
+              "Redstone, Chainlink, ChainlinkDataStreams) and PstPool — which",
+              "consumes two tail accounts (pool state + mint) with `source` holding",
+              "the pool state."
             ],
             "type": {
               "defined": {
@@ -1304,6 +1336,9 @@
           },
           {
             "name": "DexSmartDebtPegOracle"
+          },
+          {
+            "name": "InfPool"
           }
         ]
       }

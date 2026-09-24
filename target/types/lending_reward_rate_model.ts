@@ -44,7 +44,7 @@ export type LendingRewardRateModel = {
         },
         {
           name: "lendingProgram";
-        },
+        }
       ];
       args: [];
     },
@@ -85,16 +85,16 @@ export type LendingRewardRateModel = {
                   100,
                   109,
                   105,
-                  110,
+                  110
                 ];
-              },
+              }
             ];
           };
         },
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
@@ -104,7 +104,7 @@ export type LendingRewardRateModel = {
         {
           name: "lendingProgram";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -155,20 +155,20 @@ export type LendingRewardRateModel = {
                   111,
                   100,
                   101,
-                  108,
+                  108
                 ];
               },
               {
                 kind: "account";
                 path: "mint";
-              },
+              }
             ];
           };
         },
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [];
     },
@@ -203,7 +203,7 @@ export type LendingRewardRateModel = {
         },
         {
           name: "lendingProgram";
-        },
+        }
       ];
       args: [
         {
@@ -213,7 +213,7 @@ export type LendingRewardRateModel = {
         {
           name: "duration";
           type: "u64";
-        },
+        }
       ];
     },
     {
@@ -247,7 +247,7 @@ export type LendingRewardRateModel = {
         },
         {
           name: "lendingProgram";
-        },
+        }
       ];
       args: [
         {
@@ -265,7 +265,7 @@ export type LendingRewardRateModel = {
         {
           name: "startTvl";
           type: "u64";
-        },
+        }
       ];
     },
     {
@@ -299,7 +299,7 @@ export type LendingRewardRateModel = {
         },
         {
           name: "lendingProgram";
-        },
+        }
       ];
       args: [];
     },
@@ -330,7 +330,7 @@ export type LendingRewardRateModel = {
         },
         {
           name: "lendingProgram";
-        },
+        }
       ];
       args: [];
     },
@@ -345,13 +345,13 @@ export type LendingRewardRateModel = {
         {
           name: "lendingRewardsAdmin";
           writable: true;
-        },
+        }
       ];
       args: [
         {
           name: "newAuthority";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -365,7 +365,7 @@ export type LendingRewardRateModel = {
         {
           name: "lendingRewardsAdmin";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -377,9 +377,9 @@ export type LendingRewardRateModel = {
               };
             };
           };
-        },
+        }
       ];
-    },
+    }
   ];
   accounts: [
     {
@@ -389,7 +389,7 @@ export type LendingRewardRateModel = {
     {
       name: "lendingRewardsRateModel";
       discriminator: [166, 72, 71, 131, 172, 74, 166, 181];
-    },
+    }
   ];
   events: [
     {
@@ -419,7 +419,7 @@ export type LendingRewardRateModel = {
     {
       name: "logUpdateAuths";
       discriminator: [88, 80, 109, 48, 111, 203, 76, 251];
-    },
+    }
   ];
   errors: [
     {
@@ -486,7 +486,7 @@ export type LendingRewardRateModel = {
       code: 6012;
       name: "invalidMint";
       msg: "lendingRewardRateModelInvalidMint";
-    },
+    }
   ];
   types: [
     {
@@ -501,7 +501,7 @@ export type LendingRewardRateModel = {
           {
             name: "value";
             type: "bool";
-          },
+          }
         ];
       };
     },
@@ -527,7 +527,7 @@ export type LendingRewardRateModel = {
           {
             name: "bump";
             type: "u8";
-          },
+          }
         ];
       };
     },
@@ -545,7 +545,7 @@ export type LendingRewardRateModel = {
             name: "startTvl";
             docs: [
               "@dev tvl below which rewards rate is 0. If current TVL is below this value, triggering `update_rate()` on the fToken",
-              "might bring the total TVL above this cut-off.",
+              "might bring the total TVL above this cut-off."
             ];
             type: "u64";
           },
@@ -562,7 +562,7 @@ export type LendingRewardRateModel = {
           {
             name: "yearlyReward";
             docs: [
-              "@dev current annualized reward based on input params (duration, rewardAmount)",
+              "@dev current annualized reward based on input params (duration, rewardAmount)"
             ];
             type: "u64";
           },
@@ -579,7 +579,7 @@ export type LendingRewardRateModel = {
           {
             name: "bump";
             type: "u8";
-          },
+          }
         ];
       };
     },
@@ -591,7 +591,7 @@ export type LendingRewardRateModel = {
           {
             name: "mint";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -611,7 +611,7 @@ export type LendingRewardRateModel = {
           {
             name: "mint";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -635,7 +635,7 @@ export type LendingRewardRateModel = {
           {
             name: "mint";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -647,7 +647,7 @@ export type LendingRewardRateModel = {
           {
             name: "mint";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -667,7 +667,7 @@ export type LendingRewardRateModel = {
           {
             name: "mint";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -679,7 +679,7 @@ export type LendingRewardRateModel = {
           {
             name: "newAuthority";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -697,9 +697,9 @@ export type LendingRewardRateModel = {
                 };
               };
             };
-          },
+          }
         ];
       };
-    },
+    }
   ];
 };

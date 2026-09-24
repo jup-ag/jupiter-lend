@@ -8,7 +8,7 @@ export type Dex = {
   address: "jupZ4m2GqUCJ5iueMfzQf8khFfH31d4XAQt3RzCT9Vd";
   metadata: {
     name: "dex";
-    version: "0.1.6";
+    version: "0.1.8";
     spec: "0.1.0";
     description: "Created with Anchor";
   };
@@ -20,9 +20,8 @@ export type Dex = {
         {
           name: "signer";
           docs: [
-            "The protocol calling the operation (must match position.protocol)",
+            "The protocol calling the operation (must match position.protocol)"
           ];
-          writable: true;
           signer: true;
         },
         {
@@ -126,7 +125,7 @@ export type Dex = {
           name: "recipientToken1Account";
           writable: true;
           optional: true;
-        },
+        }
       ];
       args: [
         {
@@ -140,7 +139,7 @@ export type Dex = {
         {
           name: "maxShares";
           type: "u64";
-        },
+        }
       ];
       returns: "u128";
     },
@@ -151,9 +150,8 @@ export type Dex = {
         {
           name: "signer";
           docs: [
-            "The protocol calling the operation (must match position.protocol)",
+            "The protocol calling the operation (must match position.protocol)"
           ];
-          writable: true;
           signer: true;
         },
         {
@@ -257,7 +255,7 @@ export type Dex = {
           name: "recipientToken1Account";
           writable: true;
           optional: true;
-        },
+        }
       ];
       args: [
         {
@@ -271,7 +269,7 @@ export type Dex = {
         {
           name: "minToken1";
           type: "u64";
-        },
+        }
       ];
     },
     {
@@ -281,9 +279,8 @@ export type Dex = {
         {
           name: "signer";
           docs: [
-            "The protocol calling the operation (must match position.protocol)",
+            "The protocol calling the operation (must match position.protocol)"
           ];
-          writable: true;
           signer: true;
         },
         {
@@ -387,7 +384,7 @@ export type Dex = {
           name: "recipientToken1Account";
           writable: true;
           optional: true;
-        },
+        }
       ];
       args: [
         {
@@ -401,7 +398,7 @@ export type Dex = {
         {
           name: "minShares";
           type: "u64";
-        },
+        }
       ];
       returns: "u128";
     },
@@ -412,9 +409,8 @@ export type Dex = {
         {
           name: "signer";
           docs: [
-            "The protocol calling the operation (must match position.protocol)",
+            "The protocol calling the operation (must match position.protocol)"
           ];
-          writable: true;
           signer: true;
         },
         {
@@ -518,7 +514,7 @@ export type Dex = {
           name: "recipientToken1Account";
           writable: true;
           optional: true;
-        },
+        }
       ];
       args: [
         {
@@ -532,7 +528,7 @@ export type Dex = {
         {
           name: "maxToken1";
           type: "u64";
-        },
+        }
       ];
     },
     {
@@ -553,10 +549,10 @@ export type Dex = {
         {
           name: "oracleProgram";
           docs: [
-            "verified against dex.center_price_address in the load helper",
+            "verified against dex.center_price_address in the load helper"
           ];
           address: "jupnw4B6Eqs7ft6rxpzYLJZYSnrpRgPcr589n5Kv4oc";
-        },
+        }
       ];
       args: [];
     },
@@ -586,7 +582,7 @@ export type Dex = {
                 kind: "account";
                 path: "dex_admin.next_dex_id";
                 account: "dexAdmin";
-              },
+              }
             ];
           };
         },
@@ -603,7 +599,7 @@ export type Dex = {
                 kind: "account";
                 path: "dex_admin.next_dex_id";
                 account: "dexAdmin";
-              },
+              }
             ];
           };
         },
@@ -616,7 +612,7 @@ export type Dex = {
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
@@ -626,7 +622,7 @@ export type Dex = {
               name: "initDexParams";
             };
           };
-        },
+        }
       ];
     },
     {
@@ -646,14 +642,14 @@ export type Dex = {
               {
                 kind: "const";
                 value: [100, 101, 120, 95, 97, 100, 109, 105, 110];
-              },
+              }
             ];
           };
         },
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
@@ -663,7 +659,7 @@ export type Dex = {
         {
           name: "authority";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -689,7 +685,7 @@ export type Dex = {
               {
                 kind: "arg";
                 path: "dexId";
-              },
+              }
             ];
           };
         },
@@ -705,14 +701,14 @@ export type Dex = {
               {
                 kind: "arg";
                 path: "dexId";
-              },
+              }
             ];
           };
         },
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
@@ -722,7 +718,7 @@ export type Dex = {
         {
           name: "lookupTable";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -759,7 +755,7 @@ export type Dex = {
                   116,
                   105,
                   111,
-                  110,
+                  110
                 ];
               },
               {
@@ -769,20 +765,20 @@ export type Dex = {
               {
                 kind: "arg";
                 path: "protocol";
-              },
+              }
             ];
           };
         },
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
           name: "protocol";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -799,7 +795,7 @@ export type Dex = {
         {
           name: "dex";
           writable: true;
-        },
+        }
       ];
       args: [];
     },
@@ -817,7 +813,7 @@ export type Dex = {
         {
           name: "dex";
           writable: true;
-        },
+        }
       ];
       args: [];
     },
@@ -838,7 +834,7 @@ export type Dex = {
         {
           name: "position";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -848,7 +844,7 @@ export type Dex = {
         {
           name: "pauseBorrow";
           type: "bool";
-        },
+        }
       ];
     },
     {
@@ -858,9 +854,8 @@ export type Dex = {
         {
           name: "signer";
           docs: [
-            "The protocol calling the operation (must match position.protocol)",
+            "The protocol calling the operation (must match position.protocol)"
           ];
-          writable: true;
           signer: true;
         },
         {
@@ -964,7 +959,7 @@ export type Dex = {
           name: "recipientToken1Account";
           writable: true;
           optional: true;
-        },
+        }
       ];
       args: [
         {
@@ -978,7 +973,7 @@ export type Dex = {
         {
           name: "minShares";
           type: "u64";
-        },
+        }
       ];
       returns: "u128";
     },
@@ -989,9 +984,8 @@ export type Dex = {
         {
           name: "signer";
           docs: [
-            "The protocol calling the operation (must match position.protocol)",
+            "The protocol calling the operation (must match position.protocol)"
           ];
-          writable: true;
           signer: true;
         },
         {
@@ -1095,7 +1089,7 @@ export type Dex = {
           name: "recipientToken1Account";
           writable: true;
           optional: true;
-        },
+        }
       ];
       args: [
         {
@@ -1109,7 +1103,7 @@ export type Dex = {
         {
           name: "maxToken1";
           type: "u64";
-        },
+        }
       ];
     },
     {
@@ -1119,9 +1113,8 @@ export type Dex = {
         {
           name: "signer";
           docs: [
-            "The protocol calling the operation (must match position.protocol)",
+            "The protocol calling the operation (must match position.protocol)"
           ];
-          writable: true;
           signer: true;
         },
         {
@@ -1225,7 +1218,7 @@ export type Dex = {
           name: "recipientToken1Account";
           writable: true;
           optional: true;
-        },
+        }
       ];
       args: [
         {
@@ -1239,7 +1232,7 @@ export type Dex = {
         {
           name: "maxToken1";
           type: "u64";
-        },
+        }
       ];
       returns: "u64";
     },
@@ -1249,7 +1242,7 @@ export type Dex = {
         "Read-only: returns the exact collateral/debt share deltas a real operate",
         "would produce for the given (signed) token amounts, via `return_data`.",
         "Mutates nothing; meant to be run through `simulateTransaction` so an SDK",
-        "can attach the correct vault tick / branch accounts. See `preview.rs`.",
+        "can attach the correct vault tick / branch accounts. See `preview.rs`."
       ];
       discriminator: [246, 97, 50, 171, 63, 142, 62, 229];
       accounts: [
@@ -1260,7 +1253,7 @@ export type Dex = {
           name: "position";
           docs: [
             "The protocol's DEX position (holds the share balances / withdrawal limits",
-            "that gate the operation). Only read here; mutated on a local copy.",
+            "that gate the operation). Only read here; mutated on a local copy."
           ];
         },
         {
@@ -1287,7 +1280,7 @@ export type Dex = {
         },
         {
           name: "oracleProgram";
-        },
+        }
       ];
       args: [
         {
@@ -1305,7 +1298,7 @@ export type Dex = {
         {
           name: "debtToken1";
           type: "i64";
-        },
+        }
       ];
     },
     {
@@ -1315,10 +1308,8 @@ export type Dex = {
         {
           name: "signer";
           docs: [
-            "The caller initiating the operation",
-            "Funds will be transferred from signer to LL",
+            "The caller initiating the operation (transfer authority for inbound tokens)"
           ];
-          writable: true;
           signer: true;
         },
         {
@@ -1412,7 +1403,7 @@ export type Dex = {
         },
         {
           name: "oracleProgram";
-        },
+        }
       ];
       args: [
         {
@@ -1426,7 +1417,7 @@ export type Dex = {
         {
           name: "amountOutMin";
           type: "u64";
-        },
+        }
       ];
       returns: "u64";
     },
@@ -1437,10 +1428,8 @@ export type Dex = {
         {
           name: "signer";
           docs: [
-            "The caller initiating the operation",
-            "Funds will be transferred from signer to LL",
+            "The caller initiating the operation (transfer authority for inbound tokens)"
           ];
-          writable: true;
           signer: true;
         },
         {
@@ -1534,7 +1523,7 @@ export type Dex = {
         },
         {
           name: "oracleProgram";
-        },
+        }
       ];
       args: [
         {
@@ -1548,7 +1537,7 @@ export type Dex = {
         {
           name: "amountInMax";
           type: "u64";
-        },
+        }
       ];
       returns: "u64";
     },
@@ -1558,7 +1547,6 @@ export type Dex = {
       accounts: [
         {
           name: "authority";
-          writable: true;
           signer: true;
         },
         {
@@ -1635,13 +1623,13 @@ export type Dex = {
         },
         {
           name: "token1Program";
-        },
+        }
       ];
       args: [
         {
           name: "token0Amt";
           type: "u64";
-        },
+        }
       ];
     },
     {
@@ -1650,7 +1638,6 @@ export type Dex = {
       accounts: [
         {
           name: "authority";
-          writable: true;
           signer: true;
         },
         {
@@ -1727,13 +1714,13 @@ export type Dex = {
         },
         {
           name: "token1Program";
-        },
+        }
       ];
       args: [
         {
           name: "token0Amt";
           type: "u64";
-        },
+        }
       ];
     },
     {
@@ -1750,7 +1737,7 @@ export type Dex = {
         {
           name: "dex";
           writable: true;
-        },
+        }
       ];
       args: [];
     },
@@ -1768,7 +1755,7 @@ export type Dex = {
         {
           name: "dex";
           writable: true;
-        },
+        }
       ];
       args: [];
     },
@@ -1789,7 +1776,7 @@ export type Dex = {
         {
           name: "position";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -1799,7 +1786,7 @@ export type Dex = {
         {
           name: "unpauseBorrow";
           type: "bool";
-        },
+        }
       ];
     },
     {
@@ -1813,13 +1800,13 @@ export type Dex = {
         {
           name: "dexAdmin";
           writable: true;
-        },
+        }
       ];
       args: [
         {
           name: "newAuthority";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -1833,7 +1820,7 @@ export type Dex = {
         {
           name: "dexAdmin";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -1845,7 +1832,7 @@ export type Dex = {
               };
             };
           };
-        },
+        }
       ];
     },
     {
@@ -1862,7 +1849,7 @@ export type Dex = {
         {
           name: "dex";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -1876,7 +1863,7 @@ export type Dex = {
         {
           name: "time";
           type: "u32";
-        },
+        }
       ];
     },
     {
@@ -1893,7 +1880,7 @@ export type Dex = {
         {
           name: "dex";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -1903,7 +1890,7 @@ export type Dex = {
         {
           name: "minCenterPrice";
           type: "u64";
-        },
+        }
       ];
     },
     {
@@ -1921,7 +1908,7 @@ export type Dex = {
           name: "dexMetadata";
           docs: ["@dev Verification inside instruction logic"];
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -1931,7 +1918,7 @@ export type Dex = {
         {
           name: "lookupTable";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -1948,7 +1935,7 @@ export type Dex = {
         {
           name: "dex";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -1958,7 +1945,7 @@ export type Dex = {
         {
           name: "revenueCut";
           type: "u32";
-        },
+        }
       ];
     },
     {
@@ -1972,7 +1959,7 @@ export type Dex = {
         {
           name: "dexAdmin";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -1984,7 +1971,7 @@ export type Dex = {
               };
             };
           };
-        },
+        }
       ];
     },
     {
@@ -2001,13 +1988,13 @@ export type Dex = {
         {
           name: "dex";
           writable: true;
-        },
+        }
       ];
       args: [
         {
           name: "maxBorrowShares";
           type: "u64";
-        },
+        }
       ];
     },
     {
@@ -2024,13 +2011,13 @@ export type Dex = {
         {
           name: "dex";
           writable: true;
-        },
+        }
       ];
       args: [
         {
           name: "maxSupplyShares";
           type: "u64";
-        },
+        }
       ];
     },
     {
@@ -2047,7 +2034,7 @@ export type Dex = {
         {
           name: "dex";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -2061,7 +2048,7 @@ export type Dex = {
         {
           name: "shiftTime";
           type: "u32";
-        },
+        }
       ];
     },
     {
@@ -2078,7 +2065,7 @@ export type Dex = {
         {
           name: "dex";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -2096,7 +2083,7 @@ export type Dex = {
         {
           name: "shiftTime";
           type: "u32";
-        },
+        }
       ];
     },
     {
@@ -2116,7 +2103,7 @@ export type Dex = {
         {
           name: "position";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -2126,7 +2113,7 @@ export type Dex = {
               name: "userBorrowConfigParams";
             };
           };
-        },
+        }
       ];
     },
     {
@@ -2146,7 +2133,7 @@ export type Dex = {
         {
           name: "position";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -2156,7 +2143,7 @@ export type Dex = {
               name: "userSupplyConfigParams";
             };
           };
-        },
+        }
       ];
     },
     {
@@ -2176,13 +2163,13 @@ export type Dex = {
         {
           name: "position";
           writable: true;
-        },
+        }
       ];
       args: [
         {
           name: "newLimit";
           type: "u64";
-        },
+        }
       ];
     },
     {
@@ -2199,7 +2186,7 @@ export type Dex = {
         {
           name: "dex";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -2209,7 +2196,7 @@ export type Dex = {
         {
           name: "token1UtilizationLimit";
           type: "u16";
-        },
+        }
       ];
     },
     {
@@ -2219,9 +2206,8 @@ export type Dex = {
         {
           name: "signer";
           docs: [
-            "The protocol calling the operation (must match position.protocol)",
+            "The protocol calling the operation (must match position.protocol)"
           ];
-          writable: true;
           signer: true;
         },
         {
@@ -2325,7 +2311,7 @@ export type Dex = {
           name: "recipientToken1Account";
           writable: true;
           optional: true;
-        },
+        }
       ];
       args: [
         {
@@ -2339,7 +2325,7 @@ export type Dex = {
         {
           name: "maxShares";
           type: "u64";
-        },
+        }
       ];
       returns: "u128";
     },
@@ -2350,9 +2336,8 @@ export type Dex = {
         {
           name: "signer";
           docs: [
-            "The protocol calling the operation (must match position.protocol)",
+            "The protocol calling the operation (must match position.protocol)"
           ];
-          writable: true;
           signer: true;
         },
         {
@@ -2456,7 +2441,7 @@ export type Dex = {
           name: "recipientToken1Account";
           writable: true;
           optional: true;
-        },
+        }
       ];
       args: [
         {
@@ -2470,7 +2455,7 @@ export type Dex = {
         {
           name: "minToken1";
           type: "u64";
-        },
+        }
       ];
     },
     {
@@ -2480,9 +2465,8 @@ export type Dex = {
         {
           name: "signer";
           docs: [
-            "The protocol calling the operation (must match position.protocol)",
+            "The protocol calling the operation (must match position.protocol)"
           ];
-          writable: true;
           signer: true;
         },
         {
@@ -2586,7 +2570,7 @@ export type Dex = {
           name: "recipientToken1Account";
           writable: true;
           optional: true;
-        },
+        }
       ];
       args: [
         {
@@ -2600,10 +2584,10 @@ export type Dex = {
         {
           name: "minToken1";
           type: "u64";
-        },
+        }
       ];
       returns: "u64";
-    },
+    }
   ];
   accounts: [
     {
@@ -2633,7 +2617,7 @@ export type Dex = {
     {
       name: "userSupplyPosition";
       discriminator: [202, 219, 136, 118, 61, 177, 21, 146];
-    },
+    }
   ];
   events: [
     {
@@ -2799,7 +2783,7 @@ export type Dex = {
     {
       name: "logWithdrawPerfectColLiquidity";
       discriminator: [199, 40, 242, 90, 55, 165, 41, 105];
-    },
+    }
   ];
   errors: [
     {
@@ -3241,7 +3225,7 @@ export type Dex = {
       code: 6087;
       name: "dexAdminFeeRevenueCutProductOverflow";
       msg: "dexAdminFeeRevenueCutProductOverflow";
-    },
+    }
   ];
   types: [
     {
@@ -3256,7 +3240,7 @@ export type Dex = {
           {
             name: "value";
             type: "bool";
-          },
+          }
         ];
       };
     },
@@ -3264,7 +3248,7 @@ export type Dex = {
       name: "dex";
       docs: [
         "Core DEX pool state. One per trading pair.",
-        "Uses zero_copy for efficient access without deserialization overhead.",
+        "Uses zero_copy for efficient access without deserialization overhead."
       ];
       serialization: "bytemuck";
       repr: {
@@ -3463,7 +3447,7 @@ export type Dex = {
           {
             name: "bump";
             type: "u8";
-          },
+          }
         ];
       };
     },
@@ -3507,7 +3491,7 @@ export type Dex = {
           {
             name: "bump";
             type: "u8";
-          },
+          }
         ];
       };
     },
@@ -3529,7 +3513,7 @@ export type Dex = {
             type: {
               array: ["u8", 32];
             };
-          },
+          }
         ];
       };
     },
@@ -3537,7 +3521,7 @@ export type Dex = {
       name: "dexPosition";
       docs: [
         "Per-protocol per-DEX position.",
-        "Seeds: [DEX_POSITION_SEED, dex.key(), protocol.key()]",
+        "Seeds: [DEX_POSITION_SEED, dex.key(), protocol.key()]"
       ];
       serialization: "bytemuck";
       repr: {
@@ -3620,7 +3604,7 @@ export type Dex = {
             type: {
               array: ["u8", 32];
             };
-          },
+          }
         ];
       };
     },
@@ -3632,7 +3616,7 @@ export type Dex = {
           {
             name: "centerPrice";
             docs: [
-              "Initial center price: a normalized ratio scaled by PRICE_PRECISION (10^15)",
+              "Initial center price: a normalized ratio scaled by PRICE_PRECISION (10^15)"
             ];
             type: "u64";
           },
@@ -3644,7 +3628,7 @@ export type Dex = {
           {
             name: "revenueCut";
             docs: [
-              "Revenue cut in 4 decimals (e.g., 100000 = 10%). Divided by 10000 for storage.",
+              "Revenue cut in 4 decimals (e.g., 100000 = 10%). Divided by 10000 for storage."
             ];
             type: "u32";
           },
@@ -3661,14 +3645,14 @@ export type Dex = {
           {
             name: "upperShiftThreshold";
             docs: [
-              "Upper shift threshold percent in 4 decimals. Divided by 1000 for storage.",
+              "Upper shift threshold percent in 4 decimals. Divided by 1000 for storage."
             ];
             type: "u32";
           },
           {
             name: "lowerShiftThreshold";
             docs: [
-              "Lower shift threshold percent in 4 decimals. Divided by 1000 for storage.",
+              "Lower shift threshold percent in 4 decimals. Divided by 1000 for storage."
             ];
             type: "u32";
           },
@@ -3686,7 +3670,7 @@ export type Dex = {
             name: "minCenterPrice";
             docs: ["Minimum center price"];
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -3706,7 +3690,7 @@ export type Dex = {
           {
             name: "amtOut";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -3738,7 +3722,7 @@ export type Dex = {
           {
             name: "protocol";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -3770,7 +3754,7 @@ export type Dex = {
           {
             name: "protocol";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -3802,7 +3786,7 @@ export type Dex = {
           {
             name: "protocol";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -3834,7 +3818,7 @@ export type Dex = {
           {
             name: "protocol";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -3874,7 +3858,7 @@ export type Dex = {
           {
             name: "centerPrice";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -3890,7 +3874,7 @@ export type Dex = {
           {
             name: "lookupTable";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -3930,7 +3914,7 @@ export type Dex = {
           {
             name: "minCenterPrice";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -3942,7 +3926,7 @@ export type Dex = {
           {
             name: "dexId";
             type: "u16";
-          },
+          }
         ];
       };
     },
@@ -3954,7 +3938,7 @@ export type Dex = {
           {
             name: "dexId";
             type: "u16";
-          },
+          }
         ];
       };
     },
@@ -3978,7 +3962,7 @@ export type Dex = {
           {
             name: "pauseBorrow";
             type: "bool";
-          },
+          }
         ];
       };
     },
@@ -4010,7 +3994,7 @@ export type Dex = {
           {
             name: "protocol";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -4042,7 +4026,7 @@ export type Dex = {
           {
             name: "protocol";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -4074,7 +4058,7 @@ export type Dex = {
           {
             name: "protocol";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -4102,7 +4086,7 @@ export type Dex = {
           {
             name: "to";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -4118,14 +4102,14 @@ export type Dex = {
           {
             name: "swap0To1";
             docs: [
-              "`true` = token0 in / token1 out; `false` = token1 in / token0 out.",
+              "`true` = token0 in / token1 out; `false` = token1 in / token0 out."
             ];
             type: "bool";
           },
           {
             name: "maker";
             docs: [
-              "Signer that paid the input tokens — GeckoTerminal's `maker`.",
+              "Signer that paid the input tokens — GeckoTerminal's `maker`."
             ];
             type: "pubkey";
           },
@@ -4148,7 +4132,7 @@ export type Dex = {
             name: "feeAmountIn";
             docs: [
               "Swap fee charged on the input token: a subset of `amount_in`, inclusive of",
-              "the protocol revenue cut. Rounded DOWN to native units.",
+              "the protocol revenue cut. Rounded DOWN to native units."
             ];
             type: "u64";
           },
@@ -4156,14 +4140,14 @@ export type Dex = {
             name: "reservesToken0";
             docs: [
               "Pooled token0 after this swap — smart-collateral real reserves plus",
-              "smart-debt real reserves. Rounded DOWN to native units.",
+              "smart-debt real reserves. Rounded DOWN to native units."
             ];
             type: "u128";
           },
           {
             name: "reservesToken1";
             docs: [
-              "Pooled token1 after this swap. Rounded DOWN to native units.",
+              "Pooled token1 after this swap. Rounded DOWN to native units."
             ];
             type: "u128";
           },
@@ -4171,9 +4155,15 @@ export type Dex = {
             name: "poolPrice";
             docs: [
               "Post-swap pool (marginal) price, token1 per token0, 1e15 scale. This is NOT",
+              "the execution price of this swap (`amount_out / amount_in`): it is the ratio",
+              "of the post-swap imaginary reserves on whichever leg routed the larger",
+              "amount, so it excludes the swap fee and the slippage this swap paid.",
+              "Reserves are normalized to 9 decimals internally, so `pool_price / 1e15` is",
+              "already the whole-token price of token0 in token1 — no further decimal",
+              "adjustment is needed."
             ];
             type: "u128";
-          },
+          }
         ];
       };
     },
@@ -4189,7 +4179,7 @@ export type Dex = {
           {
             name: "token0Amt";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -4205,7 +4195,7 @@ export type Dex = {
           {
             name: "token0Amt";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -4217,7 +4207,7 @@ export type Dex = {
           {
             name: "dexId";
             type: "u16";
-          },
+          }
         ];
       };
     },
@@ -4229,7 +4219,7 @@ export type Dex = {
           {
             name: "dexId";
             type: "u16";
-          },
+          }
         ];
       };
     },
@@ -4253,7 +4243,7 @@ export type Dex = {
           {
             name: "unpauseBorrow";
             type: "bool";
-          },
+          }
         ];
       };
     },
@@ -4265,7 +4255,7 @@ export type Dex = {
           {
             name: "newAuthority";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -4283,7 +4273,7 @@ export type Dex = {
                 };
               };
             };
-          },
+          }
         ];
       };
     },
@@ -4307,7 +4297,7 @@ export type Dex = {
           {
             name: "oldLastStoredPrice";
             type: "u128";
-          },
+          }
         ];
       };
     },
@@ -4331,7 +4321,7 @@ export type Dex = {
           {
             name: "time";
             type: "u32";
-          },
+          }
         ];
       };
     },
@@ -4351,7 +4341,7 @@ export type Dex = {
           {
             name: "minCenterPrice";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -4367,7 +4357,7 @@ export type Dex = {
           {
             name: "lookupTable";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -4387,7 +4377,7 @@ export type Dex = {
           {
             name: "revenueCut";
             type: "u32";
-          },
+          }
         ];
       };
     },
@@ -4405,7 +4395,7 @@ export type Dex = {
                 };
               };
             };
-          },
+          }
         ];
       };
     },
@@ -4421,7 +4411,7 @@ export type Dex = {
           {
             name: "maxBorrowShares";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -4437,7 +4427,7 @@ export type Dex = {
           {
             name: "maxSupplyShares";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -4461,7 +4451,7 @@ export type Dex = {
           {
             name: "shiftTime";
             type: "u32";
-          },
+          }
         ];
       };
     },
@@ -4489,7 +4479,7 @@ export type Dex = {
           {
             name: "shiftTime";
             type: "u32";
-          },
+          }
         ];
       };
     },
@@ -4521,7 +4511,7 @@ export type Dex = {
           {
             name: "maxDebtCeiling";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -4541,7 +4531,7 @@ export type Dex = {
           {
             name: "isSupply";
             type: "bool";
-          },
+          }
         ];
       };
     },
@@ -4569,7 +4559,7 @@ export type Dex = {
           {
             name: "baseWithdrawalLimit";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -4589,7 +4579,7 @@ export type Dex = {
           {
             name: "newLimit";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -4609,7 +4599,7 @@ export type Dex = {
           {
             name: "token1UtilizationLimit";
             type: "u16";
-          },
+          }
         ];
       };
     },
@@ -4641,7 +4631,7 @@ export type Dex = {
           {
             name: "protocol";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -4673,7 +4663,7 @@ export type Dex = {
           {
             name: "protocol";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -4705,7 +4695,7 @@ export type Dex = {
           {
             name: "protocol";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -4787,7 +4777,7 @@ export type Dex = {
           {
             name: "interactingBalance";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -4811,7 +4801,7 @@ export type Dex = {
           {
             name: "maxDebtCeiling";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -4869,7 +4859,7 @@ export type Dex = {
           {
             name: "status";
             type: "u8";
-          },
+          }
         ];
       };
     },
@@ -4889,7 +4879,7 @@ export type Dex = {
           {
             name: "baseWithdrawalLimit";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -4951,9 +4941,9 @@ export type Dex = {
           {
             name: "status";
             type: "u8";
-          },
+          }
         ];
       };
-    },
+    }
   ];
 };

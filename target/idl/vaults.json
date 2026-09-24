@@ -2,7 +2,7 @@
   "address": "jupr81YtYssSyPt8jbnGuiWon5f6x9TcDEFxYe3Bdzi",
   "metadata": {
     "name": "vaults",
-    "version": "0.1.5",
+    "version": "0.1.8",
     "spec": "0.1.0",
     "description": "Created with Anchor"
   },
@@ -6332,6 +6332,9 @@
           },
           {
             "name": "DexSmartDebtPegOracle"
+          },
+          {
+            "name": "InfPool"
           }
         ]
       }

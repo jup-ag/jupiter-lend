@@ -8,7 +8,7 @@ export type Oracle = {
   address: "jupnw4B6Eqs7ft6rxpzYLJZYSnrpRgPcr589n5Kv4oc";
   metadata: {
     name: "oracle";
-    version: "0.1.5";
+    version: "0.1.8";
     spec: "0.1.0";
     description: "Created with Anchor";
   };
@@ -24,13 +24,13 @@ export type Oracle = {
         {
           name: "chainlinkDsCache";
           writable: true;
-        },
+        }
       ];
       args: [
         {
           name: "suspend";
           type: "bool";
-        },
+        }
       ];
     },
     {
@@ -39,13 +39,13 @@ export type Oracle = {
       accounts: [
         {
           name: "oracle";
-        },
+        }
       ];
       args: [
         {
           name: "nonce";
           type: "u16";
-        },
+        }
       ];
     },
     {
@@ -54,13 +54,13 @@ export type Oracle = {
       accounts: [
         {
           name: "oracle";
-        },
+        }
       ];
       args: [
         {
           name: "nonce";
           type: "u16";
-        },
+        }
       ];
       returns: "u128";
     },
@@ -70,13 +70,13 @@ export type Oracle = {
       accounts: [
         {
           name: "oracle";
-        },
+        }
       ];
       args: [
         {
           name: "nonce";
           type: "u16";
-        },
+        }
       ];
       returns: "u128";
     },
@@ -86,13 +86,13 @@ export type Oracle = {
       accounts: [
         {
           name: "oracle";
-        },
+        }
       ];
       args: [
         {
           name: "nonce";
           type: "u16";
-        },
+        }
       ];
       returns: "u128";
     },
@@ -102,13 +102,13 @@ export type Oracle = {
       accounts: [
         {
           name: "oracle";
-        },
+        }
       ];
       args: [
         {
           name: "nonce";
           type: "u16";
-        },
+        }
       ];
       returns: "u128";
     },
@@ -129,20 +129,20 @@ export type Oracle = {
               {
                 kind: "const";
                 value: [111, 114, 97, 99, 108, 101, 95, 97, 100, 109, 105, 110];
-              },
+              }
             ];
           };
         },
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
           name: "authority";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -176,20 +176,20 @@ export type Oracle = {
                   107,
                   95,
                   100,
-                  115,
+                  115
                 ];
               },
               {
                 kind: "arg";
                 path: "nonce";
-              },
+              }
             ];
           };
         },
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
@@ -211,7 +211,7 @@ export type Oracle = {
           type: {
             vec: "pubkey";
           };
-        },
+        }
       ];
     },
     {
@@ -238,7 +238,7 @@ export type Oracle = {
               {
                 kind: "arg";
                 path: "nonce";
-              },
+              }
             ];
           };
         },
@@ -260,7 +260,7 @@ export type Oracle = {
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
@@ -290,7 +290,7 @@ export type Oracle = {
               name: "sources";
             };
           };
-        },
+        }
       ];
     },
     {
@@ -317,14 +317,14 @@ export type Oracle = {
               {
                 kind: "arg";
                 path: "nonce";
-              },
+              }
             ];
           };
         },
         {
           name: "systemProgram";
           address: "11111111111111111111111111111111";
-        },
+        }
       ];
       args: [
         {
@@ -340,7 +340,7 @@ export type Oracle = {
         {
           name: "nonce";
           type: "u16";
-        },
+        }
       ];
     },
     {
@@ -369,7 +369,7 @@ export type Oracle = {
         {
           name: "verifierProgramId";
           address: "Gt9S41PtjR58CbG9JhJ3J6vxesqrNAswbWYbLNTMZA3c";
-        },
+        }
       ];
       args: [
         {
@@ -381,7 +381,7 @@ export type Oracle = {
         {
           name: "serializedReport";
           type: "bytes";
-        },
+        }
       ];
     },
     {
@@ -395,13 +395,13 @@ export type Oracle = {
         {
           name: "oracleAdmin";
           writable: true;
-        },
+        }
       ];
       args: [
         {
           name: "newAuthority";
           type: "pubkey";
-        },
+        }
       ];
     },
     {
@@ -415,7 +415,7 @@ export type Oracle = {
         {
           name: "oracleAdmin";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -427,7 +427,7 @@ export type Oracle = {
               };
             };
           };
-        },
+        }
       ];
     },
     {
@@ -445,7 +445,7 @@ export type Oracle = {
         {
           name: "chainlinkDsCache";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -457,7 +457,7 @@ export type Oracle = {
               };
             };
           };
-        },
+        }
       ];
     },
     {
@@ -475,7 +475,7 @@ export type Oracle = {
         {
           name: "chainlinkDsCache";
           writable: true;
-        },
+        }
       ];
       args: [
         {
@@ -487,9 +487,9 @@ export type Oracle = {
               };
             };
           };
-        },
+        }
       ];
-    },
+    }
   ];
   accounts: [
     {
@@ -507,7 +507,7 @@ export type Oracle = {
     {
       name: "oracleAdmin";
       discriminator: [239, 232, 8, 20, 254, 63, 25, 246];
-    },
+    }
   ];
   events: [
     {
@@ -537,7 +537,7 @@ export type Oracle = {
     {
       name: "logUpdateCacheKeepers";
       discriminator: [33, 129, 191, 130, 117, 119, 198, 235];
-    },
+    }
   ];
   errors: [
     {
@@ -825,6 +825,36 @@ export type Oracle = {
       name: "dexPegInvalidKind";
       msg: "dexPegInvalidKind";
     },
+    {
+      code: 6057;
+      name: "infPoolInvalidState";
+      msg: "infPoolInvalidState";
+    },
+    {
+      code: 6058;
+      name: "infPoolWrongVersion";
+      msg: "infPoolWrongVersion";
+    },
+    {
+      code: 6059;
+      name: "infPoolDisabled";
+      msg: "infPoolDisabled";
+    },
+    {
+      code: 6060;
+      name: "infPoolRebalancing";
+      msg: "infPoolRebalancing";
+    },
+    {
+      code: 6061;
+      name: "infPoolMintMismatch";
+      msg: "infPoolMintMismatch";
+    },
+    {
+      code: 6062;
+      name: "infPoolMintSupplyZero";
+      msg: "infPoolMintSupplyZero";
+    }
   ];
   types: [
     {
@@ -839,7 +869,7 @@ export type Oracle = {
           {
             name: "value";
             type: "bool";
-          },
+          }
         ];
       };
     },
@@ -891,7 +921,7 @@ export type Oracle = {
             type: {
               vec: "pubkey";
             };
-          },
+          }
         ];
       };
     },
@@ -913,7 +943,7 @@ export type Oracle = {
             docs: [
               "Last market status observed from the most recent report (0 = not yet seen / Unknown).",
               "Set directly from the report's market_status field on every cache refresh.",
-              "For V8/V10 feeds this maps to ReportDataMarketStatus; for V11 to ReportDataV11MarketStatus.",
+              "For V8/V10 feeds this maps to ReportDataMarketStatus; for V11 to ReportDataV11MarketStatus."
             ];
             type: "u32";
           },
@@ -924,7 +954,7 @@ export type Oracle = {
           {
             name: "xstocksLastMultiplier";
             docs: [
-              "Last current_multiplier seen for this feed via a v10 report.",
+              "Last current_multiplier seen for this feed via a v10 report."
             ];
             type: "u128";
           },
@@ -932,7 +962,7 @@ export type Oracle = {
             name: "xstocksLastObservationsTimestampMultiplierS";
             docs: [
               "`observations_timestamp` (seconds) from the last accepted V10 report.",
-              "Enforces strictly-monotonic sequencing to prevent replay of old multiplier reports.",
+              "Enforces strictly-monotonic sequencing to prevent replay of old multiplier reports."
             ];
             type: "u64";
           },
@@ -941,7 +971,7 @@ export type Oracle = {
             type: {
               array: ["u8", 24];
             };
-          },
+          }
         ];
       };
     },
@@ -970,7 +1000,7 @@ export type Oracle = {
           },
           {
             name: "cryptoPrice";
-          },
+          }
         ];
       };
     },
@@ -978,7 +1008,7 @@ export type Oracle = {
       name: "dexPegOracleConfig";
       docs: [
         "Immutable dex peg oracle configuration (EVM constructor immutables).",
-        "Referenced by one hop in [`Oracle::sources`] via `Sources.source`.",
+        "Referenced by one hop in [`Oracle::sources`] via `Sources.source`."
       ];
       type: {
         kind: "struct";
@@ -1012,7 +1042,7 @@ export type Oracle = {
             docs: [
               "Which token the combined reserves are denominated in (EVM",
               "`QUOTE_IN_TOKEN0`). Irrelevant for pure 1:1 pegs (both orientations sum",
-              "identically); meaningful once a [`Self::conversion_source`] is set.",
+              "identically); meaningful once a [`Self::conversion_source`] is set."
             ];
             type: "bool";
           },
@@ -1025,7 +1055,9 @@ export type Oracle = {
               "entry's own `invert`). `source == Pubkey::default()` → hard 1:1 peg",
               "(USDC/USDT style), no extra account.",
               "Restricted to single-account source types (Pyth, StakePool, MsolPool,",
-              "Redstone, Chainlink, ChainlinkDataStreams).",
+              "Redstone, Chainlink, ChainlinkDataStreams) and PstPool — which",
+              "consumes two tail accounts (pool state + mint) with `source` holding",
+              "the pool state."
             ];
             type: {
               defined: {
@@ -1054,7 +1086,7 @@ export type Oracle = {
             type: {
               array: ["u8", 32];
             };
-          },
+          }
         ];
       };
     },
@@ -1072,7 +1104,7 @@ export type Oracle = {
           },
           {
             name: "debt";
-          },
+          }
         ];
       };
     },
@@ -1080,7 +1112,7 @@ export type Oracle = {
       name: "feedEntry";
       docs: [
         "One entry in the feed map: a 32-byte Chainlink feed ID paired with its report schema",
-        "type and, for V11 feeds, the set of trading sessions the feed supports.",
+        "type and, for V11 feeds, the set of trading sessions the feed supports."
       ];
       type: {
         kind: "struct";
@@ -1106,7 +1138,7 @@ export type Oracle = {
                 name: "v11FeedSessionType";
               };
             };
-          },
+          }
         ];
       };
     },
@@ -1124,7 +1156,7 @@ export type Oracle = {
           {
             name: "v11TransitionTimestampS";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -1144,7 +1176,7 @@ export type Oracle = {
           {
             name: "xstocksSuspended";
             type: "bool";
-          },
+          }
         ];
       };
     },
@@ -1160,7 +1192,7 @@ export type Oracle = {
           {
             name: "epoch";
             type: "u64";
-          },
+          }
         ];
       };
     },
@@ -1172,7 +1204,7 @@ export type Oracle = {
           {
             name: "newAuthority";
             type: "pubkey";
-          },
+          }
         ];
       };
     },
@@ -1190,7 +1222,7 @@ export type Oracle = {
                 };
               };
             };
-          },
+          }
         ];
       };
     },
@@ -1212,7 +1244,7 @@ export type Oracle = {
                 };
               };
             };
-          },
+          }
         ];
       };
     },
@@ -1234,7 +1266,7 @@ export type Oracle = {
                 };
               };
             };
-          },
+          }
         ];
       };
     },
@@ -1260,7 +1292,7 @@ export type Oracle = {
           {
             name: "bump";
             type: "u8";
-          },
+          }
         ];
       };
     },
@@ -1278,7 +1310,7 @@ export type Oracle = {
             type: {
               vec: "pubkey";
             };
-          },
+          }
         ];
       };
     },
@@ -1320,6 +1352,9 @@ export type Oracle = {
           {
             name: "dexSmartDebtPegOracle";
           },
+          {
+            name: "infPool";
+          }
         ];
       };
     },
@@ -1351,7 +1386,7 @@ export type Oracle = {
                 name: "sourceType";
               };
             };
-          },
+          }
         ];
       };
     },
@@ -1366,7 +1401,7 @@ export type Oracle = {
         "This enum captures which phases are valid for a given feed so that reports arriving",
         "with an unsupported status can be rejected early rather than silently accepted.",
         "",
-        "For non-V11 feed entries (`report_type != RWAAdvanced`) this field is ignored.",
+        "For non-V11 feed entries (`report_type != RWAAdvanced`) this field is ignored."
       ];
       repr: {
         kind: "rust";
@@ -1382,9 +1417,9 @@ export type Oracle = {
           },
           {
             name: "overnight";
-          },
+          }
         ];
       };
-    },
+    }
   ];
 };
