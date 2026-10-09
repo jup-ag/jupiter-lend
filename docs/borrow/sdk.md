@@ -4,6 +4,8 @@
 
 The Jupiter Vaults SDK provides a TypeScript interface for interacting with the Jupiter Vaults protocol. This documentation covers the main integration approach: getting instruction objects and account contexts for vault operations including deposit, withdraw, borrow, and payback through a single `operate` function.
 
+This guide matches `@jup-ag/lend` 0.4.0. `getOperateIx` supports standard (T1) vaults only and throws for smart (DEX) vaults.
+
 ## Installation
 
 ```bash
@@ -13,7 +15,12 @@ npm install @jup-ag/lend
 ## Setup
 
 ```typescript
-import { Connection, PublicKey, Transaction } from "@solana/web3.js";
+import {
+  Connection,
+  PublicKey,
+  TransactionMessage,
+  VersionedTransaction,
+} from "@solana/web3.js";
 import { getOperateIx } from "@jup-ag/lend/borrow";
 import { BN } from "bn.js";
 
@@ -43,13 +50,13 @@ const {
   remainingAccounts,
   remainingAccountsIndices,
 } = await getOperateIx({
-  colAmount: new BN(1000000000), // Collateral amount (1000 tokens scaled to 1e9)
-  debtAmount: new BN(500000000), // Debt amount (500 tokens scaled to 1e9)
+  colAmount: new BN(1000000000), // Collateral amount in supply-token native decimals (1,000 tokens at 6 decimals)
+  debtAmount: new BN(500000000), // Debt amount in borrow-token native decimals (500 tokens at 6 decimals)
   connection,
   positionId: nftId, // Position NFT ID (to create a new position pass it as 0)
   signer: publicKey, // Signer public key
   vaultId: vault_id, // Vault ID
-  cluster: "mainnet",
+  market: "main", // optional, defaults to "main"
 });
 
 // IMPORTANT: Must use v0 (versioned) transaction
@@ -71,6 +78,25 @@ const signature = await connection.sendTransaction(versionedTransaction);
 console.log("Transaction ID:", signature);
 ```
 
+### Parameters
+
+| Parameter            | Default    | Description                                                                                                                  |
+| -------------------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `vaultId`            | -          | Vault ID                                                                                                                     |
+| `positionId`         | -          | Position NFT ID. `0` creates a new position in the same transaction                                                          |
+| `colAmount`          | -          | Collateral change in supply-token native decimals. Positive = deposit, negative = withdraw                                   |
+| `debtAmount`         | -          | Debt change in borrow-token native decimals. Positive = borrow, negative = payback                                           |
+| `signer`             | -          | Signer and payer                                                                                                             |
+| `connection`         | -          | Solana connection                                                                                                            |
+| `market`             | `"main"`   | `"main"`, `"ethena"` or `"galaxy"`. Each market is a separate deployment                                                     |
+| `recipient`          | signer     | Receives withdrawn and borrowed tokens                                                                                       |
+| `positionOwner`      | signer     | Owner of the position NFT, used to derive `positionTokenAccount`                                                             |
+| `colAmountMode`      | `"exact"`  | `"max"` withdraws all collateral; `colAmount` must then be zero or negative                                                  |
+| `debtAmountMode`     | `"exact"`  | `"max"` pays back all debt; `debtAmount` must then be zero or negative and is used as the wrap budget for SOL                |
+| `includeATASetup`    | `false`    | Prepends create-ATA instructions for the supply and borrow mints (for the signer, and for `recipient` if set)                |
+| `includeWrapSol`     | `false`    | Wraps and unwraps native SOL when either mint is wrapped SOL                                                                 |
+| `wrapBufferLamports` | 0.01 SOL   | Extra lamports wrapped for a `"max"` SOL payback; the unused part is returned by the unwrap                                  |
+
 ### Automatic Position Creation
 
 If `positionId = 0` is provided, the function will automatically batch position creation instructions:
@@ -81,10 +107,9 @@ const { ixs, addressLookupTableAccounts, nftId } = await getOperateIx({
   colAmount: new BN(1000000000),
   debtAmount: new BN(0),
   connection,
-  positionId: 0, // No position ID = auto-create position
+  positionId: 0, // 0 = auto-create position
   signer: publicKey,
   vaultId: 1,
-  cluster: "mainnet",
 });
 
 console.log("New position NFT ID:", nftId); // ID of the created position
@@ -104,9 +129,13 @@ versionedTransaction.sign([signerKeypair]);
 const signature = await connection.sendTransaction(versionedTransaction);
 ```
 
+To create a position on its own, `getInitPositionIx({ vaultId, connection, signer, market })` returns `{ ix, nftId }`.
+
 ---
 
 ## Operation Types
+
+Amounts are in each token's native decimals. The examples assume 6-decimal supply and borrow tokens.
 
 ### 1. Deposit Only
 
@@ -119,7 +148,6 @@ const { ixs, nftId } = await getOperateIx({
   positionId: 0, // Will create new position automatically
   signer: publicKey,
   vaultId: 1,
-  cluster: "mainnet",
 });
 
 console.log("Position NFT ID:", nftId); // Will be the new or existing position ID
@@ -136,7 +164,6 @@ const { ixs } = await getOperateIx({
   positionId: nft.id,
   signer: publicKey,
   vaultId: nft.vault.id,
-  cluster: "mainnet",
 });
 ```
 
@@ -151,7 +178,6 @@ const { ixs } = await getOperateIx({
   positionId: nft.id,
   signer: publicKey,
   vaultId: nft.vault.id,
-  cluster: "mainnet",
 });
 ```
 
@@ -166,7 +192,6 @@ const { ixs } = await getOperateIx({
   positionId: nft.id,
   signer: publicKey,
   vaultId: nft.vault.id,
-  cluster: "mainnet",
 });
 ```
 
@@ -181,7 +206,6 @@ const { ixs } = await getOperateIx({
   positionId: nft.id,
   signer: publicKey,
   vaultId: nft.vault.id,
-  cluster: "mainnet",
 });
 ```
 
@@ -196,7 +220,6 @@ const { ixs } = await getOperateIx({
   positionId: nft.id,
   signer: publicKey,
   vaultId: nft.vault.id,
-  cluster: "mainnet",
 });
 ```
 
@@ -205,13 +228,13 @@ const { ixs } = await getOperateIx({
 ```typescript
 // Withdraw all available collateral
 const { ixs } = await getOperateIx({
-  colAmount: new BN("-170141183460469231731687303715884105728"), // i128::MIN for max withdraw
+  colAmount: new BN(0), // ignored in "max" mode; must be zero or negative
+  colAmountMode: "max", // sends i128::MIN
   debtAmount: new BN(0),
   connection,
   positionId: nft.id,
   signer: publicKey,
   vaultId: nft.vault.id,
-  cluster: "mainnet",
 });
 ```
 
@@ -221,14 +244,16 @@ const { ixs } = await getOperateIx({
 // Payback all debt
 const { ixs } = await getOperateIx({
   colAmount: new BN(0),
-  debtAmount: new BN("-170141183460469231731687303715884105728"), // i128::MIN for max payback
+  debtAmount: new BN(-100000000), // approximate debt; used only to size a SOL wrap
+  debtAmountMode: "max", // sends i128::MIN
   connection,
   positionId: nft.id,
   signer: publicKey,
   vaultId: nft.vault.id,
-  cluster: "mainnet",
 });
 ```
+
+Passing `new BN("-170141183460469231731687303715884105728")` (i128::MIN) directly as `colAmount` or `debtAmount` has the same on-chain effect, but cannot be combined with `includeWrapSol`.
 
 ---
 
@@ -238,21 +263,23 @@ The `getOperateIx()` function returns an object with the following properties:
 
 ```typescript
 interface OperateIxResponse {
-  ixs: TransactionInstruction[]; // Array of transaction instructions
-  addressLookupTableAccounts: AddressLookupTableAccount[]; // Lookup table accounts for optimization
+  ixs: TransactionInstruction[]; // All instructions, in order
+  operateIx: TransactionInstruction; // The operate instruction (also inside ixs)
+  addressLookupTableAccounts: AddressLookupTableAccount[]; // Vault lookup table, if it has one
+  addressLookupTableAddresses: PublicKey[]; // Address of the vault lookup table, if it has one
   nftId: number; // Position NFT ID
   accounts: OperateAccounts; // All account addresses used in the operation
-  remainingAccounts: PublicKey[]; // Additional accounts (oracle sources, branches, ticks)
-  remainingAccountsIndices: number[]; // Indices for remaining accounts categorization
+  remainingAccounts: { pubkey: PublicKey; isWritable: boolean; isSigner: boolean }[]; // Oracle sources, branches, tick has debt arrays
+  remainingAccountsIndices: number[]; // [oracle sources, branches, tick has debt arrays] counts
 }
 
 interface OperateAccounts {
   signer: PublicKey;
   signerSupplyTokenAccount: PublicKey;
   signerBorrowTokenAccount: PublicKey;
-  recipient: PublicKey;
-  recipientBorrowTokenAccount: PublicKey;
-  recipientSupplyTokenAccount: PublicKey;
+  recipient: PublicKey | null; // null when no recipient is passed
+  recipientBorrowTokenAccount: PublicKey | null;
+  recipientSupplyTokenAccount: PublicKey | null;
   vaultConfig: PublicKey;
   vaultState: PublicKey;
   supplyToken: PublicKey;
@@ -273,17 +300,18 @@ interface OperateAccounts {
   borrowRateModel: PublicKey;
   vaultSupplyTokenAccount: PublicKey;
   vaultBorrowTokenAccount: PublicKey;
-  supplyTokenClaimAccount?: PublicKey; // Optional for claim operations
-  borrowTokenClaimAccount?: PublicKey; // Optional for claim operations
+  supplyTokenClaimAccount: null; // the SDK always uses direct transfers
+  borrowTokenClaimAccount: null;
   liquidity: PublicKey;
   liquidityProgram: PublicKey;
   oracleProgram: PublicKey;
   supplyTokenProgram: PublicKey;
   borrowTokenProgram: PublicKey;
-  associatedTokenProgram: PublicKey;
   systemProgram: PublicKey;
 }
 ```
+
+`associatedTokenProgram` is not part of `accounts`; it is optional in the IDL, and Anchor resolves its fixed address.
 
 ---
 
@@ -292,39 +320,35 @@ interface OperateAccounts {
 For Anchor programs that need to make CPI calls to Jupiter Vaults, you need to handle the setup instructions separately from the final operate instruction:
 
 ```typescript
+import { ASSOCIATED_TOKEN_PROGRAM_ID } from "@solana/spl-token";
+
 // In your frontend/client code
-const { ixs, accounts, remainingAccounts, remainingAccountsIndices } =
-  await getOperateIx({
-    colAmount: new BN(1000000000),
-    debtAmount: new BN(500000000),
-    connection,
-    positionId: nft.id,
-    signer: userPublicKey,
-    vaultId: nft.vault.id,
-    cluster: "mainnet",
-  });
+const {
+  ixs,
+  operateIx,
+  accounts,
+  remainingAccounts,
+  remainingAccountsIndices,
+  addressLookupTableAccounts,
+} = await getOperateIx({
+  colAmount: new BN(1000000000),
+  debtAmount: new BN(500000000),
+  connection,
+  positionId: nft.id,
+  signer: userPublicKey, // the account that signs the CPI (e.g. your program's PDA)
+  vaultId: nft.vault.id,
+});
 
 // IMPORTANT: For CPI integration, you need to:
-// 1. Execute setup instructions (all except the last one) in your transaction
-// 2. Use the last instruction's accounts for your CPI call
+// 1. Execute the instructions before `operateIx` (setup) in your transaction
+// 2. Replace `operateIx` with your program instruction that makes the CPI call
+// 3. Keep the instructions after `operateIx` (SOL unwrap, if requested)
+const operateIndex = ixs.indexOf(operateIx);
+const setupInstructions = ixs.slice(0, operateIndex);
+const postInstructions = ixs.slice(operateIndex + 1);
 
-// Setup instructions (all except last) - these prepare the environment
-const setupInstructions = ixs.slice(0, -1); // Remove last instruction
-const operateInstruction = ixs[ixs.length - 1]; // Last instruction is the actual direct operate call, for CPIs not needed
-
-// Your transaction should include setup instructions first using v0 transaction
-const latestBlockhash = await connection.getLatestBlockhash();
-
-const messageV0 = new TransactionMessage({
-  payerKey: userPublicKey,
-  recentBlockhash: latestBlockhash.blockhash,
-  instructions: [...setupInstructions /* your program instruction here */],
-}).compileToV0Message(addressLookupTableAccounts);
-
-const versionedTx = new VersionedTransaction(messageV0);
-
-// Then your program instruction that makes CPI call
-await program.methods
+// Your program instruction that makes the CPI call
+const yourInstruction = await program.methods
   .yourVaultOperateMethod(colAmount, debtAmount, remainingAccountsIndices)
   .accounts({
     // Your program accounts
@@ -362,24 +386,36 @@ await program.methods
     oracleProgram: accounts.oracleProgram,
     supplyTokenProgram: accounts.supplyTokenProgram,
     borrowTokenProgram: accounts.borrowTokenProgram,
-    associatedTokenProgram: accounts.associatedTokenProgram,
+    associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
     systemProgram: accounts.systemProgram,
 
     vaultsProgram: new PublicKey(
-      "Ho32sUQ4NzuAQgkPkHuNDG3G18rgHmYtXFA8EBmqQrAu"
-    ), // Devnet
+      "jupr81YtYssSyPt8jbnGuiWon5f6x9TcDEFxYe3Bdzi"
+    ), // main market
   })
   .remainingAccounts(remainingAccounts)
-  .rpc();
+  .instruction();
+
+// v0 transaction: setup instructions, your instruction, then any post instructions
+const latestBlockhash = await connection.getLatestBlockhash();
+
+const messageV0 = new TransactionMessage({
+  payerKey: userPublicKey,
+  recentBlockhash: latestBlockhash.blockhash,
+  instructions: [...setupInstructions, yourInstruction, ...postInstructions],
+}).compileToV0Message(addressLookupTableAccounts);
+
+const versionedTx = new VersionedTransaction(messageV0);
 ```
 
 ### CPI Setup Instructions
 
 The setup instructions handle:
 
-- Account initialization (if needed)
-- Token account creation
-- Tick and branch setup
+- Position creation, when `positionId` is 0
+- Token account creation, only when `includeATASetup` is set
+- SOL wrapping, only when `includeWrapSol` is set
+- Tick, branch and tick-ID account initialization (`init_tick`, `init_branch`, `init_tick_id_liquidation`) when the operation needs them
 
 **Important**: These setup instructions must be executed before your CPI call, as they prepare the program state for the vault operation.
 
@@ -445,20 +481,22 @@ The `remainingAccountsIndices` array contains three values:
 
 The `remainingAccounts` array is ordered as:
 
-1. Oracle sources (0 to indices[0])
-2. Branch accounts (indices[0] to indices[0] + indices[1])
-3. Tick has debt arrays (indices[0] + indices[1] to indices[0] + indices[1] + indices[2])
+1. Oracle sources (0 to indices[0]) - read-only
+2. Branch accounts (indices[0] to indices[0] + indices[1]) - writable
+3. Tick has debt arrays (indices[0] + indices[1] to indices[0] + indices[1] + indices[2]) - writable
 
 ---
 
 ## Important Notes
 
-### Amount Scaling
+### Amounts and Rounding
 
-- All amounts are scaled to 1e9 decimals internally by the vault
+- `colAmount` and `debtAmount` are in each token's native decimals. Do not scale them to 1e9; the vault does that internally (exactly, by 10^(9 − decimals)).
 - Use `new BN('number')` for amounts to handle large numbers
 - Positive values = deposit/borrow, Negative values = withdraw/payback
-- Use `new BN('-170141183460469231731687303715884105728')` for max withdraw/payback operations
+- Use `colAmountMode: "max"` / `debtAmountMode: "max"` for max withdraw/payback operations
+- Withdrawn and borrowed amounts are rounded down by the program (in the protocol's favour).
+- Deposits and paybacks are rounded up by one native unit (in the protocol's favour). A deposit of exactly the signer's full token balance is not rounded up. For a payback of exactly the signer's full borrow-token balance (non-SOL), the SDK reduces the payback by one unit so the transaction does not fail.
 
 ### Position Requirements
 
@@ -470,14 +508,14 @@ The `remainingAccounts` array is ordered as:
 ### Instructions Batching
 
 - The `ixs` array contains multiple instructions that must be executed in order
-- Instructions include: setup, account creation, environment preparation, and the final operate call
+- Instructions include: optional position creation, optional token account creation and SOL wrapping, vault account setup, the operate call, and an optional SOL unwrap after it
 - All instructions are required for proper vault operation
-- For CPI integration, execute setup instructions first, then make your CPI call with the operate instruction accounts
+- For CPI integration, use `operateIx` to split `ixs`: run the instructions before it, replace it with your CPI instruction, and keep the instructions after it
 
 ### Transaction Requirements
 
 - **Must use v0 (versioned) transactions** - Regular transactions are not supported
-- Address lookup tables are always provided and must be included in the transaction
+- Pass `addressLookupTableAccounts` to `compileToV0Message`
 - Multiple instructions are returned and must be executed in order
 - For CPI integration, execute setup instructions first, then make your CPI call with the operate instruction accounts
 
@@ -486,6 +524,7 @@ The `remainingAccounts` array is ordered as:
 Common errors to handle:
 
 - Invalid position ID or vault ID
+- Smart (DEX) vault passed to `getOperateIx`
 - Insufficient collateral for borrow operations
 - Position liquidation state conflicts
 - Network connectivity issues
@@ -494,7 +533,7 @@ Common errors to handle:
 
 ## Position NFT Creation
 
-Position NFTs are automatically created when `positionId` is not provided:
+Position NFTs are automatically created when `positionId` is 0:
 
 ```typescript
 // Create new position and deposit in one transaction
@@ -505,7 +544,6 @@ const { ixs, nftId, accounts } = await getOperateIx({
   positionId: 0,
   signer: publicKey,
   vaultId: 1,
-  cluster: "mainnet",
 });
 
 console.log("Created position NFT ID:", nftId);
@@ -518,6 +556,5 @@ const { ixs: subsequentIxs } = await getOperateIx({
   positionId: nftId, // Use the created position
   signer: publicKey,
   vaultId: 1,
-  cluster: "mainnet",
 });
 ```

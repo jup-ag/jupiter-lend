@@ -4,6 +4,8 @@
 
 The Jupiter Lend SDK provides a TypeScript interface for interacting with the Jupiter lending protocol. This documentation covers two main integration approaches: getting instruction objects for direct use and getting account contexts for Cross-Program Invocation (CPI) integrations.
 
+This guide matches `@jup-ag/lend` 0.4.0.
+
 ## Installation
 
 ```bash
@@ -14,15 +16,14 @@ npm install @jup-ag/lend
 
 ```typescript
 import {
-    Connection,
-    Keypair, 
-    PublicKey, 
-    TransactionMessage, 
-    TransactionInstruction, 
-    VersionedTransaction
+  Connection,
+  Keypair,
+  PublicKey,
+  TransactionMessage,
+  VersionedTransaction,
 } from "@solana/web3.js";
 import {
-  getDepositIx, getWithdrawIx, // get instructions
+  getDepositIxs, getWithdrawIxs, // get instructions
   getDepositContext, getWithdrawContext, // get context accounts for CPI
 } from "@jup-ag/lend/earn";
 import { BN } from "bn.js";
@@ -34,31 +35,46 @@ const signer = Keypair.fromSecretKey(new Uint8Array(privateKey));
 const usdc = new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"); // USDC mainnet
 ```
 
+### Markets
+
+Every function takes a `market` parameter: `"main"`, `"ethena"` or `"galaxy"`. Each market is a separate deployment with its own program IDs. The instruction builders default to `"main"`; the context and read functions require it.
+
 ---
 
 ## Instruction
 
-### Get Deposit Instruction
+`getDepositIxs` and `getWithdrawIxs` return `{ ixs: TransactionInstruction[] }`. Add all of `ixs`, in order, to your transaction.
+
+Amounts are `BN` values in the asset's native decimals. Pass `u64::MAX` (`new BN("18446744073709551615")`) to deposit the full token balance or withdraw the full fToken balance.
+
+| Option            | Default | Effect                                                                                                                              |
+| ----------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `market`          | `"main"` | Market to use                                                                                                                      |
+| `includeATASetup` | `false` | Prepends create-ATA instructions for the fToken (deposit) or the asset (withdraw). The program does not create token accounts itself |
+| `includeWrapSol`  | `false` | When `asset` is wrapped SOL, wraps native SOL before a deposit and unwraps after a withdraw                                          |
+| `wrapAmount`      | -       | Deposit only. Lamports to wrap when `amount` is the `u64::MAX` sentinel and `includeWrapSol` is set                                  |
+
+### Get Deposit Instructions
 
 ```typescript
-const depositIx = await getDepositIx({
+const { ixs: depositIxs } = await getDepositIxs({
     amount: new BN(1000000), // amount in token decimals (1 USDC)
-    asset: new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"), // asset mint address
+    asset: usdc, // asset mint address
     signer: signer.publicKey, // signer public key
     connection, // Solana connection
-    cluster: "mainnet",
+    market: "main",
 });
 ```
 
-### Get Withdraw Instruction
+### Get Withdraw Instructions
 
 ```typescript
-const withdrawIx = await getWithdrawIx({
+const { ixs: withdrawIxs } = await getWithdrawIxs({
     amount: new BN(1000000), // amount in token decimals (1 USDC)
-    asset: new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"), // asset mint address
+    asset: usdc, // asset mint address
     signer: signer.publicKey, // signer public key
     connection, // Solana connection
-    cluster: "mainnet",
+    market: "main",
 });
 ```
 
@@ -67,54 +83,37 @@ const withdrawIx = await getWithdrawIx({
 ```typescript
 import {
     Connection,
-    Keypair, 
-    PublicKey, 
-    TransactionMessage, 
-    Transaction,
-    TransactionInstruction,
-    VersionedTransaction
+    Keypair,
+    PublicKey,
+    TransactionMessage,
+    VersionedTransaction,
 } from "@solana/web3.js";
-import {
-    getDepositIx,
-} from "@jup-ag/lend/earn";
+import { getDepositIxs } from "@jup-ag/lend/earn";
 import { BN } from "bn.js";
 
 const signer = Keypair.fromSecretKey(new Uint8Array(privateKey));
-const connection = new Connection('https://api.mainnet-beta.solana.com');
+const connection = new Connection("https://api.mainnet-beta.solana.com");
 
-// Get deposit instruction
-const depositIx = await getDepositIx({
+// Get deposit instructions
+const { ixs } = await getDepositIxs({
     amount: new BN(1000000), // amount in token decimals (1 USDC)
     asset: new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"), // asset mint address
     signer: signer.publicKey, // signer public key
     connection, // Solana connection
-    cluster: "mainnet",
-});
-
-// Convert the raw instruction to TransactionInstruction
-const instruction = new TransactionInstruction({
-    programId: new PublicKey(depositIx.programId),
-    keys: depositIx.keys.map((key) => ({
-        pubkey: new PublicKey(key.pubkey),
-        isSigner: key.isSigner,
-        isWritable: key.isWritable,
-    })),
-    data: Buffer.from(depositIx.data),
+    includeATASetup: true, // create the fToken account if it does not exist
 });
 
 const latestBlockhash = await connection.getLatestBlockhash();
 const messageV0 = new TransactionMessage({
     payerKey: signer.publicKey,
     recentBlockhash: latestBlockhash.blockhash,
-    instructions: [instruction],
+    instructions: ixs,
 }).compileToV0Message();
 
 const transaction = new VersionedTransaction(messageV0);
 transaction.sign([signer]);
-const serializedTransaction = transaction.serialize();
-const blockhashInfo = await connection.getLatestBlockhashAndContext({ commitment: "finalized" });
 
-const signature = await connection.sendRawTransaction(serializedTransaction);
+const signature = await connection.sendRawTransaction(transaction.serialize());
 console.log(`https://solscan.io/tx/${signature}`);
 ```
 
@@ -126,9 +125,10 @@ For Anchor programs that need to make CPI calls to Jupiter Lend, use the context
 
 ```typescript
 const depositContext = await getDepositContext({
-    asset: new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"), // asset mint address
+    asset: usdc, // asset mint address
     signer: signer.publicKey, // signer public key
     connection,
+    market: "main",
 });
 ```
 
@@ -157,15 +157,20 @@ const depositContext = await getDepositContext({
 | `liquidity`                        | Main liquidity protocol PDA              |
 | `liquidityProgram`                 | Liquidity protocol program ID            |
 | `rewardsRateModel`                 | Rewards calculation model PDA            |
+| `tokenProgram`                     | Token program that owns the asset mint   |
+| `systemProgram`                    | System program                           |
+
+The context also contains `claimAccount`, `borrowTokenReservesLiquidity`, `lendingBorrowPositionOnLiquidity` and `sysvarInstruction`. The `deposit` instruction does not use them. `associatedTokenProgram` is not included; pass the Associated Token program ID.
 </details>
 
 ### Withdraw Context Accounts
 
 ```typescript
 const withdrawContext = await getWithdrawContext({
-    asset: new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"), // asset mint address
+    asset: usdc, // asset mint address
     signer: signer.publicKey, // signer public key
     connection,
+    market: "main",
 });
 ```
 
@@ -180,25 +185,27 @@ const withdrawContext = await getWithdrawContext({
 Similar to deposit context, but includes:
 
 - `ownerTokenAccount`: User's fToken account (source of fTokens to burn)
-- `claimAccount`: Additional account for withdrawal claim processing
+- `claimAccount`: Claim account on the liquidity program. Optional in the IDL and not used by `withdraw`
 
-| Account                            | Purpose                                  |
-| ---------------------------------- | ---------------------------------------- |
-| `signer`                           | User's wallet public key                 |
-| `ownerTokenAccount`                | User's underlying token account (source) |
-| `recipientTokenAccount`            | User's fToken account (destination)      |
-| `claimAccount`                     | Additional account for withdrawal        |
-| `mint`                             | Underlying token mint                    |
-| `lendingAdmin`                     | Protocol configuration PDA               | 
-| `lending`                          | Pool-specific configuration PDA          |
-| `fTokenMint`                       | fToken mint account                      |
-| `supplyTokenReservesLiquidity`     | Liquidity protocol token reserves        |
-| `lendingSupplyPositionOnLiquidity` | Protocol's position in liquidity pool    |
-| `rateModel`                        | Interest rate calculation model          |
-| `vault`                            | Protocol vault holding deposited tokens  |
-| `liquidity`                        | Main liquidity protocol PDA              |
-| `liquidityProgram`                 | Liquidity protocol program ID            |
-| `rewardsRateModel`                 | Rewards calculation model PDA            |
+| Account                            | Purpose                                     |
+| ---------------------------------- | ------------------------------------------- |
+| `signer`                           | User's wallet public key                    |
+| `ownerTokenAccount`                | User's fToken account (source)              |
+| `recipientTokenAccount`            | User's underlying token account (destination) |
+| `claimAccount`                     | Liquidity claim account (optional)          |
+| `mint`                             | Underlying token mint                       |
+| `lendingAdmin`                     | Protocol configuration PDA                  |
+| `lending`                          | Pool-specific configuration PDA             |
+| `fTokenMint`                       | fToken mint account                         |
+| `supplyTokenReservesLiquidity`     | Liquidity protocol token reserves           |
+| `lendingSupplyPositionOnLiquidity` | Protocol's position in liquidity pool       |
+| `rateModel`                        | Interest rate calculation model             |
+| `vault`                            | Protocol vault holding deposited tokens     |
+| `liquidity`                        | Main liquidity protocol PDA                 |
+| `liquidityProgram`                 | Liquidity protocol program ID               |
+| `rewardsRateModel`                 | Rewards calculation model PDA               |
+| `tokenProgram`                     | Token program that owns the asset mint      |
+| `systemProgram`                    | System program                              |
 </details>
 
 ### Example CPI Usage
@@ -207,6 +214,8 @@ Similar to deposit context, but includes:
 const depositContext = await getDepositContext({
   asset: usdcMint,
   signer: userPublicKey,
+  connection,
+  market: "main",
 });
 
 // Pass these accounts to your Anchor program
@@ -226,8 +235,8 @@ await program.methods
     // ... all other accounts from context
 
     lendingProgram: new PublicKey(
-      "7tjE28izRUjzmxC1QNXnNwcc4N82CNYCexf3k8mw67s3"
-    ),
+      "jup3YeL8QhtSx1e253b2FDvsMNC87fDrgQZivbrndc9"
+    ), // main market
   })
   .rpc();
 ```
@@ -247,7 +256,7 @@ The `getLendingTokens` function returns an array of `PublicKey` objects.
 ```typescript
 import { getLendingTokens } from "@jup-ag/lend/earn";
 
-const allTokens = await getLendingTokens({ connection });
+const allTokens = await getLendingTokens({ connection, market: "main" });
 ```
 ```typescript
 [
@@ -267,6 +276,7 @@ import { getLendingTokenDetails } from "@jup-ag/lend/earn";
 const tokenDetails = await getLendingTokenDetails({
     lendingToken: new PublicKey("9BEcn9aPEmhSPbPQeFGjidRiEKki46fVQDyPpSQXPA2D"), // allTokens[x] from the previous example
     connection,
+    market: "main",
 });
 ```
 ```typescript
@@ -277,10 +287,10 @@ const tokenDetails = await getLendingTokenDetails({
   decimals: number; // Decimals of asset (same as jlToken decimals)
   totalAssets: BN; // Total underlying assets in the pool
   totalSupply: BN; // Total shares supply
-  convertToShares: BN; // Multiplier to convert assets to shares
-  convertToAssets: BN; // Multiplier to convert shares to assets
-  rewardsRate: BN; // Rewards rate (1e4 decimals, 1e4 = 100%)
-  supplyRate: BN; // Supply APY rate (1e4 decimals, 1e4 = 100%)
+  convertToShares: BN; // Shares for one whole asset token (10^decimals units), rounded to nearest
+  convertToAssets: BN; // Assets for one whole share (10^decimals units), rounded to nearest
+  rewardsRate: BN; // Rewards rate (1e4 decimals, 1e4 = 100%), rounded down
+  supplyRate: BN; // Supply APY rate (1e4 decimals, 1e4 = 100%), rounded down
 }
 ```
 
@@ -295,6 +305,7 @@ const userPosition = await getUserLendingPositionByAsset({
     asset: new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"), // The address of underlying asset or tokenDetails.asset
     user: signer.publicKey, // User's wallet address
     connection,
+    market: "main",
 });
 ```
 ```typescript

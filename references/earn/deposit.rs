@@ -2,13 +2,15 @@ use anchor_lang::prelude::*;
 use anchor_lang::solana_program::{
     account_info::AccountInfo,
     instruction::{AccountMeta, Instruction},
-    program::invoke,
+    program::{get_return_data, invoke},
 };
 
 #[error_code]
 pub enum ErrorCodes {
     #[msg("CPI_TO_LENDING_PROGRAM_FAILED")]
     CpiToLendingProgramFailed,
+    #[msg("INVALID_RETURN_DATA")]
+    InvalidReturnData,
 }
 
 fn get_deposit_discriminator() -> Vec<u8> {
@@ -44,13 +46,16 @@ pub struct DepositParams<'info> {
     pub system_program: AccountInfo<'info>,
 
     // Target lending program
-    pub lending_program: UncheckedAccount<'info>,
+    pub lending_program: AccountInfo<'info>,
 }
 
 impl<'info> DepositParams<'info> {
-    pub fn deposit(&self, amount: u64) -> Result<()> {
+    /// Deposits `assets` of the underlying token (native decimals) and returns
+    /// the fToken shares minted (fToken decimals = underlying decimals).
+    /// `assets == u64::MAX` deposits the full `depositor_token_account` balance.
+    pub fn deposit(&self, assets: u64) -> Result<u64> {
         let mut instruction_data = get_deposit_discriminator();
-        instruction_data.extend_from_slice(&amount.to_le_bytes());
+        instruction_data.extend_from_slice(&assets.to_le_bytes());
 
         let account_metas = vec![
             // signer (mutable, signer)
@@ -77,13 +82,13 @@ impl<'info> DepositParams<'info> {
             AccountMeta::new(*self.vault.key, false),
             // liquidity (mutable)
             AccountMeta::new(*self.liquidity.key, false),
-            // liquidity_program (mutable)
-            AccountMeta::new(*self.liquidity_program.key, false),
+            // liquidity_program (readonly)
+            AccountMeta::new_readonly(*self.liquidity_program.key, false),
             // rewards_rate_model (readonly)
             AccountMeta::new_readonly(*self.rewards_rate_model.key, false),
             // token_program
             AccountMeta::new_readonly(*self.token_program.key, false),
-            // associated_token_program
+            // associated_token_program (optional in the IDL; passing the ATA program is valid)
             AccountMeta::new_readonly(*self.associated_token_program.key, false),
             // system_program
             AccountMeta::new_readonly(*self.system_program.key, false),
@@ -115,8 +120,20 @@ impl<'info> DepositParams<'info> {
                 self.token_program.clone(),
                 self.associated_token_program.clone(),
                 self.system_program.clone(),
+                self.lending_program.clone(),
             ],
         )
-        .map_err(|_| ErrorCodes::CpiToLendingProgramFailed.into())
+        .map_err(|_| error!(ErrorCodes::CpiToLendingProgramFailed))?;
+
+        // `deposit` returns the shares minted as a Borsh-encoded u64.
+        read_u64_return_data(self.lending_program.key)
     }
+}
+
+fn read_u64_return_data(lending_program: &Pubkey) -> Result<u64> {
+    let (program_id, data) =
+        get_return_data().ok_or(error!(ErrorCodes::InvalidReturnData))?;
+    // Return data is global to the transaction; make sure the lending program set it.
+    require_keys_eq!(program_id, *lending_program, ErrorCodes::InvalidReturnData);
+    u64::try_from_slice(&data).map_err(|_| error!(ErrorCodes::InvalidReturnData))
 }
