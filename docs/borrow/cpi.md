@@ -16,7 +16,7 @@ The account lists and instruction layouts below match the `vaults` IDL in [`targ
 | -------------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------- |
 | VAULTS_PROGRAM | `jupr81YtYssSyPt8jbnGuiWon5f6x9TcDEFxYe3Bdzi` | [vaults_mainnet](https://explorer.solana.com/address/jupr81YtYssSyPt8jbnGuiWon5f6x9TcDEFxYe3Bdzi) |
 
-This is the program ID of the `main` market and the address in the IDL. The SDK's `market` parameter also selects the `ethena` and `galaxy` markets, which are separate deployments with their own program IDs.
+This is the program ID of the `main` market and the address in the IDL. The SDK's `market` parameter also selects the `ethena` market, which are separate deployments with their own program IDs.
 
 #### Devnet
 

@@ -37,7 +37,7 @@ const usdc = new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"); // U
 
 ### Markets
 
-Every function takes a `market` parameter: `"main"`, `"ethena"` or `"galaxy"`. Each market is a separate deployment with its own program IDs. The instruction builders default to `"main"`; the context and read functions require it.
+Every function takes a `market` parameter: `"main"`, `"ethena"`. Each market is a separate deployment with its own program IDs. The instruction builders default to `"main"`; the context and read functions require it.
 
 ---
 

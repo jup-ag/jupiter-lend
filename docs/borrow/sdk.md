@@ -88,7 +88,7 @@ console.log("Transaction ID:", signature);
 | `debtAmount`         | -          | Debt change in borrow-token native decimals. Positive = borrow, negative = payback                                           |
 | `signer`             | -          | Signer and payer                                                                                                             |
 | `connection`         | -          | Solana connection                                                                                                            |
-| `market`             | `"main"`   | `"main"`, `"ethena"` or `"galaxy"`. Each market is a separate deployment                                                     |
+| `market`             | `"main"`   | `"main"` or `"ethena"`. Each market is a separate deployment                                                     |
 | `recipient`          | signer     | Receives withdrawn and borrowed tokens                                                                                       |
 | `positionOwner`      | signer     | Owner of the position NFT, used to derive `positionTokenAccount`                                                             |
 | `colAmountMode`      | `"exact"`  | `"max"` withdraws all collateral; `colAmount` must then be zero or negative                                                  |

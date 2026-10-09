@@ -15,7 +15,7 @@ The account lists and instruction layouts below match the `lending` IDL in [`tar
 | LENDING_PROGRAM   | `jup3YeL8QhtSx1e253b2FDvsMNC87fDrgQZivbrndc9` | [lending_mainnet](https://explorer.solana.com/address/jup3YeL8QhtSx1e253b2FDvsMNC87fDrgQZivbrndc9)   |
 | LIQUIDITY_PROGRAM | `jupeiUmn818Jg1ekPURTpr4mFo29p46vygyykFJ3wZC` | [liquidity_mainnet](https://explorer.solana.com/address/jupeiUmn818Jg1ekPURTpr4mFo29p46vygyykFJ3wZC) |
 
-These are the program IDs of the `main` market and the addresses in the IDL. The SDK's `market` parameter also selects the `ethena` and `galaxy` markets, which are separate deployments with their own program IDs.
+These are the program IDs of the `main` market and the addresses in the IDL. The SDK's `market` parameter also selects the `ethena` market, which are separate deployments with their own program IDs.
 
 #### Devnet
 

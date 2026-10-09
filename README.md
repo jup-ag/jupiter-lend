@@ -41,7 +41,7 @@ Mainnet program IDs of the `main` market, as recorded in the IDLs:
 | `dex`                       | `jupZ4m2GqUCJ5iueMfzQf8khFfH31d4XAQt3RzCT9Vd` | [dex.json](./target/idl/dex.json)                                          | 0.1.8   |
 | `flashloan`                 | `jupgfSgfuAXv4B6R2Uxu85Z1qdzgju79s6MfZekN6XS` | [flashloan.json](./target/idl/flashloan.json)                              | 0.1.4   |
 
-The SDK's `market` parameter also selects the `ethena` and `galaxy` markets. These are separate deployments with their own program IDs. The devnet programs listed in the CPI guides were last deployed in May 2025 and do not match these IDLs.
+The SDK's `market` parameter also selects the `ethena` market. These are separate deployments with their own program IDs. The devnet programs listed in the CPI guides were last deployed in May 2025 and do not match these IDLs.
 
 ## Repository layout
 
