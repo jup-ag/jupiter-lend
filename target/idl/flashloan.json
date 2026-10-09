@@ -9,7 +9,16 @@
   "instructions": [
     {
       "name": "activate_protocol",
-      "discriminator": [230, 235, 188, 19, 120, 91, 11, 94],
+      "discriminator": [
+        230,
+        235,
+        188,
+        19,
+        120,
+        91,
+        11,
+        94
+      ],
       "accounts": [
         {
           "name": "authority",
@@ -24,7 +33,16 @@
     },
     {
       "name": "flashloan_borrow",
-      "discriminator": [103, 19, 78, 24, 240, 9, 135, 63],
+      "discriminator": [
+        103,
+        19,
+        78,
+        24,
+        240,
+        9,
+        135,
+        63
+      ],
       "accounts": [
         {
           "name": "signer",
@@ -62,7 +80,9 @@
         },
         {
           "name": "liquidity_program",
-          "relations": ["flashloan_admin"]
+          "relations": [
+            "flashloan_admin"
+          ]
         },
         {
           "name": "token_program"
@@ -90,7 +110,16 @@
     },
     {
       "name": "flashloan_payback",
-      "discriminator": [213, 47, 153, 137, 84, 243, 94, 232],
+      "discriminator": [
+        213,
+        47,
+        153,
+        137,
+        84,
+        243,
+        94,
+        232
+      ],
       "accounts": [
         {
           "name": "signer",
@@ -128,7 +157,9 @@
         },
         {
           "name": "liquidity_program",
-          "relations": ["flashloan_admin"]
+          "relations": [
+            "flashloan_admin"
+          ]
         },
         {
           "name": "token_program"
@@ -156,7 +187,16 @@
     },
     {
       "name": "init_flashloan_admin",
-      "discriminator": [185, 117, 154, 56, 95, 12, 187, 139],
+      "discriminator": [
+        185,
+        117,
+        154,
+        56,
+        95,
+        12,
+        187,
+        139
+      ],
       "accounts": [
         {
           "name": "signer",
@@ -171,8 +211,21 @@
               {
                 "kind": "const",
                 "value": [
-                  102, 108, 97, 115, 104, 108, 111, 97, 110, 95, 97, 100, 109,
-                  105, 110
+                  102,
+                  108,
+                  97,
+                  115,
+                  104,
+                  108,
+                  111,
+                  97,
+                  110,
+                  95,
+                  97,
+                  100,
+                  109,
+                  105,
+                  110
                 ]
               }
             ]
@@ -200,7 +253,16 @@
     },
     {
       "name": "pause_protocol",
-      "discriminator": [144, 95, 0, 107, 119, 39, 248, 141],
+      "discriminator": [
+        144,
+        95,
+        0,
+        107,
+        119,
+        39,
+        248,
+        141
+      ],
       "accounts": [
         {
           "name": "authority",
@@ -215,7 +277,16 @@
     },
     {
       "name": "set_flashloan_fee",
-      "discriminator": [120, 248, 221, 70, 84, 216, 0, 149],
+      "discriminator": [
+        120,
+        248,
+        221,
+        70,
+        84,
+        216,
+        0,
+        149
+      ],
       "accounts": [
         {
           "name": "authority",
@@ -235,7 +306,16 @@
     },
     {
       "name": "update_authority",
-      "discriminator": [32, 46, 64, 28, 149, 75, 243, 88],
+      "discriminator": [
+        32,
+        46,
+        64,
+        28,
+        149,
+        75,
+        243,
+        88
+      ],
       "accounts": [
         {
           "name": "authority",
@@ -257,25 +337,70 @@
   "accounts": [
     {
       "name": "FlashloanAdmin",
-      "discriminator": [162, 161, 45, 28, 131, 91, 202, 88]
+      "discriminator": [
+        162,
+        161,
+        45,
+        28,
+        131,
+        91,
+        202,
+        88
+      ]
     }
   ],
   "events": [
     {
       "name": "ActivateProtocol",
-      "discriminator": [70, 178, 173, 151, 180, 166, 68, 102]
+      "discriminator": [
+        70,
+        178,
+        173,
+        151,
+        180,
+        166,
+        68,
+        102
+      ]
     },
     {
       "name": "LogUpdateAuthority",
-      "discriminator": [150, 152, 157, 143, 6, 135, 193, 101]
+      "discriminator": [
+        150,
+        152,
+        157,
+        143,
+        6,
+        135,
+        193,
+        101
+      ]
     },
     {
       "name": "PauseProtocol",
-      "discriminator": [66, 229, 166, 147, 152, 13, 42, 29]
+      "discriminator": [
+        66,
+        229,
+        166,
+        147,
+        152,
+        13,
+        42,
+        29
+      ]
     },
     {
       "name": "SetFlashloanFee",
-      "discriminator": [112, 164, 66, 251, 191, 56, 0, 47]
+      "discriminator": [
+        112,
+        164,
+        66,
+        251,
+        191,
+        56,
+        0,
+        47
+      ]
     }
   ],
   "errors": [

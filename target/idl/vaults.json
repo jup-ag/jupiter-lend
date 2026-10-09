@@ -9,7 +9,16 @@
   "instructions": [
     {
       "name": "get_exchange_prices",
-      "discriminator": [237, 128, 83, 152, 52, 21, 231, 86],
+      "discriminator": [
+        237,
+        128,
+        83,
+        152,
+        52,
+        21,
+        231,
+        86
+      ],
       "accounts": [
         {
           "name": "vault_state"
@@ -28,7 +37,16 @@
     },
     {
       "name": "init_branch",
-      "discriminator": [162, 91, 57, 23, 228, 93, 111, 21],
+      "discriminator": [
+        162,
+        91,
+        57,
+        23,
+        228,
+        93,
+        111,
+        21
+      ],
       "accounts": [
         {
           "name": "signer",
@@ -37,7 +55,9 @@
         },
         {
           "name": "vault_config",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         },
         {
           "name": "branch",
@@ -46,7 +66,14 @@
             "seeds": [
               {
                 "kind": "const",
-                "value": [98, 114, 97, 110, 99, 104]
+                "value": [
+                  98,
+                  114,
+                  97,
+                  110,
+                  99,
+                  104
+                ]
               },
               {
                 "kind": "arg",
@@ -77,7 +104,16 @@
     },
     {
       "name": "init_position",
-      "discriminator": [197, 20, 10, 1, 97, 160, 177, 91],
+      "discriminator": [
+        197,
+        20,
+        10,
+        1,
+        97,
+        160,
+        177,
+        91
+      ],
       "accounts": [
         {
           "name": "signer",
@@ -89,7 +125,9 @@
         },
         {
           "name": "vault_state",
-          "docs": ["@dev Verification inside instruction logic"],
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ],
           "writable": true
         },
         {
@@ -99,7 +137,16 @@
             "seeds": [
               {
                 "kind": "const",
-                "value": [112, 111, 115, 105, 116, 105, 111, 110]
+                "value": [
+                  112,
+                  111,
+                  115,
+                  105,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
               },
               {
                 "kind": "arg",
@@ -120,7 +167,19 @@
               {
                 "kind": "const",
                 "value": [
-                  112, 111, 115, 105, 116, 105, 111, 110, 95, 109, 105, 110, 116
+                  112,
+                  111,
+                  115,
+                  105,
+                  116,
+                  105,
+                  111,
+                  110,
+                  95,
+                  109,
+                  105,
+                  110,
+                  116
                 ]
               },
               {
@@ -146,9 +205,38 @@
               {
                 "kind": "const",
                 "value": [
-                  6, 221, 246, 225, 215, 101, 161, 147, 217, 203, 225, 70, 206,
-                  235, 121, 172, 28, 180, 133, 237, 95, 91, 55, 145, 58, 140,
-                  245, 133, 126, 255, 0, 169
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
                 ]
               },
               {
@@ -159,9 +247,38 @@
             "program": {
               "kind": "const",
               "value": [
-                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
-                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
-                219, 233, 248, 89
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
               ]
             }
           }
@@ -173,14 +290,52 @@
             "seeds": [
               {
                 "kind": "const",
-                "value": [109, 101, 116, 97, 100, 97, 116, 97]
+                "value": [
+                  109,
+                  101,
+                  116,
+                  97,
+                  100,
+                  97,
+                  116,
+                  97
+                ]
               },
               {
                 "kind": "const",
                 "value": [
-                  11, 112, 101, 177, 227, 209, 124, 69, 56, 157, 82, 127, 107,
-                  4, 195, 205, 88, 184, 108, 115, 26, 160, 253, 181, 73, 182,
-                  209, 188, 3, 248, 41, 70
+                  11,
+                  112,
+                  101,
+                  177,
+                  227,
+                  209,
+                  124,
+                  69,
+                  56,
+                  157,
+                  82,
+                  127,
+                  107,
+                  4,
+                  195,
+                  205,
+                  88,
+                  184,
+                  108,
+                  115,
+                  26,
+                  160,
+                  253,
+                  181,
+                  73,
+                  182,
+                  209,
+                  188,
+                  3,
+                  248,
+                  41,
+                  70
                 ]
               },
               {
@@ -191,9 +346,38 @@
             "program": {
               "kind": "const",
               "value": [
-                11, 112, 101, 177, 227, 209, 124, 69, 56, 157, 82, 127, 107, 4,
-                195, 205, 88, 184, 108, 115, 26, 160, 253, 181, 73, 182, 209,
-                188, 3, 248, 41, 70
+                11,
+                112,
+                101,
+                177,
+                227,
+                209,
+                124,
+                69,
+                56,
+                157,
+                82,
+                127,
+                107,
+                4,
+                195,
+                205,
+                88,
+                184,
+                108,
+                115,
+                26,
+                160,
+                253,
+                181,
+                73,
+                182,
+                209,
+                188,
+                3,
+                248,
+                41,
+                70
               ]
             }
           }
@@ -235,7 +419,16 @@
     },
     {
       "name": "init_tick",
-      "discriminator": [22, 13, 62, 141, 73, 89, 178, 29],
+      "discriminator": [
+        22,
+        13,
+        62,
+        141,
+        73,
+        89,
+        178,
+        29
+      ],
       "accounts": [
         {
           "name": "signer",
@@ -244,7 +437,9 @@
         },
         {
           "name": "vault_config",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         },
         {
           "name": "tick_data",
@@ -268,7 +463,16 @@
     },
     {
       "name": "init_tick_has_debt_array",
-      "discriminator": [206, 108, 146, 245, 20, 0, 141, 208],
+      "discriminator": [
+        206,
+        108,
+        146,
+        245,
+        20,
+        0,
+        141,
+        208
+      ],
       "accounts": [
         {
           "name": "signer",
@@ -277,7 +481,9 @@
         },
         {
           "name": "vault_config",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         },
         {
           "name": "tick_has_debt_array",
@@ -287,7 +493,19 @@
               {
                 "kind": "const",
                 "value": [
-                  116, 105, 99, 107, 95, 104, 97, 115, 95, 100, 101, 98, 116
+                  116,
+                  105,
+                  99,
+                  107,
+                  95,
+                  104,
+                  97,
+                  115,
+                  95,
+                  100,
+                  101,
+                  98,
+                  116
                 ]
               },
               {
@@ -319,7 +537,16 @@
     },
     {
       "name": "init_tick_id_liquidation",
-      "discriminator": [56, 110, 121, 169, 152, 241, 86, 183],
+      "discriminator": [
+        56,
+        110,
+        121,
+        169,
+        152,
+        241,
+        86,
+        183
+      ],
       "accounts": [
         {
           "name": "signer",
@@ -328,7 +555,9 @@
         },
         {
           "name": "tick_data",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         },
         {
           "name": "tick_id_liquidation",
@@ -356,7 +585,16 @@
     },
     {
       "name": "init_vault_admin",
-      "discriminator": [22, 133, 2, 244, 123, 100, 249, 230],
+      "discriminator": [
+        22,
+        133,
+        2,
+        244,
+        123,
+        100,
+        249,
+        230
+      ],
       "accounts": [
         {
           "name": "signer",
@@ -370,7 +608,19 @@
             "seeds": [
               {
                 "kind": "const",
-                "value": [118, 97, 117, 108, 116, 95, 97, 100, 109, 105, 110]
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  95,
+                  97,
+                  100,
+                  109,
+                  105,
+                  110
+                ]
               }
             ]
           }
@@ -393,7 +643,16 @@
     },
     {
       "name": "init_vault_config",
-      "discriminator": [41, 194, 69, 254, 196, 246, 226, 195],
+      "discriminator": [
+        41,
+        194,
+        69,
+        254,
+        196,
+        246,
+        226,
+        195
+      ],
       "accounts": [
         {
           "name": "authority",
@@ -412,7 +671,18 @@
               {
                 "kind": "const",
                 "value": [
-                  118, 97, 117, 108, 116, 95, 99, 111, 110, 102, 105, 103
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  95,
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
                 ]
               },
               {
@@ -430,7 +700,19 @@
               {
                 "kind": "const",
                 "value": [
-                  118, 97, 117, 108, 116, 95, 109, 101, 116, 97, 100, 97, 116,
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  95,
+                  109,
+                  101,
+                  116,
+                  97,
+                  100,
+                  97,
+                  116,
                   97
                 ]
               },
@@ -482,7 +764,16 @@
     },
     {
       "name": "init_vault_state",
-      "discriminator": [96, 120, 23, 100, 153, 11, 13, 165],
+      "discriminator": [
+        96,
+        120,
+        23,
+        100,
+        153,
+        11,
+        13,
+        165
+      ],
       "accounts": [
         {
           "name": "authority",
@@ -494,7 +785,9 @@
         },
         {
           "name": "vault_config",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         },
         {
           "name": "vault_state",
@@ -503,7 +796,19 @@
             "seeds": [
               {
                 "kind": "const",
-                "value": [118, 97, 117, 108, 116, 95, 115, 116, 97, 116, 101]
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  95,
+                  115,
+                  116,
+                  97,
+                  116,
+                  101
+                ]
               },
               {
                 "kind": "arg",
@@ -514,11 +819,15 @@
         },
         {
           "name": "supply_token_reserves_liquidity",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         },
         {
           "name": "borrow_token_reserves_liquidity",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         },
         {
           "name": "system_program",
@@ -534,7 +843,16 @@
     },
     {
       "name": "liquidate",
-      "discriminator": [223, 179, 226, 125, 48, 46, 39, 74],
+      "discriminator": [
+        223,
+        179,
+        226,
+        125,
+        48,
+        46,
+        39,
+        74
+      ],
       "accounts": [
         {
           "name": "signer",
@@ -677,7 +995,16 @@
         "",
         "Returns `(actual_debt, actual_col, token0_col, token1_col)`."
       ],
-      "discriminator": [28, 129, 253, 125, 243, 52, 11, 162],
+      "discriminator": [
+        28,
+        129,
+        253,
+        125,
+        243,
+        52,
+        11,
+        162
+      ],
       "accounts": [
         {
           "name": "signer",
@@ -686,7 +1013,9 @@
         },
         {
           "name": "signer_token_account",
-          "docs": ["@dev not required for T3/T4 (smart debt pays at DEX)"],
+          "docs": [
+            "@dev not required for T3/T4 (smart debt pays at DEX)"
+          ],
           "writable": true,
           "optional": true
         },
@@ -703,7 +1032,9 @@
         },
         {
           "name": "to_token_account",
-          "docs": ["@dev not required for T2/T4 (smart col withdraws at DEX)"],
+          "docs": [
+            "@dev not required for T2/T4 (smart col withdraws at DEX)"
+          ],
           "writable": true,
           "optional": true
         },
@@ -720,12 +1051,16 @@
         },
         {
           "name": "supply_token",
-          "docs": ["@dev not required for T2/T4"],
+          "docs": [
+            "@dev not required for T2/T4"
+          ],
           "optional": true
         },
         {
           "name": "borrow_token",
-          "docs": ["@dev not required for T3/T4"],
+          "docs": [
+            "@dev not required for T3/T4"
+          ],
           "optional": true
         },
         {
@@ -737,25 +1072,33 @@
         },
         {
           "name": "supply_token_reserves_liquidity",
-          "docs": ["@dev not required for T2/T4"],
+          "docs": [
+            "@dev not required for T2/T4"
+          ],
           "writable": true,
           "optional": true
         },
         {
           "name": "borrow_token_reserves_liquidity",
-          "docs": ["@dev not required for T3/T4"],
+          "docs": [
+            "@dev not required for T3/T4"
+          ],
           "writable": true,
           "optional": true
         },
         {
           "name": "vault_supply_position_on_liquidity",
-          "docs": ["@dev not required for T2/T4"],
+          "docs": [
+            "@dev not required for T2/T4"
+          ],
           "writable": true,
           "optional": true
         },
         {
           "name": "vault_borrow_position_on_liquidity",
-          "docs": ["@dev not required for T3/T4"],
+          "docs": [
+            "@dev not required for T3/T4"
+          ],
           "writable": true,
           "optional": true
         },
@@ -818,13 +1161,17 @@
             },
             {
               "name": "dex_user_token0_account",
-              "docs": ["Signer's token0 account"],
+              "docs": [
+                "Signer's token0 account"
+              ],
               "writable": true,
               "optional": true
             },
             {
               "name": "dex_user_token1_account",
-              "docs": ["Signer's token1 account"],
+              "docs": [
+                "Signer's token1 account"
+              ],
               "writable": true,
               "optional": true
             },
@@ -944,13 +1291,17 @@
             },
             {
               "name": "dex_user_token0_account",
-              "docs": ["Signer's token0 account"],
+              "docs": [
+                "Signer's token0 account"
+              ],
               "writable": true,
               "optional": true
             },
             {
               "name": "dex_user_token1_account",
-              "docs": ["Signer's token1 account"],
+              "docs": [
+                "Signer's token1 account"
+              ],
               "writable": true,
               "optional": true
             },
@@ -1125,7 +1476,16 @@
         "",
         "Returns `(actual_debt, token0_debt, token1_debt, actual_col, token0_col, token1_col)`."
       ],
-      "discriminator": [26, 113, 116, 50, 247, 131, 208, 5],
+      "discriminator": [
+        26,
+        113,
+        116,
+        50,
+        247,
+        131,
+        208,
+        5
+      ],
       "accounts": [
         {
           "name": "signer",
@@ -1134,7 +1494,9 @@
         },
         {
           "name": "signer_token_account",
-          "docs": ["@dev not required for T3/T4 (smart debt pays at DEX)"],
+          "docs": [
+            "@dev not required for T3/T4 (smart debt pays at DEX)"
+          ],
           "writable": true,
           "optional": true
         },
@@ -1151,7 +1513,9 @@
         },
         {
           "name": "to_token_account",
-          "docs": ["@dev not required for T2/T4 (smart col withdraws at DEX)"],
+          "docs": [
+            "@dev not required for T2/T4 (smart col withdraws at DEX)"
+          ],
           "writable": true,
           "optional": true
         },
@@ -1168,12 +1532,16 @@
         },
         {
           "name": "supply_token",
-          "docs": ["@dev not required for T2/T4"],
+          "docs": [
+            "@dev not required for T2/T4"
+          ],
           "optional": true
         },
         {
           "name": "borrow_token",
-          "docs": ["@dev not required for T3/T4"],
+          "docs": [
+            "@dev not required for T3/T4"
+          ],
           "optional": true
         },
         {
@@ -1185,25 +1553,33 @@
         },
         {
           "name": "supply_token_reserves_liquidity",
-          "docs": ["@dev not required for T2/T4"],
+          "docs": [
+            "@dev not required for T2/T4"
+          ],
           "writable": true,
           "optional": true
         },
         {
           "name": "borrow_token_reserves_liquidity",
-          "docs": ["@dev not required for T3/T4"],
+          "docs": [
+            "@dev not required for T3/T4"
+          ],
           "writable": true,
           "optional": true
         },
         {
           "name": "vault_supply_position_on_liquidity",
-          "docs": ["@dev not required for T2/T4"],
+          "docs": [
+            "@dev not required for T2/T4"
+          ],
           "writable": true,
           "optional": true
         },
         {
           "name": "vault_borrow_position_on_liquidity",
-          "docs": ["@dev not required for T3/T4"],
+          "docs": [
+            "@dev not required for T3/T4"
+          ],
           "writable": true,
           "optional": true
         },
@@ -1266,13 +1642,17 @@
             },
             {
               "name": "dex_user_token0_account",
-              "docs": ["Signer's token0 account"],
+              "docs": [
+                "Signer's token0 account"
+              ],
               "writable": true,
               "optional": true
             },
             {
               "name": "dex_user_token1_account",
-              "docs": ["Signer's token1 account"],
+              "docs": [
+                "Signer's token1 account"
+              ],
               "writable": true,
               "optional": true
             },
@@ -1392,13 +1772,17 @@
             },
             {
               "name": "dex_user_token0_account",
-              "docs": ["Signer's token0 account"],
+              "docs": [
+                "Signer's token0 account"
+              ],
               "writable": true,
               "optional": true
             },
             {
               "name": "dex_user_token1_account",
-              "docs": ["Signer's token1 account"],
+              "docs": [
+                "Signer's token1 account"
+              ],
               "writable": true,
               "optional": true
             },
@@ -1562,7 +1946,16 @@
     },
     {
       "name": "operate",
-      "discriminator": [217, 106, 208, 99, 116, 151, 42, 135],
+      "discriminator": [
+        217,
+        106,
+        208,
+        99,
+        116,
+        151,
+        42,
+        135
+      ],
       "accounts": [
         {
           "name": "signer",
@@ -1602,7 +1995,9 @@
         },
         {
           "name": "vault_state",
-          "docs": ["@dev verification inside instruction logic"],
+          "docs": [
+            "@dev verification inside instruction logic"
+          ],
           "writable": true
         },
         {
@@ -1620,7 +2015,9 @@
         },
         {
           "name": "position_token_account",
-          "docs": ["@dev verification inside instruction logic"]
+          "docs": [
+            "@dev verification inside instruction logic"
+          ]
         },
         {
           "name": "current_position_tick",
@@ -1733,7 +2130,16 @@
     },
     {
       "name": "operate_dex",
-      "discriminator": [223, 122, 223, 181, 133, 132, 116, 33],
+      "discriminator": [
+        223,
+        122,
+        223,
+        181,
+        133,
+        132,
+        116,
+        33
+      ],
       "accounts": [
         {
           "name": "signer",
@@ -1937,13 +2343,17 @@
             },
             {
               "name": "dex_user_token0_account",
-              "docs": ["Signer's token0 account"],
+              "docs": [
+                "Signer's token0 account"
+              ],
               "writable": true,
               "optional": true
             },
             {
               "name": "dex_user_token1_account",
-              "docs": ["Signer's token1 account"],
+              "docs": [
+                "Signer's token1 account"
+              ],
               "writable": true,
               "optional": true
             },
@@ -2063,13 +2473,17 @@
             },
             {
               "name": "dex_user_token0_account",
-              "docs": ["Signer's token0 account"],
+              "docs": [
+                "Signer's token0 account"
+              ],
               "writable": true,
               "optional": true
             },
             {
               "name": "dex_user_token1_account",
-              "docs": ["Signer's token1 account"],
+              "docs": [
+                "Signer's token1 account"
+              ],
               "writable": true,
               "optional": true
             },
@@ -2176,7 +2590,9 @@
         },
         {
           "name": "dex_program",
-          "docs": ["@audit verify dex program in instruction logic"]
+          "docs": [
+            "@audit verify dex program in instruction logic"
+          ]
         }
       ],
       "args": [
@@ -2218,7 +2634,16 @@
     },
     {
       "name": "operate_perfect_dex",
-      "discriminator": [88, 34, 180, 77, 152, 186, 166, 162],
+      "discriminator": [
+        88,
+        34,
+        180,
+        77,
+        152,
+        186,
+        166,
+        162
+      ],
       "accounts": [
         {
           "name": "signer",
@@ -2422,13 +2847,17 @@
             },
             {
               "name": "dex_user_token0_account",
-              "docs": ["Signer's token0 account"],
+              "docs": [
+                "Signer's token0 account"
+              ],
               "writable": true,
               "optional": true
             },
             {
               "name": "dex_user_token1_account",
-              "docs": ["Signer's token1 account"],
+              "docs": [
+                "Signer's token1 account"
+              ],
               "writable": true,
               "optional": true
             },
@@ -2548,13 +2977,17 @@
             },
             {
               "name": "dex_user_token0_account",
-              "docs": ["Signer's token0 account"],
+              "docs": [
+                "Signer's token0 account"
+              ],
               "writable": true,
               "optional": true
             },
             {
               "name": "dex_user_token1_account",
-              "docs": ["Signer's token1 account"],
+              "docs": [
+                "Signer's token1 account"
+              ],
               "writable": true,
               "optional": true
             },
@@ -2661,7 +3094,9 @@
         },
         {
           "name": "dex_program",
-          "docs": ["@audit verify dex program in instruction logic"]
+          "docs": [
+            "@audit verify dex program in instruction logic"
+          ]
         }
       ],
       "args": [
@@ -2703,13 +3138,24 @@
     },
     {
       "name": "rebalance",
-      "discriminator": [108, 158, 77, 9, 210, 52, 88, 62],
+      "discriminator": [
+        108,
+        158,
+        77,
+        9,
+        210,
+        52,
+        88,
+        62
+      ],
       "accounts": [
         {
           "name": "rebalancer",
           "writable": true,
           "signer": true,
-          "relations": ["vault_config"]
+          "relations": [
+            "vault_config"
+          ]
         },
         {
           "name": "rebalancer_supply_token_account",
@@ -2729,16 +3175,22 @@
         },
         {
           "name": "vault_state",
-          "docs": ["@dev verification inside instruction logic"],
+          "docs": [
+            "@dev verification inside instruction logic"
+          ],
           "writable": true
         },
         {
           "name": "supply_token",
-          "relations": ["vault_config"]
+          "relations": [
+            "vault_config"
+          ]
         },
         {
           "name": "borrow_token",
-          "relations": ["vault_config"]
+          "relations": [
+            "vault_config"
+          ]
         },
         {
           "name": "supply_token_reserves_liquidity",
@@ -2796,17 +3248,30 @@
     },
     {
       "name": "rebalance_dex",
-      "discriminator": [71, 178, 19, 146, 254, 47, 109, 126],
+      "discriminator": [
+        71,
+        178,
+        19,
+        146,
+        254,
+        47,
+        109,
+        126
+      ],
       "accounts": [
         {
           "name": "rebalancer",
           "writable": true,
           "signer": true,
-          "relations": ["vault_config"]
+          "relations": [
+            "vault_config"
+          ]
         },
         {
           "name": "rebalancer_supply_token_account",
-          "docs": ["@dev not required for T2/T4 (smart collateral)"],
+          "docs": [
+            "@dev not required for T2/T4 (smart collateral)"
+          ],
           "writable": true,
           "optional": true,
           "pda": {
@@ -2827,16 +3292,47 @@
             "program": {
               "kind": "const",
               "value": [
-                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
-                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
-                219, 233, 248, 89
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
               ]
             }
           }
         },
         {
           "name": "rebalancer_borrow_token_account",
-          "docs": ["@dev not required for T3/T4 (smart debt)"],
+          "docs": [
+            "@dev not required for T3/T4 (smart debt)"
+          ],
           "writable": true,
           "optional": true,
           "pda": {
@@ -2857,9 +3353,38 @@
             "program": {
               "kind": "const",
               "value": [
-                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
-                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
-                219, 233, 248, 89
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
               ]
             }
           }
@@ -2874,35 +3399,47 @@
         },
         {
           "name": "supply_token",
-          "docs": ["@dev not required for T2/T4 (smart collateral)"],
+          "docs": [
+            "@dev not required for T2/T4 (smart collateral)"
+          ],
           "optional": true
         },
         {
           "name": "borrow_token",
-          "docs": ["@dev not required for T3/T4 (smart debt)"],
+          "docs": [
+            "@dev not required for T3/T4 (smart debt)"
+          ],
           "optional": true
         },
         {
           "name": "supply_token_reserves_liquidity",
-          "docs": ["@dev not required for T2/T4 (smart collateral)"],
+          "docs": [
+            "@dev not required for T2/T4 (smart collateral)"
+          ],
           "writable": true,
           "optional": true
         },
         {
           "name": "borrow_token_reserves_liquidity",
-          "docs": ["@dev not required for T3/T4 (smart debt)"],
+          "docs": [
+            "@dev not required for T3/T4 (smart debt)"
+          ],
           "writable": true,
           "optional": true
         },
         {
           "name": "vault_supply_position_on_liquidity",
-          "docs": ["@dev not required for T2/T4 (smart collateral)"],
+          "docs": [
+            "@dev not required for T2/T4 (smart collateral)"
+          ],
           "writable": true,
           "optional": true
         },
         {
           "name": "vault_borrow_position_on_liquidity",
-          "docs": ["@dev not required for T3/T4 (smart debt)"],
+          "docs": [
+            "@dev not required for T3/T4 (smart debt)"
+          ],
           "writable": true,
           "optional": true
         },
@@ -2969,13 +3506,17 @@
             },
             {
               "name": "dex_user_token0_account",
-              "docs": ["Signer's token0 account"],
+              "docs": [
+                "Signer's token0 account"
+              ],
               "writable": true,
               "optional": true
             },
             {
               "name": "dex_user_token1_account",
-              "docs": ["Signer's token1 account"],
+              "docs": [
+                "Signer's token1 account"
+              ],
               "writable": true,
               "optional": true
             },
@@ -3095,13 +3636,17 @@
             },
             {
               "name": "dex_user_token0_account",
-              "docs": ["Signer's token0 account"],
+              "docs": [
+                "Signer's token0 account"
+              ],
               "writable": true,
               "optional": true
             },
             {
               "name": "dex_user_token1_account",
-              "docs": ["Signer's token1 account"],
+              "docs": [
+                "Signer's token1 account"
+              ],
               "writable": true,
               "optional": true
             },
@@ -3235,17 +3780,30 @@
         "driven by the imbalance sign; the `*_min_max` slippage bounds behave as in",
         "[`Self::rebalance_dex`]."
       ],
-      "discriminator": [240, 127, 38, 166, 99, 125, 51, 124],
+      "discriminator": [
+        240,
+        127,
+        38,
+        166,
+        99,
+        125,
+        51,
+        124
+      ],
       "accounts": [
         {
           "name": "rebalancer",
           "writable": true,
           "signer": true,
-          "relations": ["vault_config"]
+          "relations": [
+            "vault_config"
+          ]
         },
         {
           "name": "rebalancer_supply_token_account",
-          "docs": ["@dev not required for T2/T4 (smart collateral)"],
+          "docs": [
+            "@dev not required for T2/T4 (smart collateral)"
+          ],
           "writable": true,
           "optional": true,
           "pda": {
@@ -3266,16 +3824,47 @@
             "program": {
               "kind": "const",
               "value": [
-                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
-                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
-                219, 233, 248, 89
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
               ]
             }
           }
         },
         {
           "name": "rebalancer_borrow_token_account",
-          "docs": ["@dev not required for T3/T4 (smart debt)"],
+          "docs": [
+            "@dev not required for T3/T4 (smart debt)"
+          ],
           "writable": true,
           "optional": true,
           "pda": {
@@ -3296,9 +3885,38 @@
             "program": {
               "kind": "const",
               "value": [
-                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
-                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
-                219, 233, 248, 89
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
               ]
             }
           }
@@ -3313,35 +3931,47 @@
         },
         {
           "name": "supply_token",
-          "docs": ["@dev not required for T2/T4 (smart collateral)"],
+          "docs": [
+            "@dev not required for T2/T4 (smart collateral)"
+          ],
           "optional": true
         },
         {
           "name": "borrow_token",
-          "docs": ["@dev not required for T3/T4 (smart debt)"],
+          "docs": [
+            "@dev not required for T3/T4 (smart debt)"
+          ],
           "optional": true
         },
         {
           "name": "supply_token_reserves_liquidity",
-          "docs": ["@dev not required for T2/T4 (smart collateral)"],
+          "docs": [
+            "@dev not required for T2/T4 (smart collateral)"
+          ],
           "writable": true,
           "optional": true
         },
         {
           "name": "borrow_token_reserves_liquidity",
-          "docs": ["@dev not required for T3/T4 (smart debt)"],
+          "docs": [
+            "@dev not required for T3/T4 (smart debt)"
+          ],
           "writable": true,
           "optional": true
         },
         {
           "name": "vault_supply_position_on_liquidity",
-          "docs": ["@dev not required for T2/T4 (smart collateral)"],
+          "docs": [
+            "@dev not required for T2/T4 (smart collateral)"
+          ],
           "writable": true,
           "optional": true
         },
         {
           "name": "vault_borrow_position_on_liquidity",
-          "docs": ["@dev not required for T3/T4 (smart debt)"],
+          "docs": [
+            "@dev not required for T3/T4 (smart debt)"
+          ],
           "writable": true,
           "optional": true
         },
@@ -3408,13 +4038,17 @@
             },
             {
               "name": "dex_user_token0_account",
-              "docs": ["Signer's token0 account"],
+              "docs": [
+                "Signer's token0 account"
+              ],
               "writable": true,
               "optional": true
             },
             {
               "name": "dex_user_token1_account",
-              "docs": ["Signer's token1 account"],
+              "docs": [
+                "Signer's token1 account"
+              ],
               "writable": true,
               "optional": true
             },
@@ -3534,13 +4168,17 @@
             },
             {
               "name": "dex_user_token0_account",
-              "docs": ["Signer's token0 account"],
+              "docs": [
+                "Signer's token0 account"
+              ],
               "writable": true,
               "optional": true
             },
             {
               "name": "dex_user_token1_account",
-              "docs": ["Signer's token1 account"],
+              "docs": [
+                "Signer's token1 account"
+              ],
               "writable": true,
               "optional": true
             },
@@ -3685,13 +4323,24 @@
         "the full imbalance for that leg, `Some(n)` clamps it to `n`. Direction",
         "(deposit vs withdraw / borrow vs payback) is driven by the imbalance sign."
       ],
-      "discriminator": [190, 33, 144, 182, 86, 4, 141, 73],
+      "discriminator": [
+        190,
+        33,
+        144,
+        182,
+        86,
+        4,
+        141,
+        73
+      ],
       "accounts": [
         {
           "name": "rebalancer",
           "writable": true,
           "signer": true,
-          "relations": ["vault_config"]
+          "relations": [
+            "vault_config"
+          ]
         },
         {
           "name": "rebalancer_supply_token_account",
@@ -3711,16 +4360,22 @@
         },
         {
           "name": "vault_state",
-          "docs": ["@dev verification inside instruction logic"],
+          "docs": [
+            "@dev verification inside instruction logic"
+          ],
           "writable": true
         },
         {
           "name": "supply_token",
-          "relations": ["vault_config"]
+          "relations": [
+            "vault_config"
+          ]
         },
         {
           "name": "borrow_token",
-          "relations": ["vault_config"]
+          "relations": [
+            "vault_config"
+          ]
         },
         {
           "name": "supply_token_reserves_liquidity",
@@ -3791,7 +4446,16 @@
     },
     {
       "name": "update_authority",
-      "discriminator": [32, 46, 64, 28, 149, 75, 243, 88],
+      "discriminator": [
+        32,
+        46,
+        64,
+        28,
+        149,
+        75,
+        243,
+        88
+      ],
       "accounts": [
         {
           "name": "signer",
@@ -3811,7 +4475,16 @@
     },
     {
       "name": "update_auths",
-      "discriminator": [93, 96, 178, 156, 57, 117, 253, 209],
+      "discriminator": [
+        93,
+        96,
+        178,
+        156,
+        57,
+        117,
+        253,
+        209
+      ],
       "accounts": [
         {
           "name": "signer",
@@ -3837,7 +4510,16 @@
     },
     {
       "name": "update_borrow_fee",
-      "discriminator": [251, 124, 35, 148, 202, 167, 157, 65],
+      "discriminator": [
+        251,
+        124,
+        35,
+        148,
+        202,
+        167,
+        157,
+        65
+      ],
       "accounts": [
         {
           "name": "authority",
@@ -3848,21 +4530,29 @@
         },
         {
           "name": "vault_state",
-          "docs": ["@dev Verification inside instruction logic"],
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ],
           "writable": true
         },
         {
           "name": "vault_config",
-          "docs": ["@dev Verification inside instruction logic"],
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ],
           "writable": true
         },
         {
           "name": "supply_token_reserves_liquidity",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         },
         {
           "name": "borrow_token_reserves_liquidity",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         }
       ],
       "args": [
@@ -3878,7 +4568,16 @@
     },
     {
       "name": "update_borrow_rate_magnifier",
-      "discriminator": [75, 250, 27, 176, 156, 53, 26, 112],
+      "discriminator": [
+        75,
+        250,
+        27,
+        176,
+        156,
+        53,
+        26,
+        112
+      ],
       "accounts": [
         {
           "name": "authority",
@@ -3889,21 +4588,29 @@
         },
         {
           "name": "vault_state",
-          "docs": ["@dev Verification inside instruction logic"],
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ],
           "writable": true
         },
         {
           "name": "vault_config",
-          "docs": ["@dev Verification inside instruction logic"],
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ],
           "writable": true
         },
         {
           "name": "supply_token_reserves_liquidity",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         },
         {
           "name": "borrow_token_reserves_liquidity",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         }
       ],
       "args": [
@@ -3919,7 +4626,16 @@
     },
     {
       "name": "update_collateral_factor",
-      "discriminator": [244, 83, 227, 215, 220, 82, 201, 221],
+      "discriminator": [
+        244,
+        83,
+        227,
+        215,
+        220,
+        82,
+        201,
+        221
+      ],
       "accounts": [
         {
           "name": "authority",
@@ -3930,21 +4646,29 @@
         },
         {
           "name": "vault_state",
-          "docs": ["@dev Verification inside instruction logic"],
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ],
           "writable": true
         },
         {
           "name": "vault_config",
-          "docs": ["@dev Verification inside instruction logic"],
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ],
           "writable": true
         },
         {
           "name": "supply_token_reserves_liquidity",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         },
         {
           "name": "borrow_token_reserves_liquidity",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         }
       ],
       "args": [
@@ -3960,7 +4684,16 @@
     },
     {
       "name": "update_core_settings",
-      "discriminator": [101, 84, 9, 11, 60, 104, 149, 234],
+      "discriminator": [
+        101,
+        84,
+        9,
+        11,
+        60,
+        104,
+        149,
+        234
+      ],
       "accounts": [
         {
           "name": "authority",
@@ -3971,21 +4704,29 @@
         },
         {
           "name": "vault_state",
-          "docs": ["@dev Verification inside instruction logic"],
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ],
           "writable": true
         },
         {
           "name": "vault_config",
-          "docs": ["@dev Verification inside instruction logic"],
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ],
           "writable": true
         },
         {
           "name": "supply_token_reserves_liquidity",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         },
         {
           "name": "borrow_token_reserves_liquidity",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         }
       ],
       "args": [
@@ -4005,24 +4746,41 @@
     },
     {
       "name": "update_exchange_prices",
-      "discriminator": [209, 14, 188, 95, 242, 20, 119, 196],
+      "discriminator": [
+        209,
+        14,
+        188,
+        95,
+        242,
+        20,
+        119,
+        196
+      ],
       "accounts": [
         {
           "name": "vault_state",
-          "docs": ["@dev Verification inside instruction logic"],
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ],
           "writable": true
         },
         {
           "name": "vault_config",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         },
         {
           "name": "supply_token_reserves_liquidity",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         },
         {
           "name": "borrow_token_reserves_liquidity",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         }
       ],
       "args": [
@@ -4034,7 +4792,16 @@
     },
     {
       "name": "update_liquidation_max_limit",
-      "discriminator": [183, 242, 152, 150, 176, 40, 65, 161],
+      "discriminator": [
+        183,
+        242,
+        152,
+        150,
+        176,
+        40,
+        65,
+        161
+      ],
       "accounts": [
         {
           "name": "authority",
@@ -4045,21 +4812,29 @@
         },
         {
           "name": "vault_state",
-          "docs": ["@dev Verification inside instruction logic"],
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ],
           "writable": true
         },
         {
           "name": "vault_config",
-          "docs": ["@dev Verification inside instruction logic"],
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ],
           "writable": true
         },
         {
           "name": "supply_token_reserves_liquidity",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         },
         {
           "name": "borrow_token_reserves_liquidity",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         }
       ],
       "args": [
@@ -4075,7 +4850,16 @@
     },
     {
       "name": "update_liquidation_penalty",
-      "discriminator": [21, 168, 167, 206, 98, 206, 69, 32],
+      "discriminator": [
+        21,
+        168,
+        167,
+        206,
+        98,
+        206,
+        69,
+        32
+      ],
       "accounts": [
         {
           "name": "authority",
@@ -4086,21 +4870,29 @@
         },
         {
           "name": "vault_state",
-          "docs": ["@dev Verification inside instruction logic"],
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ],
           "writable": true
         },
         {
           "name": "vault_config",
-          "docs": ["@dev Verification inside instruction logic"],
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ],
           "writable": true
         },
         {
           "name": "supply_token_reserves_liquidity",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         },
         {
           "name": "borrow_token_reserves_liquidity",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         }
       ],
       "args": [
@@ -4116,7 +4908,16 @@
     },
     {
       "name": "update_liquidation_threshold",
-      "discriminator": [53, 185, 87, 243, 138, 11, 79, 28],
+      "discriminator": [
+        53,
+        185,
+        87,
+        243,
+        138,
+        11,
+        79,
+        28
+      ],
       "accounts": [
         {
           "name": "authority",
@@ -4127,21 +4928,29 @@
         },
         {
           "name": "vault_state",
-          "docs": ["@dev Verification inside instruction logic"],
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ],
           "writable": true
         },
         {
           "name": "vault_config",
-          "docs": ["@dev Verification inside instruction logic"],
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ],
           "writable": true
         },
         {
           "name": "supply_token_reserves_liquidity",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         },
         {
           "name": "borrow_token_reserves_liquidity",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         }
       ],
       "args": [
@@ -4157,7 +4966,16 @@
     },
     {
       "name": "update_lookup_table",
-      "discriminator": [221, 59, 30, 246, 106, 223, 137, 55],
+      "discriminator": [
+        221,
+        59,
+        30,
+        246,
+        106,
+        223,
+        137,
+        55
+      ],
       "accounts": [
         {
           "name": "authority",
@@ -4168,7 +4986,9 @@
         },
         {
           "name": "vault_metadata",
-          "docs": ["@dev Verification inside instruction logic"],
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ],
           "writable": true
         }
       ],
@@ -4185,7 +5005,16 @@
     },
     {
       "name": "update_oracle",
-      "discriminator": [112, 41, 209, 18, 248, 226, 252, 188],
+      "discriminator": [
+        112,
+        41,
+        209,
+        18,
+        248,
+        226,
+        252,
+        188
+      ],
       "accounts": [
         {
           "name": "authority",
@@ -4196,12 +5025,16 @@
         },
         {
           "name": "vault_state",
-          "docs": ["@dev Verification inside instruction logic"],
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ],
           "writable": true
         },
         {
           "name": "vault_config",
-          "docs": ["@dev Verification inside instruction logic"],
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ],
           "writable": true
         },
         {
@@ -4209,11 +5042,15 @@
         },
         {
           "name": "supply_token_reserves_liquidity",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         },
         {
           "name": "borrow_token_reserves_liquidity",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         }
       ],
       "args": [
@@ -4225,7 +5062,16 @@
     },
     {
       "name": "update_rebalancer",
-      "discriminator": [206, 187, 54, 228, 145, 8, 203, 111],
+      "discriminator": [
+        206,
+        187,
+        54,
+        228,
+        145,
+        8,
+        203,
+        111
+      ],
       "accounts": [
         {
           "name": "authority",
@@ -4236,21 +5082,29 @@
         },
         {
           "name": "vault_state",
-          "docs": ["@dev Verification inside instruction logic"],
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ],
           "writable": true
         },
         {
           "name": "vault_config",
-          "docs": ["@dev Verification inside instruction logic"],
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ],
           "writable": true
         },
         {
           "name": "supply_token_reserves_liquidity",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         },
         {
           "name": "borrow_token_reserves_liquidity",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         }
       ],
       "args": [
@@ -4266,7 +5120,16 @@
     },
     {
       "name": "update_supply_rate_magnifier",
-      "discriminator": [175, 59, 117, 196, 211, 170, 22, 12],
+      "discriminator": [
+        175,
+        59,
+        117,
+        196,
+        211,
+        170,
+        22,
+        12
+      ],
       "accounts": [
         {
           "name": "authority",
@@ -4277,21 +5140,29 @@
         },
         {
           "name": "vault_state",
-          "docs": ["@dev Verification inside instruction logic"],
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ],
           "writable": true
         },
         {
           "name": "vault_config",
-          "docs": ["@dev Verification inside instruction logic"],
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ],
           "writable": true
         },
         {
           "name": "supply_token_reserves_liquidity",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         },
         {
           "name": "borrow_token_reserves_liquidity",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         }
       ],
       "args": [
@@ -4307,7 +5178,16 @@
     },
     {
       "name": "update_withdraw_gap",
-      "discriminator": [229, 163, 76, 21, 82, 215, 25, 233],
+      "discriminator": [
+        229,
+        163,
+        76,
+        21,
+        82,
+        215,
+        25,
+        233
+      ],
       "accounts": [
         {
           "name": "authority",
@@ -4318,21 +5198,29 @@
         },
         {
           "name": "vault_state",
-          "docs": ["@dev Verification inside instruction logic"],
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ],
           "writable": true
         },
         {
           "name": "vault_config",
-          "docs": ["@dev Verification inside instruction logic"],
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ],
           "writable": true
         },
         {
           "name": "supply_token_reserves_liquidity",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         },
         {
           "name": "borrow_token_reserves_liquidity",
-          "docs": ["@dev Verification inside instruction logic"]
+          "docs": [
+            "@dev Verification inside instruction logic"
+          ]
         }
       ],
       "args": [
@@ -4350,181 +5238,577 @@
   "accounts": [
     {
       "name": "Branch",
-      "discriminator": [14, 63, 100, 50, 25, 8, 29, 5]
+      "discriminator": [
+        14,
+        63,
+        100,
+        50,
+        25,
+        8,
+        29,
+        5
+      ]
     },
     {
       "name": "Dex",
-      "discriminator": [236, 30, 181, 80, 209, 217, 25, 163]
+      "discriminator": [
+        236,
+        30,
+        181,
+        80,
+        209,
+        217,
+        25,
+        163
+      ]
     },
     {
       "name": "DexPosition",
-      "discriminator": [30, 36, 219, 78, 189, 173, 170, 47]
+      "discriminator": [
+        30,
+        36,
+        219,
+        78,
+        189,
+        173,
+        170,
+        47
+      ]
     },
     {
       "name": "Oracle",
-      "discriminator": [139, 194, 131, 179, 140, 179, 229, 244]
+      "discriminator": [
+        139,
+        194,
+        131,
+        179,
+        140,
+        179,
+        229,
+        244
+      ]
     },
     {
       "name": "Position",
-      "discriminator": [170, 188, 143, 228, 122, 64, 247, 208]
+      "discriminator": [
+        170,
+        188,
+        143,
+        228,
+        122,
+        64,
+        247,
+        208
+      ]
     },
     {
       "name": "Tick",
-      "discriminator": [176, 94, 67, 247, 133, 173, 7, 115]
+      "discriminator": [
+        176,
+        94,
+        67,
+        247,
+        133,
+        173,
+        7,
+        115
+      ]
     },
     {
       "name": "TickHasDebtArray",
-      "discriminator": [91, 232, 60, 29, 124, 103, 49, 252]
+      "discriminator": [
+        91,
+        232,
+        60,
+        29,
+        124,
+        103,
+        49,
+        252
+      ]
     },
     {
       "name": "TickIdLiquidation",
-      "discriminator": [41, 28, 190, 197, 68, 213, 31, 181]
+      "discriminator": [
+        41,
+        28,
+        190,
+        197,
+        68,
+        213,
+        31,
+        181
+      ]
     },
     {
       "name": "TokenReserve",
-      "discriminator": [21, 18, 59, 135, 120, 20, 31, 12]
+      "discriminator": [
+        21,
+        18,
+        59,
+        135,
+        120,
+        20,
+        31,
+        12
+      ]
     },
     {
       "name": "UserBorrowPosition",
-      "discriminator": [73, 126, 65, 123, 220, 126, 197, 24]
+      "discriminator": [
+        73,
+        126,
+        65,
+        123,
+        220,
+        126,
+        197,
+        24
+      ]
     },
     {
       "name": "UserSupplyPosition",
-      "discriminator": [202, 219, 136, 118, 61, 177, 21, 146]
+      "discriminator": [
+        202,
+        219,
+        136,
+        118,
+        61,
+        177,
+        21,
+        146
+      ]
     },
     {
       "name": "VaultAdmin",
-      "discriminator": [88, 97, 160, 117, 102, 39, 103, 44]
+      "discriminator": [
+        88,
+        97,
+        160,
+        117,
+        102,
+        39,
+        103,
+        44
+      ]
     },
     {
       "name": "VaultConfig",
-      "discriminator": [99, 86, 43, 216, 184, 102, 119, 77]
+      "discriminator": [
+        99,
+        86,
+        43,
+        216,
+        184,
+        102,
+        119,
+        77
+      ]
     },
     {
       "name": "VaultMetadata",
-      "discriminator": [248, 177, 244, 93, 67, 19, 117, 57]
+      "discriminator": [
+        248,
+        177,
+        244,
+        93,
+        67,
+        19,
+        117,
+        57
+      ]
     },
     {
       "name": "VaultState",
-      "discriminator": [228, 196, 82, 165, 98, 210, 235, 152]
+      "discriminator": [
+        228,
+        196,
+        82,
+        165,
+        98,
+        210,
+        235,
+        152
+      ]
     }
   ],
   "events": [
     {
       "name": "LogAbsorb",
-      "discriminator": [177, 119, 143, 137, 184, 63, 197, 215]
+      "discriminator": [
+        177,
+        119,
+        143,
+        137,
+        184,
+        63,
+        197,
+        215
+      ]
     },
     {
       "name": "LogClosePosition",
-      "discriminator": [225, 156, 13, 36, 189, 95, 170, 92]
+      "discriminator": [
+        225,
+        156,
+        13,
+        36,
+        189,
+        95,
+        170,
+        92
+      ]
     },
     {
       "name": "LogInitBranch",
-      "discriminator": [127, 182, 211, 219, 140, 189, 193, 101]
+      "discriminator": [
+        127,
+        182,
+        211,
+        219,
+        140,
+        189,
+        193,
+        101
+      ]
     },
     {
       "name": "LogInitTick",
-      "discriminator": [56, 182, 35, 79, 249, 114, 9, 175]
+      "discriminator": [
+        56,
+        182,
+        35,
+        79,
+        249,
+        114,
+        9,
+        175
+      ]
     },
     {
       "name": "LogInitTickHasDebtArray",
-      "discriminator": [15, 134, 113, 2, 251, 206, 30, 129]
+      "discriminator": [
+        15,
+        134,
+        113,
+        2,
+        251,
+        206,
+        30,
+        129
+      ]
     },
     {
       "name": "LogInitTickIdLiquidation",
-      "discriminator": [172, 64, 170, 238, 39, 153, 185, 225]
+      "discriminator": [
+        172,
+        64,
+        170,
+        238,
+        39,
+        153,
+        185,
+        225
+      ]
     },
     {
       "name": "LogInitVaultConfig",
-      "discriminator": [194, 158, 35, 55, 179, 48, 174, 46]
+      "discriminator": [
+        194,
+        158,
+        35,
+        55,
+        179,
+        48,
+        174,
+        46
+      ]
     },
     {
       "name": "LogInitVaultState",
-      "discriminator": [140, 108, 65, 38, 128, 26, 194, 28]
+      "discriminator": [
+        140,
+        108,
+        65,
+        38,
+        128,
+        26,
+        194,
+        28
+      ]
     },
     {
       "name": "LogLiquidate",
-      "discriminator": [154, 128, 202, 147, 65, 233, 195, 73]
+      "discriminator": [
+        154,
+        128,
+        202,
+        147,
+        65,
+        233,
+        195,
+        73
+      ]
     },
     {
       "name": "LogLiquidateInfo",
-      "discriminator": [169, 150, 46, 42, 178, 89, 98, 83]
+      "discriminator": [
+        169,
+        150,
+        46,
+        42,
+        178,
+        89,
+        98,
+        83
+      ]
     },
     {
       "name": "LogLiquidationRoundingDiff",
-      "discriminator": [35, 189, 179, 90, 218, 51, 104, 128]
+      "discriminator": [
+        35,
+        189,
+        179,
+        90,
+        218,
+        51,
+        104,
+        128
+      ]
     },
     {
       "name": "LogOperate",
-      "discriminator": [180, 8, 81, 71, 19, 132, 173, 8]
+      "discriminator": [
+        180,
+        8,
+        81,
+        71,
+        19,
+        132,
+        173,
+        8
+      ]
     },
     {
       "name": "LogRebalance",
-      "discriminator": [90, 67, 219, 41, 181, 118, 132, 9]
+      "discriminator": [
+        90,
+        67,
+        219,
+        41,
+        181,
+        118,
+        132,
+        9
+      ]
     },
     {
       "name": "LogUpdateAuthority",
-      "discriminator": [150, 152, 157, 143, 6, 135, 193, 101]
+      "discriminator": [
+        150,
+        152,
+        157,
+        143,
+        6,
+        135,
+        193,
+        101
+      ]
     },
     {
       "name": "LogUpdateAuths",
-      "discriminator": [88, 80, 109, 48, 111, 203, 76, 251]
+      "discriminator": [
+        88,
+        80,
+        109,
+        48,
+        111,
+        203,
+        76,
+        251
+      ]
     },
     {
       "name": "LogUpdateBorrowFee",
-      "discriminator": [33, 134, 42, 66, 16, 167, 119, 196]
+      "discriminator": [
+        33,
+        134,
+        42,
+        66,
+        16,
+        167,
+        119,
+        196
+      ]
     },
     {
       "name": "LogUpdateBorrowRateMagnifier",
-      "discriminator": [186, 23, 46, 117, 57, 111, 107, 51]
+      "discriminator": [
+        186,
+        23,
+        46,
+        117,
+        57,
+        111,
+        107,
+        51
+      ]
     },
     {
       "name": "LogUpdateCollateralFactor",
-      "discriminator": [142, 89, 0, 231, 164, 164, 230, 82]
+      "discriminator": [
+        142,
+        89,
+        0,
+        231,
+        164,
+        164,
+        230,
+        82
+      ]
     },
     {
       "name": "LogUpdateCoreSettings",
-      "discriminator": [233, 65, 32, 7, 230, 115, 122, 197]
+      "discriminator": [
+        233,
+        65,
+        32,
+        7,
+        230,
+        115,
+        122,
+        197
+      ]
     },
     {
       "name": "LogUpdateExchangePrices",
-      "discriminator": [190, 194, 69, 204, 30, 86, 181, 163]
+      "discriminator": [
+        190,
+        194,
+        69,
+        204,
+        30,
+        86,
+        181,
+        163
+      ]
     },
     {
       "name": "LogUpdateLiquidationMaxLimit",
-      "discriminator": [73, 32, 49, 0, 234, 86, 150, 94]
+      "discriminator": [
+        73,
+        32,
+        49,
+        0,
+        234,
+        86,
+        150,
+        94
+      ]
     },
     {
       "name": "LogUpdateLiquidationPenalty",
-      "discriminator": [42, 132, 67, 48, 209, 133, 77, 83]
+      "discriminator": [
+        42,
+        132,
+        67,
+        48,
+        209,
+        133,
+        77,
+        83
+      ]
     },
     {
       "name": "LogUpdateLiquidationThreshold",
-      "discriminator": [211, 71, 215, 239, 159, 238, 71, 219]
+      "discriminator": [
+        211,
+        71,
+        215,
+        239,
+        159,
+        238,
+        71,
+        219
+      ]
     },
     {
       "name": "LogUpdateLookupTable",
-      "discriminator": [45, 248, 126, 111, 185, 41, 103, 5]
+      "discriminator": [
+        45,
+        248,
+        126,
+        111,
+        185,
+        41,
+        103,
+        5
+      ]
     },
     {
       "name": "LogUpdateOracle",
-      "discriminator": [251, 163, 219, 57, 30, 152, 177, 10]
+      "discriminator": [
+        251,
+        163,
+        219,
+        57,
+        30,
+        152,
+        177,
+        10
+      ]
     },
     {
       "name": "LogUpdateRebalancer",
-      "discriminator": [66, 79, 144, 204, 26, 217, 153, 225]
+      "discriminator": [
+        66,
+        79,
+        144,
+        204,
+        26,
+        217,
+        153,
+        225
+      ]
     },
     {
       "name": "LogUpdateSupplyRateMagnifier",
-      "discriminator": [198, 113, 184, 213, 239, 18, 253, 56]
+      "discriminator": [
+        198,
+        113,
+        184,
+        213,
+        239,
+        18,
+        253,
+        56
+      ]
     },
     {
       "name": "LogUpdateWithdrawGap",
-      "discriminator": [182, 248, 48, 47, 8, 159, 21, 35]
+      "discriminator": [
+        182,
+        248,
+        48,
+        47,
+        8,
+        159,
+        21,
+        35
+      ]
     },
     {
       "name": "LogUserPosition",
-      "discriminator": [46, 44, 213, 42, 55, 59, 190, 133]
+      "discriminator": [
+        46,
+        44,
+        213,
+        42,
+        55,
+        59,
+        190,
+        133
+      ]
     }
   ],
   "errors": [
@@ -5083,7 +6367,9 @@
     },
     {
       "name": "Branch",
-      "docs": ["Branch data structure"],
+      "docs": [
+        "Branch data structure"
+      ],
       "serialization": "bytemuck",
       "repr": {
         "kind": "c",
@@ -5328,7 +6614,10 @@
           {
             "name": "_reserved",
             "type": {
-              "array": ["u8", 32]
+              "array": [
+                "u8",
+                32
+              ]
             }
           },
           {
@@ -5423,7 +6712,10 @@
           {
             "name": "_reserved",
             "type": {
-              "array": ["u8", 32]
+              "array": [
+                "u8",
+                32
+              ]
             }
           }
         ]
@@ -6251,7 +7543,9 @@
     },
     {
       "name": "Position",
-      "docs": ["Position data structure"],
+      "docs": [
+        "Position data structure"
+      ],
       "serialization": "bytemuck",
       "repr": {
         "kind": "c",
@@ -6373,7 +7667,9 @@
     },
     {
       "name": "Tick",
-      "docs": ["Tick data structure"],
+      "docs": [
+        "Tick data structure"
+      ],
       "serialization": "bytemuck",
       "repr": {
         "kind": "c",
@@ -6435,7 +7731,10 @@
           {
             "name": "children_bits",
             "type": {
-              "array": ["u8", 32]
+              "array": [
+                "u8",
+                32
+              ]
             }
           }
         ]
@@ -6482,7 +7781,9 @@
     },
     {
       "name": "TickIdLiquidation",
-      "docs": ["Tick ID liquidation data"],
+      "docs": [
+        "Tick ID liquidation data"
+      ],
       "serialization": "bytemuck",
       "repr": {
         "kind": "c",
@@ -6544,7 +7845,9 @@
     },
     {
       "name": "TokenReserve",
-      "docs": ["Token configuration and exchange prices"],
+      "docs": [
+        "Token configuration and exchange prices"
+      ],
       "serialization": "bytemuck",
       "repr": {
         "kind": "c",
@@ -6683,7 +7986,9 @@
     },
     {
       "name": "UserBorrowPosition",
-      "docs": ["User borrow position"],
+      "docs": [
+        "User borrow position"
+      ],
       "serialization": "bytemuck",
       "repr": {
         "kind": "c",
@@ -6741,7 +8046,9 @@
     },
     {
       "name": "UserSupplyPosition",
-      "docs": ["User supply position"],
+      "docs": [
+        "User supply position"
+      ],
       "serialization": "bytemuck",
       "repr": {
         "kind": "c",

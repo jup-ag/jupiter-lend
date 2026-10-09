@@ -9,7 +9,16 @@
   "instructions": [
     {
       "name": "chainlink_data_streams_feed_access_controller",
-      "discriminator": [181, 88, 179, 151, 225, 38, 9, 6],
+      "discriminator": [
+        181,
+        88,
+        179,
+        151,
+        225,
+        38,
+        9,
+        6
+      ],
       "accounts": [
         {
           "name": "authority",
@@ -29,7 +38,16 @@
     },
     {
       "name": "get_both_exchange_rate",
-      "discriminator": [92, 88, 161, 46, 230, 193, 46, 237],
+      "discriminator": [
+        92,
+        88,
+        161,
+        46,
+        230,
+        193,
+        46,
+        237
+      ],
       "accounts": [
         {
           "name": "oracle"
@@ -44,7 +62,16 @@
     },
     {
       "name": "get_center_price",
-      "discriminator": [60, 51, 11, 241, 151, 180, 192, 27],
+      "discriminator": [
+        60,
+        51,
+        11,
+        241,
+        151,
+        180,
+        192,
+        27
+      ],
       "accounts": [
         {
           "name": "oracle"
@@ -60,7 +87,16 @@
     },
     {
       "name": "get_exchange_rate",
-      "discriminator": [153, 76, 17, 194, 170, 215, 89, 142],
+      "discriminator": [
+        153,
+        76,
+        17,
+        194,
+        170,
+        215,
+        89,
+        142
+      ],
       "accounts": [
         {
           "name": "oracle"
@@ -76,7 +112,16 @@
     },
     {
       "name": "get_exchange_rate_liquidate",
-      "discriminator": [228, 169, 73, 39, 91, 82, 27, 5],
+      "discriminator": [
+        228,
+        169,
+        73,
+        39,
+        91,
+        82,
+        27,
+        5
+      ],
       "accounts": [
         {
           "name": "oracle"
@@ -92,7 +137,16 @@
     },
     {
       "name": "get_exchange_rate_operate",
-      "discriminator": [174, 166, 126, 10, 122, 153, 94, 203],
+      "discriminator": [
+        174,
+        166,
+        126,
+        10,
+        122,
+        153,
+        94,
+        203
+      ],
       "accounts": [
         {
           "name": "oracle"
@@ -108,7 +162,16 @@
     },
     {
       "name": "init_admin",
-      "discriminator": [97, 65, 97, 27, 200, 206, 72, 219],
+      "discriminator": [
+        97,
+        65,
+        97,
+        27,
+        200,
+        206,
+        72,
+        219
+      ],
       "accounts": [
         {
           "name": "signer",
@@ -123,7 +186,18 @@
               {
                 "kind": "const",
                 "value": [
-                  111, 114, 97, 99, 108, 101, 95, 97, 100, 109, 105, 110
+                  111,
+                  114,
+                  97,
+                  99,
+                  108,
+                  101,
+                  95,
+                  97,
+                  100,
+                  109,
+                  105,
+                  110
                 ]
               }
             ]
@@ -143,7 +217,16 @@
     },
     {
       "name": "init_chainlink_data_streams_cache",
-      "discriminator": [47, 174, 206, 189, 94, 253, 25, 233],
+      "discriminator": [
+        47,
+        174,
+        206,
+        189,
+        94,
+        253,
+        25,
+        233
+      ],
       "accounts": [
         {
           "name": "signer",
@@ -161,7 +244,18 @@
               {
                 "kind": "const",
                 "value": [
-                  99, 104, 97, 105, 110, 108, 105, 110, 107, 95, 100, 115
+                  99,
+                  104,
+                  97,
+                  105,
+                  110,
+                  108,
+                  105,
+                  110,
+                  107,
+                  95,
+                  100,
+                  115
                 ]
               },
               {
@@ -201,7 +295,16 @@
     },
     {
       "name": "init_dex_peg_oracle_config",
-      "discriminator": [163, 158, 180, 74, 201, 54, 7, 48],
+      "discriminator": [
+        163,
+        158,
+        180,
+        74,
+        201,
+        54,
+        7,
+        48
+      ],
       "accounts": [
         {
           "name": "signer",
@@ -218,7 +321,15 @@
             "seeds": [
               {
                 "kind": "const",
-                "value": [100, 101, 120, 95, 112, 101, 103]
+                "value": [
+                  100,
+                  101,
+                  120,
+                  95,
+                  112,
+                  101,
+                  103
+                ]
               },
               {
                 "kind": "arg",
@@ -280,7 +391,16 @@
     },
     {
       "name": "init_oracle_config",
-      "discriminator": [77, 144, 180, 246, 217, 15, 118, 92],
+      "discriminator": [
+        77,
+        144,
+        180,
+        246,
+        217,
+        15,
+        118,
+        92
+      ],
       "accounts": [
         {
           "name": "signer",
@@ -297,7 +417,14 @@
             "seeds": [
               {
                 "kind": "const",
-                "value": [111, 114, 97, 99, 108, 101]
+                "value": [
+                  111,
+                  114,
+                  97,
+                  99,
+                  108,
+                  101
+                ]
               },
               {
                 "kind": "arg",
@@ -330,7 +457,16 @@
     },
     {
       "name": "refresh_price_feed_with_chainlink",
-      "discriminator": [74, 3, 0, 183, 242, 117, 152, 203],
+      "discriminator": [
+        74,
+        3,
+        0,
+        183,
+        242,
+        117,
+        152,
+        203
+      ],
       "accounts": [
         {
           "name": "signer",
@@ -360,7 +496,10 @@
         {
           "name": "feed_id",
           "type": {
-            "array": ["u8", 32]
+            "array": [
+              "u8",
+              32
+            ]
           }
         },
         {
@@ -371,7 +510,16 @@
     },
     {
       "name": "update_authority",
-      "discriminator": [32, 46, 64, 28, 149, 75, 243, 88],
+      "discriminator": [
+        32,
+        46,
+        64,
+        28,
+        149,
+        75,
+        243,
+        88
+      ],
       "accounts": [
         {
           "name": "authority",
@@ -391,7 +539,16 @@
     },
     {
       "name": "update_auths",
-      "discriminator": [93, 96, 178, 156, 57, 117, 253, 209],
+      "discriminator": [
+        93,
+        96,
+        178,
+        156,
+        57,
+        117,
+        253,
+        209
+      ],
       "accounts": [
         {
           "name": "authority",
@@ -417,7 +574,16 @@
     },
     {
       "name": "update_chainlink_data_streams_cache_feeds",
-      "discriminator": [55, 69, 93, 203, 144, 30, 248, 173],
+      "discriminator": [
+        55,
+        69,
+        93,
+        203,
+        144,
+        30,
+        248,
+        173
+      ],
       "accounts": [
         {
           "name": "signer",
@@ -447,7 +613,16 @@
     },
     {
       "name": "update_chainlink_data_streams_cache_keepers",
-      "discriminator": [125, 168, 188, 187, 148, 203, 102, 87],
+      "discriminator": [
+        125,
+        168,
+        188,
+        187,
+        148,
+        203,
+        102,
+        87
+      ],
       "accounts": [
         {
           "name": "signer",
@@ -479,49 +654,148 @@
   "accounts": [
     {
       "name": "ChainlinkDataStreamsCache",
-      "discriminator": [65, 102, 75, 47, 79, 156, 109, 193]
+      "discriminator": [
+        65,
+        102,
+        75,
+        47,
+        79,
+        156,
+        109,
+        193
+      ]
     },
     {
       "name": "DexPegOracleConfig",
-      "discriminator": [59, 189, 99, 149, 128, 5, 255, 72]
+      "discriminator": [
+        59,
+        189,
+        99,
+        149,
+        128,
+        5,
+        255,
+        72
+      ]
     },
     {
       "name": "Oracle",
-      "discriminator": [139, 194, 131, 179, 140, 179, 229, 244]
+      "discriminator": [
+        139,
+        194,
+        131,
+        179,
+        140,
+        179,
+        229,
+        244
+      ]
     },
     {
       "name": "OracleAdmin",
-      "discriminator": [239, 232, 8, 20, 254, 63, 25, 246]
+      "discriminator": [
+        239,
+        232,
+        8,
+        20,
+        254,
+        63,
+        25,
+        246
+      ]
     }
   ],
   "events": [
     {
       "name": "LogChainlinkDataStreamsFeedMarketIsInTransition",
-      "discriminator": [211, 67, 128, 58, 147, 192, 179, 111]
+      "discriminator": [
+        211,
+        67,
+        128,
+        58,
+        147,
+        192,
+        179,
+        111
+      ]
     },
     {
       "name": "LogChainlinkDataStreamsFeedSuspended",
-      "discriminator": [63, 149, 247, 255, 189, 80, 154, 253]
+      "discriminator": [
+        63,
+        149,
+        247,
+        255,
+        189,
+        80,
+        154,
+        253
+      ]
     },
     {
       "name": "LogStakePoolHighFeeDetected",
-      "discriminator": [198, 106, 149, 7, 25, 83, 39, 155]
+      "discriminator": [
+        198,
+        106,
+        149,
+        7,
+        25,
+        83,
+        39,
+        155
+      ]
     },
     {
       "name": "LogUpdateAuthority",
-      "discriminator": [150, 152, 157, 143, 6, 135, 193, 101]
+      "discriminator": [
+        150,
+        152,
+        157,
+        143,
+        6,
+        135,
+        193,
+        101
+      ]
     },
     {
       "name": "LogUpdateAuths",
-      "discriminator": [88, 80, 109, 48, 111, 203, 76, 251]
+      "discriminator": [
+        88,
+        80,
+        109,
+        48,
+        111,
+        203,
+        76,
+        251
+      ]
     },
     {
       "name": "LogUpdateCacheFeeds",
-      "discriminator": [75, 155, 134, 56, 17, 94, 235, 191]
+      "discriminator": [
+        75,
+        155,
+        134,
+        56,
+        17,
+        94,
+        235,
+        191
+      ]
     },
     {
       "name": "LogUpdateCacheKeepers",
-      "discriminator": [33, 129, 191, 130, 117, 119, 198, 235]
+      "discriminator": [
+        33,
+        129,
+        191,
+        130,
+        117,
+        119,
+        198,
+        235
+      ]
     }
   ],
   "errors": [
@@ -954,7 +1228,10 @@
           {
             "name": "_padding",
             "type": {
-              "array": ["u8", 24]
+              "array": [
+                "u8",
+                24
+              ]
             }
           }
         ]
@@ -1069,7 +1346,10 @@
           {
             "name": "__reserved",
             "type": {
-              "array": ["u8", 32]
+              "array": [
+                "u8",
+                32
+              ]
             }
           }
         ]
@@ -1077,7 +1357,9 @@
     },
     {
       "name": "DexPegOracleKind",
-      "docs": ["Col vs debt side for a [`DexPegOracleConfig`] account."],
+      "docs": [
+        "Col vs debt side for a [`DexPegOracleConfig`] account."
+      ],
       "repr": {
         "kind": "rust"
       },
@@ -1105,7 +1387,10 @@
           {
             "name": "feed_id",
             "type": {
-              "array": ["u8", 32]
+              "array": [
+                "u8",
+                32
+              ]
             }
           },
           {
@@ -1135,7 +1420,10 @@
           {
             "name": "feed_id",
             "type": {
-              "array": ["u8", 32]
+              "array": [
+                "u8",
+                32
+              ]
             }
           },
           {
